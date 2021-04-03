@@ -1,6 +1,80 @@
 \chapter{El teorema de Brauer--Fowler}
 
+En este capítulo vamos a demostrar el teorema de Brauer--Fowler. El resultado es fundamental
+en la clasificación de grupos simples finitos. Daremos dos demostraciones, una basada en 
+teoría de caracteres y una demostración alternativa completamente elemental. 
+
 \begin{theorem}[Brauer--Fowler]
+\index{Teorema!de Brauer--Fowler}
 Sea $G$ un grupo finito y simple y sea $x$ una involución. Si $|C_G(x)|=n$, entonces $|G|\leq (n^2)!$.	
 \end{theorem}
 
+La cota del teorema de Brauer--Fowler no es importante, ya que
+para considerar una forma posible de atacar la clasificación de grupos simples 
+solamente es necesario saber que existen  
+finitos grupos simples finitos con un cierto centralizador de invouciones.
+
+\begin{corollary}
+...
+\end{corollary}
+
+Veamos un ejemplo sencillo que da una idea de cómo es que pueden clasificarse grupos simples
+una vez que se tiene fija la estructura del centralizador de una involución. 
+
+Vamos a demostrar
+que si $G$ es un grupo simple finito y $x$ es una involución tal que $C_G(x)\simeq\Z/2$, entonces
+$G\simeq\Z/2$. 
+
+Supongamos que $\Irr(G)=\{\chi_1,\chi_2,\dots,\chi_k\}$. No conocemos la tabla de caracteres del grupo $G$ 
+pero sabemos que...
+
+\subsubsection*{Una demostración elemental del teorema de Brauer--Fowler}
+
+Supongamos primero que existe un subgrupo propio $H$ de $G$ tal que
+$(G:H)\leq n^2$. En ese caso, hacemos actuar a $G$ en $G/H$ por multiplicación a izquierda 
+y tenemos un morfismo de grupos $\rho\colon G\to\Sym_{n^2}$. Como $G$ es un grupo simple, 
+$\ker\rho=\{1\}$ o bien $\ker\rho=G$. Si $\ker\rho=G$, entonces $\rho(g)(yH)=yH$ para todo
+$g\in G$ e $y\in G$, lo que implica que $g\in H$, una contradicción. Luego $\rho$ es inyectiva
+y entonces $G$ es isomorfo a un subgrupo de $\Sym_{n^2}$. En particular, $|G|$ divide a $(n^2)!$
+
+Sea $X$ la clase de conjugación de $x$. Para $g\in G$ definimos
+\[
+J(g)=\{z\in X:zgz^{-1}=g^{-1}\}.
+\]
+Primero veamos que $|J(g)|\leq|C_G(g)|$. La función $J(g)\to C_G(g)$, $z\mapsto gz$, está bien definida, 
+pues 
+\[
+(gz)g(gz)^{-1}=g(xgx^{-1})g^{-1}=g^{-1}\in C_G(g),
+\]
+y es inyectiva, pues $gz=gz_1$ implica $z=z_1$.
+
+Sea $\{(g,z)\in G\times X:zgz^{-1}=g^{-1}\}$.  
+Como la función $X\times X\to J$, $(y,z)\mapsto (yz,z)$, 
+está bien definida, pues $z(yz)z^{-1}=zy=(yz)^{-1}$, y es trivialmente una función inyectiva, 
+tenemos entonces que
+\[
+|X|^2\leq |J|=\sum_{(g,z)\in J}1\leq\sum_{g\in G}|J(g)|=\sum_{g\in G}|C_G(g)|=k|G|,
+\]
+donde $k$ es la cantidad de clases de conjugación de $G$, 
+pues $(g,z)\in J$ si y sólo si $z\in J(g)$. Luego $|G|\leq kn^2$, pues
+\[
+\left(\frac{|G|}{|C_G(x)|}\right)^2=|X|^2=\frac{|G|}{n^2}\leq k|G|.
+\]
+
+\begin{claim}
+Existe alguna clase de conjugación que tiene $\leq n^2$ elementos.
+\end{claim}
+
+De lo contrario, si $C_1,\dots,C_k$ son las clases de conjugación de $G$ y 
+$|C_i|>n^2$ para todo $i\in\{1,\dots,k\}$, entonces 
+\[
+|G|=\sum_{i=1}^k|C_i|>\sum_{i=1}^kn^2=kn^2\geq |G|,
+\]
+una contradicción. 
+
+\begin{claim}
+Existe un subgrupo $H$ de $G$ tal que $(G:H)\leq n^2$.
+\end{claim}
+
+Sea $C$ alguna clase de conjugación de $G$ tal que $|C|\leq n^2$ y sea $g\in C$.  
+Entonces $H=C_G(g)$ es un subgrupo de $G$ tal que $(G:H)\leq n^2$. 
