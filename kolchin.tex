@@ -1,0 +1,304 @@
+\chapter{El teorema de Kolchin}
+
+%Antes de dar una aplicación a la teoría de grupos, veremos un resultado de
+%Wedderburn. 
+
+\index{Elemento!nil}
+\index{Elemento!nil}
+\index{Álgebra!nil}
+Consideraremos ahora álgebras posiblemente sin unidad. 
+
+Si $A$ es un álgebra y $a\in A$, diremos que $a$ es \textbf{nil} (o nil) si 
+$a^n=0$ para algún $n\in\N$. Diremos que el álgebra $A$ es \textbf{nil} si
+todo $a\in A$ es nil.  Un álgebra nil no puede tener unidad. 
+
+\begin{lemma}
+Si $A$ es un álgebra, entonces existen un álgebra con unidad $B$ y un ideal $I$ 
+de $B$ tales que $I\simeq A$ y $B/I\simeq K$.  
+\end{lemma}
+
+\begin{proof}
+Sea $B=K\times A$ con las operaciones
+\[
+(\lambda,u)(\mu,v)=(\lambda\mu,\lambda v+\mu u+uv)
+\]
+Dejamos como ejercicio verificar $B$ es un álgebra
+con unidad $(1,0)$ y que el conjunto 
+$I=\{(0,a):a\in A\}$ es un ideal de $B$ 
+tal que $I\simeq A$ y además $B/I\simeq K$. 
+\end{proof}
+
+\begin{proposition}
+Sea $A$ un álgebra no nula (posiblemente sin unidad). Si $A$ no tiene ideales
+nilpotentes no nulos, entonces $A$ es un álgebra con unidad. 
+\end{proposition}
+
+\begin{proof}
+Consideramos el álgebra $B$ dada por el lema anterior. 
+Sea $J$ un ideal nilpotente de $B$. Como $J\cap I\subseteq I$ es un ideal
+nilpotente de $A$, $J\cap I=\{0\}$. Por el segundo teorema de isomorfismos,
+\[
+J\simeq J/(J\cap I)\simeq (I+J)/I
+\]
+y luego $(I+J)/I$ es un ideal nilpotente de $B/I\simeq K$. Como $K$ es un cuerpo,
+no tiene ideales propios no nulos. Luego $J=\{0\}$ y entonces
+$B$ no tiene ideales nilpotentes. En particular, $B$ es semisimple. Por el 
+teorema de Wedderburn, $B$ es producto directo de álgebras de matrices
+sobre álgebras de división,
+digamos
+\[
+B\simeq M_{n_1}(D_1)\times\cdots\times M_{n_k}(D_k).
+\]
+Como los ideales de $M_{n_1}(D_1)\times\cdots\times M_{n_k}(D_k)$ 
+son de la forma $I_1\times\cdots\times I_k$, donde cada $I_j$ es un ideal de $M_{n_j}(D_j)$ y  
+cada $M_{n_i}(D_i)$ es un álgebra simple, se concluye que los ideales no nulos de $B$
+son álgebras con unidad. Luego $A$ es también un álgebra con unidad,
+pues $A\simeq I$.    
+\end{proof}
+
+Recordemos que una matriz $a$ se dice nilpotente si $a^n=0$ para algún $n\in\N$. 
+Necesitamos un lema:
+
+\begin{lemma}
+	\label{lem:base_de_nilpotentes}
+	El espacio vectorial $M_n(\C)$ no posee una base formada por matrices
+	nilpotentes.
+\end{lemma}
+
+\begin{proof}
+	Supongamos que existen matrices nilpotentes $A_1,\dots,A_{n^2}$ tales que
+	generan $M_n(\C)$. Entonces existen escalares
+	$\lambda_1,\dots,\lambda_{n^2}\in \C$ tales que
+	\[
+		E_{11}=\lambda_1A_1+\cdots+\lambda_{n^2}A_{n^2}.
+	\]
+	Para cada $i\in\{1,\dots,n^2\}$ sabemos que $\trace(A_i)=0$ pues $A_i$ es
+	nilpotente. Como estamos en los complejos, $A_i$ es similar a una
+	matriz triangular superior. Pero por otro lado, $\trace(E_{11})=1$, una
+	contradicción.
+\end{proof}
+
+Antes de demostrar el teorema de Kolchin, 
+necesitamos el siguiente resultado sobre álgebras.  
+
+\begin{theorem}[Wedderburn]
+	\index{Teorema!de Wedderburn}
+	Sea $A$ un álgebra compleja de dimensión finita generada como espacio vectorial por
+	elementos nil. Entonces $A$ es nil.
+\end{theorem}
+
+\begin{proof}
+%	Sin pérdida de generalidad podemos suponer que $K$ es algebraicamente
+%	cerrado pues si $\overline{K}$ es la clausura algebraica de $K$, la
+%	extensión de escalares $A^{\overline{K}}=\overline{K}\otimes_KA$ es un
+%	$\overline{K}$-espacio vectorial de dimensión $\dim_KA$ que contiene una
+%	subálgebra isomorfa a $A$.  Por eso, basta demostrar entonces que todo
+%	elemento de $A^{\overline{K}}$ es nil. 
+%
+	Procederemos por inducción en $\dim A$. Si $\dim A=1$, sea $a\in A$ un
+	elemento nil tal que $\{a\}$ una base de $A$. Todo elemento de $A$ es de la
+	forma $\lambda a$ y luego es nil.  Supongamos entonces que $\dim A>1$. Como
+	$A$ es de dimensión finita, el radical
+	$J(A)$ es nilpotente, digamos $J(A)^n=\{0\}$. 
+	
+	Si $J(A)=A$, no hay nada para
+	demostrar. 
+	
+	Si $J(A)\ne\{0\}$, entonces, como $\dim A/J(A)<\dim A$, por
+	hipótesis inductiva, $A/J(A)$ es nil, digamos $(A/J(A))^m=\{0\}$. 
+	Sea $\pi\colon A\to A/J(A)$ el epimorfismo 
+	canónico y sea $N=nm$. Veamos que $A^N=\{0\}$. En efecto, 
+	si $a_1a_2\cdots a_N\in A$, entonces 
+	\[
+	\pi(a_1a_2\cdots a_N)=\pi(a_1)\pi(a_2)\cdots \pi(a_N)=0,
+	\]
+	pues $(A/J(A))^N=\{0\}$. Luego
+	$a_1a_2\cdots a_N\in J(A)$, que implica $a_1a_2\cdots a_N=0$ pues
+	$J(A)^N=\{0\}$.  
+	
+	Si $J(A)=\{0\}$, entonces, como $A$ es semisimple, 
+	el teorema de Mollien implica
+	que existen enteros positivos $n_1,\dots,n_k$ tales que $A\simeq
+	M_{n_1}(\C)\times\cdots\times M_{n_k}(\C)$. Como $A$ posee una base formada
+	por elementos nil, $M_{n_1}(\C)\times\cdots\times M_{n_k}(\C)$
+	también, 
+	es decir $M_{n_1}(\C)\times\cdots\times M_{n_k}(\C)$ posee una base formada por matrices nilpotentes, 
+	una contradicción al lema anterior.
+%	
+%	Si $x\in M_{n_j}(K)$, entonces,
+%	como $K$ es algebraicamente cerrado, $x$ es similar a una matriz triangular
+%	superior. Si además esta matriz $x$ es nilpotente, $\trace(x)=0$. Luego los
+%	elementos nilpotentes que generan $M_{n_j}(K)$ están contenidos en un subespacio
+%	propio de $M_{n_j}(K)$, el núcleo de la traza, una contradicción.
+\end{proof}
+
+Sea $V=\C^{n\times 1}$. Una sucesión de subespacios 
+\[
+\{0\}=V_0\subsetneq V_1\subsetneq \cdots\subsetneq V_n=V
+\]
+es una \textbf{bandera completa} en $V$. La notación que usaremos es $(V_1,\dots,V_n)$. Observemos
+que si $(V_1,\dots,V_n)$ es una bandera completa, entonces $\dim V_i=i$ para todo $i\in\{1,\dots,n\}$. 
+La \textbf{bandera estándar} es la bandera $(V_1,\dots,V_n)$, donde
+$V_i=\langle v_1,\dots,v_i\rangle$ es el espacio vectorial complejo
+generado por los vectores $v_1,\dots,v_n$ de la base estándard de $V$. 
+
+El grupo $\GL_n(\C)$ actúa en el conjunto de banderas completas de $V$ por 
+\[
+g\cdot (V_1,\dots,V_n)=(T_g(V_1),\dots,T_g(V_n)),
+\]
+donde $T_g\colon V\to V$, $x\mapsto gx$, es una transformación lineal inversible. La acción es transitiva, pues
+si $(W_1,\dots,W_n)$ es una bandera completa en $V$, la matriz
+$g=(w_1|\cdots|w_n)$ cuyas columnas son los $w_j$ es inversible, pues $\{w_1,\dots,w_n\}$ es una base de $V$, 
+y cumple que
+$gv_i=w_i$ para todo $i\in\{1,\dots,n\}$. Luego $g\cdot (V_1,\dots,V_n)=(W_1,\dots,W_n)$. 
+El estabilizador de la bandera estándar $(V_1,\dots,V_n)$ es
+\[
+G_{(V_1,\dots,V_n)}=\{g\in\GL_n(\C):T_g(V_i)=V_i\text{ para todo $i$}\},
+\]
+el subgrupo $B$ de matrices $b=(b_{ij})$ con $b_{ij}=0$ si $i>j$. 
+%\begin{align*}
+%G_{(V_1,\dots,V_n)}
+%&=\{g\in\GL_n(\C):g\cdot (V_1,\dots,V_n)=(V_1,\dots,V_n)\}
+%%
+%%&=\{g\in\GL_n(\C):\}\\%T_g(V_i)=V_i\text{ para todo $i$}\}\\
+%%&=\{g\in\GL_n(\C):\}%g_{ij}=0\text{ si $i>j$}\}.
+%\]
+%\end{align*}
+El subgrupo $B=G_{(V_1,\dots,V_n)}$ se llama \textbf{subgrupo de Borel}.
+Cualquier conjugado de $B$ será denominado también subgrupo de Borel. 
+Sea $U$ 
+el subgrupo de matrices $u\in\GL_n(\C)$ tales que 
+\[
+u_{ij}=\begin{cases}
+1 & \text{si $i=j$},\\
+0 & \text{si $i>j$}.	
+\end{cases}
+\]
+y sea $T$ el subgrupo de $\GL_n(\C)$ formado por las matrices diagonales, es decir
+las $t\in\GL_n(\C)$ tales que $t_{ij}=0$ si $i\ne j$. 
+
+\begin{proposition}
+$B=U\rtimes T$.	
+\end{proposition}
+
+\begin{proof}
+Es evidente que $U\cap T=\{I\}$. Veamos que $U$ es normal en $B$. En efecto, sea 
+\[
+f\colon B\to T,\quad b\mapsto\begin{pmatrix}
+b_{11} & 0 & \cdots & 0\\
+0 & b_{22} & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & b_{nn}	
+\end{pmatrix}
+\]
+Como $f$ es un morfismo de grupos, $U=\ker\varphi$ es un subgrupo normal de $B$. Falta ver que 
+$B\subseteq UT$. Si $b\in B$, entonces
+%la restricción $f|_T=\id$. Luego 
+$bf(b)^{-1}\in\ker f=U$, es decir 
+$b\in UT$. 
+\end{proof}
+
+Una matriz $a\in\GL_n(\C)$ se dice \textbf{unipotente} si su polinomio característico es de la forma $(X-1)^n$. Un subgrupo
+$G$ de $\GL_n(K)$ es un \textbf{grupo unipotente} si todo $g\in G$ es unipotente.  
+
+\begin{proposition}
+	Si $G$ es un subgrupo unipotente de $\GL_n(\C)$, existe 
+	$v\in \C^{n\times 1}$ no nulo tal que $gv=v$ para todo $g\in G$.  
+\end{proposition}
+
+\begin{proof}
+	Sea $V$ el subespacio de $\GL_n(\C)$ generado por $\{g-I:g\in G\}$, 
+	donde $I$ es la matriz identidad. Si $g\in G$, entonces
+	$(g-I)^n=0$, pues $g$ es unipotente. Luego todo elemento de $V$ es nil. 
+	Si $g,h\in G$, entonces
+	\[
+	(g-I)(h-I)=(gh-I)-(g-I)-(h-I)\in V, 
+	\]
+	es decir $V$ es cerrado por multiplicación. Como $V$ es entonces un álgebra que 
+	está generado como espacio
+	vectorial por elementos nil, $V$ es nil por el teorema de Wedderburn. En particular,
+	existe $m\in\N$ minimal tal que 
+	\[
+	(g_1-I)\cdots (g_m-I)=0
+	\]
+	para todo $g_1,\dots,g_m\in G$. 
+	La minimalidad de $m$ implica que existen $h_1,\dots,h_{m-1}\in G$ tales que 
+	$(h_1-I)\cdots (h_{m-1}-I)\ne 0$. En particular, existe $w\in \C^{m\times 1}$ no nulo tal que
+	$v=(h_1-I)\cdots (h_{m-1}-I)w\ne 0$. Para todo $g\in G$ tenemos entonces
+	que \[
+	(g-I)v=(g-I)(h_1-I)\cdots (h_{m-1}-I)w=0w=0,
+	\]
+	es decir 
+	$gv=v$. 
+\end{proof}
+
+\begin{theorem}[Kolchin]
+\index{Teorema!de Kolchin}
+Todo subgrupo de $\GL_n(\C)$ unipotente es conjugado de algún subgrupo de $U$.	
+\end{theorem}
+
+\begin{proof}
+	Sea $G$ un subgrupo de $\GL_n(\C)$ unipotente. Si $G\subseteq G_{(W_1,\dots,W_n)}$ para alguna
+	bandera completa $(W_1,\dots,W_n)$ de $V=\C^{n\times 1}$, sea $g\in\GL_n(\C)$ tal que
+	\[
+	g\cdot (V_1,\dots,V_n)=(W_1,\dots,W_n),
+	\]
+	donde $(V_1,\dots,V_n)$ denota la bandera estándar de $V$. 
+	Entonces  
+	\[
+	G\subseteq G_{g\cdot (V_1,\dots,V_n)}=gG_{(V_1,\dots,V_n)}g^{-1}=gBg^{-1}.
+	\]
+	Como $G$ es unipotente, $G=G\cap (gBg^{-1})\subseteq gUg^{-1}$. 
+	Veamos que $G\subseteq G_{(W_1,\dots,W_n)}$ para alguna bandera completa $(W_1,\dots,W_n)$. 
+	Procederemos por inducción en $n=\dim V$. El caso $n=1$ es trivial. Supongamos entonces
+	que el resultado vale para $n-1$. 
+	Por la proposición anterior, existe $v\in V$ no nulo 
+	tal que $gv=v$ para todo $g\in G$. Consideramos entonces el espacio vectorial 
+	$Q=V/\langle v\rangle$ de dimensión $n-1$. El grupo $G$ actúa en $Q$ 
+	por 
+	\[
+	g(w+\langle v\rangle)=gw+\langle v\rangle
+	\]
+	pues si $w-w'\in\langle v\rangle$, entonces
+	$w-w'=\lambda v$ para algún $\lambda\in\C$ y luego
+	\[
+	gw-gw'=g(w-w')=g(\lambda v)=\lambda gv=\lambda v\in\langle v\rangle,
+	\]
+	es decir $gw+\langle v\rangle=gw'+\langle v\rangle$. 
+	Por hipótesis inductiva, 
+	$G$ estabiliza una bandera completa $(Q_1,\dots,Q_{n-1})$, digamos
+	\begin{align*}
+	&Q_1 =\langle \pi(v_1)\rangle,&&
+	Q_2=\langle\pi(v_1),\pi(v_2)\rangle,&&
+	\dots&&
+	Q_{n-1}=\langle\pi(v_1),\dots,\pi(v_{n-1})\rangle.
+	\end{align*}
+	donde $\pi\colon V\to Q$ es el morfismo canónico. 
+	Sean 
+	\begin{align*}
+	W_0&=\langle v\rangle,\\
+	W_1&=\langle v,v_1\rangle,\\
+	W_2&=\langle v,v_1,v_2\rangle,\\
+	&\vdots\\
+	W_{n-1}&=\langle v,v_1,\dots,v_{n-1}\rangle.
+	\end{align*}	
+	Como $(Q_1,\dots,Q_{n-1})$ es una bandera completa de $Q$,  
+	$\{\pi(v_j):1\leq j\leq n-1\}$ es un conjunto linealmente independiente. Luego  
+	$\{v,v_1,\dots,v_{n-1}\}$ es también linealmente independiente, pues
+	\[
+	\sum_{i=1}^{n-1}\lambda_i v_i+\lambda v=0\implies
+	\sum_{i=1}^{n-1}\lambda _i\pi(v_i)=0
+	\implies\lambda_1=\cdots=\lambda_{n-1}=0\implies \lambda=0.
+	\]	
+	En particular, $\dim W_i=i+1$ para todo $i\in\{0,\dots,n-1\}$. Falta ver que $G$ estabiliza a 
+	$(W_1,\dots,W_n)$. Sea $g\in G$. Trivialmente tenemos que 
+	$gW_0\subseteq W_0$ pues $gv=v$. Si $j\geq 1$, entonces existen $\lambda_1,\dots,\lambda_j\in\C$ tales que 
+	\[
+	\pi(gv_j)=\sum_{i\leq j}\lambda_i\pi(v_i),
+	\]
+	lo que implica que $gv_j-\sum_{i\leq j}\lambda_iv_i=\lambda v$ para algún $\lambda\in\C$. En particular, 
+	\[
+	gv_j=\sum_{i\leq j}\lambda_iv_i+\lambda v\in \langle v,v_1,\dots,v_j\rangle=W_j.	\qedhere
+	\]
+\end{proof}
+

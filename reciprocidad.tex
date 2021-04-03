@@ -1,0 +1,706 @@
+\chapter{Inducción y restricción}
+
+Sea $N$ es un subgrupo normal de $G$ y sea $\pi\colon G\to G/N$, $g\mapsto gN$, el morfismo canónico. Si 
+$\widetilde{\chi}$ es un caracter de $G/N$, 
+sea $\widetilde{\rho}\colon G/N\to\GL(V)$ una representación de $G/N$ con caracter $\widetilde{\chi}$. 
+
+La composición $\rho=\widetilde{\rho}\circ\pi\colon G\to \GL(V)$, $\rho(g)=\widetilde{\rho}(gN)$, 
+es un morfismo de grupos, luego es una representación de $G$. 
+Entonces 
+\[
+\chi(g)=\trace{\rho(g)}=\trace(\widetilde{\chi}(gN))=\widetilde{\chi}(gN).
+\]
+En particular, $\chi(1)=\widetilde{\chi}(1)$. El caracter $\chi$ es el \textbf{levantado} a $G$ del caracter
+$\widetilde{\chi}$ de $G/N$. 
+
+\begin{lemma}
+Si $\chi\in\Irr(G)$, entonces
+\[
+\ker\chi=\{g\in G:\chi(g)=\chi(1)\}
+\]
+es un subgrupo normal de $G$. 
+\end{lemma}
+
+\begin{proof}
+Sea $\rho\colon G\to\GL_n(\C)$ una representación con caracter $\chi$. Es claro que
+$\ker\rho\subseteq\ker\chi$, pues si $\rho_g=\id$, entonces
+$\chi(g)=\trace(\rho_g)=n=\chi(1)$. Demostremos que 
+$\ker\chi\subseteq\ker\rho$. Si $g\in G$ es tal que $\chi(g)=\chi(1)$, como
+$\rho_g$ es diagonalizable, existen autovalores $\lambda_1,\dots,\lambda_n\in\C$ tales que
+\[
+n=\chi(1)=\chi(g)=\sum_{i=1}^n\lambda_i.
+\]
+Como los $\lambda_i$ son raíces de la unidad, 
+$\lambda_1=\cdots=\lambda_n=1$. Luego $\rho_g=\id$. 
+\end{proof}
+
+\index{Núcleo!de un caracter}
+El subgrupo $\ker\chi$ es el \textbf{núcleo} del caracter irreducible $\chi$. 
+
+\begin{theorem}
+Sea $N$ un subgrupo normal de $G$. Existe una correspondencia biyectiva
+entre los caracteres de $G/N$ y los caracteres $\chi$ de $G$ tales que 
+$N\subseteq\ker\chi$. Bajo esta correspondencia, 
+caracteres irreducibles se corresponden con caracteres irreducibles.
+\end{theorem}
+
+\begin{proof}
+Si $\widetilde{\chi}\in\Char(G/N)$, sea $\chi$ el levantado de $\widetilde{\chi}$ al grupo $G$. Si $n\in N$, entonces
+\[
+\chi(n)=\widetilde{\chi}(nN)=\widetilde{\chi}(N)=\chi(1)
+\]
+y luego $N\subseteq\ker\chi$. 
+
+Si $\chi\in\Char(G)$ es tal que $N\subseteq\ker\chi$, sea $\rho\colon G\to\GL(V)$ una representación con caracter $\chi$. 
+Sea $\widetilde{\rho}\colon G/N\to\GL(V)$, $gN\mapsto \rho(g)$. Veamos que $\widetilde{\rho}$ está bien definida: 
+\[
+gN=hN\Longleftrightarrow h^{-1}g\in N\Longleftrightarrow\rho(h^{-1}g)=\id\Longleftrightarrow \rho(h)=\rho(g).
+\]
+Además $\widetilde{\rho}$ es una representación, pues 
+\[
+\widetilde{\rho}((gN)(hN))=\widetilde{\rho}(ghN)=\rho(gh)=\rho(g)\rho(h)=\widetilde{\rho}(gN)\widetilde{\rho}(hN).
+\]
+Si $\widetilde{\chi}$ es el caracter de $\widetilde{\rho}$, entonces
+$\widetilde{\chi}(gN)=\chi(g)$.
+
+Veamos que $\chi$ es irreducible si y sólo si $\widetilde{\chi}$ es irreducible. Si $U$ es un subespacio de $V$, entonces
+\begin{align*}
+\text{$U$ es un $\C[G]$-submódulo}&\Longleftrightarrow g\cdot U\subseteq U\text{ para todo $g\in G$}\\
+&\Longleftrightarrow \rho(g)(U)\subseteq U\text{ para todo $g\in U$}\\
+&\Longleftrightarrow \widetilde{\rho}(gN)(U)\subseteq U\text{ para todo $g\in U$}.
+\shortintertext{Luego}
+\chi\text{ es irreducible }&\Longleftrightarrow
+\rho\text{ es irreducible }\\
+&\Longleftrightarrow\widetilde{\rho}\text{ es irreducible }\Longleftrightarrow
+\widetilde{\chi}\text{ es irreducible }\qedhere.
+\end{align*}
+\end{proof}
+
+\begin{example}
+    Sea $G=\Sym_4$ y sea $N=\{\id,(12)(34),(13)(24),(14)(23)\}$. Sabemos que $N$ es normal en $G$ 
+    y que $G/N=\langle a,b\rangle\simeq\Sym_3$, donde 
+    $a=(123)N$ y $b=(12)N$. La tabla de caracteres de $G/N$ es entonces
+    	\begin{center}
+		\begin{tabular}{|c|rrr|}
+			\hline
+			%& $1$ & $3$ & $2$\tabularnewline
+			& $1$ & $(12)N$ & $(123)N$ \tabularnewline
+			\hline 
+			$\widetilde{\chi}_{1}$ & $1$ & $1$ & $1$\tabularnewline
+			$\widetilde{\chi}_{2}$ & $1$ & $-1$ & $1$ \tabularnewline
+			$\widetilde{\chi}_{3}$ & $2$ & $0$ & $-1$ \tabularnewline
+			\hline
+		\end{tabular}
+	\end{center}
+    Para cada $i\in\{1,2,3\}$ vamos a calcular el levantado $\chi_i$ al grupo $G$ 
+    del caracter $\widetilde{\chi}_i$ de $G/N$. 
+    Como $(12)(34)\in N$ y $(13)(1234)=(12)(34)\in N$, entonces
+    \begin{align*}
+        \chi( (12)(34) )=\widetilde{\chi}(N),\quad
+        \chi( (1234) )=\widetilde{\chi}((13)N)=\widetilde{\chi}((12)N).
+    \end{align*}
+    Como $\widetilde{\chi_i}$ son irreducibles, también lo serán sus levantados $\chi_i$. 
+    Al levantar los caracteres irreducibles del cociente $G/N$ 
+    conseguimos los siguientes caracteres irreducibles del grupo $G$: 
+    	\begin{center}
+		\begin{tabular}{|c|rrrrr|}
+			\hline
+			& $1$ & $(12)$ & $(123)$ & $(12)(34)$ & $(1234)$ \tabularnewline
+			\hline 
+			$\chi_{1}$ & $1$ & $1$ & $1$ & 1 & 1\tabularnewline
+			$\chi_{2}$ & $1$ & $-1$ & $1$ & 1 & -1 \tabularnewline
+			$\chi_{3}$ & $2$ & $0$ & $-1$ & 2 & 0\tabularnewline
+			\hline
+		\end{tabular}
+	\end{center}
+\end{example}
+
+La tabla de caracteres de un grupo finito permite detectar los subgrupos normales del grupo y 
+las inclusiones entre esos distintos subgrupos normales. Empezamos con un lema:
+
+\begin{lemma}
+    Sea $G$ un grupo finito y sean 
+    $g,h\in G$. Entonces $g$ y $h$ son conjugados si y sólo si $\chi(g)=\chi(h)$ para todo $\chi\in\Char(G)$. 
+\end{lemma}
+
+\begin{proof}
+    Si $g$ y $h$ son conjugados, entonces $\chi(g)=\chi(h)$, pues ya vimos que los caracteres son funciones de clases de $G$. 
+    Recíprocamente, si $\chi(g)=\chi(h)$ para todo $\chi\in\Char(G)$, entonces
+    $f(g)=f(h)$ para toda función de clases $f$ de $G$, 
+    pues los caracteres de $G$ generan el espacio de funciones de clases de $G$. En particular, 
+    $\delta(g)=\delta(h)$, donde $\delta$ es la función de clases 
+    \[
+    \delta(x)=\begin{cases}
+    1 & \text{si $x$ y $g$ son conjugados},\\
+    0 & \text{en otro caso},
+    \end{cases}
+    \]
+    lo que implica que $g$ y $h$ son conjugados. 
+\end{proof}
+
+Observemos ahora que 
+\begin{equation}
+\label{eq:kernels}
+\bigcap_{\chi\in\Irr(G)}\ker\chi=\{1\}.
+\end{equation}
+En efecto, si $g\in\ker\chi$ para todo $\chi\in\Irr(G)$, entonces $g=1$ pues
+el lema anterior nos dice que $g$ y $1$ son conjugados ya que 
+$\chi(g)=\chi(1)$ para todo $\chi\in\Irr(G)$.
+
+\begin{proposition}
+    Sea $G$ un grupo finito. 
+    Si $N$ es un subgrupo normal de $G$, entonces existen caracteres 
+    $\chi_1,\dots,\chi_k\in\Irr(G)$ 
+    tales que
+    \[
+    N=\bigcap_{i=1}^k\ker\chi_i.
+    \]
+\end{proposition}
+
+\begin{proof}
+    La observación anterior para el grupo $G/N$ nos dice que 
+    \[
+    \bigcap_{\widetilde{\chi}\in\Irr(G/N)}\ker\widetilde{\chi}=\{N\}.
+    \]
+    Supongamos que $\Irr(G/N)=\{\widetilde{\chi}_1,\dots,\widetilde{\chi}_k\}$. 
+    Levantamos los caracteres irreducibles de $G/N$ al grupo $G$ 
+    y tenemos algunos caracteres irreducibles $\chi_1,\dots,\chi_k$ 
+    del grupo $G$ tales que
+    $N\subseteq\ker\chi_1\cap\cdots\cap\ker\chi_k$. 
+    Si $g\in\ker\chi_i$ para todo $i\in\{1,\dots,k\}$, entonces
+    \[
+    \widetilde{\chi}_i(N)=\chi_i(1)=\chi_i(g)=\widetilde{\chi}_i(gN)
+    \]
+    para todo $i\in\{1,\dots,k\}$, lo que nos dice que 
+    \[
+    gN\in\bigcap_{i=1}^k\ker\widetilde{\chi}_i=\{N\},
+    \]
+    es decir $g\in N$. 
+\end{proof}
+
+Como corolario tenemos un criterio para detectar 
+la simplicidad de un grupo solamente con mirar la tabla de caracteres. 
+
+\begin{proposition}
+    Sea $G$ un grupo finito. Entonces $G$ no es simple si y sólo si 
+    existe algún caracter no trivial $\chi$ tal que $\chi(g)=\chi(1)$ 
+    para algún $g\in G\setminus\{1\}$. 
+\end{proposition}
+
+\begin{proof}
+    Supongamos que $G$ no es simple, es decir que existe un subgrupo normal $N$ propio y no trivial. 
+    Por la proposición anterior, existen $\chi_1,\dots,\chi_k\in\Irr(G)$ tales que
+    $N=\ker\chi_1\cap\cdots\cap\ker\chi_k$.
+    En particular, existe algún caracter no trivial 
+    $\chi_i$ tal que $\ker\chi_i\ne\{1\}$, lo que nos dice
+    que algún $g\in G\setminus\{1\}$ cumple con $\chi_i(g)=\chi_i(1)$. 
+    
+    Supongamos ahora que existe algún caracter irreducible no trivial $\chi$ 
+    tal que $\chi(g)=\chi(1)$ para algún $g\in G\setminus\{1\}$. En particular, $g\in\ker\chi$ 
+    y luego $\ker\chi\ne\{1\}$. Como $\chi$ es no trivial, $\ker\chi\ne G$. Luego $\ker\chi$ es
+    un subgrupo normal propio y no trivial de $G$. 
+\end{proof}
+
+\begin{example}
+    Si existe un grupo $G$ con una tabla de caracteres de la forma
+    \begin{center}
+		\begin{tabular}{|c|rrrrrr|}
+			\hline
+			$\chi_{1}$ & 1 & 1 & 1 & 1 & 1 & 1\tabularnewline
+			$\chi_{2}$ & 1 & 1 & 1 & -1 & 1 & -1 \tabularnewline
+			$\chi_{3}$ & 1 & 1 & 1 & 1 & -1 & -1\tabularnewline
+		    $\chi_{4}$ & 1 & 1 & 1 & -1 & -1 & 1\tabularnewline
+			$\chi_{5}$ & 2 & -2 & 2 & 0 & 0 & 0\tabularnewline
+			$\chi_{6}$ & 8 & 0 & -1 & 0 & 0 & 0\tabularnewline
+			\hline
+		\end{tabular}
+	\end{center}
+	entonces $G$ no es simple. 
+	
+	De existir, este grupo $G$ tiene que tener orden $\sum_{i=1}^6\chi_i(1)^2=72$. 
+	El grupo de Mathieu $M_{9}$ 
+	tiene la tabla esa caracteres. 
+\end{example}
+
+
+
+\begin{example}
+    Sea $\alpha=\frac{1}{2}(-1+\sqrt{7}i)$. 
+    Si existe un grupo $G$ con una tabla de caracteres de la forma
+    \begin{center}
+		\begin{tabular}{|c|rrrrrr|}
+			\hline
+			$\chi_{1}$ & 1 & 1 & 1 & 1 & 1 & 1\tabularnewline
+			$\chi_{2}$ & 7 & -1 & -1 & 1 & 0 & 0 \tabularnewline
+			$\chi_{3}$ & 8 & 0 & 0 & -1 & 1 & 1\tabularnewline
+		    $\chi_{4}$ & 3 & -1 & 1 & 0 & $\alpha$ & $\overline{\alpha}$ \tabularnewline
+			$\chi_{5}$ & 3 & -1 & 1 & 0 & $\overline{\alpha}$ & $\alpha$\tabularnewline
+			$\chi_{6}$ & 6 & 2 & 0 & 0 & 0 & 0\tabularnewline
+			\hline
+		\end{tabular}
+	\end{center}    
+	entonces $G$ es simple. 
+	
+	De existir, este grupo $G$ tiene que tener
+	orden $\sum_{i=1}^6\chi_i(1)^2=168$. 
+	De hecho, 
+	\[
+	\PSL(2,7)=\SL(2,7)/Z(\SL(2,7))
+	\]
+	es un grupo que 
+	tiene esa tabla de caracteres.
+\end{example}
+
+\begin{definition}
+\index{Restricción}
+Si $U$ es un $K[G]$-módulo y $H$ es un subgrupo de $G$, podemos pensar a $U$ como $K[H]$-módulo al restringir la acción
+al subgrupo $H$. Este módulo será denotado por $\Res_H^GU$ y se conoce como la \textbf{restricción} de $U$ a $H$.
+\end{definition}
+
+La restricción de un módulo irreducible puede no ser irreducible. 
+
+\begin{example}
+    Sea $G=\D_4=\langle r,s:r^4=s^2=1,\,srs=r^{-1}\rangle$ el grupo diedral de ocho elementos. Sea
+    $V$ un espacio vectorial con base $\{v_1,v_2\}$. Entonces $V$ es un $\C[\D_4]$-módulo con 
+    \[
+    r\cdot v_1=v_2,\quad
+    r\cdot v_2=-v_1,\quad
+    s\cdot v_1=v_1,\quad
+    s\cdot v_2=-v_2.
+    \]
+    El caracter de $V$ es 
+    \[
+    \chi(g)=\begin{cases}
+    2 & \text{si $g=1$},\\
+    -2 & \text{si $g=r^2$},\\
+    0 & \text{en otro caso}.
+    \end{cases}
+    \]
+    Observemos que $\chi$ es irreducible, pues $\langle\chi,\rangle\chi=1$.
+    Sea 
+    $H=\langle r^2,s\rangle=\{1,r^2,s,r^2s\}$. Entonces $\Res_H^GV$ es $V$ como $\C[H]$-módulo con
+    \[
+    r^2\cdot v_1=-v_1,\quad
+    r^2\cdot v_2=-v_1,\quad
+    s\cdot v_1=-v_1,\quad
+    s\cdot v_2=-v_2.
+    \]
+    El caracter de $\Res_H^GV$ es
+    \[
+    \chi_H(h)=\chi|_H(h)
+    =\begin{cases}
+    2 & \text{si $h=1$},\\
+    -2 & \text{si $h=r^2$},\\
+    0 & \text{en otro caso}.
+    \end{cases}
+    \]
+    El carater $\chi_H$ no es irreducible ya que $\langle\chi_H,\chi_H\rangle=0$. 
+\end{example}
+
+\index{Parte irreducible!de un caracter}
+Sea $H$ un subgrupo de $G$ y supogamos que $\Irr(H)=\{\phi_1,\dots,\phi_l\}$.
+Si $\chi\in\Char(G)$, entonces
+\[
+\chi|_H=\sum_{i=1}^ld_i\phi_i
+\]
+para ciertos enteros $d_1,\dots,d_l\geq 0$. 
+Cada $\phi_i$ tal que $d_i=\langle\chi|_H,\phi_i\rangle\ne 0$ 
+es una \textbf{parte irreducible} del caracter $\chi|_H$ y esos
+$\phi_i$ son las \textbf{partes irreducibles que constituyen} al caracter $\chi|_H$. 
+
+\begin{proposition}
+    Si $H$ es un subgrupo de $G$ y $\phi\in\Char(H)$, 
+    entonces $\chi\in\Irr(G)$ tal que $\langle\chi|_H,\phi\rangle_H\ne 0$.
+\end{proposition}
+
+\begin{proof}
+    Supongamos que $\Irr(G)=\{\chi_1,\dots,\chi_k\}$. 
+    Sabemos que si $L$ es la representación regular de $G$, entonces
+    \[
+    \chi_L(g)=\begin{cases}
+    |G| & \text{si $g=1$},\\
+    0 & \text{en otro caso}.
+    \end{cases}
+    \]
+    Si escribimos $\chi_L=\sum_{i=1}^k\chi_i(1)\chi_i$, entonces, como
+    \[
+    0\ne \frac{|G|}{|H|}\phi(1)=\langle \chi_L|_H,\phi\rangle_H=\sum_{i=1}^k\chi_i(1)\langle\chi_i|_H,\phi\rangle_H,
+    \]
+    existe algún $i\in\{1,\dots,k\}$ 
+    tal que $\langle\chi_i|_H,\phi\rangle_H\ne 0$. 
+\end{proof}
+
+\begin{proposition}
+    Sean $H$ un subgrupo de $G$ y $\chi\in\Irr(G)$. Si $\Irr(H)=\{\phi_1,\dots,\phi_l\}$, entonces
+    \[
+    \chi|_H=\sum_{i=1}^ld_i\phi_i,
+    \]
+    donde $\sum_{i=1}^l d_i^2\leq (G:H)$. Más aún, $\sum_{i=1}^l d_i^2=(G:H)$ 
+    si y sólo si $\chi(g)=0$ para todo $g\in G\setminus H$. 
+\end{proposition}
+
+\begin{proof}
+Como 
+\[
+\sum_{i=1}^ld_i^2=\langle\chi|_H,\chi|_H\rangle_H=\frac{1}{|H|}\sum_{h\in H}\chi(h)\overline{\chi(h)}.
+\]
+Además, como $\chi$ es irreducible, 
+\begin{align*}
+1=\langle\chi,\chi\rangle_G&=\frac{1}{|G|}\sum_{g\in G}\chi(g)\overline{\chi(g)}\\
+&=\frac{1}{|G|}\sum_{h\in H}\chi(h)\overline{\chi(h)}
++\frac{1}{|G|}\sum_{g\in G\setminus H}\chi(g)\overline{\chi(g)}\\
+&=\frac{|H|}{|G|}\sum_{i=1}^l d_i^2+\frac{1}{|G|}\sum_{g\in G\setminus H}\chi(g)\overline{\chi(g)}.
+\end{align*}
+Como $\sum_{g\in G\setminus H}\chi(g)\overline{\chi(g)}\geq0$, se concluye que $\sum_{i=1}^ld_i^2\leq(G:H)$. Además
+vale la igualdad si y sólo si $\sum_{g\in G\setminus H}\chi(g)\overline{\chi(g)}=0$, 
+es decir si sólo si $\chi(g)=0$ para todo $g\in G\setminus H$.
+\end{proof}
+
+\index{Bimódulo}
+Discutiremos ahora la inducción de módulos. Para eso, repasaremos algunas nociones básicas sobre
+\textbf{bimódulos} y \textbf{producto tensorial de bimódulos}. 
+Si $R$ y $S$ son anillos, un grupo abeliano $M$ se dirá un $(R,S)$-bimódulo si 
+$M$ es un $R$-módulo a izquierda, $M$ es un $S$-módulo a derecha y además
+\[
+r\cdot (m\cdot s)=(r\cdot m)\cdot s
+\]
+para todo $r\in R$, $s\in S$ y $m\in M$. 
+
+\begin{examples}\
+\begin{enumerate}
+    \item Un $R$-módulo a izquierda es un $(R,\Z)$-bimódulo.
+    \item Un $S$-módulo a derecha es un $(\Z,S)$-bimódulo.
+    \item Todo anillo $R$ es un $(R,R)$-bimódulo.
+%    \item Si $R$ es un anillo conmutativo...
+\end{enumerate}
+\end{examples}
+
+\begin{example}
+Si $M$ es un $(R,S)$-bimódulo y $N$ es un $R$-módulo, entonces el conjunto 
+$\Hom_R(M,N)$ de morfismos de $R$-módulos $M\to N$ es un 
+$S$-módulo con 
+\[
+(s\cdot \varphi)(m)=\varphi(m\cdot s),\quad s\in S,\,\varphi\in\Hom_R(M,S),\,m\in M.
+\]
+\end{example}
+
+Sean $M$ un $(R,S)$-bimódulo, $N$ un $S$-módulo y $U$ un $R$-módulo. 
+Diremos que una función $f\colon M\times N\to U$ 
+es \textbf{balanceada} si 
+\begin{align*}
+    &f(m_1+m_2,n)=f(m_1,n)+f(m_2,n),\\
+    &f(m,n_1+n_2)=f(m,n_1)+f(m,n_2),\\
+    &f(m\cdot s,n)=f(m,s\cdot n),\\
+    &f(r\cdot m,n)=r\cdot f(m,n)
+\end{align*}
+para todo $m,m_1,m_2\in M$, $n,n_1,n_2\in N$, $r\in R$ y $s\in S$. 
+
+\begin{example}
+Si $M$ es un $R$-módulo, la función $f\colon R\times M\to M$, $(r,m)\mapsto r\cdot m$, es balanceada. 
+\end{example}
+
+\index{Producto tensorial!de bimódulos}
+Sean $M$ un $(R,S)$-bimódulo, $N$ un $S$-módulo y $U$ un $R$-módulo. 
+Se define el \textbf{producto tensorial} $M\otimes_S N$ es un $R$-módulo provisto con una función balanceada 
+$\eta\colon M\times N\to M\otimes_S N$ que cumple con la siguiente propiedad universal: 
+\begin{quote}
+Si $f\colon M\times N\to U$ es una función balanceada, entonces
+existe un único morfismo de $R$-módulos $\alpha\colon M\otimes_S N\to U$ tal que $f=\alpha\circ\eta$. 
+\end{quote}
+Notación: $m\otimes n=\eta(m,n)$ para $m\in M$ y $n\in N$.
+El producto tensorial existe y puede demostrarse que es único salvo isomorfismos. Más precisamente, $M\otimes_S N$
+se define como el $R$-módulo generado por
+el conjunto $\{m\otimes n:m\in M,\,n\in N\}$, donde los $m\otimes n$ satisfacen 
+las siguientes identidades:
+\begin{align}
+    &(m+m_1)\otimes n=m\otimes n+m_1\otimes n &&\text{$m,m_1\in M$, $n\in N$},\\
+    &m\otimes(n+n_1)=m\otimes n+m\otimes n_1 &&\text{$m\in M$, $n,n_1\in N$},\\
+    &(ms)\otimes n=m\otimes (sn) &&\text{$m\in M$, $n\in N$, $s\in S$},\\
+    &(rm)\otimes n=r(m\otimes n) &&\text{$m\in M$, $n\in N$, $r\in R$}.
+\end{align}
+Un elemento arbitrario de $M\otimes_S N$ es una suma finita
+de la forma 
+$\sum_{i=1}^k m_i\otimes n_i$,
+donde $m_1,\dots,m_k\in M$ y $n_1,\dots,n_k\in N$, y no necesariamente un tensor elemental $m\otimes n$. 
+
+\begin{example}
+$M\simeq R\otimes_R M$ como $R$-módulos. Como la función $R\times M\to M$, $(r,m)\mapsto r\cdot m$, es balanceada, 
+induce un morfismo $R\otimes_R M\to M$, $r\otimes m\mapsto r\cdot m$ con inversa $M\to R\otimes_R M$, $m\mapsto 1\otimes m$. 
+\end{example}
+
+\begin{example}
+Si $M_1,\dots,M_k$ son $(R,S)$-bimódulos y $N$ es un $S$-módulo, entonces
+\[
+(M_1\oplus\cdots\oplus M_k)\otimes_S N\simeq (M_1\otimes_S N)\oplus\cdots\oplus (M_k\otimes_S N).
+\]
+\end{example}
+
+Algunos ejercicios:
+
+\begin{exercise}
+    Demuestre que $M\otimes_RN\simeq N\otimes_{R^{\op}}M$.
+\end{exercise}
+
+\begin{exercise}
+    Demuestre que $\Z/n\otimes_{\Z}\Q=\{0\}$.
+\end{exercise}
+
+\begin{exercise}
+    Sean $M$ un $(R,S)$-bimódulo y $N$ un $(S,T)$-bimódulo. 
+    Demuestre que $M\otimes_SN$ es un $(R,T)$-bimódulo 
+    con $r(m\otimes n)t=(rm)\otimes (nt)$, 
+    donde $m\in M$, $n\in N$, $r\in R$, $t\in T$.
+\end{exercise}
+
+\begin{exercise}
+    Demuestre que $(M\otimes_R N)\otimes_RT\simeq M\otimes_R (N\otimes_RT)$.
+\end{exercise}
+
+\begin{exercise}
+    Enuncie y demuestre la asociatividad del producto tensorial de bimódulos. 
+\end{exercise}
+
+% Atiyah-Mac Donald
+% https://math.stackexchange.com/questions/2586211/associativity-of-tensor-products
+
+Si $G$ es un grupo finito, $H$ es un subgrupo de $G$
+y $V$ es un $K[H]$-módulo, entonces 
+$K[G]$ es un $(K[G],K[H])$-bimódulo.
+
+\begin{definition}
+\index{Módulo!inducido}
+Sea $G$ un grupo finito y sea 
+$H$ un subgrupo de $G$. 
+Si $V$ es un $K[H]$-módulo de $G$, 
+se define el $K[G]$-módulo \textbf{inducido} de $V$ 
+como
+\[
+\Ind_H^GV=K[G]\otimes_{K[H]}V.
+\]
+\end{definition}
+
+\index{Transversal}
+Si $H$ es un subgrupo de $G$, un \textbf{transversal} (a izquierda) 
+de $H$ en $G$ es un subconjunto $T$ de $G$ que contiene exactamente un elemento de cada coclase (a izquierda) 
+de $H$ en $G$. 
+
+\begin{example}
+Si $G=\Sym_3$ y $H=\{\id,(12)\}$, entonces
+$T=\{\id,(123),(23)\}$ es un transversal de $H$ en $G$. Podemos descomponer 
+a $G$ como
+\[
+G=\{\id,(12)\}\cup \{(123),(13)\}\cup\{(132),(23)\}=\bigcup_{t\in T}tH.
+\]
+Como cada $g\in G$ se escribe en forma única como $g=th$ para $t\in T$ y $h\in H$, podemos 
+definir una transformación lineal 
+$\varphi\colon K[G]\to K[H]\oplus K[H]\oplus K[H]=|T|K[H]$, que para $g=th$ devuelve $h$ en el lugar que corresponde a $t\in T$, es decir
+\begin{align*}
+\id&\mapsto (\id,0,0), && (12)\mapsto ((12),0,0), && (123)\mapsto (0,\id,0),\\
+(23)&\mapsto (0,0,\id), && (13)\mapsto (0,(12),0), && (132)\mapsto (0,0,(12)).
+\end{align*}
+Por ejemplo, 
+\[
+\varphi( 5(12)-3(123)+7\id )=(7\id+5(12),-3\id,0).
+\]
+Es importante observar que $\varphi$ es un isomorfismo de $K[H]$-módulos (a derecha). 
+\end{example}
+
+La observación hecha en el ejemplo anterior es la clave del siguiente resultado.
+
+\begin{proposition}
+Sea $G$ un grupo finito y sea 
+$H$ un subgrupo de $G$. Si $V$ es un $K[H]$-módulo de $G$, entonces 
+\[
+    \Ind_H^G(V)=\bigoplus_{t\in T}t\otimes V,
+\]
+donde $T$ es un transversal de $H$ en $G$ y $t\otimes V=\{t\otimes v:v\in V\}$. En particular, 
+$\dim\Ind_H^GV=(G:H)\dim V$.
+\end{proposition}
+
+\begin{proof}
+Descomponemos a $G$ como unión disjunta de coclases de $H$ con el transversal $T$, es decir
+\[
+G=\bigcup_{t\in T}tH.
+\]
+Cada $g\in G$ se escribe entonces unívocamente como $g=th$ con $t\in T$ y $h\in H$. Tal como 
+hicimos en el ejemplo anterior, esto nos permite obtener un isomorfismo 
+$\varphi\colon K[G]\to |T|K[H]$ de $K[H]$-módulos (a derecha), donde $\varphi(g)$ es $h$ en el sumando que corresponde a $t\in T$
+y es cero en el resto de los sumandos. Luego
+\[
+\Ind_H^GV=K[G]\otimes_{K[H]}V\simeq (|T|K[H])\otimes_{K[H]}V\simeq |T|(K[H]\otimes_{K[H]}V)\simeq |T|V
+\]
+como $K[H]$-módulos. En particular, $\dim\Ind_H^GV=|T|\dim V$. 
+
+Si escribimos $g=th$ con $t\in T$ y $h\in H$, entonces $g\otimes v=(th)\otimes v=t\otimes h\cdot v\in t\otimes V$. 
+Luego $K[G]\otimes_{K[H]}V\subseteq \oplus_{t\in T}t\otimes V$. La otra inclusión es trivial. Por definición, 
+la suma sobre $t\in T$ de los $t\otimes V$ es directa. 
+\end{proof}
+
+\begin{theorem}[Reciprocidad de Frobenius]
+\index{Teorema!de reciprocidad de Frobenius}
+Sea $G$ un grupo finito y $H$ un subgrupo de $G$. 
+Si $U$ es un $K[G]$-módulo y $V$ es un $K[H]$-módulo, entonces
+\[
+\Hom_{K[H]}(V,\Res_H^GU)\simeq \Hom_{K[G]}(\Ind_H^GV,U)
+\]
+como espacios vectoriales.
+\end{theorem}
+
+\begin{proof}
+Si $\varphi\in\Hom_{K[H]}(V,\Res_H^GU)$, sea 
+\[
+f_{\varphi}\colon K[G]\times V\to U,
+\quad
+(g,v)\mapsto g\cdot\varphi(v).
+\]
+Veamos que $f_{\varphi}$ es balanceada. Un cálculo directo muestra que
+\begin{align*}
+    &f_{\varphi}(g+g_1,v)=f_{\varphi}(g,v)+f_{\varphi}(g_1,v),&&
+    f_{\varphi}(g,v+w)=f_{\varphi}(g,v)+f_{\varphi}(g,w).
+\end{align*}
+Como $\varphi$ es morfismo de $K[H]$-módulos,
+\begin{align*}
+    &f_{\varphi}(gh,v)=(gh)\cdot\varphi(v)
+    =g\cdot (h\cdot \varphi(v))
+    =g\cdot (h\cdot\varphi(v))
+    =g\cdot \varphi(h\cdot v)=f_{\varphi}(g,h\cdot v)
+\end{align*}
+para todo $g\in G$, $h\in H$ y $v\in V$. Por último,
+\begin{align*}
+    &f_{\varphi}(gg_1,v)=(gg_1)\cdot\varphi(v)=g\cdot(g_1\cdot\varphi(v))=g\cdot f_{\varphi}(g_1,v)
+\end{align*}
+para todo $g,g_1\in G$ y $v\in V$. Para cada $\varphi\Hom_{K[H]}(V,\Res_H^GU)$ tenemos 
+entonces un $\Gamma(\varphi)\in\Hom_{K[G]}(\Ind_HV,U)$ tal que
+$\Gamma(\varphi)(g\otimes v)=g\cdot\varphi(v)$. 
+Tenemos así definida una función 
+\[
+\Gamma\colon \Hom_{K[H]}(V,\Res_H^GU)\to\Hom_{K[G]}(\Ind_H^GV,U),
+\quad
+\varphi\mapsto\Gamma(\varphi).
+\]
+
+La función $\Gamma$ es lineal e inyectiva, ambas afirmaciones fáciles de verificar. 
+
+Es también sobreyectiva, pues si $\theta\in\Hom_{K[H]}(\Ind_H^GV,U)$, entonces
+la función $\varphi(v)=\theta(1\otimes v)$ es tal que $\varphi\in\Hom_{K[H]}(V,\Res_H^GU)$ y 
+cumple 
+\[
+\Gamma(\varphi)(g\otimes v)=g\cdot\varphi(v)=g\cdot\theta(1\otimes v)=\theta(g\otimes v).\qedhere
+\]
+\end{proof}
+
+Supongamos ahora que $K=\C$. 
+
+Sea $H$ un subgrupo de $G$. Si $U$ es un $\C[G]$-módulo con caracter $\chi$, el caracter de $\Res_H^GU$ se denota por $\chi|_H$ y vale que 
+que $\chi|_H(1)=\chi(1)$. Si $V$ es un $\C[H]$-módulo con 
+caracter $\phi$, el módulo $\Ind_H^GV$ tiene caracter $\phi^G$ y vale que $\phi^G(1)=(G:H)\phi(1)$. 
+\begin{align*}
+\langle \phi,\chi|_H\rangle_H 
+&=\dim\Hom_{\C[H]}(V,\Res_H^GU)
+=\dim\Hom_{\C[G]}(\Ind_H^GV,U)
+=\langle\phi^G,\chi\rangle_G,
+\end{align*}
+donde $\langle \alpha,\beta\rangle_X=\sum_{x\in X}\alpha(x)\overline{\beta(x)}$ denota el producto 
+interno del espacio de funciones $X\to\C$. 
+
+\begin{definition}
+Si $\Irr(G)=\{\chi_1,\dots,\chi_k\}$ e $\Irr(H)=\{\phi_1,\dots,\phi_l\}$, se define
+la \textbf{matriz de inducción--restricción} como la matriz $(c_{ij})\in\C^{l\times k}$, donde
+\[
+c_{ij}=\langle \phi_i^G,\chi_j\rangle_G=\langle\phi_i,\chi_j|_H\rangle_H.
+\]
+\end{definition}
+
+La fila $i$-ésima de la matriz de inducción--restricción da la multiplicidad con que el caracter $\chi_j$ aparece
+en la descomposición de $\phi_i^G$. La columna $j$-ésima da la multiplicidad con que el caracter $\phi_i$ aparece 
+en la descomposición de $\chi_j|H$.
+
+\begin{example}
+Sea $G=\Sym_3$. 
+La tabla de caracteres de $G$ es 
+	\begin{center}
+		\begin{tabular}{|c|rrr|}
+			\hline
+			& $1$ & $3$ & $2$\tabularnewline
+			& $1$ & $(12)$ & $(123)$ \tabularnewline
+			\hline 
+			$\chi_{1}$ & $1$ & $1$ & $1$\tabularnewline
+			$\chi_{2}$ & $1$ & $-1$ & $1$ \tabularnewline
+			$\chi_{3}$ & $2$ & $0$ & $-1$ \tabularnewline
+			\hline
+		\end{tabular}
+	\end{center}
+La tabla de caracteres del subgrupo 
+$H=\{\id,(12)\}$ es 
+\begin{center}
+\begin{tabular}{|c|rr|}
+\hline 
+& $1$ & $1$ \tabularnewline
+& $\id$ & $(12)$ \tabularnewline
+\hline 
+$\phi_{1}$ & $1$ & $1$ \tabularnewline
+$\phi_{2}$ & $1$ & $-1$\tabularnewline
+\hline
+\end{tabular}
+\end{center}
+A simple vista vemos que $\chi_1|H=\phi_1$, $\chi_2|_H=\phi_2$ y que $\chi_3|_H=\phi_1+\phi_2$. 
+La matriz de inducción--restricción es entonces
+\[
+\begin{pmatrix}
+1 & 0 & 1\\
+0 & 1 & 1
+\end{pmatrix}.
+\]
+Observemos que además $\phi_1^G=\chi_1+\chi_3$ y que $\phi_2^G=\chi_2+\chi_3$. 
+\end{example}
+
+Veamos cómo calcular explícitamente caracteres inducidos. 
+
+\begin{proposition}
+Sea $H$ un subgrupo de $G$ y sea $V$ es un $\C[H]$-módulo con caracter $\chi$. Si 
+$T$ es un trasversal de $H$ en $G$, entonces
+\[
+\chi^G(g)=\sum_{\substack{t\in T\\t^{-1}gt\in H}}\chi(t^{-1}gt)
+\]
+para todo $g\in G$. 
+\end{proposition}
+
+\begin{proof}
+    Sabemos que $\Ind_H^GV=\oplus_{t\in T}t\otimes V$. 
+    Supongamos que $T=\{t_1,\dots,t_m\}$ 
+    y sea $\{v_1,\dots,v_n\}$ una base de $V$. 
+    Entonces $\{t_i\otimes v_k:1\leq i\leq m,\,1\leq k\leq n\}$ es 
+    una base de $\Ind_H^GV$ y la acción
+    de $g$ en $\Ind_H^GV$ está dada por
+    \[
+    \rho^G(g)=\begin{cases}
+    \rho(t_j^{-1}gt_i) & \text{si $t_j^{-1}gt_i\in H$},\\
+    0 & \text{en otro caso}.
+    \end{cases}
+    \]
+    En efecto, si $gt_i=t_jh$ para $h\in H$ y ciertos $i,j$, entonces 
+    \[
+    g\cdot (t_i\otimes v_k)=gt_i\otimes v_k=t_jh\otimes v_k=t_j\otimes h\cdot v_k
+    \]
+    y además $gt_i=t_jh$ si y sólo si $t_j^{-1}gt_i=h\in H$. Se concluye entones
+    que $g$ actúa como $t^{-1}gt$ en $V$ en caso en que $t^{-1}gt\in H$ y 
+    como la transformación nula en otro caso. 
+\end{proof}
+
+\begin{corollary}
+\label{cor:induccion}
+    Sea $H$ un subgrupo de $G$ 
+    y sea $V$ es un $\C[H]$-módulo con caracter $\chi$.
+    Si $g\in G$, entonces
+    \[
+    \chi^G(g)=\frac{1}{|H|}\sum_{\substack{x\in G\\x^{-1}gx\in H}}\chi(x^{-1}gx).
+    \]
+\end{corollary}
+
+\begin{proof}
+    Sea $T$ un transversal de $H$ en $G$. Si $x\in G$, escribimos $x=th$ para $t\in T$ y $h\in H$. 
+    Como $x^{-1}gx=h^{-1}(t^{-1}gt)h$, entonces $x^{-1}gx\in H\Longleftrightarrow t^{-1}gt\in H$ y además, en ese caso, 
+    $\chi(x^{-1}gx)=\chi(t^{-1}gt)$ pues $\chi$ es una función de clases. Eso implica que existen $|H|$ elementos $x\in G$ 
+    tales que $x^{-1}gx\in H$. Para esos $x$, se tiene $\chi(x^{-1}gx)=\chi(t^{-1}gt)$, lo que implica 
+    el corolario. 
+\end{proof}

@@ -1,0 +1,401 @@
+\chapter{Ejemplos de tablas de caracteres}
+
+\index{Tabla de caracteres}
+Sea $G$ un grupo finito y sean $\chi_1,\dots,\chi_r$ los caracteres
+irreducibles de $G$. Sin pérdida de generalidad podemos suponer que $\chi_1$ es
+el carácter trivial.  Sabemos que $r$ es igual a la cantidad de clases de
+conjugación de $G$. Como además cada $\chi_j$ es constante en las clases de
+conjugación de $G$, los caracteres de $G$ quedan completamente determinados si
+conocemos el valor de cada $\chi_j$ en los representantes de las $r$ clases de
+conjugación de $G$. Consideramos entonces la \textbf{tabla de caracteres} de
+$G$
+\begin{center}
+\begin{tabular}{|c|cccc|}
+\hline 
+ & $1$ & $k_{2}$ & $\cdots$ & $k_{r}$\tabularnewline
+ & $1$ & $g_{2}$ & $\cdots$ & $g_{r}$\tabularnewline
+\hline 
+$\chi_{1}$ & $1$ & $1$ & $\cdots$ & $1$\tabularnewline
+$\chi_{2}$ & $n_{2}$ & $\chi_{2}(g_{2})$ & $\cdots$ & $\chi_{2}(g_{r})$\tabularnewline
+$\vdots$ & $\vdots$ & $\vdots$ & $\ddots$ & $\vdots$\tabularnewline
+$\chi_{r}$ & $n_{r}$ & $\chi_{r}(g_{2})$ & $\cdots$ & $\chi_{r}(g_{r})$\tabularnewline
+\hline
+\end{tabular}
+\end{center}
+donde los $n_j$ son los grados de las representaciones irreducibles de $G$ y $k_j$ es el tamaño de 
+la clase de conjugación del elemento $g_j$ en $G$ para todo $j\in\{1,\dots,r\}$. 
+
+\begin{example}
+	Sea $G=\langle g\rangle$ el grupo cíclico de $n$ elementos. Sea $\lambda$ una raíz primitiva
+	$n$-ésima de la unidad. Para cada $i$ sea $V_i$ un espacio vectorial de
+	dimensión uno con base $\{v\}$. Cada $V_i$ es un $\C[G]$-módulo con 
+	\[
+		g\cdot v=\lambda^{i-1}v.
+	\]
+	Además cada $V_i$ es simple pues $\dim V_i=1$. El carácter $\chi_i$ de
+	$V_i$ está dado por $\chi_i(g^m)=\lambda^{m(i-1)}$ para todo
+	$m\in\{1,\dots,n\}$. Como los $\chi_1,\dots,\chi_n$ son todos distintos y
+	$G$ admite $n$ representaciones irreducibles, los $\chi_j$ son los
+	caracteres de todas las representaciones irreducibles de $G$. La tabla de
+	caracteres es fácil de calcular:
+	\begin{center}
+		\begin{tabular}{|c|ccccc|}
+			\hline 
+			& 1 & 1 & 1 & $\cdots$ & 1\tabularnewline
+			& $1$ & $g$ & $g^2$ & $\cdots$ & $g^{n-1}$\tabularnewline
+			\hline 
+			$\chi_{1}$ & $1$ & $1$ & $1$ & $\cdots$ & $1$\tabularnewline
+			$\chi_{2}$ & $1$ & $\lambda$ & $\lambda^2$ & $\cdots$ & $\lambda^{n-1}$\tabularnewline
+			$\chi_{3}$ & $1$ & $\lambda^2$ & $\lambda^4$ & $\cdots$ & $\lambda^{n-2}$\tabularnewline
+			$\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\ddots$ & $\vdots$\tabularnewline
+			$\chi_{n}$ & $1$ & $\lambda^{n-1}$ & $\lambda^{n-2}$ & $\cdots$ & $\lambda$\tabularnewline
+			\hline
+		\end{tabular}
+	\end{center}
+\end{example}
+
+% \begin{proposition}
+% 	Sean $G$ y $H$ grupos abelianos finitos. Sean $\chi_1,\dots,\chi_{|G|}$ son las
+% 	representaciones irreducibles de $G$ y sean $\eta_1,\dots,\eta_{|H|}$ las
+% 	representaciones irreducibles de $H$.  Entonces las 
+% 	\[
+% 		\alpha_{ij}\colon G\times H\to\C^{\times},\quad
+% 		(g,h)\mapsto\chi_i(g)\eta_j(h),
+% 	\]
+% 	$i\in\{1,\dots,|G|\}$, $j\in\{1,\dots,|H|\}$, forman un conjunto completo
+% 	de representantes de las clases de equivalencia de representaciones de
+% 	$G\times H$.
+% \end{proposition}
+
+% \begin{proof}
+% Es fácil demostrar que las $\alpha_{i,j}$ son representaciones. 
+% Son todas
+% distintas pues si $\alpha_{ij}=\alpha_{kl}$ entonces, en particular,
+% \[
+% \chi_i(g)=\alpha_{ij}(g,1)=\alpha_{kl}(g,1)=\chi_k(g)
+% \]
+% para todo $g\in G$, y análogamente $\eta_j=\eta_l$.  Como $|G\times H|=|G||H|$,
+% las $\alpha_{ij}$ son todas las representaciones irreducibles de $G\times H$.
+% \end{proof}
+
+\begin{example}
+	La proposición anterior nos permite calcular por ejemplo
+	la tabla de caracteres de $C_2\times C_2=\{1,a,b,ab\}$:
+	\begin{center}
+		\begin{tabular}{|c|rrrr|}
+			\hline 
+			& 1 & 1 & 1 & 1\tabularnewline
+			& $1$ & $a$ & $b$ & $ab$\tabularnewline
+			\hline 
+			$\chi_{1}$ & $1$ & $1$ & $1$ & $1$\tabularnewline
+			$\chi_{2}$ & $1$ & $1$ & $-1$ & $-1$\tabularnewline
+			$\chi_{3}$ & $1$ & $-1$ & $1$ & $-1$\tabularnewline
+			$\chi_{4}$ & $1$ & $-1$ & $-1$ & $1$\tabularnewline
+			\hline
+		\end{tabular}
+	\end{center}
+\end{example}
+
+\begin{example}
+	Vimos que el grupo simétrico $\Sym_3$ tiene tres clases de conjugación 
+	con representantes $\id$, $(12)$ y $(123)$. La tabla de caracteres es entonces
+	\begin{center}
+		\begin{tabular}{|c|rrr|}
+			\hline
+			& $1$ & $3$ & $2$\tabularnewline
+			& $1$ & $(12)$ & $(123)$ \tabularnewline
+			\hline 
+			$\chi_{1}$ & $1$ & $1$ & $1$\tabularnewline
+			$\chi_{2}$ & $1$ & $-1$ & $1$ \tabularnewline
+			$\chi_{3}$ & $2$ & $0$ & $-1$ \tabularnewline
+			\hline
+		\end{tabular}
+	\end{center}
+	¿Cómo fue que calculamos esta tabla de caracteres? Los caracteres de grado
+	uno fueron muy fáciles de calcular. Para calcular la tercera fila de la
+	tabla podemos utilizar la representación irreducible 
+	\[
+	(12)\mapsto \begin{pmatrix}-1&1\\0&1\end{pmatrix},
+	\quad
+	(123)\mapsto \begin{pmatrix}0&-1\\1&-1\end{pmatrix}
+	\]
+	pues es irreducible y además 
+	\begin{align*}
+		&\chi_3\left( (12) \right)=\trace\begin{pmatrix}-1&1\\0&1\end{pmatrix}=0,\\
+		&\chi_3\left( (123) \right)=\chi_3\left( (12)(23)\right)=\trace\begin{pmatrix}0&-1\\1&-1\end{pmatrix}=-1.
+	\end{align*}
+
+	Es importante mencionar que podríamos haber calculado la tercera fila de la
+	tabla sin conocer explícitamente la representación irreducible. Podriamos
+	por ejemplo usar la representación regular.  
+	Sabemos que el carácter de la representación
+	regular $L$ está dado por
+	\[
+		\chi_L(g)=\begin{cases}
+			6 & \text{si $g=\id$},\\
+			0 & \text{si $g\ne\id$}.
+		\end{cases}
+	\]
+	Luego la ecuación $0=\chi_L\left( (12) \right)=1-1+2\chi_3( (12))$ nos dice
+	que $\chi_3( (12))=0$ y la ecuación $0=\chi_L( (123))=1+1+2\chi_3( (123))$
+	nos dice que $\chi_3\left( (123) \right)=-1$. 
+
+	Alternativamente podríamos haber usado alguna de las relaciones de
+	ortogonalidad. Por ejemplo si $\chi_3( (12) )=a$ y $\chi_3( (123))=b$,
+	entonces obtenemos $a=0$ y $b=-1$ al resolver 
+	\begin{align*}
+		0&=\langle \chi_3,\chi_1\rangle=\frac16(2+3a+2b),\\
+		0&=\langle \chi_3,\chi_2\rangle=\frac16(2-3a+2b).
+	\end{align*}
+\end{example}
+
+\begin{example}
+	Vamos a calcular la tabla de caracteres de $\Sym_4$. Sabemos que $\Sym_4$ 
+	tiene orden $24$ y cinco clases de conjugación 
+	\begin{center}
+		\begin{tabular}{c|ccccc}
+			representante & $\id$ & $(12)$ & $(12)(34)$ & $(123)$ & $(1234)$\tabularnewline
+			\hline
+			tamaño & $1$ & $6$ & $3$ & $8$ & $6$
+		\end{tabular}
+	\end{center}
+
+	Como el conmutador $[\Sym_4,\Sym_4]\simeq\Alt_4$ entonces
+	$\Sym_4/[\Sym_4,\Sym_4]$ tiene dos elementos y luego $\Sym_4$ tiene
+	solamente dos representaciones de grado uno: una es el signo y la otra es
+	la representación trivial. Tenemos entonces dos filas de la tabla de caracteres:
+	\begin{center}
+		\begin{tabular}{|c|rrrrr|}
+			\hline
+			& $\id$ & $(12)$ & $(12)(34)$ & $(123)$ & $(1234)$\tabularnewline
+%			& $1$ & $6$ & $3$ & $8$ & $6$\tabularnewline
+			\hline
+			$\chi_1$ & $1$ & $1$ & $1$ & $1$ & $1$\tabularnewline
+			$\chi_2$ & $1$ & $-1$ & $1$ & $1$ & $-1$\tabularnewline
+			\hline
+		\end{tabular}
+	\end{center}
+	Sabemos que existen $n_3,n_4,n_5\in\{2,3,4\}$ tales que
+	$24=1+1+n_3^2+n_4^2+n_5^2$. Es fácil ver que $(n_3,n_4,n_5)=(2,3,3)$ es la
+	única solución con $n_3\leq n_4\leq n_5$.
+
+	Encontraremos otra representación al usar la acción de $\Sym_4$ en el
+	espacio vectorial
+	\[
+		V=\{(x_1,x_2,x_3,x_4)\in\R^4:x_1+x_2+x_3+x_4=0\},
+	\]
+	es decir: $g\cdot (x_1,x_2,x_3,x_4)=(x_{g^{-1}(1)},x_{g^{-1}(2)},x_{g^{-1}(3)},x_{g^{-1}(4)})$. 
+	Sean 
+	\[
+		v_1=(1,0,0,-1),
+		\quad
+		v_2=(0,1,0,-1),
+		\quad
+		v_3=(0,0,1,-1).
+	\]
+	Entonces $\{v_1,v_2,v_3\}$ es base de $V$ y 
+	\begin{align*}
+		&(12)\cdot v_1=v_2,&&
+		(12)\cdot v_2=v_1,&&
+		(12)\cdot v_3=v_3,\\
+		&(1432)\cdot v_1=-v_3,&&
+		(1432)\cdot v_2=v_1-v_3,&&
+		(1432)\cdot v_3=v_2-v_3.
+	\end{align*}
+	Como $\Sym_4=\langle (12),(1432)\rangle$ esto es suficiente para conocer la
+	acción de cualquier $g\in\Sym_4$ en cualquier $v\in V$.  Esta acción nos da
+	una representación $\rho$ de $\Sym_4$ en $V$:
+	\[
+		\rho_{(12)}=\begin{pmatrix}
+			0 & 1 & 0\\
+			1 & 0 & 0\\
+			0 & 0 & 1
+		\end{pmatrix},\quad
+		\rho_{(1432)}=\begin{pmatrix}
+			0 & 1 & 0\\
+			0 & 0 & 1\\
+			1 & -1 & -1
+		\end{pmatrix}.
+	\]
+	Calculemos el caracter $\chi$ de $\rho$. Tenemos hasta ahora que
+	$\chi(\id)=3$, $\chi\left( (12) \right)=1$, $\chi\left( (1234) \right)=-1$.
+	Para calcular el valor de $\chi$ es los $3$-ciclos hacemos por ejemplo 
+	\begin{align*}
+		&\chi\left( (234) \right)=\chi\left( (12)(1234) \right)=\trace(\rho_{(12)}\rho_{(1234)})=\trace\begin{pmatrix}
+			0 & 0 & 1\\
+			0 & 1 & 0\\
+			1 & -1 & -1
+		\end{pmatrix}
+		=0.
+	\end{align*}
+	Similarmente, para calcular el valor de $\chi$ en el producto de dos
+	trasposiciones alcanza con observar que 
+	\begin{align*}
+		&\chi\left( (13)(24) \right)=\chi\left( (1234)(1234) \right)=\trace(\rho_{(1234)}^2)=\trace\begin{pmatrix}
+			0 & 0 & 1\\
+			1 & -1 & -1\\
+			-1 & 2 & 0
+		\end{pmatrix}
+		=-1.
+	\end{align*}
+	Veamos que $\chi$ es un carácter irreducible: 
+	\[
+		\langle \chi,\chi\rangle=\frac{1}{24}(3^2+6+0+6+3)=1.
+	\]
+	Con lo que tenemos es fácil construir el caracter de otra representación irreducible pues
+	$\sgn\otimes\chi$ es irreducible:
+	\[
+		\langle \sgn\otimes\chi,\sgn\otimes\chi\rangle=\frac{1}{24}(3^2+(-1)^26+(-1)^23+6)=1.
+	\]
+	Tenemos así cuatro de los cinco caracteres irreducibles de $G$. Nos falta
+	uno, digamos $\chi_5$.  Para calcular $\chi_5$ usamos el carácter de la
+	representación regular $L$:
+	\begin{align*}
+		0 &= \chi_L\left( (12) \right)=1+(-1)+3+3(-1)+2\chi_5\left( (12) \right),\\
+		0 &= \chi_L\left( (12)(34) \right)=1+1+3(-1)+3(-1)+2\chi_5\left( (12)(34) \right),\\
+		0 &= \chi_L\left( (123) \right)=1+1+0+0+2\chi_5\left( (123) \right),\\
+		0 &= \chi_L\left( (1234) \right)=1+(-1)+3(-1)+3+2\chi_5\left( (1234) \right)=0,
+	\end{align*}
+	de donde obtenemos los valores de $\chi_5$. Nos queda así la siguiente tabla:
+	\begin{center}
+		\begin{tabular}{|c|rrrrr|}
+			\hline
+			& $\id$ & $(12)$ & $(12)(34)$ & $(123)$ & $(1234)$\tabularnewline
+			\hline
+			$\chi_1$ & $1$ & $1$ & $1$ & $1$ & $1$\tabularnewline
+			$\sgn$ & $1$ & $-1$ & $1$ & $1$ & $-1$\tabularnewline
+			$\chi$ & $3$ & $1$ & $-1$ & $0$ & $-1$\tabularnewline
+			$\sgn\otimes\chi$ & $3$ & $-1$ & $-1$ & $0$ & $1$\tabularnewline
+			$\chi_5$ & $2$ & $0$ & $2$ & $-1$ & $0$\tabularnewline
+			\hline
+		\end{tabular}
+	\end{center}
+\end{example}
+
+\begin{example}
+	Calculemos ahora la tabla de caracteres de $\Alt_4$. Este grupo tiene orden $12$ y 
+	cuatro clases de conjugación:
+	\begin{center}
+		\begin{tabular}{c|cccc}
+			representante & $\id$ & $(123)$ & $(132)$ & $(123)$\tabularnewline
+			\hline
+			tamaño & $1$ & $4$ & $4$ & $3$ 
+		\end{tabular}
+	\end{center}
+	Como $[\Alt_4,\Alt_4]=\{\id,(12)(34),(13)(24),(14)(23)\}$,
+	$\Alt_4/[\Alt_4,\Alt_4]$ tiene tres elementos. Luego $\Alt_4$ tiene tres
+	caracteres irreducibles de grado uno y uno de grado tres. Sea
+	$\omega=\exp(2\pi i/3)$ una raíz cúbica primitiva de la unidad. Si $\chi$
+	es un carácter no trivial de grado uno, $\chi\left( (123) \right)=\omega^j$
+	para algún $j\in\{1,2\}$ y $\chi\left( (132) \right)=\omega^{2j}$. Como 
+	$(132)(134)=(12)(34)$ y además 
+	las permutaciones $(134)$ y $(123)$ son conjugadas, entonces 
+	\[
+	\chi_i((12)(34))=\chi_i((132)(134))=\chi_i((132))\chi_i((134))=\omega^3=1
+	\]
+	para todo $i\in\{1,2\}$. 
+	
+	Para calcular $\chi_4$ usamos el truco de la representación regular $L$, 
+	\begin{align*}
+		0&=\chi_L\left( (12)(34) \right)=1+1+1+3\chi_4\left( (12)(34) \right),\\
+		0&=\chi_L\left( (123) \right)=1+\omega+\omega^2+3\chi_4\left( (123) \right),\\
+		0&=\chi_L\left( (132) \right)=1+\omega+\omega^2+3\chi_4\left( (132) \right),
+	\end{align*}
+	de donde obtenemos que $\chi_4\left( (123) \right)=\chi_4\left( (132)
+	\right)=0$ y $\chi_4\left( (12)(34) \right)=-1$. Logramos así calcular la tabla de caracteres del grupo $\Alt_4$:
+	\begin{center}
+		\begin{tabular}{|c|rrrr|}
+			\hline
+			& $\id$ & $(123)$ & $(132)$ & $(12)(34)$\tabularnewline
+			\hline
+			$\chi_1$ & $1$ & $1$ & $1$ & $1$\tabularnewline
+			$\chi_2$ & $1$ & $\omega$ & $\omega^2$ & $1$\tabularnewline
+			$\chi_3$ & $1$ & $\omega^2$ & $\omega$ & $1$\tabularnewline
+			$\chi_4$ & $3$ & $0$ & $0$ & $-1$\tabularnewline
+			\hline
+		\end{tabular}
+	\end{center}
+\end{example}
+
+\begin{example}
+	Vamos a calcular la tabla de caracteres de los grupos no abelianos de orden
+	$8$. (Salvo isomorfismo hay dos grupos no abelianos de ocho elementos, el
+	grupo de cuaterniones y el diedral, pero no vamos a utilizar esta
+	información.) Sea $G$ un grupo no abeliano tal que $|G|=8$. Como $Z(G)\ne
+	1$ y $G/Z(G)$ no es cíclico (pues $G$ no es abeliano), $|Z(G)|=2$. Como
+	además $G/Z(G)$ es abeliano (porque $|G/Z(G)|=4$), tenemos que $1\ne
+	[G,G]\subseteq Z(G)$) y luego $[G,G]=Z(G)$. Como $|G/[G,G]|=4$, $G$ admite
+	exactamente cuatro representaciones de grado uno. Como además
+	$8=1+1+1+1+n_5^2+\cdots+n_r^2$, se concluye que $r=5$ y $n_5=2$.  Sabemos
+	entonces que $G$ tiene cinco clases de conjugación, digamos con
+	representantes $1,x,a,b,c$, donde $[G,G]=Z(G)=\langle x\rangle$.  La
+	ecuación de clases nos dice que las clases de conjugación de $a$, $b$ y $c$
+	tienen tienen dos elementos. 
+
+	Sabemos que $G/[G,G]\simeq C_2\times C_2$. Por la
+	proposición~\ref{proposition:Lin(G)}, toda representación de grado uno de
+	$G$ es de la forma $\chi_j\circ\pi$, donde $\chi_j$ es una representación
+	de grado uno de $C_2\times C_2$ y $\pi\colon G\to G/[G,G]$ es el morfismo
+	canónico. Esto nos permite calcular gran parte de los valores de los
+	caracteres de grado uno:
+	\begin{center}
+		\begin{tabular}{|c|rrrrr|}
+			\hline
+			& $1$ & $x$ & $a$ & $b$ & $c$\tabularnewline
+			\hline
+			$\chi_1$ & $1$ & $1$ & $1$ & $1$ & $1$\tabularnewline
+			$\chi_2$ & $1$ & $?$ & $-1$ & $1$ & $-1$\tabularnewline
+			$\chi_3$ & $1$ & $?$ & $1$ & $-1$ & $-1$\tabularnewline
+			$\chi_4$ & $1$ & $?$ & $-1$ & $-1$ & $1$\tabularnewline
+			\hline
+		\end{tabular}
+	\end{center}
+	Como $0=\langle \chi_1,\chi_2\rangle=\frac18(1+x+2+2(-1)+2(-1))$, se
+	concluye que $\chi_2(x)=1$. De la misma forma probamos que $\chi_j(x)=1$
+	para todo $j\in\{3,4\}$. 
+	
+	Nos falta calcular el valor del caracter de grado dos. Para eso usamos la
+	representación regular $L$. Al resolver el sistema 
+	\begin{align*}
+		0&=\chi_L(x)=1+1+1+1+2\chi_5(x),\\
+		0&=\chi_L(a)=1+1+-1-1+2\chi_5(a),\\
+		0&=\chi_L(b)=1-1+1-1+2\chi_5(b),\\
+		0&=\chi_L(c)=1-1-1+1+2\chi_5(c),
+	\end{align*}
+	obtenemos $\chi_5(x)=-2$ y $\chi_5(a)=\chi_5(b)=\chi_5(c)=0$. Luego la
+	tabla de caracteres de $G$ es 
+	\begin{center}
+		\begin{tabular}{|c|rrrrr|}
+			\hline
+			& $1$ & $x$ & $a$ & $b$ & $c$\tabularnewline
+			\hline
+			$\chi_1$ & $1$ & $1$ & $1$ & $1$ & $1$\tabularnewline
+			$\chi_2$ & $1$ & $1$ & $-1$ & $1$ & $-1$\tabularnewline
+			$\chi_3$ & $1$ & $1$ & $1$ & $-1$ & $-1$\tabularnewline
+			$\chi_4$ & $1$ & $1$ & $-1$ & $-1$ & $1$\tabularnewline
+			$\chi_5$ & $2$ & $-2$ & $0$ & $0$ & $0$\tabularnewline
+			\hline
+		\end{tabular}
+	\end{center}
+\end{example}
+
+
+% \begin{example}
+%     Supongamos que el grupo $G$ actúa en un conjunto finito $X$. 
+%     Si $V$ es el espacio vectorial con base en $\{x:x\in X\}$ tenemos un morfismo
+%     $\rho\colon G\to\GL(V)$, $g\mapsto\rho_g$. Observemos que para cada $g\in G$ 
+%     la matriz de $\rho_g$ en la base $\{x:x\in X\}$ es
+%     &\begin{align*}
+%     (\rho_g)_{ij}=\begin{cases}
+%     1 & \text{si $g\cdot x_j=x_i$},\\
+%     0 & \text{en otro caso}.
+%     \end{cases}
+%     \shortintertext{En particular,}
+%     (\rho_g)_{ii}=\begin{cases}
+%     1 & \text{si $x_i\in\Fix(g)$},\\
+%     0 & \text{en otro caso}.
+%     \end{cases}
+%     \end{align*}
+%   Descomponemos $V=\oplus_{i=1}^km_iV_i$ para ciertos $m_1,\dots,m_k\geq0$ y los $\C[G]$-módulos simples no isomorfos $V_1,\dots,V_k$. Sin perder
+%   generalidad podemos suponer que $V_1$ es la representación trivial. 
+

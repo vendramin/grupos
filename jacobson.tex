@@ -1,0 +1,215 @@
+\chapter{El radical de Jacobson}
+
+% todo: agregar las cuentas de las notas viejas 
+% arreglar la prueba del otro teorema de Wedderburn, en teoría de álgebras tiene un gap
+% arreglar el lema que sigue
+% definición de J(A) como la intersección de los ideales a izquierda maximales
+% ponemos después la equivalencia con los inversos y vemos que es ideal y que puedo tomar maximales a derecha
+% en las notas viejas está la equivalencia con idelaes nilpotentes
+
+\begin{definition}
+\index{Radical!de Jacobson}
+Si $A$ es un álgebra, el \textbf{radical de Jacobson} $J(A)$ es la intersección de 
+los ideales a izquierda maximales de $A$. 
+\end{definition}
+
+Como $A$ es un álgebra unitaria, 
+$A$ contiene al menos un ideal maximal a izquierda, es decir $J(A)\ne A$.
+
+\begin{proposition}
+	\label{pro:radical}
+	Sea $A$ un álgebra y sea $a\in A$. Las siguientes afirmaciones son equivalentes:
+	\begin{enumerate}
+		\item $a\in J(A)$.
+		\item Para todo $b\in A$, $1-ab$ tiene inversa a derecha.
+		\item Para todo $b\in A$, $1-ab$ es inversible.
+		\item $a$ pertenece a la intersección de los ideales a derecha maximales de $A$.
+		\item Para todo $b\in A$, $1-ba$ tiene inversa a izquierda.
+		\item Para todo $b\in A$, $1-ba$ es inversible.
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	Demostremos que $(1)\implies(5)$. Sea $b\in A$ tal que $1-ba$ no tiene
+	inversa a izquierda. Existe entonces un ideal a izquierda maximal $I$ tal
+	que $1-ba\in I$. Como por definición $J(A)\subseteq I$, se
+	concluye que $1\in I$, una contradicción.
+
+	Veamos ahora que $(5)\implies (6)$. Si existe $c\in A$ tal que
+	$c(1-ba)=1$ entonces 
+	\[
+	c=1+cba=1-(-cb)a.
+	\]
+	Como por hipótesis este elemento tiene
+	inversa a izquierda, existe $d\in A$ tal que
+	$1=dc$. Luego $d=1-ba$ es inversible a derecha. 
+	
+	La implicación $(6)\implies (5)$ es trivial. 
+	
+	Veamos que
+	$(5)\implies(1)$. Si $a\not\in J(A)$ sea $I$ un ideal a izquierda maximal
+	tal que $a\not\in I$. Por maximalidad, $A=I+Aa$. Entonces
+	existen $x\in I$ y $b\in A$ tales que $1=x+ba$. Luego
+	$x=1-ba\in I$ no tiene inversa a izquierda, pues de lo contrario
+	tendríamos $yx=1\in I$ para algún $y\in A$. 
+
+	Análogamente se demuestra que $(2)\Longleftrightarrow (3)\Longleftrightarrow (4)$.
+
+	Para finalizar demostremos que $(3)\Longleftrightarrow (6)$. 
+	Si $1-ab$ tiene inversa $c$ entonces, como $(1-ab)c=1$, 
+	\[
+	1=1-ba+ba=1-ba+b(1-ab)ca=1-ba+bca-babca=(1-ba)(1+bca).
+	\]
+	Similarmente, si $c(1-ab)=1$, entonces $1=(1+bca)(1-ba)$. 
+\end{proof}
+
+La proposición anterior implica que $J(A)$ es un ideal a derecha, pues es también 
+la intersección de los ideales a derecha de $A$ maximales. En consecuencia,  
+$J(A)$ es un ideal. 
+
+\begin{definition}
+\index{Ideal!nilpotente}
+Un ideal $I$ de un álgebra se dice \textbf{nilpotente} si $I^m=\{0\}$ para algún $m\in\N$, es decir
+si $x_1\cdots x_m=0$ para todo $x_1,\dots,x_m\in I$.
+\end{definition}
+
+\begin{proposition} 
+	Si $A$ y $B$ son álgebras, valen las siguientes propiedades: 
+	\begin{enumerate}
+	\item $J(A\times B)=J(A)\times J(B)$.
+	\item $J(A/J(A))=\{0\}$.
+	\item Si $I$ es un ideal nilpotente de $A$, entonces $I\subseteq J(A)$.
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+Para la primera afirmación:
+\begin{align*}
+(a,b)\in &J(A\times B)
+\Longleftrightarrow
+(1,1)-(x,y)(a,b)\text{ es inversible para todo $(x,y)\in A\times B$}\\
+&\Longleftrightarrow   
+(1-xa,1-yb)\text{ es inversible para 
+todo $(x,y)\in A\times B$}\\
+&\Longleftrightarrow 
+1-xa\text{ y } 
+1-yb\text{ son inversibles todo $x\in A$, $y\in B$}\\
+&\Longleftrightarrow (a,b)\in J(A)\times J(B).
+\end{align*}
+
+Demostremos ahora la segunda afirmación. Sea $\pi\colon A\to A/J(A)$ es el morfismo canónico. 
+Sea $\pi(a)\in J(A/J(A))$. Si $a\not\in J(A)$, entonces
+existe un ideal a izquierda de $A$ maximal tal que $a\not\in I$. Como por el teorema de la correspondencia 
+$\pi(I)$ es un ideal a izquierda
+maximal de $A/J(A)$, entonces $\pi(a)\in\pi(I)$, lo que implica en particular 
+que existe $y\in I$ tal que
+$a-y\in J(A)\subseteq I$, una contradicción pues $a\not\in I$.  
+
+Demostremos la tercera afirmación. Sea $I$ un ideal de $A$ 
+tal que $I^m=\{0\}$. Si $a\in A$ y $x\in I$, entonces
+$(ax)^m\in I^m=\{0\}$. Entonces $x\in J(A)$ pues $1-ax$ es inversible, ya que 
+\[
+1=1-(ax)^m=(1+ax+(ax)^2+\cdots+(ax)^{m-1})(1-ax)\qedhere.
+\]
+\end{proof}
+
+\begin{lemma}
+Sea $A$ un álgebra de dimensión finita. Existen finitos ideales a izquierda maximales
+$I_1,\dots,I_k$ tales que $J(A)=I_1\cap\cdots \cap I_k$.
+\end{lemma}
+
+\begin{proof}
+Sea $X$ el conjunto de ideales a izquierda 
+formados por intersecciones finitas de ideales a izquierda maximales de $A$. 
+Como $A$ tiene ideales maximales a izquierda, $X$ es no vacío. Sea $J=I_1\cap\cdots\cap I_k$ 
+un elemento de $X$ de dimensión minimal. Veamos que $J=J(A)$. Como $J(A)$ es la intersección
+de los ideales a izquierda maximales de $A$, solamente hay que demostrar que $J(A)\supseteq J$. Si existe
+$a\in J\setminus J(A)$, entonces sea $M$ un ideal a izquierda maximal de $A$ tal que 
+$a\not\in M$. Pero $J\cap M$ es un ideal a izquierda de $A$ que es intersección 
+finita de ideales a izquierda maximales  
+y tal que $M\cap J\subsetneq J$, una contradicción a la minimalidad de $\dim J$. 
+\end{proof}
+
+\begin{lemma}[Nakayama] 
+	\index{Lema!de Nakayama}
+	Sea $A$ un álgebra y sea $M$ un $A$-módulo finitamente generado. Si
+	$I\subseteq A$ es un ideal tal que $I\subseteq J(A)$ y $I\cdot M=M$
+	entonces $M=\{0\}$.
+\end{lemma}
+
+\begin{proof}
+	Supongamos que $M\ne\{0\}$ y sea $\{m_1,\dots,m_k\}$ un conjunto minimal de generadores del
+	módulo $M$. Como $m_k\in M=I\cdot M$, existen $a_1,\dots,a_k\in I$ tales
+	que 
+	\[
+	m_k=a_1\cdot m_1+\cdots+a_k\cdot m_k,
+	\]
+	es decir: 
+	$(1-a_k)\cdot m_k=a_1\cdot m_1+\cdots+a_{k-1}\cdot m_{k-1}$. Como $I\subseteq J(A)$, el elemento 
+	$1-a_k$ es inversible. Luego $m_k$ pertenece al submódulo generado
+	por $m_1,\dots,m_{k-1}$, una contradicción.
+\end{proof}
+
+\begin{proposition}
+Si $A$ es un álgebra de dimensión finita, entonces el radical $J(A)$ es un ideal nilpotente. 	
+\end{proposition}
+
+\begin{proof}
+	Como $A$ tiene dimensión finita, la sucesión de ideales
+	\[
+	A\supseteq J(A)\supseteq J(A)^2\supseteq\cdots
+	\]
+	se estabiliza, es decir que existe $m\in\N$ tal que $J(A)^{m+k}=J(A)^m$ para todo $k\in N$. 
+	En particular, 
+	$J(A)J(A)^m=J(A)^{m+1}\subseteq J(A)^m$. El lema de Nakayama con $I=J(A)$ y el módulo $M=J(A)^m$, 
+	que es finitamente generado, 
+	implica que $J(A)^m=\{0\}$.  
+\end{proof}
+
+\begin{theorem}
+Sea $A$ un álgebra de dimensión finita. Las siguientes afirmaciones son equivalentes.
+\begin{enumerate}
+\item $A$ es semisimple.
+\item $J(A)=\{0\}$.
+\item $A$ no tiene ideales nilpotentes no nulos.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	Demostremos que $(1)\implies(2)$. 
+	Si $A$ es semisimple, entonces, por el teorema de Wedderburn, 
+	$A\simeq M_{n_1}(D_1)\times\cdots\times M_{n_k}(D_k)$ para ciertos
+	$n_1,\dots,n_k\in\N$ y ciertas álgebras de división $D_1,\dots,D_k$. 
+	Entonces 
+	\begin{align*}
+	J(A)&\simeq J(M_{n_1}(D_1)\times\cdots\times M_{n_k}(D_k))\\
+	&\simeq J(M_{n_1}(D_1))\times\cdots\times J(M_{n_k}(D_k))\simeq\{0\},
+	\end{align*}
+	pues cada $M_{n_j}(D_j)$ es un álgebra simple.
+	
+	Demostremos $(2)\implies(1)$. Supongamos entonces que $J(A)=\{0\}$. 
+	Vimos que $J(A)=I_1\cap\cdots\cap I_k$ para
+	finitos ideales a izquierda maximales $I_1,\dots,I_k$. 
+	Como cada $A/I_j$ es un $A$-módulo 
+	simple, entonces $(A/I_1)\oplus\cdots\oplus (A/I_1)$ es un $A$-módulo semisimple. 
+	El morfismo de $A$-módulos
+	\[
+	A\to (A/I_1)\oplus\cdots\oplus (A/I_1),
+	\quad
+	a\mapsto (a+I_1,\dots,a+I_k),
+	\]
+	tiene núcleo $I_1\cap\dots\cap I_k=J(A)=\{0\}$ y luego 
+	es inyectivo. En consecuencia,  
+	la representación regular de $A$ es un módulo 
+	semisimple, por ser isomorfo a un submódulo de un módulo semisimple. 
+	Esto implica que el álgebra $A$ es también semisimple.  
+	
+	La equivalencia entre $(2)$ y $(3)$ es ahora fácil pues vimos que $J(A)$ es un ideal nilpotente
+	que contiene a todo ideal nilpotente de $A$. 	
+%	La implicación $(2)\implies(3)$ es trivial, pues vimos que 
+%	$J(A)$ contiene a todo ideal nilpotente de $A$. 
+%	
+%	La implicación $(3)\implies(2)$ también es trivial ahora que
+%	sabemos que $J(A)$ es un ideal nilpotente. 
+\end{proof}
+

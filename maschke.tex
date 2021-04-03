@@ -1,0 +1,435 @@
+\chapter{El teorema de Maschke}
+
+\index{Álgebra!de grupo}
+Sea $K$ un cuerpo y sea $G$ un grupo finito. El \textbf{álgebra de grupo} $K[G]$ es el
+$K$-espacio vectorial con base $\{g:g\in G\}$ con la estructura de álgebra dada
+por el producto
+\[
+	\left(\sum_{g\in G}\lambda_gg\right)\left(\sum_{h\in G}\mu_hh\right)
+	=\sum_{g,h\in G}\lambda_g\mu_h(gh).
+\]
+Observemos que el álgebra $K[G]$ es conmutativa si y sólo si $G$ es abeliano. 
+Además $\dim K[G]=|G|$. 
+
+\begin{example}
+Sea $G=\{1,g,g^2\}$ el grupo cíclico de orden tres y sea $A=\C[G]$ el álgebra (compleja) del grupo $G$. Si 
+$\alpha=a_11+a_2g+a_3g^2$ y $\beta=b_11+b_2g+b_3g^2\in A$, donde $a_1,a_2,a_3,b_1,b_2,b_3\in\C$, 
+entonces la suma de $A$ está dada por
+\begin{gather*}
+\alpha+\beta=(a_1+b_1)1+(a_2+b_2)g+(a_3+b_3)g^2
+\shortintertext{y el producto por}
+\alpha\beta=(a_1b_1+a_2b_3+a_3b_2)1+(a_1b_2+a_2b_1+a_3b_3)g+(a_1b_3+a_2b_2+a_3b_1)g^2.
+\end{gather*}
+\end{example}
+
+\index{Ideal!de aumentación}
+Si $G$ es un grupo finito no trivial,  
+entonces $K[G]$ posee ideales propios no triviales. 
+Esto es porque el conjunto 
+\[
+	I(G)=\left\{\sum_{g\in G}\lambda_gg\in K[G]:\sum_{g\in G}\lambda_g=0\right\}
+\]
+es un ideal propio y no nulo de $K[G]$ (pues $\dim I(G)=\dim K[G]-1$). Este
+conjunto se conoce como el \textbf{ideal de aumentación} de $K[G]$.
+
+\begin{exercise}
+	Sea $G=C_n$ el grupo ciclico de orden $n$ (escrito multiplicativamente).
+	Demuestre que $K[G]\simeq K[X]/(X^n-1)$. 
+\end{exercise}
+
+\begin{proposition}
+    Si $G$ es un grupo finito no trivial, entonces $K[G]$ tiene divisores de cero.	
+\end{proposition}
+
+\begin{proof}
+    Sea $g\in G\setminus\{1\}$ y sea $n$ el orden de $g$. Para ver que $K[G]$ tiene divisores
+    de cero alcanza con observar que 
+    $(1-g)(1+g+\cdots+g^{n-1})=0$. 
+\end{proof}
+
+Si $A$ es un álgebra, entonces $\mathcal{U}(A)$ es el grupo de unidades del anillo $A$. 
+La proposición que sigue se conoce como la propiedad universal del álgebra de grupo.
+
+\begin{proposition}
+Sean $A$ un álgebra y $G$ un grupo finito. Si $f\colon G\to\mathcal{U}(A)$ es un morfismo de grupos, entonces
+existe un único morfismo $\varphi\colon K[G]\to A$ de álgebras tal que la restricción
+$\varphi|_G$ de $\varphi$ al grupo $G$ es igual a $f$, es decir 	$\varphi|_G=f$. 
+\end{proposition}
+
+\begin{proof}
+Como $G$ es base de $K[G]$, puede verificarse que 
+el morfismo $\varphi$ de álgebras 
+queda unívocametne determinado por 
+\[
+\varphi\left(\sum_{g\in G}\lambda_gg\right)=\sum_{g\in G}\lambda_gf(g).\qedhere
+\]	
+\end{proof}
+
+La proposición anterior nos dice que si $G$ es un grupo finito y $A$ es un álgebra, 
+para definir un morfismo de álgebras $K[G]\to A$ 
+alcanza con tener un morfismo de grupos $G\to\mathcal{U}(A)$.  
+
+\begin{exercise}
+Sea $M$ un módulo. 
+Si $p\colon M\to M$ es un morfismo tal que $p^2=p$, entonces 
+\[
+M=\ker p\oplus p(M).
+\]
+\end{exercise}
+
+% \begin{proof}
+% 	Como $p$ es un morfismo, $\ker p$ y $p(M)$ son submódulos de $M$. 
+% 	Para ver que $M=\ker p+p(M)$ alcanza con observar que todo $m\in M$ puede escribirse como
+% 	$m=(m-p(m))+p(m)$ 
+% 	y que $m-p(m)\in\ker p$ pues 
+% 	\[
+% 	p(m-p(m))=p(m)-p^2(m)=p(m)-p(m)=0. 
+% 	\]
+% 	Veamos ahora que $\ker p\cap p(M)=\{0\}$. Si $m\in\ker p\cap p(M)$, escribimos $m=p(m_1)$ para algún $m_1\in M$. Como entonces 
+% 	$0=p(m)=p^2(m_1)=m_1$, se concluye que $m=0$.   
+% \end{proof}
+
+\index{Proyección}   
+Recordemos que 
+una \textbf{proyección} (o proyector) de un módulo $M$ es un   
+morfismo $p\colon M\to M$ tal que $p^2=p$. 
+ 
+%\begin{lemma}
+%Si $A$ es un álgebra y $M$ es un $A$-módulo de dimensión finita tal que
+%todo submódulo de $M$ se complementa, entonces $M$ es semisimple.
+%\end{lemma}
+%
+%\begin{proof}
+%Procederemos por inducción en $\dim M$. Si $M=\{0\}$ el resultado es trivial. Si $M\ne\{0\}$, 
+%sea $S$ un submódulo no nulo de $M$ de dimensión minimal. En particular, $S$ es simple. Por hipótesis sabemos que existe un submódulo $T$ de $M$ tal que $M=S\oplus T$. Como $\dim T<\dim M$, la hipótesis inductiva implica que $T$ es suma directa de módulos simples. Luego $M$ también lo es. 
+%\end{proof}
+%
+%El lema anterior vale también para módulos arbitrarios sobre anillos. Sin embargo, la demostración 
+%requiere el uso del lema de Zorn.
+%
+%\begin{example}
+%Sea $R=M_2(\C)$ y sea $M=\prescript{}{R}R$. Los subconjuntos
+%\[
+%I=\begin{pmatrix}
+%\C&0\\
+%\C&0
+%\end{pmatrix},\quad
+%J=\begin{pmatrix}
+%0&\C\\
+%0&\C
+%\end{pmatrix}
+%\]
+%son submódulos de $M$ tales que $M\simeq I\oplus J$. Veamos que $M$ es semisimple, es decir que
+%$I$ y $J$ son simples. 
+%
+%Si $S$ es un submódulo no nulo de $I$, sea 
+%$\begin{pmatrix}
+%a&0\\
+%c&0
+%\end{pmatrix}\in S$ no nulo. Supongamos que 
+%$a\ne 0$, el caso $c\ne 0$ es similar. Entonces
+%\[
+%\begin{pmatrix}
+%a^{-1} & 0\\
+%0 & 0\end{pmatrix}
+%\begin{pmatrix}
+%a&0\\
+%c&0
+%\end{pmatrix}
+%=\begin{pmatrix}
+%1&0\\
+%0&0
+%\end{pmatrix}\in S.
+%\]
+%Análogamente se demuestra que $\begin{pmatrix}0&0\\1&0\end{pmatrix}\in S$. Luego $S=I$ y entonces $I$ es simple.  
+%La misma técnica nos permite demostrar que $J$ es simple.
+%\end{example}
+
+%Es importante observar que si $A$ es un álgebra y $M$ es un módulo
+%semisimple de dimensión finita, entones $M$ es suma directa de finitos simples. 
+%
+\begin{theorem}[Maschke]
+\index{Teorema!de Maschke}
+\index{Maschke!teorema de}
+Sea $K$ un cuerpo de característica cero. 
+Sea $G$ un grupo finito y sea $M$ un $K[G]$-módulo de dimensión finita. Entonces
+$M$ es semisimple.
+\end{theorem}
+
+\begin{proof}
+Alcanza con demostrar que todo submódulo $S$ de $M$ se complementa. 
+Como, en particular, $S$ es un subespacio de $M$, existe un subespacio $T_0$ de $M$ 
+tal que $M=S\oplus T_0$ (como espacios vectoriales). Vamos a usar el espacio vectorial
+$T_0$ para construir un submódulo $T$ de $M$ que complementa a $S$. Como $M=S\oplus T_0$, 
+cada $m\in M$ puede escribirse unívocamente como $m=s+t_0$ para ciertos $s\in S$ y $t_0\in T$. 
+Podemos definir entonces la transformación lineal 
+\[
+p_0\colon M\to S,\quad
+p_0(m)=s,
+\]
+donde $m=s+t_0$ con $s\in S$ y $t_0\in T$. 
+Observemos que si $s\in S$, entonces $p_0(s)=s$. En particular, $p_0^2=p_0$ pues
+$p_0(m)\in S$. 
+
+El problema 
+es que $p_0$ no es, en general, un morfismo de $\C[K]$-módulos. Promediamos
+sobre el grupo $G$ para conseguir un morfismo de grupos: Sea 
+\[
+p\colon M\to S,\quad
+p(m)=\frac{1}{|G|}\sum_{g\in G}g^{-1}\cdot p_0(g\cdot m).
+\]
+
+Primero demostramos que $p$ es un morfismo de $\C[K]$-módulos. Alcanza con ver que
+$p(g\cdot m)=g\cdot p(m)$ para todo $g\in G$ y $m\in M$. En efecto,
+\[
+p(g\cdot m)=\frac{1}{|G|}\sum_{h\in G}h^{-1}\cdot p_0(h\cdot (g\cdot m))
+=\frac{1}{|G|}\sum_{h\in G}(gh^{-1})\cdot p_0(h\cdot m)=g\cdot p(m).
+\]
+
+Veamos ahora que $p(M)=S$. La inclusión $\subseteq$ es trivial, pues $S$ es un submódulo de $M$ 
+y además $p_0(M)\subseteq S$. Recíprocamente, si $s\in S$, entonces $g\cdot s\in S$, pues
+$S$ es un submódulo. Luego 
+$s=g^{-1}\cdot (g\cdot s)=g^{-1}\cdot p_0(g\cdot s)$ y en consecuencia
+\[
+s=\frac{1}{|G|}\sum_{g\in G}g^{-1}\cdot (g\cdot s)=\frac{1}{|G|}\sum_{g\in G}g^{-1}\cdot (p_0(g\cdot s))=p(s).
+\]
+Como $p(m)\in S$ para todo $m\in M$, entonces $p^2(m)=p(m)$, es decir que $p$ es un proyector en $S$. Luego $S$ se complementa en $M$, es decir $M=S\oplus\ker(p)$.
+\end{proof} 
+
+La misma demostración del teorema de Maschke vale para el álgebra de grupo real o racional. 
+La descomposición de un módulo sobre el álgebra de grupo dependerá
+fuertemente del cuerpo sobre el que se trabaje. 
+
+\begin{example}
+Sea $G=\langle g\rangle$ el grupo cíclico de orden cuatro y sea $\rho_g=\begin{pmatrix}
+0&-1\\
+1&0\end{pmatrix}$. 
+Sea $M=\C^{2\times 1}$ con la estructura de $\C[G]$-módulo dada por 
+\[
+g\cdot\begin{pmatrix}u\\v\end{pmatrix}
+%\begin{pmatrix}0&-1\\1&0\end{pmatrix}\begin{pmatrix}u\\v\end{pmatrix}
+=\begin{pmatrix}-v\\u\end{pmatrix},
+\]
+es decir, si $a,b,c,d\in\C$, entonces 
+\[
+(a1+bg+cg^2+dg^3)\cdot\begin{pmatrix}u\\v\end{pmatrix}
+=\begin{pmatrix}
+(a-d)u+(c-b)v\\
+(1-b)u+(a-d)v
+\end{pmatrix}.
+\]
+Sabemos por el teorema de Maschke que $M$ es semisimple. Veamos cómo descomponer el módulo $M$ como suma directa de simples. 
+Como $\dim M=2$, tendremos que $M$ es suma directa de dos submódulos de dimensión uno. 
+Observemos que si $S$ es un submódulo tal que $\{0\}\subsetneq S\subsetneq M$, 
+entonces $\dim S=1$. Además 
+\[
+S=\left\{\lambda\begin{pmatrix}
+u_0\\
+v_0
+\end{pmatrix}:\lambda\in\C\right\}
+\text{ es un submódulo de $M$}
+\Longleftrightarrow
+\begin{pmatrix}
+u_0\\
+v_0
+\end{pmatrix}
+\text{ es autovector de $\rho_g$}.
+\]
+Como la matriz $\rho_g$ tiene polinomio característico $X^2+1$, se sigue 
+que  
+$\begin{pmatrix}
+i\\
+1\end{pmatrix}$ es autovector de $\rho_g$ de autovalor $-i$ y que
+$\begin{pmatrix}
+-i\\
+1\end{pmatrix}$ es autovector de autovalor $i$. 
+Luego $M$ se descompone en suma directa de simples como 
+\[
+M=\C\begin{pmatrix}
+i\\
+1\end{pmatrix}
+\oplus
+\C
+\begin{pmatrix}
+-i\\
+1\end{pmatrix}
+\]
+\end{example}
+
+Observar que en ejemplo anterior pudimos descomponer a la matriz $\rho_g$ 
+gracias a la existencia de autovectores, algo 
+que no pasaría si consideramos módulos sobre el álgebra de grupo real.   
+
+\begin{example}
+Sea $G=\langle g\rangle$ el grupo cíclico de orden cuatro y sea $\rho_g=\begin{pmatrix}
+0&-1\\
+1&0\end{pmatrix}$. 
+Sea $M=\R^{2\times 1}$ con la estructura de $\R[G]$-módulo dada por 
+\[
+g\cdot\begin{pmatrix}u\\v\end{pmatrix}
+=\begin{pmatrix}-v\\u\end{pmatrix}.
+\]
+Tal como hicimos en el ejemplo anterior, 
+como $\dim M=2$, si $S$ es un submódulo de $M$ tal que $\{0\}\subsetneq S\subsetneq M$, entonces $\dim S=1$. 
+Pero como $\rho_g$ no tiene autovectores reales, $M$ no tendrá submódulos de dimensión uno.  
+En consecuencia, $M$ es simple como $\R[G]$-módulo. 
+\end{example}
+
+Es posible dar una versión multiplicativa del teorema de Maschke. 
+Un grupo $G$ actúa por automorfismos en $A$ si existe
+un morfismo de grupos $G\to\Aut(A)$, es decir que se tiene una acción de $G$ en $A$ 
+tal que $g\cdot 1_A=1_A$ y $g\cdot (ab)=(g\cdot a)(g\cdot b)$ para todo $g\in G$ y $a,b\in A$. 
+
+\begin{theorem}
+Sea $K$ un grupo finito de orden $m$ que actúa por automorfismos en $V=U\times W$, donde $W$ es un subgrupo de $V$ y 
+$U$ es un subgrupo de $V$ abeliano y $K$-invariante. Si la función $u\mapsto u^m$ es biyectiva en $U$, 
+entonces existe un subgrupo normal $K$-invariante $N$ de $V$ tal que $V=U\times N$.
+\end{theorem}
+
+\begin{proof}
+Sea $\theta\colon U\times W\to U$, $(u,w)\mapsto u$. Entonces $\theta$ es un morfismo de grupos tal que 
+$\theta(u)=u$ para todo $u\in U$. Como $U$ es $K$-invariante, entonces
+$k^{-1}\cdot \theta(k\cdot v)\in U$ para todo $k\in K$ y $v\in V$. 
+Como además $K$ es finito y $U$ es abeliano, 
+queda bien definida la función
+\[
+\varphi\colon V\to U,\quad 
+v\mapsto \prod_{k\in K}k^{-1}\cdot \theta(k\cdot v).
+\]
+Veamos que $\varphi$ es un morfismo de grupos. Si $x,y\in V$, entonces
+\begin{align*}
+    \varphi(xy) &= \prod_{k\in K}k^{-1}\cdot \theta(k\cdot (xy))\\
+    &= \prod_{k\in K}k^{-1}\cdot (\theta(k\cdot x)\theta(k\cdot y))\\
+%   &= \prod_{k\in K}(k^{-1}\cdot (\theta(k\cdot x))(k^{-1}\cdot \theta(k\cdot y))\\
+    &= \prod_{k\in K}k^{-1}\cdot \theta(k\cdot x) \prod_{k\in K}k^{-1}\cdot \theta(k\cdot y)=\varphi(x)\varphi(y),
+\end{align*}
+pues $U$ es abeliano y $K$ actúa por automorfismos en $V$. 
+
+Vamos a demostrar ahora que $N=\ker\varphi$ es $K$-invariante. Si $l\in K$, entonces
+\begin{align*}
+l^{-1}\cdot\varphi(l\cdot x)&=l^{-1}\cdot\left(\prod_{k\in K}k^{-1}\cdot \theta(k\cdot (l\cdot x))\right)=\prod_{k\in K}(kl)^{-1}\cdot\theta( (kl)\cdot x)=\varphi(x),
+\end{align*}
+pues $kl$ recorre todos los elementos de $K$ si $k$ recorre todos los elementos de $K$.
+
+Nos falta demostrar que $V$ es el producto directo de $U$ y $N$. 
+Veamos primero que $U\cap N=\{1\}$. Si $u\in U$, entonces $k\cdot u\in U$ para todo $k\in K$, lo 
+que implica que $k^{-1}\cdot\theta(k\cdot u)=k^{-1}\cdot (k\cdot u)=u$. Luego $\varphi(u)=u^m$. Como por hipótesis 
+esta función es biyectiva, se concluye que $U\cap N=U\cap\ker\varphi=\{1\}$. Veamos ahora que $V\subseteq UN$, ya que
+la otra inclusión es trivial. Como $N=\ker\varphi$, entonces 
+\[
+\varphi(V)\subseteq U=\varphi(U)=\varphi(U)\varphi(N)=\varphi(UN) 
+\]
+y luego $V\subseteq (UN)N=UN$. 
+% Si $v\in V$, escribimos $v=uw$ para $u\in U$ y $w\in W$. Como 
+% $\varphi(v)=\varphi(uw)=\varphi(u)\varphi(w)=u\varphi(w)\in U$, entonces $v\in UN$. 
+Luego $V$ es el producto directo de $U$ y $N$, pues $N$ es normal en $V$.
+\end{proof}
+
+\begin{corollary}
+    Sean $p$ un primo, $K$ un grupo finito de orden coprimo con $p$ y $V$ un $p$-grupo elemental abeliano. 
+    Si $K$ actúa por automorfismos en $V$ y $U$ es un subgrupo $K$-invariante de $V$, 
+    existe un subgrupo $K$-invariante $N$ de $V$ tal que $V=U\times N$.
+\end{corollary}
+
+\begin{proof}
+Sea $m=|K|$. Como $m$ y $|U|$ son coprimos, la función 
+$u\mapsto u^m$ es biyectiva en $U$. Como $V$ es un espacio
+vectorial sobre el cuerpo $\Z/p$, tenemos que
+$V=U\times W$ para algún subgrupo $W$ de $V$. El corolario se obtiene
+entonces al aplicar el teorema anterior.
+\end{proof}
+
+Supongamos que $G$ es un grupo finito. 
+Sabemos por el teorema de Maschke que $\C[G]$ es un
+álgebra semisimple. Por el teorema de Mollien, existe $r\in\N$ y
+existen $n_1,\dots,n_r\in\N$ tales que 
+\[
+	\C[G]\simeq \prod_{i=1}^r M_{n_i}(\C),
+\]
+donde $r$ es la cantidad de módulos simples de $\C[G]$. 
+Además 
+\[
+	|G|=\dim\C[G]=\sum_{i=1}^r n_i^2.
+\]
+Dado que $\C$ es un $\C[G]$-módulo de dimensión uno, es simple. 
+Sin perder generalidad podemos suponer entonces
+que $n_1=1$. 
+
+\begin{theorem}
+	Un grupo finito tiene tantas clases de isomorfismo de simples como clases
+	de conjugación.
+\end{theorem}
+
+\begin{proof}
+    Sea $G$ un grupo finito. Como $\C[G]\simeq\prod_{i=1}^rM_{n_i}(\C)$ 
+    por el teorema de Wedderburn,
+	entonces
+	\[
+		Z(\C[G])\simeq\prod_{i=1}^rZ(M_{n_i}(\C))\simeq\C^r.
+	\]
+	En particular, $\dim Z(\C[G])=r$. Por otro lado, si $\alpha=\sum_{g\in
+	G}\lambda_gg\in Z(\C[G])$, entonces $h^{-1}\alpha h=\alpha$ para todo $h\in
+	G$. Esto implica que
+	\[
+		\sum_{g\in G}\lambda_{hgh^{-1}}g=
+		\sum_{g\in g}\lambda_g h^{-1}gh=\sum_{g\in G}\lambda_gg.
+	\]
+	Luego $\lambda_{g}=\lambda_{hgh^{-1}}$ para todo $g,h\in G$. Una base para
+	$Z(\C[G])$ está dada entonces por los elementos de la forma
+	\[
+		\sum_{g\in K}g,
+	\]
+	donde $K$ es una clase de conjugación de $G$. Luego $\dim Z(\C[G])$ es
+	igual a la cantidad de clases de conjugación de $G$.
+\end{proof}
+
+\begin{corollary}
+    Si $G$ es un grupo finito de orden $n$ con $k$ clases de conjugación y 
+    $m=(G:[G,G])$, entonces $n+3m\geq 4k$. 
+\end{corollary}
+
+\begin{proof}
+    Sabemos que $G$ tiene $k$ clases de isomorfismos de módulos simples y que exactamente 
+    $m$ son de dimensión uno. Luego $n=\sum_{i=1}^kn_i^2\geq m+4(m-k)$. 
+\end{proof}
+
+\begin{example}
+    Como el grupo $C_4$ cíclico de orden cuatro es abeliano, 
+    se tiene que $\C[C_4]\simeq\C\times\C\times\C\times\C$ como álgebras. 
+\end{example}
+
+\begin{example}
+    Vimos en el ejemplo \ref{exa:S3deg2} 
+    que $\Sym_3$ tiene una representación irreducible de grado dos. Como
+    $6=1+n_2^2+\cdots+n_k^2$, se concluye que $k=3$ y $n_2=1$. Alternativamente podríamos haber
+    obtenido $k=3$ al observar que $\Sym_3$ tiene tres clases de conjugación, de donde se sigue
+    inmediatamente que $n_1=n_2=1$ y $n_3=2$. En conclusión, 
+    \[
+    \C[\Sym_3]\simeq \C\times\C\times M_2(\C)
+    \]
+    como álgebras. 
+\end{example}
+
+\begin{proposition}
+	\label{pro:nunca_SS}
+	Sea $K$ un cuerpo. 
+	Si $G$ es un grupo infinito, entonces $K[G]$ no es semisimple.
+\end{proposition}
+
+\begin{proof}
+	Sea $A=K[G]$ y supongamos que $A$ es semisimple.  Si $I$ es el ideal de
+	aumentación de $A$, existe un ideal no nulo $J$ de $A$ tal que $A=I\oplus
+	J$. Existen entonces $e\in I$, $f\in J$ tales que $1=e+f$. Si
+	$x\in I$, entonces $x=xe+xf$ y luego $xf=x-xe\in I\cap J=\{0\}$. Como
+	entonces $x=xe$ para todo $x\in I$, en particular $e=e^2$. Análogamente
+	vemos que $f^2=f$. Además $ef=0$ pues $ef\in I\cap J=\{0\}$.  Como $I$
+	es el ideal de aumentación y $If=(Ae)f=A(ef)=0$, se concluye que $(g-1)f=0$
+	para todo $g\in G$ pues $g-1\in I$. Si suponemos que $f=\sum_{h\in
+	G}\lambda_hh$, entonces 
+	\[
+	f=gf=\sum_{h\in G}\lambda_h(gh)=\sum_{h\in
+	G}\lambda_{g^{-1}h}h.
+	\]
+	Luego $\lambda_h=\lambda_{g^{-1}h}$ para todo $g,h\in G$, una contradicción
+	pues como $f\ne 0$ la suma que define a $f$ es infinita. 
+\end{proof}

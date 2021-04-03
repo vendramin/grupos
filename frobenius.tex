@@ -1,0 +1,395 @@
+\chapter{El teorema de Frobenius}
+\label{Frobenius}
+
+% \begin{definition}
+% \index{Grupo!de Frobenius}
+% \index{Núcleo!de Frobenius}
+% \index{Complemento!de Frobenius}
+% Un \textbf{grupo de Frobenius} es un grupo $G$ que tiene un subgrupo $H$ tal que $H\cap gHg^{-1}=\{1\}$ para todo $g\not\in H$. 
+% El subgrupo $H$ se conoce como un \textbf{complemento de Frobenius} de $G$. 
+%  \end{definition}
+
+% \begin{theorem}[Frobenius]
+% \index{Teorema!de Frobenius}
+% \index{Frobenius!teorema de}
+% Sea $G$ un grupo que actúa transitivamente en un conjunto finito $X$. Si todo $g\in G\setminus\{1\}$ fija a lo sumo un punto de $X$, 
+% entonces 
+% \[
+% N=\{1\}\cup\{g\in G:g\cdot x\ne x\text{ para todo $x\in X$}\}
+% \]
+% es un subgrupo normal de $G$. 
+% \end{theorem}
+
+% \begin{proof}
+%     Sean $n=|X|$. Por hipótesis, $G=N\cup\bigcup_{x\in X}G_x$, $G_x\cap G_y=\{1\}$ si $x\ne y$ y 
+%     $N\cap G_x=\{1\}$ para todo $x\in X$. Como $G$ actúa transitivamente en $X$ y
+%     además $gG_xg^{-1}=G_{g\cdot x}$ para todo $x\in X$, todos los $G_x$ son conjugados. 
+%     Sea $H=G_x$ para algún $x\in X$. Entonces
+%     \[
+%     n|H|=|G|=|N|+n(|H|-1),
+%     \]
+%     y luego $|N|=n$. 
+    
+%     Veamos que si $\chi$ es un caracter de $H$, entonces
+%     \[
+%         \Ind_H^G\chi(g)=\begin{cases}
+%         n\chi(1) & \text{si $g=1$},\\
+%         \chi(g) & \text{si $g\in H\setminus\{1\}$},\\
+%         0 & \text{si $g\in N\setminus\{1\}$}.
+%         \end{cases}
+%     \]
+%     ...
+% \end{proof}
+
+% \begin{lemma}
+%     Si $G$ un grupo finito, entonces 
+%     \[
+%     \bigcap_{\chi\in\Irr(G)}\ker\chi=\{1\}.
+%     \]
+% \end{lemma}
+
+% \begin{proof}
+%     Sea $\eta\in\Char(G)$ y supongamos que $\Irr(G)=\{\chi_1,\dots,\chi_k\}$. Escribimos
+%     $\eta=n_1\chi_1+\cdots+n_k\chi_k$. Vamos a demostrar que
+%     \[
+%     \ker\eta=\bigcap_{i=1}^k\{\ker\chi_i:n_i>0\}.
+%     \]
+%     Demostremos la inclusión no trivial. Si $g\in\ker\eta$, entonces $\eta(g)=\eta(1)$, es decir
+%     $\sum_{i=1}^kn_i\chi_i(g)=\sum_{i=1}^kn_i\chi_i(1)\in\Z$. Si $|\chi_i(g)|<\chi_i(1)$ para algún $i$ tal que $n_i\ne 0$, entonces
+%     \[
+%     \left|\sum_{i=1}^kn_i\chi_i(g)\right|\leq\sum_{i=1}^kn_i|\chi_i(g)|<\sum_{i=1}^kn_i\chi_i(1)=\sum_{i=1}^kn_i\chi_i(g),
+%     \]
+%     una contradicción. Luego $\chi_i(g)=\chi_i(1)$ para todo $i\in\{1,\dots,k\}$ tal que $n_i\ne 0$.
+    
+%     Sea ahora $\rho=\sum_{i=1}^k\chi_i(1)\chi_i$. Entonces
+%     \[
+%     \ker\rho=\bigcap_{i=1}^k\{\ker\chi_i:n_i>0\}=\bigcap_{i=1}^k\ker\chi_i.
+%     \]
+    
+% \end{proof}
+
+Recordemos que si $p$ es un número primo, entonces
+las unidades $(\Z/p)^{\times}$ 
+de $\Z/p$ forman un grupo con la multiplicación. Más aún, 
+$(\Z/p)^{\times}$ 
+es un grupo ciclico de orden $p-1$. 
+
+Sean $p$ y $q$ números primos tales que $q$ divide a $p-1$ y sea
+\[
+G=\left\{\begin{pmatrix}
+x & y\\
+0 & 1
+\end{pmatrix}
+:x\in(\Z/p)^\times,\,y\in\Z/p\right\}.
+\]
+Es sencillo verificar que $G$ es un grupo con la multiplicación usual de matrices y que
+$|G|=p(p-1)$. Sea $z\in\Z$ un elemento de orden $q$ módulo $p$ y sean  
+\[
+a=\begin{pmatrix}
+1&1\\
+0&1
+\end{pmatrix},
+\quad
+b=\begin{pmatrix}
+z&1\\
+0&1
+\end{pmatrix},
+\quad
+H=\langle a,b\rangle.
+\]
+Un cálculo directo muestra
+que 
+\begin{equation}
+\label{eq:pq}
+a^p=b^q=\begin{pmatrix}
+1&0\\
+0&1
+\end{pmatrix},
+\quad
+bab^{-1}=\begin{pmatrix}
+1&z\\
+0&1
+\end{pmatrix}
+=a^z.
+\end{equation}
+Todo elemento de $H$ es de la forma $a^ib^j$ para $i\in\{0,\dots,p-1\}$ y $j\in\{0,\dots,q-1\}$. 
+Luego $|H|=pq$ y además las relaciones~\eqref{eq:pq} nos permiten 
+calcular completamente la tabla de multiplicación de $G$. 
+
+\begin{exercise}
+Sean $p$ y $q$ dos primos tales que $q\mid p-1$. Sean $u,v\in\Z$ de orden $q$ módulo $p$. 
+Demuestre que
+\[
+\langle a,b:a^p=b^q=1,bab=a^u\rangle
+\simeq \langle a,b:a^p=b^q=1,bab=a^v\rangle.
+\]
+\end{exercise}
+
+El grupo  
+\[
+F_{p,q}=\langle a,b:a^p=b^q=1,bab=a^u\rangle,
+\]
+donde $u\in\Z$ tiene orden $q$ módulo $p$, 
+es un caso particular de 
+\emph{grupo de Frobenius}. 
+
+\begin{proposition}
+    Sean $p$ y $q$ números primos tales que $p>q$ y 
+    sea $G$ un grupo de orden $pq$. Entonces $G$ es abeliano o bien 
+    $q\mid p-1$ y 
+    $G\simeq F_{p,q}$.
+\end{proposition}
+
+\begin{proof}
+    Supongamos que $G$ es no abeliano. Los teoremas de Sylow implican que 
+    $q$ divide a $p-1$ y que además 
+    existe un único $p$-subgrupo de Sylow $P$ de $G$. Sean $a,b\in G$ tales que
+    $P=\langle a\rangle\simeq\Z/p$ y $G/P=\langle bP\rangle\simeq\Z/q$. Por el teorema
+    de Lagrange, $G=\langle a,b\rangle$. Calculemos el orden de $b^q$. Como 
+    $G$ no es cíclico (pues es no abeliano) y $b^q\in P$, se concluye que $|b^q|=q$. 
+    Como $P$ es normal en $G$, 
+    $bab^{-1}\in P$ y entonces $bab^{-1}=a^z$ para algún $z\in\Z$. Luego $b^qab^{-q}=a^{z^q}$, lo que
+    implica que $z^q\equiv1\bmod p$. El orden de $u$ en $(\Z/p)^{\times}$ divide entonces al primo $q$ y 
+    luego es igual a $q$, pues de lo contrario, $u=1$ y entonces $bab^{-1}=a$, lo que implicaría que $G$ es abeliano.
+    En conclusion, $G\simeq F_{p,q}$. 
+\end{proof}
+
+La proposición anterior nos permite demostrar, por ejemplo, 
+que todo grupo de orden 15 es abeliano
+y que, salvo isomorfismos, $\Z/20$ y 
+$F_{5,4}$ son los 
+únicos grupos de orden 20.
+
+\begin{definition}
+  \index{Frobenius!complemento de}
+  \index{Frobenius!núcleo de}
+  \index{Frobenius!grupo de}
+  Diremos que un grupo $G$ es un 
+  \textbf{grupo de Frobenius} si $G$ 
+  tiene un subgrupo propio no trivial $H$ tal que $H\cap
+  xHx^{-1}=\{1\}$ para todo $x\in G\setminus H$. En este caso, el
+  subgrupo $H$ se llama \textbf{complemento de Frobenius}.
+\end{definition}
+
+\begin{theorem}[Frobenius]
+  \label{theorem:Frobenius}
+  \index{Frobenius!Teorema de}
+  \index{Teorema!de Frobenius}
+  Sea $G$ un grupo de Frobenius con complemento $H$. Entonces
+  \[
+	N=\left( G\setminus\bigcup_{x\in G}xHx^{-1}\right)\cup\{1\}
+  \]
+  es un subgrupo normal de $G$.
+\end{theorem}
+
+\begin{proof}
+  Para cada $\chi\in\Irr(H)$, $\chi\ne1_H$ definimos
+  $\alpha=\chi-\chi(1)1_H\in\cf(H)$, donde $1_H$ denota el caracter trivial de $H$. 
+
+  Demostremos que $(\alpha^G)_H=\alpha$.
+  Primero, $\alpha^G(1)=\alpha(1)=0$. Si $h\in H\setminus\{1\}$, entonces, gracias al corolario~\ref{cor:induccion}, 
+  \[
+    \alpha^G(h)=\frac{1}{|H|}\sum_{\substack{x\in G\\x^{-1}hx\in H}}\alpha(x^{-1}hx)
+    =\frac{1}{|H|}\sum_{x\in H}\alpha(h)=\alpha(h),
+  \]
+  pues si $x\not\in H$, entonces, como $x^{-1}hx\in H$, se tiene que $h\in H\cap xHx^{-1}=\{1\}$.
+
+  Por la reciprocidad de Frobenius, 
+  \begin{equation}
+    \label{eq:<a,a>=1+chi2}
+    \langle\alpha^G,\alpha^G\rangle
+    =\langle\alpha,(\alpha^G)_H\rangle=\langle\alpha,\alpha\rangle
+    =1+\chi(1)^2.
+  \end{equation}
+  Nuevamente por la reciprocidad de Frobenius, 
+  \[
+  \langle\alpha^G,1_G\rangle
+  =\langle\alpha,(1_G)_H\rangle
+  =\langle\alpha,1_H\rangle
+  =\langle\chi-\chi(1)1_H,1_H\rangle
+  =-\chi(1),
+  \]
+  donde $1_G$ denota al caracter trivial de $G$. Si escribimos
+  \[
+  \alpha^G=\sum_{\eta\in\Irr(G)}\langle\alpha^G,\eta\rangle\eta
+  =\langle\alpha^G,1_G\rangle1_G+\underbrace{\sum_{\substack{1_G\ne\eta\\\eta\in\Irr(G)}}\langle\alpha^G,\eta\rangle\eta}_{\phi}
+  \]
+  entonces $\alpha^G=-\chi(1)1_G+\phi$, donde $\phi$ es una 
+  combinación lineal entera de caracteres irreducibles no triviales de $G$. 
+  Calculamos además
+  \[
+  1+\chi(1)^2=\langle\alpha^G,\alpha^G\rangle
+  =\langle\phi-\chi(1)1_G,\phi-\chi(1)1_G\rangle
+  =\langle\phi,\phi\rangle+\chi(1)^2
+  \]
+  y luego $\langle\phi,\phi\rangle=1$. 
+  
+  \begin{claim}
+  Si $\eta\in\Irr(G)$ es tal que $\eta\ne 1_G$, entonces $\langle\alpha^G,\eta\rangle\in\Z$. 
+  \end{claim}
+  
+  En efecto, por la reciprocidad de Frobenius, $\langle\alpha^G,\eta\rangle=\langle\alpha,\eta_H\rangle$. 
+  Si descomponemos a $\eta_H$ en irreducibles de $H$, digamos
+  \[
+  \eta_H=m_11_H+m_2\chi+m_3\theta_3+\cdots+m_t\theta_t
+  \]
+  para ciertos $m_1,m_2,\dots,m_t\in\N_{0}$, 
+  entonces, como
+  \begin{align*}
+  \langle\alpha,1_H\rangle=\langle\chi-\chi(1)1_H,1_H\rangle=-\chi(1),
+  &&\langle\alpha,\chi\rangle=\langle\chi-\chi(1)1_H,\chi\rangle=1,
+  \end{align*}
+  y además 
+  \[
+  \langle\alpha,\theta_j\rangle=\langle\chi-\chi(1)1_H,\theta_j\rangle=0
+  \]
+  para todo $j\in\{3,\dots,t\}$, se concluye que
+  \[
+  \langle\alpha^G,\eta\rangle=-m_1\chi(1)+m_2\in\Z.
+  \]
+  
+  \begin{claim}
+  $\phi\in\Irr(G)$.
+  \end{claim}
+  
+  Como $\langle\alpha^G,\eta\rangle\in\Z$ para todo $\eta\in\Irr(G)$ tal que $\eta\ne 1_G$ y además 
+  \[
+  1=\langle\phi,\phi\rangle
+  =\sum_{\substack{\eta,\theta\in\Irr(G)\\\eta,\theta\ne1_G}}\langle\alpha^G,\eta\rangle\langle\alpha^G,\theta\rangle\langle\eta,\theta\rangle
+  =\sum_{\substack{\eta\ne 1_G\\\eta\in\Irr(G)}}\langle\alpha^G,\eta\rangle^2,
+  \]
+  entonces existe un único $\eta\in\Irr(G)$ tal que 
+  $\langle\alpha^G,\eta\rangle^2=1$ y el resto de los productos es cero, es decir 
+  $\alpha^G=\pm\eta$ para un cierto $\eta\in\Irr(G)$. Como además 
+  \[
+  \chi-\chi(1)1_H=\alpha=(\alpha^G)_H=(\phi-\chi(1)1_G)_H=\phi_H-\chi(1)1_H,
+  \]
+  se tiene que $\phi(1)=\phi_H(1)=\chi(1)\in\N$. Luego $\phi\in\Irr(G)$. 
+
+  \medskip
+  Observemos que hemos demostrado que si $\chi\in\Irr(H)$ es tal que $\chi\ne 1_H$, entonces
+  existe $\phi_\chi\in\Irr(G)$ tal que $(\phi_\chi)_H=\chi$. 
+  
+  \medskip
+  Vamos a demostrar que $N$ es igual a
+  \[
+	M=\bigcap_{\substack{\chi\in\Irr(H)\\\chi\ne1_H}}\ker\phi_{\chi}.
+  \]
+
+  Demostremos primero que $N\subseteq M$. 
+  Sea $n\in N\setminus\{1\}$ y sea $\chi\in\Irr(H)\setminus\{1_H\}$. Como $n$ no pertenece
+  a ningún conjugado de $H$, 
+  \[
+	\alpha^G(n)=\frac{1}{|H|}\sum_{\substack{x\in G\\x^{-1}nx\in H}}\chi(x^{-1}nx)=0
+  \]
+  pues como $n\in N$ el conjunto $\{x\in G:x^{-1}nx\in H\}$ es vacío. Como entonces 
+  \[
+  0=\alpha^G(n)
+  =\phi_{\chi}(n)-\chi(1)=\phi_{\chi}(n)-\phi_{\chi}(1),
+  \]
+  se concluye que $n\in\ker\phi_{\chi}$. 
+  
+  Demostremos ahora que $M\subseteq N$. 
+  Sea $h\in M\cap H$ y sea $\chi\in\Irr(H)\setminus\{1_H\}$. Entonces
+  \[
+    \phi_{\chi}(h)-\chi(1)=\alpha^G(h)=\alpha(h)=\chi(h)-\chi(1),
+  \]
+  y luego $h\in\ker\chi$ pues 
+  \[
+    \chi(h)=\phi_{\chi}(h)=\phi_{\chi}(1)=\chi(1).
+  \]
+  Por lo tanto $h\in\cap_{\chi}\ker\chi=\{1\}$, que que vimos en la fórmula~\eqref{eq:kernels} que
+  la intersección de los núcleos de los irreducibles es trivial. Demostremos ahora que $M\cap
+  xHx^{-1}=\{1\}$ para todo $x\in G$. Sean $x\in G$ y $m\in M\cap xHx^{-1}$. Como
+  $m=xhx^{-1}$ para algún $h\in H$, $x^{-1}mx\in H\cap M=\{1\}$.  Esto implica que
+  $m=1$.
+\end{proof}
+
+No se conoce una demostración del teorema de Frobenius que no use teoría de caracteres. 
+
+\begin{definition}
+  \index{Frobenius!núcleo de}
+  Sea $G$ un grupo de Frobenius. El subgrupo normal
+  $N$ construido en el teorema de Frobenius se llama \textbf{núcleo de
+  Frobenius}.
+\end{definition}
+
+\begin{corollary}
+  Sea $G$ un grupo de Frobenius con complemento $H$. 
+  Entonces existe un subgrupo normal $N$ de $G$ tal que
+  $G=HN$, $H\cap N=\{1\}$.
+\end{corollary}
+
+\begin{proof}
+  La existencia del subgrupo normal $N$ está garantizada por el
+  teorema de Frobenius. Demostremos que $H\subseteq N_H(H)$. Si $h\in
+  H\setminus\{1\}$ y $g\in G$ son tales que $ghg^{-1}\in H$, entonces $h\in
+  g^{-1}Hg\cap H$ y luego $g\in H$. Como entonces $H=N_G(H)$, el subgrupo $H$
+  tiene $(G:H)$ conjugados y luego $|G|=|H||N|$ pues 
+  \[
+    |N|=|G|-(G:H)(|H|-1)=(G:H).
+  \]
+  Como $N\cap H=\{1\}$, entonces 
+  \[
+  |HN|=|N||H|/|H\cap N|=|N||H|=|G|
+  \]
+  y luego $G=NH$.
+\end{proof}
+
+\begin{corollary}[Teorema de Frobenius, versión combinatoria]
+  \label{corollary:Frobenius_combinatorio}
+  \index{Frobenius!Teorema de}
+  \index{Teorema!de Frobenius}
+  Sea $X$ un conjunto finito y sea $G$ un grupo que actúa transitivamente en
+  $X$. Supongamos que todo $g\in G\setminus\{1\}$ fija a lo sumo un punto de
+  $X$. El conjunto $N$ formado por la identidad y las permutaciones que mueven
+  todos los puntos de $X$ es un subgrupo de $G$.
+\end{corollary}
+
+\begin{proof}
+  Sea $x\in X$ y sea $H=G_x$. Veamos que si $g\in G\setminus H$ entonces $H\cap
+  gHg^{-1}=1$. Si $h\in H\cap gHg^{-1}$ entonces $h\cdot x=x$ y $g^{-1}hg\cdot
+  x=x$. Como $g\cdot x\ne x$, entonces $h$ fija dos puntos de $X$. Esto implica
+  que $h=1$ (pues todo elemento no trivial fija a lo sumo un punto de $X$). 
+
+  Por el teorema~\ref{theorem:Frobenius}, el conjunto
+  \[
+    N=\left(G\setminus\bigcup_{g\in G}gHg^{-1}\right)\cup\{1\}
+  \]
+  es un subgrupo de $G$. Veamos cómo son los elementos de $N$: Si
+  $h\in\cup_{g\in G}gHg^{-1}$ entonces existe $g\in G$ tal que $g^{-1}hg\in H$,
+  es decir $(g^{-1}hg)\cdot x=x$ o quivalentemente $h\in G_{g\cdot x}$. Luego,
+  a excepción de la identidad, los elementos de $N$ son los elementos de $G$
+  que mueven algún punto de $X$.
+\end{proof}
+
+\begin{example}
+  Sea $F$ un cuerpo finito y sea $G$ el grupo de funciones $f\colon G\to G$ de
+  la forma $f(x)=ax+b$, $a,b\in F$ con $a\ne0$. El grupo $G$ actúa en $F$ y toda
+  $f\ne\id$ fija a lo sumo un punto de $F$ pues 
+  \[
+	x=f(x)=ax+b\implies x=1-(b/a).
+  \]
+  En este caso, $N=\{f:f(x)=x+b\,,b\in F\}$ que es
+  un subgrupo de $G$.
+\end{example}
+
+\begin{exercise}
+  Demuestre que el teorema~\ref{theorem:Frobenius} puede deducirse del
+  corolario~\ref{corollary:Frobenius_combinatorio}.
+\end{exercise}
+
+
+% Wielandt 8.5.4
+% 8.5.6 para ver algo de grupos de permutaciones
+% 7.1 para ejemplo H(q)
+% 10.5.6 (Thompson) N es nilpotente, se usa 10.5.4 
+
+En su tesis doctoral Thompson demostró el siguiente resultado, que había sido conjeturado por Frobenius:
+
+\begin{theorem}[Thompson]
+Sea $G$ un grupo de Frobenius. Si $N$ es el núcleo de Frobenius, entonces $N$ es nilpotente. 
+\end{theorem}
+
+La demostración puede consultarse en el capítulo 6 
+de~\cite{MR2426855}, más precisamente en el teorema 6.24. 

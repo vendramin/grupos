@@ -1,0 +1,296 @@
+\chapter{Un teorema de Hurwitz}
+
+\index{Identidad!de Fibonacci}
+\index{Identidad!de Euler}
+\index{Identidad!de Hamilton}
+En esta sección demostraremos un teorema de Hurwitz sobre el producto de sumas
+de cuadrados. Sabemos que $x^2y^2=(xy)^2$ vale para todo $x,y\in\C$. Fibonnaci
+descrubrió una identidad un poquito más interesante:
+\[
+	(x_1^2+x_2^2)(y_1^2+y_2^2)=(x_1y_1-x_2y_2)^2+(x_1y_2-x_2y_1)^2.
+\]
+Euler y Hamilton, de forma independiente, descubrieron una identidad similar
+para cuatro cuadrados:
+\[
+	(x_1^2+x_2^2+x_3^2+x_4^2)(y_1^2+y_2^2+y_3^2+y_4^2)=z_1^2+z_2^2+z_3^2+z_4^2,
+\]
+donde
+\begin{equation}
+\label{eq:Hamilton}
+\begin{aligned}
+	& z_1=x_1y_1-x_2y_2-x_3y_3-x_4y_4, && 
+	z_2=x_2y_1+x_1y_2-x_4y_3+x_3y_4,\\
+	&z_3=x_3y_1+x_4y_2+x_1y_3-x_2y_4, && 
+	z_4=x_4y_1-x_3y_2+x_2y_3-x_1y_4.
+\end{aligned}
+\end{equation}
+Cayley descrubrió una identidad similar para sumas de ocho cuadrados. Es
+natural preguntarse si existen otras identidades de este estilo. Hurwitz
+demostró que esto no es posible. Veremos una demostración de Eckmann que
+utiliza representaciones de grupos.  Vamos a necesitar estudiar algunas
+propiedades de un cierto grupo finito:
+
+\begin{lemma}
+	Sea $n>2$ un número par. Supongamos que existe un grupo $G$ con generadores
+	$\epsilon,x_1,\dots,x_{n-1}$ y relaciones
+	\[
+		x_1^2=\cdots=x_{n-1}^2=\epsilon\ne1,\quad
+		\epsilon^2=1,\quad
+		[x_i,x_j]=\epsilon\quad\text{si}\quad i\ne j.
+	\]
+	Entonces valen las siguientes afirmaciones:
+	\begin{enumerate}
+		\item $|G|=2^n$.
+		\item $[G,G]=\{1,\epsilon\}$.
+		\item Si $g\not\in Z(G)$, entonces la clase de conjugación de $g$ es $\{g,\epsilon g\}$.
+		\item $Z(G)=\{1,\epsilon,x_1\cdots x_{n-1},\epsilon x_1\cdots x_{n-1}\}$. 
+		\item $G$ tiene $2^{n-1}+2$ clases de conjugación.
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+%	Primero observemos que todo elemento de $G$ puede escribirse como
+%	\[
+%		\epsilon^{k_0}x_1^{k_1}\cdots x_{n-1}^{k_{n-1}}
+%	\]
+%	para algunos $k_0,k_1,\dots,k_{n-1}\in\{0,1\}$. 
+	Primero demostramos las dos primeras afirmaciones. 
+	Observemos que $\epsilon\in Z(G)$ pues $\epsilon=x_i^2$ para todo
+	$i\in\{1,\dots,n-1\}$. Como $n-1>2$, $[x_1,x_2]=\epsilon$ y luego
+	$\epsilon\in [G,G]$. Además $G/\langle\epsilon\rangle$ es abeliano y luego
+	$[G,G]=\langle \epsilon\rangle$. Como $G/[G,G]$ es elemental abeliano de
+	orden $2^{n-1}$, se sigue que $|G|=2^n$. 
+
+	Demostremos ahora la tercera afirmación. Sea $g\in G\setminus Z(G)$ y sea
+	$x\in G$ tal que $[x,g]\ne 1$. Entonces $[x,g]=\epsilon$ y luego
+	$xgx^{-1}=\epsilon g$. 
+
+	Demostremos la cuarta afirmación. Sea $g\in G$ y escribamos
+	\[
+		g=\epsilon^{a_0}x_1^{a_1}\cdots x_{n-1}^{a_{n-1}},
+	\]
+	donde $a_j\in\{0,1\}$ para todo $j\in\{1,\dots,n-1\}$. Si $g\in Z(G)$ entonces $gx_i=x_ig$ para todo $i\in\{1,\dots,n-1\}$. Luego
+	$g\in Z(G)$ si y sólo si 
+	\[
+		\epsilon^{a_0}x_1^{a_1}\cdots x_{n-1}^{a_{n-1}}=x_i(\epsilon^{a_0}x_1^{a_1}\cdots x_{n-1}^{a_{n-1}})x_i^{-1}.
+	\]
+	Como $x_ix_j^{a_j}x_i=\epsilon^{a_j}x_j^{a_j}$ si $i\ne j$ y $\epsilon\in Z(G)$, el elemento $g$ es central si y sólo si 
+	\[
+		\sum_{\substack{j=1\\j\ne i}}^{n-1}a_j\equiv 0\bmod 2
+	\]
+	para todo $i\in\{1,\dots,n-1\}$. En particular, 
+	\[
+	\sum_{j\ne i}a_j\equiv \sum_{j\ne k}a_j
+	\]
+	para todo $k\ne i$, y en consecuencia $a_i\equiv a_k\bmod 2$ para todo
+	$i,k\in\{1,\dots,n-1\}$. Luego $a_1=\cdots=a_{n-1}$ y entonces 
+	$Z(G)=\{1,x_1\cdots x_{n-1},\epsilon,\epsilon x_1\cdots
+	x_{n-1}\}$. 
+	
+	La última afirmación es entonces consecuencia de la ecuación de clases. Como
+	\[
+		|G|=2^n=4+\frac12(2^n-4),
+	\]
+	se concluye que $G$ tiene $2^{n-1}+2$ clases de conjugación.
+\end{proof}
+
+\begin{example}
+	Las fórmulas~\eqref{eq:Hamilton} dan una representación del grupo $G$ del
+	lema anterior. Escribamos a cada $z_i$ como
+	$z_i=\sum_{k=1}^4a_{1k}(x_1,\dots,x_4)y_k$. Sea $A$ la matriz tal que
+	$A_{ij}=a_{ij}(x_1,\dots,x_4)$, es decir
+	\[
+		A=\begin{pmatrix}
+			x_1 & -x_2 & -x_3 & -x_4\\
+			x_2 & x_1 & -x_4 & x_3\\
+			x_3 & x_4 & x_1 & -x_2\\
+			x_4 & -x_3 & x_2 & -x_1
+		\end{pmatrix}
+	\]
+	La matriz $A$ puede escribirse como $A=A_1x_1+A_2x_2+A_3x_3+A_4x_4$, donde $A_1=I$ y 
+	\begin{align*}
+		A_2=\begin{pmatrix}
+			& -1\\
+			1 \\
+			&&&-1\\
+			&&1
+		\end{pmatrix},
+		&&
+		A_3=\begin{pmatrix}
+			&& -1 \\
+			&&&1 & \\
+			1\\
+			&-1
+		  \end{pmatrix},
+		  &&
+		  A_4=\begin{pmatrix}
+			&&&-1\\
+			&&-1\\
+			&1\\
+			1
+		\end{pmatrix}.
+	\end{align*}
+	Para cada $i\in\{1,\dots,4\}$ sea $B_i=A_4^TA_1$. Entonces $B_i=-B_i^T$ y $B_i^2=-I$ 
+	para todo $i$ y además $B_iB_j=-B_jB_i$ para todo $i\ne j$. 
+	El grupo generado por $B_1,B_2,B_3$ está formado por elementos de la forma
+	\[
+		\pm B_1^{k_1}B_2^{k_2}B_3^{k_3}
+	\]
+	para $k_j\in\{0,1\}$ y luego tiene orden $2^3$. 
+	La función 
+	$G\to\langle B_1,B_2,B_3\rangle$,
+	\[
+		x_1\mapsto B_1,\quad
+		x_2\mapsto B_2,\quad
+		x_3\mapsto B_3 
+	\]
+	se extiende entonces a un isomorfismo de grupos.
+\end{example}
+
+\begin{theorem}[Hurwitz]
+	\index{Teorema!de Hurwitz}
+	Si existe una identidad 
+	\begin{equation}
+		\label{eq:Hurwitz}
+		(x_1^2+\cdots+x_n^2)(y_1^2+\cdots+y_n^2)=z_1^2+\cdots+z_n^2,
+	\end{equation}
+	donde los $x_j$ y los $y_j$ son números complejos y las $z_k$ son funciones
+	bilineales en los $x_j$ y los $y_j$, entonces $n\in\{1,2,4,8\}$.
+\end{theorem}
+
+\begin{proof}
+	Sin perder generalidad podemos suponer que $n>2$.  Para cada
+	$i\in\{1,\dots,n\}$ escribimos 
+	\[
+		z_i=\sum_{k=1}^n a_{ik}(x_1,\dots,x_n)y_k,
+	\]
+	donde las $a_{ik}$ son funciones lineales. Entonces
+	\[
+		z_i^2=\sum_{k,l=1}^na_{ik}(x_1,\dots,x_n)a_{il}(x_1,\dots,x_n)y_ky_l
+	\]
+	para todo $i\in\{1,\dots,n\}$.  Si usamos estas expresiones para los $z_i$
+	en~\eqref{eq:Hurwitz} y comparamos coeficientes obtenemos
+	\begin{equation}
+		\label{eq:delta}
+		\sum_{i=1}^n a_{ik}(x_1,\dots,x_n)a_{il}(x_1,\dots,x_n)=\delta_{k,l}(x_1^2+\cdots+x_n^2),
+	\end{equation}
+	donde $\delta_{k,l}$ es la función delta de Kronecker. Escribamos esta
+	última expresión matricialmente. Para eso, 
+	sea $A$ la matriz de $n\times n$ dada por
+	\[
+	A_{ij}=a_{ij}(x_1,\dots,x_n).
+	\]
+	Entonces 
+	\begin{equation}
+		\label{eq:AAT}
+		AA^T=(x_1^2+\cdots+x_n^2)I,
+	\end{equation}
+	donde $I$ es la matriz identidad de $n\times n$ pues 
+	\[
+		(AA^T)_{kl}=\sum_{i=1}^na_{ki}(x_1,\dots,x_n)a_{li}(x_1,\dots,x_n)=\delta_{kl}(x_1^2+\cdots+x_n^2)
+	\]
+	por la fórmula~\eqref{eq:delta}. Como cada $a_{ij}(x_1,\dots,x_n)$ es una función lineal, 
+	existen escalares $\alpha_{ij1},\dots,a_{ijn}\in\C$ tales que
+	\[
+		a_{ij}(x_1,\dots,x_n)=\alpha_{ij1}x_1+\cdots+\alpha_{ijn}x_n.
+	\]
+	Podemos escribir entonces 
+	\[
+		A=A_1x_1+\cdots+A_nx_n,
+	\]
+	donde cada $A_k$ es la matriz $(A_k)_{ij}=\alpha_{ijk}$. La fórmula~\eqref{eq:AAT} queda entonces
+	\[
+		\sum_{i=1}^n\sum_{j=1}^nA_iA_j^Tx_ix_j=(x_1^2+\cdots+x_n^2)I.
+	\]
+	Luego 
+	\begin{equation}
+		\label{eq:condiciones}
+		A_iA_j^T+A_jA_i^T=0\quad i\ne j,\quad
+		A_iA_i^T=I.
+	\end{equation}
+	Queremos entonces encontrar $n$ matrices complejas de $n\times n$ que
+	cumplan las condiciones~\eqref{eq:condiciones}. Para cada $i\in\{1,\dots,n\}$ sea 
+	$B_i=A_n^TA_i$. Entonces~\eqref{eq:condiciones} queda ahora 
+	\[
+		B_iB_j^T+B_jB_i^T=0\quad i\ne j,\quad
+		B_iB_i^T=I,\quad
+		B_n=I.
+	\]
+	Al poner $j=n$ en la primera ecuación obtenemos que $B_i=-B_i^T$ vale para
+	todo $i\in\{1,\dots,n-1\}$ y luego $B_iB_j=-B_jB_i$ para todo
+	$i,j\in\{1,\dots,n-1\}$. 
+
+	Afirmamos que $n$ es par. De hecho, al calcular el determinante de
+	$B_iB_j=-B_jB_i$ obtenemos $\det(B_iB_j)=(-1)^n\det(B_jB_i)$ y luego $n$ es
+	par pues $1=(-1)^n$.
+
+	
+	Si existe una solución a~\ref{eq:Hurwitz}, entonces se tiene una
+	representación fiel del grupo $G$ del lema anterior (y en particular, este
+	grupo existe). Como $G/[G,G]$ tiene orden $2^{n-1}$, $G$ admite $2^{n-1}$
+	representaciones de grado uno. Como $G$ tiene $2^{n-1}+2$ clases de
+	conjugación, $G$ admite dos representaciones irreducibles de grados $f_1>1$
+	y $f_2>1$ respectivamente. Además 
+	\[
+		2^n=|G|=\underbrace{1+\cdots+1}_{2^{n-1}}+f_1^2+f_2^2=2^{n-1}+f_1^2+f_2^2
+	\]
+	implica que $f_1=f_2=2^{\frac{n-2}{2}}>1$. Nuestra representación de
+	$G$ no contiene subrepresentaciones de grado uno (pues en esta
+	representación $\epsilon$ debería representarse como $-I$ y en las
+	representaciones de grado uno $\epsilon$ es trivial porque
+	$\epsilon\in[G,G]$). Luego $2^{\frac{n-2}{2}}$ divide a $n$. Al escribir
+	$n=2^ab$ con $a\geq 1$ y $b$ un número impar, tenemos que
+	$\frac{n-2}{2}\leq a$ y luego $n\in\{4,8\}$ pues $2^a\leq n\leq 2a+2$. 
+\end{proof}
+
+Veamos una aplicación. 
+
+\begin{theorem}
+	Sea $V$ un espacio vectorial real con producto interno tal que $\dim
+	V=n\geq3$. Si existe una función $V\times V\to\R$, $(v,w)\mapsto v\times
+	w$, bilineal tal que $v\times w$ es ortogonal a $v$ y a $w$ y además 
+	\[
+		\|v\times w\|^2=\|v\|^2\|w\|^2-\langle v,w\rangle^2,
+	\]
+	donde $\|v\|^2=\langle v,v\rangle$, entonces $n\in\{3,7\}$. 
+\end{theorem}
+
+\begin{proof}
+	Sea $W=V\oplus\R$ con el producto escalar 
+	\[
+		\langle (v_1,r_1),(v_2,r_2)\rangle = \langle v_1,v_2\rangle+r_1r_2.
+	\]
+	Primero observemos que
+	\begin{align*}
+		\langle v_1\times &v_2+r_1v_2+r_2v_1,v_1\times v_2+r_1v_2+r_2v_1\rangle\\
+		&=\|v_1\times v_2\|^2+r_1^2\|v_2\|^2+2r_1r_2\langle v_1,v_2\rangle+r_2^2\|v_1\|^2.
+	\end{align*}
+	Luego 
+	\begin{align*}
+		(\|v_1\|^2+r_1^2)&(\|v_2\|^2+r_2)\\
+		&= \|v_1\|^2\|v_2\|^2+r_2^2\|v_1\|^2+r_1^2\|v_2\|^2+r_1^2r_2^2\\
+		&=\|v_1\times v_2+r_1v_1+r_2v_2\|^2-2r_1r_2\langle v_1,v_2\rangle+\langle v_1,v_2\rangle^2+r_1^2r_2^2\\
+		&=\|v_1\times v_2+r_1v_1+r_2v_2\|^2+(\langle v_1,v_2\rangle-r_1r_2)^2\\
+		&=z_1^2+\cdots+z_{n+1}^2,
+	\end{align*}
+	donde las $z_k$ son funciones bilineales en $(v_1,r_1)$ y $(v_2,r_2)$. El teorema de Hurwitz implica
+	entonces que $n+1\in\{4,8\}$ y luego $n\in\{3,7\}$.
+\end{proof}
+
+Si en el teorema anterior $\dim V=3$, el resultado nos da el producto vectorial usual. Si en cambio $\dim V=7$, 
+sea 
+\[
+	W=\{(v,k,w):v,w\in V,k\in\R\}
+\]
+con el producto interno dado por
+\[
+	\langle (v_1,k_1,w_1),(v_2,k_2,w_2)\rangle = \langle v_1,v_2\rangle+k_1k_2+\langle w_1,w_2\rangle.
+\]
+Queda como ejercicio demostrar que la operación
+\begin{multline*}
+	(v_1,k_1,w_1)\times (v_2,k_2,w_2)\\
+	=(k_1w_2-k_2w_1+v_1\times v_2-w_1\times w_2,
+	\\-\langle v_1,w_2\rangle+\langle v_2,w_1\rangle, 
+	k_2v_1-k_1v_2-v_1\times w_2-w_1\times v_2)
+\end{multline*}
+cumple las propiedades del teorema.

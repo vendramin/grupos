@@ -1,0 +1,662 @@
+\chapter{El teorema de Wedderburn}
+
+	\index{Álgebra}
+	\index{Álgebra!asociativa}
+	Un espacio vectorial $A$ sobre un cuerpo $K$ es un \textbf{algebra} sobre $K$
+	(o una $K$-álgebra) si posee una multiplicación asociativa $A\times A\to A$,
+	$(a,b)\mapsto ab$, tal que
+	$(\lambda a+\mu b)c=\lambda(ac)+\mu(bc)$ y 
+	$a(\lambda b+\mu c)=\lambda(ab)+\mu(ac)$ 
+	para todo $a,b,c\in A$ y $\lambda,\mu\in K$. Existe además un 
+	elemento $1_A\in A$ tal que $1_Aa=a1_A=a$
+	para todo $a\in A$.
+
+\index{Álgebra!conmutativa}
+Un álgebra $A$ se dirá \textbf{conmutativa} si $ab=ba$ para todo $a,b\in A$. 
+
+\index{Álgebra!dimensión}
+La \textbf{dimensión} de un álgebra $A$ es la dimensión de $A$ como $K$-espacio
+vectorial. Justamente esta es quizá una de las claves de la definición, 
+un álgebra es en particular un espacio vectorial y cuando sea necesario podremos 
+utilizar argumentos que involucren el concepto de dimensión. 
+
+\begin{example}
+	Todo cuerpo $K$ es una $K$-álgebra. 
+\end{example}
+
+\begin{example}
+\index{Álgebra!de polinomios}
+	Si $K$ es un cuerpo, $K[X]$ es una $K$-álgebra. 
+\end{example}
+
+Similarmente, el anillo de polinomios $K[X,Y]$ y el anillo $K[[X]]$ de series de potencias son ejemplos de álgebras sobre el cuerpo $K$. 
+
+\begin{example}
+\index{Álgebra!de matrices}
+	Si $A$ es un álgebra, entonces $M_n(A)$ es un álgebra. 
+\end{example}
+
+\begin{example}
+El conjunto de funciones continuas $[0,1]\to\R$ es un álgebra sobre $\R$ con las operaciones usuales, $(f+g)(x)=f(x)+g(x)$, $(fg)(x)=f(x)g(x)$. 
+\end{example}
+
+\index{Morfismo!de álgebras}
+Un \textbf{morfismo de álgebras} es un morfismo de anillos $f\colon A\to B$ que es además una transformación lineal. Observemos 
+que es necesario pedir que un morfismo de álgebras sea una transformación lineal, por ejemplo, la conjugación 
+$\C\to \C$, $z\mapsto\overline{z}$, es un morfismo de anillos que no es un morfismo de álgebras sobre $\C$. 
+
+\begin{definition}
+	\index{Álgebra!ideal de un}
+	Un \textbf{ideal} de un álgebra es un ideal del anillo que además es un
+	subespacio. 
+\end{definition}
+
+Análogamente se definen ideales a izquierda y a derecha de un álgebra.
+
+	Si $A$ es un álgebra, entonces todo ideal a izquierda 
+	del anillo $A$ es un ideal a izquierda del
+	álgebra $A$. Si $L$ es un ideal de $A$ y $\lambda\in K$ y $x\in L$,
+	entonces
+	\[
+		\lambda x=\lambda (1_Ax)=(\lambda 1_A)x
+	\]
+	y luego, como $\lambda 1_A\in A$, se concluye que $\lambda L=(\lambda
+	1_A)L\subseteq L$. Análogamente se demuestra que todo ideal a derecha del
+	anillo unitario $A$ es también un ideal de $A$ como álgebra. 
+
+\begin{exercise}
+	Demuestre que si $A$ es un álgebra, entonces todo ideal a derecha
+	del anillo $A$ es un ideal a derecha del álgebra $A$.
+\end{exercise}
+
+Puede demostrarse que si 
+$A$ es un álgebra e $I$ es un ideal de $A$, entonces el anillo cociente $A/I$ 
+tiene una única estructura de álgebra que hace que el morfismo canónico 
+$A\to A/I$, $a\mapsto a+I$, sea un morfismo de álgebras. 
+
+\begin{example}
+\index{Álgebra!de polinomios truncados}
+Si $n\in\N$, entonces $K[X]/(X^n)$ es un álgebra de dimensión finita, se conoce como el \textbf{álgebra de polinomios truncados}.  \end{example}
+
+\index{Elemento!algebraico}
+\index{Álgebra!algebraica}
+Sea $A$ un álgebra. Un elemento $a\in A$ se dice
+\textbf{algebraico} sobre $K$ si existe un polinomio no nulo $f\in K[X]$
+tal que $f(a)=0$. Si todo elemento de $A$ es algebraico, $A$ se dice
+\textbf{algebraica}. Por ejemplo, sabemos que en la $\Q$-álgebra $A=\R$ el elemento $\sqrt{2}$ es algebraico, pues $\sqrt{2}$ es raíz del polinomio $X^2-2\in\Q[X]$,  
+y que $\pi$ no lo es. Todo elemento de $\R$ como $\R$-álgebra es algebraico.
+
+\begin{proposition}
+	\label{lem:algebraica}
+	Toda álgebra de dimensión finita es algebraica. 
+\end{proposition}
+
+\begin{proof}
+   Sea $A$ un álgebra de dimensión finita $n$    
+	y sea $a\in A$. Como el conjunto 
+	$\{1,a,a^2,\dots,a^n\}$ es linealmente dependendiente, existe un polinomio
+	no nulo $f\in k[X]$ tal que $f(a)=0$.
+\end{proof}
+
+Sea $A$ un álgebra de dimensión finita. Observemos
+que si $M$ es un $A$-módulo, entonces $M$ es un espacio vectorial con 
+\[
+\lambda m=(\lambda 1_A)\cdot m
+\]
+para
+$\lambda\in K$ y $m\in M$. 
+Además $M$ es finitamente generado si y sólo si $M$ tiene dimensión finita. 
+
+Trabajemos con $A$-módulos finitamente generados. 
+
+\index{Representación!regular de un álgebra}
+Observemos que $A$ es un $A$-módulo con la multiplicación a izquierda, es decir $a\cdot b=ab$, $a,b\in A$.
+Este módulo se conoce como la \textbf{representación regular} de $A$. 
+
+\begin{definition}
+\index{Módulo!simple}
+Diremos que un $A$-módulo $M$ es
+\textbf{simple} si $M\ne\{0\}$ y los únicos submodulos de $M$ son $\{0\}$ y $M$. 
+\end{definition}
+
+\begin{definition}
+\index{Módulo!semisimple}
+Diremos que $M$ es \textbf{semisimple} si $M\ne\{0\}$ y además $M$
+es suma directa de finitos submódulos simples. 
+\end{definition}
+
+La suma directa de módulos semisimples es semisimple. 
+
+\begin{lemma}[Schur]
+\index{Lema!de Schur}
+Si $S$ y $T$ son $A$-módulos simples y $f\colon S\to T$ es un morfismo no nulo, entonces
+$f$ es un isomorfismo. 	
+\end{lemma}
+
+\begin{proof}
+Como $f\ne 0$, $\ker f$ es un submódulo propio de $S$. Como $S$ es simple, entonces $\ker f=\{0\}$. Similarmente $f(S)$ 
+es un submódulo no nulo de $T$ y luego $f(S)=T$ por la simplicidad de $T$. 	
+\end{proof}
+
+\begin{proposition}
+    Si $A$ es un álgebra de dimensión finita y $S$ es un módulo simple 
+    entonces $S$ es de dimensión finita.
+\end{proposition}
+
+\begin{proof}
+    Sea $s\in S\setminus\{0\}$. Como $S$ es simple, $\varphi\colon A\to S$, $a\mapsto a\cdot s$, es
+    un epimorfismo. En particular, $A/\ker\varphi\simeq S$ y luego $\dim S=\dim (A/\ker\varphi)\leq \dim A$. 
+\end{proof}
+
+Veamos una caracterización de la semisimplicidad.
+ 
+\begin{proposition}
+\label{pro:semisimple}
+	Sea $M$ un $A$-módulo de dimensión finita. Las siguientes afirmaciones son equivalentes:
+	\begin{enumerate}
+		\item $M$ es semisimple.
+		\item $M=\sum_{i=1}^k S_i$, donde los $S_i$ son submódulos simples de $M$.
+		\item Si $S$ es un submódulo de $M$, existe un submódulo $T$ de $M$ tal que $M=S\oplus T$.    
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	Demostremos que $(2)\implies(3)$.
+	Sea $N\ne\{0\}$ un submódulo de $M$. Como $N\ne\{0\}$ y $\dim M<\infty$, existe
+	un submódulo no nulo $T$ de $M$ de dimensión maximal
+	tal que $N\cap T=\{0\}$. Si $S_i\subseteq N\oplus T$ para todo $i\in\{1,\dots,k\}$, entonces, como $M$ es suma de los $S_i$, tenemos $M=S_i\oplus T$. 
+	Si, en cambio, existe algún $i\in\{1,\dots,k\}$ tal que $S_i\not\subseteq N\oplus T$, entonces $S_i\cap (N\oplus T)\subseteq S_i$. Como $S_i$ es simple,
+	se tiene que $S_i\cap (N\oplus T)=\{0\}$. Luego $N\cap (S_i\oplus T)=\{0\}$, una contradicción a la maximalidad de $T$.  
+	
+	La implicación $(1)\implies(2)$ es trivial. 
+	
+	Veamos ahora que $(2)\implies(1)$. Sea $J$ un subconjunto de $\{1,\dots,k\}$ maximal tal que 
+	la suma de los $S_j$ con $j\in J$ es directa. Sea $N=\oplus_{j\in J}S_j$. Veamos que $M=N$. 
+	Para cada $i\in\{1,\dots,k\}$, se tiene que $S_i\cap N=\{0\}$ o bien que $S_i\cap N=S_i$, pues
+	$S_i$ es simple. Si $S_i\cap N=S_i$ para todo $i\in\{1,\dots,k\}$, entonces $S_i\subseteq N$ para todo $i\in\{1,\dots,k\}$.  
+	Si, en cambio, existe $i\in\{1,\dots,k\}$ tal que $S_i\cap N=\{0\}$, entonces $N$ y $S_i$ estarán en suma directa, 
+	una contradicción a la maximalidad del conjunto $J$.
+	
+	Demostremos por último que $(3)\implies(1)$. 
+	Procederemos por inducción en $\dim M$. Si $\dim M=1$ el resultado es trivial. Si $\dim M\geq1$, 
+	sea $S$ un submódulo no nulo de $M$ de dimensión minimal. En particular, $S$ es simple. 
+	Por hipótesis sabemos que existe un submódulo $T$ de $M$ tal que $M=S\oplus T$. Veamos que $T$ verifica la hipótesis. 
+	Si $X$ es un submódulo de $T$, entonces, como en particular $T$ es un submódulo de $M$, existe un submódulo $Y$ de $M$ tal que
+	$M=X\oplus Y$. Luego 
+	\[
+	T=T\cap M=T\cap (X\oplus Y)=X\oplus (T\cap Y),
+	\]
+	pues $X\subseteq T$. 
+	Como $\dim T<\dim M$ y además $T\cap Y$ es un submódulo de $T$, la hipótesis inductiva 
+	implica que $T$ es suma directa de módulos simples. Luego $M$ también es suma
+	directa de submódulos simples. 
+\end{proof}
+
+\begin{proposition}
+Si $M$ es un $A$-módulo semisimple y $N$ es un submódulo, entonces $N$ y $M/N$ son semisimples.	
+\end{proposition}
+
+\begin{proof}
+	Supongamos que $M=S_1+\cdots+ S_k$, donde los $S_i$ son submódulos simples. Si $\pi\colon M\to M/N$ es el morfismo canónico, el lema de Schur nos dice que  
+	cada restricción $\pi|_{S_i}$ es cero o un isomorfismo. Luego
+	\[
+	M/N=\pi(M)=\sum_{i=1}^k(\pi|_{S_i})(S_i)
+	\]
+	es también una suma finita de módulos simples. Como además existe un submódulo $T$ tal que 
+	$M=N\oplus T$, se tiene que $N\simeq M/T$ es también semisimple.    
+\end{proof}
+
+\begin{definition}
+\index{Álgebra!semisimple}
+Un álgebra $A$ se dirá \textbf{semisimple} si todo $A$-módulo finitamente generado es semisimple. 
+\end{definition}
+
+\begin{proposition}
+Sea $A$ un álgebra de dimensión finita. Entonces $A$ es semisimple si y sólo si la representación
+regular de $A$ es semisimple.
+\end{proposition}
+
+\begin{proof}
+Demostremos la implicación no trivial. Sea $M$ un $A$-módulo finitamente generado, digamos $M=(m_1,\dots,m_k)$. 
+La función 
+\[
+\bigoplus_{i=1}^k A\to M,\quad
+(a_1,\dots,a_k)\mapsto \sum_{i=1}^k a_i\cdot m_i,
+\]
+es un epimorfismo de $A$-módulos. Como
+$A$ es semisimple, $\oplus_{i=1}^kA$ es semisimple. 
+Luego $M$ es semisimple por ser isomorfo al cociente de un semisimple. 
+\end{proof}
+
+\begin{theorem}
+Sea $A$ un álgebra semisimple de dimensión finita. Si $\prescript{}{A}A=\oplus_{i=1}^k S_i$, donde los $S_i$ son submódulos simples y 
+$S$ es un $A$-módulo simple, entonces $S\simeq S_i$ para algún $i\in\{1,\dots,k\}$. 
+\end{theorem}
+
+\begin{proof}
+Sea $s\in S\setminus\{0\}$. La función $\varphi\colon A\to S$, $a\mapsto a\cdot s$, es un morfismo de $A$-módulos  
+sobreyectivo. Como $\varphi\ne 0$, existe $i\in\{1,\dots,k\}$ tal que alguna restricción 
+$\varphi|_{S_i}\colon S_i\to S$ es no nula. 
+Por el lema de Schur, $\varphi|_{S_i}$ es un isomorfismo.  	
+\end{proof}
+
+Como aplicación inmediata tenemos que
+un álgebra semisimple $A$ de dimensión finita admite, salvo isomorfismo, únicamente finitos módulos simples. Cuando digamos
+que $S_1,\dots,S_k$ son los simples de $A$ estaremos refiriéndonos a que los $S_i$ son 
+representantes de las clases de isomorfismo de todos los $A$-módulos simples, es decir 
+que todo simple es isomorfo a alguno de los $S_i$ y además 
+$S_i\not\simeq S_j$ si $i\ne j$. 
+
+\medskip
+Si $A$ y $B$ son álgebras, $M$ es un $A$-módulo y $N$ es un $B$-módulo, entonces
+$A\times B$ actúa en $M\oplus N$ por
+\[
+(a,b)\cdot (m,n)=(a\cdot m,b\cdot n).
+\]
+Todo módulo $M$ finitamente generado sobre un anillo de división es libre, es decir
+posee que una base. Tal como pasa en espacios vectoriales, vale además que
+todo conjunto linealmente independiente de $M$ puede extenderse a una base.  
+
+\medskip
+Recordemos que si $V$ es un $A$-módulo, $\End_A(V)$ se define como el 
+conjunto de morfismos de módulos $V\to V$. En realidad, 
+$\End_A(V)$ es un álgebra con las operaciones: $(f+g)(v)=f(v)+g(v)$, 
+$(af)(v)=af(v)$ y $(fg)(v)=f(g(v))$ para todo $f,g\in\End_A(V)$, $a\in A$ y $v\in V$. 
+
+\begin{lemma}
+	Sea $D$ un álgebra de división y sea $V$ un $D$-módulo finitamente generado. Entonces
+	$V$ es un $\End_D(V)$-módulo simple y además existe $n\in\N$ tal que 
+	$\End_D(V)\simeq nV$ es semisimple.
+\end{lemma}
+
+\begin{proof}
+	Sea $\{v_1,\dots,v_n\}$ una base de $V$. La función
+	\[
+		\End_D(V)\to \underbrace{V\oplus\cdots\oplus V}_{\text{$n$-veces}},\quad
+		f\mapsto (f(v_1),\dots,f(v_n)),
+	\]
+	es un isomorfismo de $\End_D(V)$-módulos. Luego 
+	\[
+		\End_D(V)\simeq \bigoplus_{i=1}^n V=nV.
+	\]
+	
+	Falta ver que $V$ es simple. Para eso alcanza con demostrar que $V=(v)$ 
+	para todo $v\in V\setminus\{0\}$. Sea $v\in V\setminus\{0\}$. 
+	Si $w\in V\setminus\{0\}$, existen $w_2,\dots,w_n$ tal que $\{w,w_2,\dots,w_n\}$ 
+	es una base de $V$. Existe $f\in\End_D(V)$ tal que
+	$f\cdot v=f(v)=w$. En consecuencia, $w\in (v)$ y entonces $V=(v)$.  
+\end{proof}
+
+En lenguaje matricial, el lema anterior nos dice que si $D$ es un álgebra de división, entonces 
+$D^{n}$ es un $M_n(D)$-módulo simple y que $M_n(D)\simeq n D^n$ como $M_n(D)$-módulos. 
+
+\begin{theorem}
+Sea $A$ un álgebra de dimensión finita y sean 
+$S_1,\dots,S_k$ los representantes de las clases de isomorfismo de los $A$-módulos simples. 
+Si \[
+M\simeq n_1S_1\oplus\cdots\oplus n_kS_k,
+\]
+entonces
+los $n_j$ quedan únivocamente determinados. 
+\end{theorem}
+
+\begin{proof}
+	Como los $S_j$ son módulos simples no isomorfos, 
+	el lema de Schur nos dice que si $i\ne j$ entones $\Hom_A(S_i,S_j)=\{0\}$.
+	Para cada $j\in\{1,\dots,k\}$ tenemos entonces que  
+	\begin{align*}
+		\Hom_A(M,S_j) &\simeq \Hom_A\left(\bigoplus_{i=1}^k n_i S_i,S_j\right)
+		\simeq n_j\Hom_A(S_j,S_j). 
+	\end{align*} 
+	Como $M$ y los $S_j$ son espacios vectoriales de dimensión finita, $\Hom_A(M,S_j)$ y $\Hom_A(S_j,S_j)$ 
+	son también espacios vectoriales de dimensión finita. 
+	Además $\dim\Hom_A(S_j,S_j)\geq 1$ pues $\id\in\Hom_A(S_j,S_j)$. 
+	Luego los $n_j$ quedan unívocamente determinados, pues 
+	\[ 
+	n_j=\frac{\dim\Hom_A(M,S_j)}{\dim\Hom_A(S_j,S_j)}.\qedhere
+	\]
+\end{proof}
+
+%Antes de demostrar el teorema de Artin--Wedderburn necesitamos varios resutados elementales 
+%sobre matrices. 
+
+Si $A$ es un álgebra, definimos el \textbf{álgebra opuesta} $A^{\op}$ como
+el espacio vectorial $A$ con el producto $(a,b)\mapsto ba=a\cdot_{\op}b$. 
+
+\begin{lemma}
+	\label{lem:A^op}
+    Si $A$ es un álgebra, $A^{\op}\simeq\End_A(A)$ como álgebras. 
+\end{lemma}
+
+\begin{proof}
+	Primero observemos que $\End_A(A)=\{\rho_a:a\in A\}$, donde $\rho_a\colon
+	A\to A$ está dado por $x\mapsto xa$. En efecto, si $f\in\End_A(A)$
+	entonces $f(1)=a\in A$. Además $f(b)=f(b1)=bf(1)=ba$ y luego
+	$f=\rho_a$.  Tenemos entonces una biyección $\End_A(A)\to A^{\op}$ que es
+	morfismo de álgebras pues 
+    \[
+		\rho_a\rho_b(x)=\rho_a(\rho_b(x))=\rho_a(xb)=x(ba)=\rho_{ba}(x).\qedhere
+    \]
+\end{proof}
+
+\begin{lemma}
+	\label{lem:Mn_op}
+	Si $A$ es un álgebra y $n\in\N$, entonces $M_n(A)^{\op}\simeq
+	M_n(A^{\op})$ como álgebras.   
+\end{lemma}
+
+\begin{proof}
+	Sea $\psi\colon M_n(A)^{\op}\to M_n(A^{\op})$ dada por $X\mapsto X^T$,
+	donde $X^T$ es la traspuesta de $X$. Como $\psi$ es una transformación lineal biyectiva, basta
+	ver
+	que $\psi$ es morfismo. Si $i,j\in\{1,\dots,n\}$, $a=(a_{ij})$ y $b=(b_{ij})$ entonces
+	\begin{align*}
+		(\psi(a)\psi(b))_{ij}&=\sum_{k=1}^n \psi(a)_{ik}\psi(b)_{kj}=\sum_{k=1}^n a_{ki}\cdot_{\op}b_{jk}\\
+		&=\sum_{k=1}^n b_{jk}a_{ki}=(ba)_{ji}=((ba)^T)_{ij}=\psi(a\cdot_{\op}b)_{ij}.\qedhere
+	\end{align*}
+\end{proof}
+
+\begin{lemma}
+	\label{lem:simple}
+	Si $S$ es un módulo simple y $n\in\N$, entonces 
+	\[
+		\End_A(nS)\simeq M_n(\End_A(S))
+	\]
+	como álgebras.
+\end{lemma}
+
+\begin{proof}
+	Sea $(\varphi_{ij})$ una matriz con entradas en $\End_A(S)$. Vamos a definir
+	una función $nS\to nS$ de la siguiente forma:
+	\[
+	\begin{pmatrix}
+	x_1\\
+	\vdots\\
+	x_n	
+	\end{pmatrix}
+	\mapsto 
+		%\colvec[3]{x_1}{\vdots}{x_n}\mapsto 
+		\begin{pmatrix}
+			\varphi_{11} & \cdots & \varphi_{1n}\\
+			\cdots & \ddots & \vdots\\
+			\varphi{n1} & \cdots & \varphi_{nn}
+		\end{pmatrix}
+		%\colvec[3]{x_1}{\vdots}{x_n}
+		\begin{pmatrix}
+		x_1\\
+		\vdots\\
+		x_n	
+		\end{pmatrix}
+		=\begin{pmatrix}
+			\varphi_{11}(x_1)+\cdots+\varphi_{1n}(x_n)\\
+			\vdots\\
+			\varphi_{n1}(x_1)+\cdots+\varphi_{nn}(x_n)
+		\end{pmatrix}.
+	\]
+	Dejamos como ejercicio demostrar que esta aplicación define un morfismo inyectivo 
+	de álgebras
+	\[
+		M_n(\End_A(S))\to\End_A(nS).
+	\]
+	Este morfismo es sobreyectivo pues si $\psi\in\End(nS)$ y para cada
+	$i,j\in\{1,\dots,n\}$ es posible definir a los $\psi_{ij}$ mediante las ecuaciones
+	\[
+		\psi\begin{pmatrix}
+		x\\
+		0\\
+		\vdots\\
+		0	
+		\end{pmatrix}
+		=\begin{pmatrix}
+		\psi_{11}(x)\\
+		\psi_{21}(x)\\
+		\vdots\\
+		\psi_{n1}(x)
+		\end{pmatrix},\dots,
+		\psi\begin{pmatrix}
+		0\\
+		0\\
+		\vdots\\
+		x	
+		\end{pmatrix}
+		=\begin{pmatrix}
+		\psi_{1n}(x)\\
+		\psi_{2n}(x)\\
+		\vdots\\
+		\psi_{nn}(x)
+		\end{pmatrix}.\qedhere
+	%	\psi\colvec[4]{x}{0}{\vdots}{0}=\colvec[4]{\psi_{11}(x)}{\psi_{21}(x)}{\vdots}{\psi{n1}(x)},\quad 
+	%	\psi\colvec[4]{0}{0}{\vdots}{x}=\colvec[4]{\psi_{1n}(x)}{\psi_{2n}(x)}{\vdots}{\psi{nn}(x)}.\qedhere
+	\]
+\end{proof}
+
+%\begin{exercise}
+%	Sea $\{M_i:i\in I\}$ una colección de módulos y sea $N$ un módulo. Demuestre que
+%	\begin{align*}
+%		&\Hom_R\left(\bigoplus_{i\in I}M_i,N\right)\simeq \prod_{i\in I}\Hom_R(M_i,N),\\
+%		\shortintertext{y que}
+%		&\Hom_R\left(N,\prod_{i\in I}M_i\right)\simeq \prod_{i\in I}\Hom_R(N,M_i).
+%	\end{align*}
+%\end{exercise}
+
+\begin{theorem}[Artin--Wedderburn]
+\index{Teorema!de Artin--Wedderburn}
+Sea $A$ un álgebra semisimple y de dimensión finita, digamos con 
+$k$ clases de isomorfismos de $A$-módulos simples. Entonces 
+\[
+A\simeq M_{n_1}(D_1)\times\cdots\times M_{n_k}(D_k)
+\]
+para ciertos $n_1,\dots,n_k\in\N$ y ciertas álgebras de división $D_1,\dots,D_k$.
+\end{theorem}
+
+\begin{proof}
+	Al agrupar los finitos
+	submódulos simples de la representación regular de $A$ podemos escribir 
+	\[
+	A=\bigoplus_{i=1}^k n_iS_i,
+	\]
+	donde los $S_i$ son submódulos simples tales que $S_i\not\simeq S_j$ si
+	$i\ne j$. Dejamos como ejercicio verificar que, gracias al lema de Schur, tenemos 
+	\begin{align*}
+		\End_A(A)\simeq\End_A\left(\bigoplus_{i=1}^kn_iS_i\right)
+		\simeq \prod_{i=1}^k\End_A(n_iS_i)
+		\simeq\prod_{i=1}^kM_{n_i}(\End_A(S_i)), 
+	\end{align*}
+	donde cada $D_i=\End_A(S_i)$ es un álgebra de división. 
+	%En particular, 
+	%$A$ tiene $k$ submódulos simples. 
+	Tenemos entonces que %álgebras de división $D_1,\dots,D_k$ tales que 
+	\[
+		\End_A(A)\simeq\prod_{i=1}^kM_{n_i}(D_i).
+	\]
+	Como $\End_A(A)\simeq
+	A^{\op}$, entonces 
+	\begin{align*}
+		A=(A^{\op})^{\op}\simeq \prod_{i=1}^kM_{n_i}(D_i)^{\op}\simeq \prod_{i=1}^kM_{n_i}(D_i^{\op}).
+	\end{align*}
+	Como además 
+	cada $D_i$ es un álgebra de división, cada $D_i^{\op}$ también lo es.
+\end{proof}
+
+Utilizaremos el teorema de Wedderburn en el caso de los números complejos. 
+%\begin{lemma}
+%Si $A$ es un álgebra compleja de dimensión finita y $S$ es un $A$-módulo simple, entonces
+%$\End_A(S)\simeq\C$. 	
+%\end{lemma}
+%
+%\begin{proof}
+%Si $\varphi\in\End_A(S)$, entonces $\varphi$ tiene un autovalor $\lambda\in\C$. Como entonces 
+%$\varphi-\lambda\id$ no es un isomorfismo, el lema de Schur implica que $\varphi-\lambda\id=0$, 
+%es decir $\varphi=\lambda\id$. 	
+%\end{proof}
+
+\begin{corollary}[Mollien]
+	Si $A$ es un álgebra compleja de dimensión finita semisimple, entonces
+	\[
+	A\simeq\prod_{i=1}^k M_{n_i}(\C)
+	\]  
+	para ciertos $n_1,\dots,n_k\in\N$. 
+\end{corollary}
+
+\begin{proof}
+	Vimos en la demostración del teorema de Wedderburn que 
+	\[
+	A\simeq \prod_{i=1}^k M_{n_i}(\End_A(S_i)),
+	\]
+	donde $S_1,\dots,S_k$ son representantes de las clases de 
+	isomorfismos de los $A$-módulos simples y cada $\End_A(S_i)$ es un álgebra de división. 
+	Veamos que 
+	\[
+	\End_A(S_i)=\{\lambda\id:\lambda\in\C\}\simeq\C
+	\]
+	para todo $i\in\{1,\dots,k\}$. En efecto, si 
+	$f\in\End_A(S_i)$, entonces $f$ tiene un autovalor $\lambda\in\C$. Como entonces 
+	$f-\lambda\id$ no es un isomorfismo, el lema de Schur implica que $f-\lambda\id=0$, 
+	es decir $f=\lambda\id$. Luego $\End_A(S_i)\to\C$, $\varphi\mapsto\lambda$, 
+	es un isomorfismo de álgebras. En particular, 
+	\[
+	A\simeq \prod_{i=1}^k M_{n_i}(\C).\qedhere
+	\]
+\end{proof}
+
+\begin{exercise}
+Sean $A$ y $B$ álgebras. Demuestre que los ideales de $A\times B$ son 
+de la forma $I\times J$, donde $I$ es un ideal de $A$ y $J$ es un ideal de $B$. 
+\end{exercise}
+
+%\index{Módulo!fiel}
+%\index{Anulador!de un módulo}
+%Recordemos que un $A$-módulo $M$ se dice \textbf{fiel} si el \textbf{anulador} 
+%\[
+%\Ann(M)=\{a\in A:a\cdot M=0\}
+%\]
+%de $M$ es nulo. Observemos que $\Ann(M)$ es un ideal de $A$.
+\begin{definition}
+\index{Álgebra!simple}  
+Un álgebra $A$ se dice \textbf{simple} si sus únicos ideales son $\{0\}$ y $A$. 
+\end{definition}
+
+%Sabemos que toda álgebra $A$ posee al menos un ideal maximal.  
+%
+%\begin{example}
+%Sea $A$ un álgebra. Sabemos que exist un ideal maximal $I$. El cociente $A/I$ es un $A$-módulo simple. 	
+%\end{example}
+
+\begin{proposition}
+Sea $A$ un álgebra simple de dimensión finita. Entonces existe un ideal a izquierda no nulo $I$ de dimensión minimal. 
+Este ideal es un $A$-módulo simple y todo $A$-módulo simple es isomorfo a $I$. 	
+\end{proposition}
+
+\begin{proof}
+	Como $A$ es de dimensión finita y $A$ es un ideal a izquierda de $A$, existe un ideal a izquierda no nulo $I$ de dimensión minimal. 
+	La minimalidad de $\dim I$ implica que $I$ es simple como $A$-módulo. 
+	
+	Sea $M$ un $A$-módulo simple. En particular, $M\ne\{0\}$. 
+	Como 
+	\[
+	\Ann(M)=\{a\in A:a\cdot M=\{0\}\}
+	\]
+	es un ideal de $A$ y además $1\in A\setminus\Ann(M)$, la simplicidad de $A$ implica que
+	$\Ann(M)=\{0\}$ y luego $I\cdot M\ne \{0\}$ (pues $I\cdot m\ne 0$ para todo $m\in M$ implica que 
+	$I\subseteq\Ann(M)$ e $I$ es no nulo, una contradicción).  
+	Sea $m\in M$ tal que $I\cdot m\ne\{0\}$. La función
+	\[
+	\varphi\colon I\to M,\quad
+	x\mapsto x\cdot m,
+	\]
+	es un morfismo de módulos. Como $I\cdot m\ne\{0\}$, el morfismo $\varphi$ es no nulo. 
+	Como $I$ y $M$ son $A$-módulos simples, el lema de Schur implica que $\varphi$ es un isomorfismo. 
+\end{proof}
+
+Si $D$ es un álgebra de división, 
+el álgebra de matrices $M_n(D)$ es un álgebra simple. La proposición anterior nos dice
+en particular que $M_n(D)$ tiene una única clase de isomorfismos de $M_n(D)$-módulos simples. Como sabemos, 
+estos módulos son isomorfos a $D^n$. 
+
+\begin{proposition}
+Sea $A$ un álgebra de dimensión finita. Si $A$ es simple, entonces $A$ es semisimple.	
+\end{proposition}
+
+\begin{proof}
+	Sea $S$ la suma de los submódulos simples de la representación regular de $A$. 
+	Afirmamos que $S$ es un ideal de $A$. Sabemos
+	que $S$ es un ideal a izquierda, pues los submódulos de la representación regular de $A$ son exactamente los ideales a izquierda de $A$. 
+	Para ver que $Sa\subseteq S$ para todo $a\in A$, debemos
+	demostrar que $Ta\subseteq S$ para todo submódulo simple $T$ de $A$. Si $T\subseteq A$ es un submódulo simple y $a\in A$, 
+	sea $f\colon T\to Ta$, $t\mapsto ta$. Como $f$ es un morfismo de $A$-módulos y $T$ es simple, $\ker f=\{0\}$ o bien $\ker T=T$. Si $\ker T=T$, entonces
+	$f(T)=Ta=\{0\}\subseteq S$. Si $\ker f=\{0\}$, entonces $T\simeq f(T)=Ta$ y luego $Ta$ es simple y entonces $Ta\subseteq S$. 
+	
+	Como $S$ es un ideal de $A$ y $A$
+	es un álgebra simple, entonces $S=\{0\}$ o bien $S=A$.  Como $S\ne\{0\}$, pues 
+	existe un ideal a izquierda no nulo $I$ de $A$ tal que $I\ne\{0\}$ de dimensión minimal,  
+	se concluye que $S=A$, es decir la representación regular de $A$ 
+	es semisimple (por ser suma de submódulos simples) y luego el álgebra 
+	$A$ es semisimple. 
+\end{proof}
+
+%\begin{lemma}
+%	Sea $A=B\times C$ 
+%	un producto directo de álgebras. Si $K$ es un ideal de $A$ si y sólo si $K=I\times J$ 
+%	para algún ideal $I$ de $A$ y un ideal $J$ de $B$. 
+%\end{lemma}
+%
+%\begin{proof}
+%	Consideramos los morfismos de anillos
+%	\begin{align*}
+%		& p_B\colon B\times C\to B, &&p_B(b,c)=b,\\
+%		& p_C\colon B\times C\to C, && p_C(b,c)=c.  	
+%	\end{align*}
+%	Si $K$ es un ideal de $A$, definimos
+%	$I=p_B(K)$ y $J=p_C(K)$. Veamos que $I$ es un ideal de $B$. Como $K$ es un subgrupo aditivo de $A$ y $p_B$ es un morfismo, entonces
+%	$I$ es un subgrupo aditivo de $B$. Si $x\in I=p_B(K)$, entonces
+%	existe $y\in C$ tal que $(x,y)\in K$. Como $(bx,0)=(b,0)(x,y)\in K$, entonces 
+%	\[
+%	bx=p_B(b,0)p_B(x,y)=p_B((b,0)(x,y))\in p_B(K)=I.
+%	\]
+%	Similarmente se demuestra que $J$ es un ideal de $C$. Afirmamos ahora que $K=I\times J$. 
+%	Si $(x,y)\in K$, entonces trivialente $x\in I$ e $y\in J$. Por otro lado, 
+%	si $(x,y)\in I\times J$, entonces $x\in I=p_B(K)$ y luego existe $c\in C$ tal que
+%	$(x,c)\in K$. Como $K$ es un ideal, $(1,0)(x,c)=(x,0)\in K$. Similarmente vemos que 
+%	$(0,y)\in K$. 
+%	En consecuencia, $(x,y)=(x,0)+(0,y)\in K$.   
+%%\end{proof}
+%
+%El resultado anterior puede extenderse por inducción. Si $A=A_1\times\cdots\times A_k$ es producto directo de álgebras, 
+%todo ideal de $A$ es de la forma $I_1\times\cdots I_k$, donde $I_j$ es un ideal de $A_j$ para todo $j\in\{1,\dots,k\}$. 
+\begin{theorem}[Wedderburn]
+\index{Teorema!de Wedderburn}
+%	Sea $A$ un álgebra de dimensión finita. 
+%	Las siguientes afirmaciones son equivalentes:
+%	\begin{enumerate}
+%	\item $A$ tiene un módulo simple y fiel.
+%	\item $A$ es semisimple y tiene una única clase de isomorfismos de módulos simples.
+%	\item $A\simeq M_n(\C)$ para algún $n\in\N$.
+%	\item $A$ es simple.	
+%	\end{enumerate}
+	Sea $A$ un álgebra de dimensión finita. 
+	Si $A$ es simple, entonces $A\simeq M_n(D)$ para algún $n\in\N$ y alguna álgebra de división $D$.
+\end{theorem}
+
+
+\begin{proof}
+%	Veamos que $(2)\implies(3)$. Como $A$ es semisimple, el teorema de Artin--Wedderburn implica que $A\simeq\prod_{i=1}^k M_{n_i}(\C)$ 
+%	y que $A$ tiene $k$ clases de isomorfismos de $A$-módulos simples. Luego $k=1$ y entonces
+%	$A\simeq M_n(\C)$ para algún $n\in\N$. 
+	Como $A$ es simple, entonces $A$ es semisimple. El teorema de Artin--Wedderburn implica que $A\simeq\prod_{i=1}^k M_{n_i}(D_i)$ 
+	para ciertos $n_1,\dots,n_k$ y ciertas álgebras de división $D_1,\dots,D_k$. Además $A$ tiene
+	$k$ clases de isomorfismos de módulos simples. Como $A$ es simple,
+	$A$ tiene solamente una clase de isomorfismos de módulos simples. Luego $k=1$ y entonce
+	$A\simeq M_n(D)$ para algún $n\in\N$ y alguna álgebra de división $D$. 
+	%	Veamos que $(1)\implies(2)$. Sea $M$ un $A$-módulo simple y fiel. Sea $K$ un ideal de 
+%	$A$ de dimensión mínima tal que $K$ es el núcleo de algún morfismo $f\colon A\to nM$. Si $a\in\ker f$ es tal que $a\ne 0$, entonces 
+%	existe $m\in M$ tal que $a\cdot m\ne 0$, pues $\Ann(M)=\{0\}$. Luego
+%	\[
+%	g\colon A\to nM\oplus M=(n+1)m,\quad
+%	x\mapsto (f(x),x\cdot m),
+%	\]
+%	es un morfismo de $A$-módulos tal que $a\ker f\setminus\ker g$, una contradicción a la minimalidad de $K$. 
+\end{proof}
+
+
+
+

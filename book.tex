@@ -1,0 +1,290 @@
+\documentclass[graybox,envcountsect]{svmono}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\usepackage[notref,notcite]{showkeys}
+
+\usepackage{float}
+\usepackage{caption}
+\usepackage{amssymb}
+\usepackage{amstext}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{xcolor} 
+\usepackage{centernot}
+\usepackage{listings}
+\usepackage{multicol}
+\usepackage{mathptmx}
+\usepackage{amsmath}
+\usepackage{helvet}
+\usepackage{courier}
+\usepackage{type1cm}         
+\usepackage{makeidx}        
+\usepackage{graphicx}        
+\usepackage{multicol}        
+\usepackage[spanish]{babel}
+\usepackage[all]{xy}
+\usepackage{hyperref} 
+\usepackage{ stmaryrd }
+\usepackage{tikz-cd}
+	
+\usepackage[bottom]{footmisc}
+
+% for QED
+\let\proof\relax\let\endproof\relax
+\usepackage{amsthm}
+
+\overfullrule=1mm
+
+%%% for Spanish
+\def\abstractname{Resumen}%
+\def\ackname{Agradecimientos}%
+\def\andname{y}%
+\def\bibname{Referencias}%
+\def\lastandname{, y}%
+\def\appendixname{Apéndice}%
+\def\chaptername{Capítulo}%
+\def\claimname{Afirmación}%
+\def\conjecturename{Conjetura}%
+\def\contentsname{Contenidos}%
+\def\corollaryname{Corolario}%
+\def\definitionname{Definici\'on}%
+\def\emailname{e-mail}%
+\def\examplename{Ejemplo}%
+\def\examplesname{Ejemplos}%
+\def\exercisename{Ejercicio}%
+\def\figurename{Fig.}%
+\def\forewordname{Foreword}%
+\def\keywordname{{\bf Palabras clave:}}%
+\def\indexname{Índice}%
+\def\lemmaname{Lema}%
+\def\listfigurename{Figuras}%
+\def\listtablename{Tablas}%
+\def\notename{Nota}%
+\def\partname{Parte}%
+\def\prefacename{Prefacio}%
+\def\problemname{Problema}%
+\def\proofname{Demostración}%
+\def\propertyname{Propiedad}%
+\def\propositionname{Proposici\'on}%
+\def\questionname{Pregunta}%
+\def\refname{Referencias}%
+\def\remarkname{Observación}%
+\def\seename{see}%
+\def\solutionname{Solución}%
+\def\tablename{Tabla}%
+\def\theoremname{Teorema}
+\def\notationname{Notación}
+\def\conventionname{Convención}
+
+% change numbers 
+\let\remark\relax
+\let\theorem\relax
+\let\lemma\relax
+\let\definition\relax
+\let\proposition\relax
+\let\corollary\relax
+\let\exercise\relax
+\let\example\relax
+\let\conjecture\relax
+\spnewtheorem{theorem}{\theoremname}[section]{\bfseries}{\itshape}
+\renewcommand\thetheorem{\thesection.\arabic{theorem}}
+\spnewtheorem{lemma}[theorem]{\lemmaname}{\bfseries}{\itshape}
+\spnewtheorem{definition}[theorem]{\definitionname}{\bfseries}{\upshape}
+\spnewtheorem{proposition}[theorem]{\propositionname}{\bfseries}{\itshape}
+\spnewtheorem{corollary}[theorem]{\corollaryname}{\bfseries}{\itshape}
+\spnewtheorem{exercise}[theorem]{\exercisename}{\bfseries}{\upshape}
+\spnewtheorem{example}[theorem]{\examplename}{\bfseries}{\upshape}
+\spnewtheorem{examples}[theorem]{\examplesname}{\bfseries}{\upshape}
+\spnewtheorem{remark}[theorem]{\remarkname}{}{\upshape}
+\spnewtheorem{conjecture}[theorem]{\conjecturename}{\bfseries}{\upshape}
+\spnewtheorem{notation}[theorem]{\notationname}{\bfseries}{\upshape}
+\spnewtheorem{convention}[theorem]{\conventionname}{\bfseries}{\upshape}
+
+\makeindex             
+
+\renewcommand{\I}{\operatorname{I}}
+\newcommand{\II}{\operatorname{II}}
+
+\newcommand{\GAP}{\textsf{GAP}}
+\newcommand{\FK}{\mathcal{E}}
+\newcommand{\ad}[1]{\operatorname{ad}\,#1}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\renewcommand{\H}{\mathbb{H}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\T}{\mathbb{T}}
+\renewcommand{\D}{\mathbb{D}}
+\newcommand{\B}{\mathbb{B}}
+
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cE}{\mathcal{E}}
+\newcommand{\cH}{\mathcal{H}}
+
+\newcommand{\GF}{\mathsf{GF}}
+\newcommand{\MAX}{\operatorname{MAX}}
+\newcommand{\MIN}{\operatorname{MIN}}
+\newcommand{\cf}{\operatorname{cf}}
+\newcommand{\cl}{\operatorname{cl}}
+\newcommand{\cd}{\operatorname{cd}}
+\newcommand{\bL}{\mathbf{L}}
+\newcommand{\bP}{\mathbf{P}}
+
+\newcommand{\Nil}{\operatorname{Nil}}
+\newcommand{\rad}{\operatorname{rad}}
+\newcommand{\rank}{\operatorname{rank}}
+
+\newcommand{\Aff}{\mathrm{Aff}}
+\newcommand{\Ann}{\operatorname{Ann}}
+\newcommand{\Der}{\operatorname{Der}}
+\newcommand{\Core}{\operatorname{Core}}
+\newcommand{\Soc}{\operatorname{Soc}}
+\newcommand{\Rad}{\mathrm{rad}}
+\newcommand{\Inn}{\mathrm{Inn}}
+\newcommand{\dist}{\mathrm{dist}}
+\newcommand{\Out}{\mathrm{Out}}
+\newcommand{\Ext}{\mathrm{Ext}}
+\newcommand{\Img}{\mathrm{im}}
+\newcommand{\Hol}{\operatorname{Hol}}
+\newcommand{\Hom}{\operatorname{Hom}}
+\newcommand{\Alg}{\operatorname{Alg}}
+\newcommand{\Bil}{\operatorname{Bil}}
+\newcommand{\op}{\operatorname{op}}
+\newcommand{\gr}{\operatorname{gr}}
+\newcommand{\Syl}{\mathrm{Syl}}
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\Aut}{\operatorname{Aut}}
+\newcommand{\End}{\operatorname{End}}
+\newcommand{\Irr}{\operatorname{Irr}}
+\newcommand{\Alt}{\mathbb{A}}
+\newcommand{\Sym}{\mathbb{S}}
+\newcommand{\lcm}{\operatorname{mcm}}
+\renewcommand{\gcd}{\operatorname{mcd}}
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\spec}{\operatorname{Spec}}
+\newcommand{\supp}{\operatorname{supp}}
+\newcommand{\trace}{\operatorname{traza}}
+\newcommand{\sgn}{\operatorname{signo}}
+\newcommand{\Ind}{\operatorname{Ind}}
+\newcommand{\Res}{\operatorname{Res}}
+\newcommand{\Char}{\operatorname{Char}}
+
+\newcommand{\inner}{\operatorname{inn}}
+\newcommand{\ext}{\operatorname{ext}}
+\newcommand{\im}{\operatorname{im}}
+\newcommand{\Fix}{\operatorname{Fix}}
+\newcommand{\GL}{\mathbf{GL}}
+\newcommand{\SL}{\mathbf{SL}}
+\newcommand{\PSL}{\mathbf{PSL}}
+\newcommand{\PGL}{\mathbf{PGL}}
+\newcommand{\G}{\mathbb{G}}
+\newcommand{\cp}{\operatorname{cp}}
+
+\newcommand{\legendre}[2]{\left(\frac{#1}{#2}\right)}
+
+% para enumerar
+\renewcommand{\labelenumi}{\arabic{enumi})}
+
+% multiset
+\def\multiset#1#2{\ensuremath{\left(\kern-.3em\left(\genfrac{}{}{0pt}{}{#1}{#2}\right)\kern-.3em\right)}}
+
+% column vector
+\newcount\colveccount
+\newcommand*\colvec[1]{
+\global\colveccount#1
+\begin{pmatrix}
+	\colvecnext
+	}
+	\def\colvecnext#1{
+	#1
+	\global\advance\colveccount-1
+	\ifnum\colveccount>
+	\\
+	\expandafter\colvecnext
+	\else
+\end{pmatrix}
+\fi
+}
+
+% To remove Springer from the title page
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd{\@maketitle}{{\Large Springer\par}}{}{}{}
+\makeatother
+
+\begin{document}
+
+\lstset{language=GAP,
+  showstringspaces=false,
+  xleftmargin=0.0cm,
+  xrightmargin=0.0cm,
+  basicstyle=\small\ttfamily,
+  frame=single,
+  framerule=0pt,
+}
+
+% no quiero capítulos, solamente secciones
+\renewcommand{\thesection}{\arabic{chapter}} 
+
+
+\author{Leandro Vendramin}
+\title{Teoría de grupos}
+\subtitle{-- Primer cuatrimestre de 2021 --}
+\maketitle
+
+\frontmatter
+
+%\include{dedic}
+%\include{foreword}
+%\include{preface}
+%\include{}
+
+\tableofcontents
+
+%\include{acronym}
+
+\mainmatter
+
+\part{Álgebras semisimples}
+\include{wedderburn}
+\include{jacobson}
+\include{kolchin}
+
+\part{Representaciones de grupos}
+\include{representaciones}
+\include{maschke}
+\include{caracteres}
+\include{grado}
+\include{ejemplos}
+\include{conmutador}
+\include{counting}
+\include{reciprocidad}
+\include{frobenius}
+\include{burnside}
+\include{hurwitz}
+
+%\part{Teoría de grupos}
+%\include{}
+
+\backmatter
+%\include{glossary}
+%\include{soluciones}
+
+\bibliographystyle{abbrv}
+\bibliography{refs}
+
+\printindex
+
+\end{document}
+
+
+
+
+

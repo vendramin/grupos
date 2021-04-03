@@ -1,0 +1,473 @@
+\chapter{Teoría de caracteres}
+
+\begin{definition}
+  \index{Carácter!de una representación}
+  Sea $\phi\colon G\to\GL(V)$ una representación. El \textbf{carácter} de
+  $\phi$ es la función $\chi_\phi\colon G\to\C$, $\chi_\phi(g)=\trace(\phi_g)$.
+  Si $\phi$ es irreducible, $\chi_\phi$ se dice un \textbf{carácter
+  irreducible}. El \textbf{grado} de $\chi_{\phi}$ es el número
+  $\deg\chi_\phi=\deg\phi=\chi_{\phi}(1)=\dim V$. 
+\end{definition}
+
+\begin{proposition}
+  \label{pro:chi(1)}
+  Sea $\phi$ una representación con carácter $\chi$ y sea $g\in G$.
+  Valen las siguientes afirmaciones:
+  \begin{enumerate}
+    \item $\chi(1)=\deg\phi$. 
+    \item $\chi(g)=\chi(hgh^{-1})$ para todo $h\in G$.
+    \item $\chi(g)$ es suma de $\chi(1)$ raíces $|g|$-ésimas de la unidad.
+    \item $\chi(g^{-1})=\overline{\chi(g)}$.
+    \item $|\chi(g)|\leq\chi(1)$.
+  \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+  La primera propiedad es evidente pues $\phi_1=\id$. La segunda:
+  \begin{align*}
+    \chi(hgh^{-1})=\trace\phi_{hgh^{-1}}=\trace(\phi_h\phi_g\phi_h^{-1})=\trace\phi_g=\chi(g),
+  \end{align*}
+  pues $\trace(AB)=\trace(BA)$ para todo $A,B$. La tercera es fácil pues
+  la traza de $\phi_g$ es la suma de los autovalores de $\phi_g$, que son
+  raíces del polinomio $X^{|g|}-1$. Para demostrar la cuarta afirmación
+  supongamos que $\chi(g)=\lambda_1+\cdots+\lambda_k$, donde los $\lambda_j$
+  son raíces de la unidad. Entonces 
+  \[
+    \overline{\chi(g)}
+    =\sum_{j=1}^k\overline{\lambda_j}=\sum_{j=1}^k\lambda_j^{-1}=\trace(\phi_{g^{-1}})=\trace\phi_{g^{-1}}=\chi(g^{-1}).
+  \]
+  La última afirmación es evidente pues $\chi(g)$ es suma de raíces de la
+  unidad.
+\end{proof}
+
+
+Si $\chi$ y $\psi$ son caracteres de $G$, en particular son funciones $G\to\C$ y podemos entonces
+definir suma, producto y producto por escalares como
+\[
+(\chi+\psi)(g)=\chi(g)+\psi(g),\quad
+(\chi\psi)(g)=\chi(g)\psi(g),\quad
+(\lambda\chi)(g)=\lambda\chi(g)
+\]
+para $\lambda\in\C$. Sin embargo, estas funciones no necesariamente dan caracteres. 
+
+\begin{theorem}
+Sea $G$ un grupo finito. Los caracteres irreducibles de $G$ son linealmente independientes.
+\end{theorem}
+
+\begin{proof}
+Sean $S_1,\dots,S_k$ las clases de isomorfismos de los $\C[G]$-módulo simples y
+sea $f\colon \C[G]\to M_{n_1}(\C)\times\cdots\times M_{n_k}(\C)$ el isomorfismo del teorema de Wedderburn. 
+Para cada $j$ tenemos $n_j=\dim S_j$, pues $M_{n_j}(\C)\simeq S_j\oplus\cdots\oplus S_j$ ($n_j$-veces). 
+Para cada $j\in\{1,\dots,k\}$ sea 
+$e_j=f^{-1}(I_j)$, donde $I_j$ la matriz identidad de $M_{n_j}(\C)$. 
+Supongamos que $\Irr(G)=\{\chi_1,\dots,\chi_k\}$. Vamos a demostrar que
+\[
+\chi_i(e_j)=\begin{cases}
+\dim S_i & \text{si $i=j$},\\
+0 & \text{en otro caso,}
+\end{cases}
+\]
+para todo $i,j\in\{1,\dots,k\}$.
+Cada $\chi_j(g)$ es la traza de la restricción de la acción de $g$ al simple $S_j$. En particular, 
+como $e_ie_j=0$ si $i\ne j$, tenemos 
+$\chi_i(e_j)=0$ si $i\ne j$. 
+Como además $e_j$ actúa por la identidad en $S_j$, tenemos $\chi_j(e_j)=\trace(I_j)=\dim S_j$. 
+
+Sean $\lambda_1,\dots,\lambda_k\in\C$ tales que $\sum_{i=1}^k\lambda_i\chi_i=0$. Al evaluar esta
+expresión en cada $e_j$ vemos que $\lambda_j=0$ para todo $j$. 
+\end{proof}
+
+\begin{proposition}
+    Si $U$ y $V$ son $\G[G]$-modulos, entonces $\chi_{U\oplus V}=\chi_U+\chi_V$.
+\end{proposition}
+
+\begin{proof}
+    Sea $\{u_1,\dots,u_r\}$ una base de $U$ y sea $\{v_1,\dots,v_s\}$ una base de $V$. Entonces 
+    $\{u_1,\dots,u_r,v_1,\dots,v_s\}$ es una base de $U\oplus V$. Si $g\in G$, en esta
+    base 
+    \[
+    \rho_g=\begin{pmatrix}
+      \rho_g|_U & *\\
+      0 & \rho_g|_V
+    \end{pmatrix}.
+    \]
+    Luego $\chi_{U\oplus V}(g)=\trace(\rho_g)=\trace\rho_g|_U+\trace\rho_g|_V=\chi_U(g)+\chi_V(g)$.
+\end{proof}
+
+\begin{theorem}
+  Sea $G$ un grupo finito. Si $S_1,\dots,S_k$ son los representantes 
+  de las clases de isomorfismos de los $\C[G]$-módulos simples y 
+  $V=a_1S_1\oplus\cdots\oplus a_kS_k$, entonces
+  \[
+  \chi_V=a_1\chi_1+\cdots+a_k\chi_k.
+  \]
+  En particular, si $U$ y $V$ son $\C[G]$-módulos, 
+  entonces $U\simeq V$ si y sólo si $\chi_U=\chi_V$.
+\end{theorem}
+
+\begin{proof}
+    La primera afirmación se obtiene del lema anterior. 
+    
+    Supongamos que $U\simeq V$, es decir que existe un isomorfismo $f\colon U\to V$ de $\C[G]$-módulos. Si $\rho\colon G\to\GL(U)$ 
+    es la representación que corresponde al módulo $U$ y $\psi\colon G\to\GL(V)$ es la que corresponde al módulo $V$, entonces
+    que $f$ sea morfismo de módulos puede escribirse como 
+    $f\circ\rho_g\circ f^{-1}=\psi_g$. Luego
+    \[
+    \chi_V(g)=\trace\psi_g=\trace(f\circ\rho_g\circ f^{-1})=\trace\rho_g=\chi_U(g).
+    \]
+    
+    Supongamos ahora que $\chi_U=\chi_V$. Como $\C[G]$ es semisimple, podemos
+    escribir $U\simeq \oplus_{i=1}^k a_iS_i$ y 
+    también $V\simeq\oplus_{i=1}^k b_iS_i$ para ciertos $a_1,\dots,a_k,b_1,\dots,b_k\geq0$. 
+    Como $0=\chi_U-\chi_V=\sum_{i=1}^k(a_i-b_i)\chi_i$ y además los $\chi_i$ son linealmente independientes, 
+    se concluye que $a_i=b_i$ para todo $i\in\{1,\dots,k\}$, es decir $U\simeq V$.
+\end{proof}
+
+\begin{lemma}
+	Si $G$ es un grupo finito y $V$ y $W$ son $\C[G]$-módulos, entonces 
+	\begin{enumerate}
+		\item $\chi_{V\otimes W}=\chi_V\chi_W$,
+		\item $\chi_{V^*}=\overline{\chi_V}$.
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	Demostremos la primera afirmación. 
+	Sabemos que $\phi$ y $\psi$ son diagonalizables. Sea $g\in G$ y sea $\{v_1,\dots,v_n\}$
+	una base de autovectores de $\phi_g$ con autovalores
+	$\lambda_1,\dots,\lambda_n$ y sea $\{w_1,\dots,w_m\}$ una base de
+	autovectores de $\psi_g$ con autovalores $\mu_1,\dots,\mu_m$. Cada
+	$v_i\otimes w_j$ es autovectores de $\phi\otimes\psi$ de autovalor
+	$\lambda_i\mu_j$ pues 
+	\[
+		g(v_i\otimes w_j)=gv_i\otimes gw_j=\lambda_iv_i\otimes \mu_jv_j=(\lambda_i\mu_j)v_i\otimes w_j.
+	\]
+	Luego 
+	$\{v_i\otimes w_j:1\leq i\leq n,1\leq j\leq m\}$ es base de autovectores y
+	los $\lambda_i\mu_j$ son los autovalores de $\phi\otimes\psi$. Se concluye que
+	\[
+	\chi_{V\otimes W}(g)=\sum_{i,j}\lambda_i\mu_j=(\sum_i\lambda_i)(\sum_j\mu_j)=\chi_V(g)\chi_W(g).
+	\]
+
+	Demostremos la segunda afirmación. Sea $g\in G$, sea $\{v_1,\dots,v_n\}$
+	una base de autovectores de $\psi$ con autovalores
+	$\lambda_1,\dots,\lambda_n$ y sea $\{f_1,\dots,f_n\}$ su base dual. Veamos que $\{f_1,\dots,f_n\}$ es base de autovectores
+	con autovalores $\overline{\lambda_1},\dots,\overline{\lambda_n}$. En efecto, si $gv_j=\lambda_jv_j$, entonces
+	$g^{-1}v_j=\lambda_j^{-1}v_j=\overline{\lambda_j}v_j$ (observemos que como $\psi_g$ es inversible, los $\lambda_j$ son no nulos). Luego
+	\[
+		(gf_i)(v_j)=f_i(g^{-1}v_j)=\overline{\lambda_j}f_i(v_j)=\overline{\lambda_j}\delta_{ij}.
+	\]
+	En conclusión
+	\[
+		\chi_{V^*}(g)=\sum_{i=1}^n\overline{\lambda_i}=\overline{\chi_V(g)}.\qedhere
+	\]
+\end{proof}
+
+Como consecuencia del lema anterior tenemos que el producto de dos caracteres es un caracter. 
+Esto nos permite demostrar que 
+el conjunto de combinaciones lineales enteras de caracteres 
+irreducibles es un anillo con las operaciones usuales. 
+
+\begin{exercise}
+	Demuestre que el carácter $\chi_{\Hom_{\C}(U,V)}$ del módulo $\Hom_{\C[G]}(U,V)$ es igual a
+	$\overline{\chi_U}\chi_V$.
+\end{exercise}
+
+\begin{definition}
+  \label{exercise:cf(G)}
+  \index{Función!de clases}
+  Una $f\colon G\to\C$ se dice una \textbf{función de clases} si
+  $f(g)=f(hgh^{-1})$ para todo $g,h\in G$.  
+\end{definition}
+
+Vimos en la proposición~\ref{pro:chi(1)} que los caracteres son funciones de
+clase. 
+
+\begin{exercise}\
+    \begin{enumerate}
+      \item Demuestre que el conjunto $\cf(G)$ de funciones de clase $G\to\C$
+	es un subespacio vectorial de $L(G)$. 
+      \item Demuestre que las funciones
+	\[
+	  \delta_K\colon G\to\C,\quad
+	  \delta_K(g)=\begin{cases}
+	    1 & \text{si $g\in K$,}\\
+	    0 & \text{si $g\not\in K$,}
+	  \end{cases}
+	\]
+	donde $K\in\cl(G)$, forman una base del conjunto $\cf(G)$ de funciones de clases de 
+	$G$. En particular $\dim\cf(G)=|\cl(G)|$.
+	\end{enumerate}
+\end{exercise}
+
+\begin{proposition}
+    Los caracteres irreducibles forman una base del espacio de funciones de clases.
+\end{proposition}
+
+\begin{proof}
+    El conjunto $\Irr(G)$ de caracteres irreducibles de $G$ es linealmente independiente y además 
+    $|\Irr(G)|=|\cl(G)|=|\cf(G)|$.
+\end{proof}
+
+Si $U$ es un $\C[G]$-módulo, definimos
+\[
+U^G=\{u\in U:g\cdot u=u\text{ para todo $g\in G$}\}.
+\]
+
+\begin{lemma}
+\label{lem:invariantes}
+  $\dim U^G=\frac{1}{|G|}\sum_{x\in G}\chi_U(x)$. 
+\end{lemma}
+
+\begin{proof}
+  Sea $\alpha=\frac{1}{|G|}\sum_{x\in G}\rho_x\colon U\to U$. 
+  Primero vemos que $\alpha^2=\alpha$. 
+  Como $\rho_g\circ \alpha=\frac{1}{|G|}\sum_{x\in G}\rho_{gx}=\alpha$, pues  
+  $gx$ recorre todo $G$ si $x$ recorre todo $G$, entonces
+  \[
+  \alpha(\alpha(v))=\frac{1}{|G|}\sum_{g\in G}\rho_g(\alpha(v))=\alpha(v) 
+  \]
+  para todo $v\in V$. En particular, $\alpha$ tiene autovalores 0 y 1. Sea $V$ 
+  el autoespacio correspondiente al autovalor 1. 
+  Afirmamos que $V=U^G$. Si $v\in V$, entonces
+  \[
+  \rho_g(v)=\rho_g(\alpha(v))=\frac{1}{|G|}\sum_{x\in G}\rho_g\rho_x(v)=\frac{1}{|G|}\sum_{y\in G}\rho_y(v)=\alpha(v)=v,
+  \]
+  pues si $x$ recorre todo $G$, también lo hace $gx$. 
+  Recíprocamente, si $u\in U^G$ entonces
+  $\rho_g(u)=u$ para todo $g\in G$. En particular, 
+  \[
+  \alpha(u)=\frac{1}{|G|}\sum_{x\in G}\rho_x(u)=\frac{1}{|G|}\sum_{x\in G}u=u.
+  \]
+  En consecuencia, 
+  $\dim V=\trace(\alpha)=\frac{1}{|G|}\sum_{g\in G}\trace(\rho_g)=\frac{1}{|G|}\sum_{g}\chi(g)$.
+\end{proof}
+
+Sea $G$ un grupo finito. En el espacio de funciones $G\to\C$ definimos la operación
+\[
+\langle f,g\rangle=\frac{1}{|G|}\sum_{x\in G}f(x)\overline{g(x)},
+\quad f,g\colon G\to\C.
+\]
+Es fácil verificar que esta operación es un producto interno. 
+
+\begin{theorem}
+Si $U$ y $V$ son $\C[G]$-módulos, entonces 
+\[
+\langle\chi_U,\chi_V\rangle=\dim\Hom_{\C[G]}(U,V).
+\]
+\end{theorem}
+
+\begin{proof}
+    Primero observamos que $\Hom_{\C[G]}(U,V)$ es un subespacio del conjunto $\Hom_{\C}(U,V)$ de transformaciones lineales $U\to V$.
+    
+    Veamos ahora $\Hom_{\C[G]}(U,V)=\Hom_{\C}(U,V)^G$. En efecto, si $f\in\Hom_{\C[G]}(U,V)$, entonces
+    \[
+    (g\cdot f)(u)=g\cdot f(g^{-1}\cdot u)=g\cdot (g^{-1}\cdot f(u))=(gg^{-1})\cdot f(u)=1\cdot f(u)=f(u)
+    \]
+    para todo $g\in G$ y $u\in U$. Recíprocamente, si $f\colon U\to V$ es una transformación lineal tal que 
+    $g\cdot f=f$ para todo $g\in G$, entonces, en particular, $g^{-1}\cdot f=f$ y luego
+    $(g^{-1}\cdot f)(u)=f(u)$ para todo $g\in G$ y $u\in U$, que es equivalente a 
+    $g\cdot f(u)=f(g\cdot u)$. 
+
+    Luego
+    \begin{align*}
+    \dim\Hom_{\C[G]}(U,V)&=\dim\Hom_{\C}(U,V)^G\\
+    &=\frac{1}{|G|}\sum_{g\in G}\chi_{\Hom(U,V)}(g)
+    =\frac{1}{|G|}\sum_{g\in G}\overline{\chi_U(g)}\chi_V(g)
+    =\langle\chi_V,\chi_U\rangle.
+    \end{align*}
+    Para terminar la demostración solamente hay que observar 
+    que 
+    \[
+    \langle\chi_U,\chi_V\rangle=\frac{1}{|G|}\sum_{g\in G}\chi_U(g)\overline{\chi_V(g)}=\overline{\langle\chi_V,\chi_U\rangle}.\qedhere
+    \]
+\end{proof}
+
+\index{Caracteres!matriz de}
+\index{Caracteres!tabla de}
+Sea $G$ un grupo finito y sean $\chi_1,\dots,\chi_s$ los representantes de
+caracteres irreducibles de $G$. Para abreviar simplemente diremos que
+$\chi_1,\dots,\chi_k$ son los caracteres irreducibles de $G$ y escribiremos
+\[
+	\Irr(G)=\{\chi_1,\dots,\chi_k\}.
+\]
+Sean $g_1,\dots,g_k$ los representantes de las clases de
+conjugación de $G$. Se define la \textbf{matriz de caracteres} de $G$ como la
+matriz $X\in\C^{s\times s}$ dada por
+\[
+X_{ij}=\chi_i(g_j),\quad
+1\leq i,j\leq k.
+\]
+Veremos a continuación dos resultados muy importantes. El primero es
+sobre la ortogonalidad de las filas de la matriz de caracteres. 
+
+\begin{theorem}[Schur]
+\index{Teorema!primera ortogonalidad Schur}
+Sea $G$ un grupo finito. 
+Si $\chi,\psi\in\Irr(G)$, entonces 
+\[
+\langle\chi,\psi\rangle=\begin{cases}
+1 & \text{si $\chi=\psi$},\\
+0 & \text{en otro caso}.
+\end{cases}
+\]
+\end{theorem}
+
+\begin{proof}
+Si $S_1,\dots,S_k$ los $\C[G]$-módulos simples, entonces
+\[
+\langle\chi_i,\chi_j\rangle=\dim\Hom_{\C[G]}(S_i,S_j)=
+\begin{cases}
+1 & \text{si $i=j$},\\
+0 & \text{en otro caso},
+\end{cases}
+\]
+ya que, como los $S_j$ son módulos simples, sabemos por el lema de Schur que 
+$\Hom_{\C[G]}(S_i,S_i)\simeq\C$ y $\Hom_{\C[G]}(S_i,S_j)=\{0\}$ si $i\ne j$. 
+\end{proof}
+  
+El teorema de Schur tiene muchas aplicaciones. Por ejemplo:
+\begin{enumerate}
+    \item $\Irr(G)$ es una base ortonormal del espacio $\cf(G)$ de funciones de clases de $G$. 
+    \item Si $\alpha=\sum_{i=1}^ka_i\chi_i$ y $\beta=\sum_{i=1}^kb_i\chi_i$, entonces
+    $\langle\alpha,\beta\rangle=\sum_{i=1}^ka_ib_i$. 
+    \item Si $\alpha=\sum_{i=1}^ka_i\chi_i$, entonces $\alpha=\sum_{i=1}^k\langle\alpha,\chi_i\rangle\chi_i$.
+\end{enumerate}
+
+\begin{corollary}
+Si $G$ es un grupo finito y $S_1,\dots,S_k$ son las clases
+de isomorfismos de módulos simples, entonces 
+\[
+\C[G]\simeq (\dim S_1)S_1\oplus\cdots\oplus (\dim S_k)S_k.
+\]
+\end{corollary}
+
+\begin{proof}
+    Sabemos que la representación regular puede escribirse como
+    \[
+    \C[G]\simeq a_1S_1\oplus\cdots\oplus a_kS_k,
+    \]
+    para ciertos enteros no negativos $a_1,\dots,a_k$ 
+    unívocamente determinados. 
+    Supongamos que $G=\{g_1,\dots,g_n\}$. Sea $L$ la representación regular (a izquierda) de $G$, es decir
+    $L_g(g_j)=gg_j$ para todo $j\in\{1,\dots,n\}$. La matriz de $L_g$ 
+    en la base $g_1,\dots,g_n$ es
+    \[
+    (L_g)_{ij}=\begin{cases}
+    1 & \text{si $g_i=gg_j$},\\
+    0 & \text{en otro caso}.
+    \end{cases}
+    \]
+    En particular, el caracter $\chi_L$ de la representación regular cumple 
+    \[
+    \chi_L(g)=\begin{cases}
+    |G| & \text{si $g=1$},\\
+    0 & \text{en otro caso}.
+    \end{cases}
+    \]
+    La primera relación de ortogonalidad de Schur implica que $a_i=\langle\chi_L,\chi_i\rangle$ para todo $i$, es decir 
+    $\chi_L=\sum_{i=1}^k\langle\chi_L,\chi_i\rangle\chi_i$. 
+    Como para cada $j$ se tiene 
+    \[
+    \langle\chi_L,\chi_j\rangle=\frac{1}{|G|}\sum_{g\in G}\chi_L(g)\overline{\chi_i(g)}=\overline{\chi_j(1)}=\chi_j(1)=\dim S_j,
+    \]
+    se concluye que $\C[G]\simeq\oplus_{i=1}^k(\dim S_i)S_i$. 
+\end{proof}
+
+\begin{exercise}
+    Sea $\alpha$ un caracter de $G$ y sea $n\in\{1,2,3\}$. Demuestre que $\alpha$ es suma
+    de $n$ irreducibles si y sólo si $\langle\alpha,\alpha\rangle=n$. 
+\end{exercise}
+
+Veamos ahora la segunda relación de ortogonalidad de Schur.
+
+\begin{theorem}
+\index{Teorema!segunda ortogonalidad Schur}
+  Sean $G$ un grupo finito y $g,h\in G$. 
+  Entonces
+  \[
+	\sum_{\chi\in\Irr(G)}\chi(g)\overline{\chi(h)}=\begin{cases}
+	  |C_G(g)| & \text{si $g$ y $h$ son conjugados,}\\
+	  0 & \text{en otro caso.}
+	\end{cases}
+  \]
+  En particular, las columnas de $X$ son ortogonales y la matriz $X$ es
+  inversible.
+\end{theorem}
+
+\begin{proof}
+  Supongamos que $g_1,\dots,g_r$ son los representantes de las clases de
+  conjugación de $G$ y que $\Irr(G)=\{\chi_1,\dots,\chi_r\}$. Entonces
+  \[
+    \langle\chi_i,\chi_j\rangle
+    =\frac{1}{|G|}\sum_{g\in G}\chi_i(g)\overline{\chi_j(g)}
+    =\frac{1}{|G|}\sum_{k=1}^rc_k\chi_i(g_k)\overline{\chi_j(g_k)},
+  \]
+  donde cada $c_k$ es el tamaño de la clase de conjugación de $g_k$. Matricialmente,
+  \[
+    I=\frac{1}{|G|}XD X^*,
+  \]
+  donde $I$ es la matriz identidad de $r\times r$, $D$ es la matriz diagonal
+  que tiene a $c_1,\dots,c_r$ en la diagonal principal y
+  $X^*=\overline{X}^T$. Entonces\footnote{Si $A,B\in\C^{s\times s}$ son tales que  
+  $AB=I$ entonces $BA=I$.}
+  \[
+	I=\frac{1}{|G|}X^*XD,
+  \]
+  es decir $|G|D^{-1}=X^*X$. Luego 
+  \[
+    \sum_{k=1}^r\overline{\chi_k(g_i)}\chi_k(g_j)=\begin{cases}
+    |C_G(g_j)| & \text{si $i=j$},\\
+    0 & \text{en otro caso},
+    \end{cases}
+  \]
+  que es lo que queríamos demostrar.
+\end{proof}
+
+\begin{exercise}
+Sea $G$ un grupo finito. Si $\chi$ es un caracter irreducible de $G$ y $\phi$ es un caracter de grado uno, entonces
+$\chi\otimes\phi$ es un caracter irreducible de $G$. 
+\end{exercise}
+
+\begin{theorem}[Solomon]
+  \label{theorem:Solomon}
+  \index{Teorema de!Solomon}
+  Sean $G$ un grupo finito, $\Irr(G)=\{\chi_1,\dots,\chi_r\}$ y $g_1,\dots,g_r$ los 
+  representantes de las clases de conjugación de $G$. 
+  Si $i\in\{1,\dots,r\}$, entonces 
+  \[
+	  \sum_{j=1}^r\chi_i(g_j)\in\N_0.
+  \]
+\end{theorem}
+
+\begin{proof}
+  Sea $V$ el espacio vectorial con base $\{e_g:g\in G\}$.  Hagamos actuar a $G$
+  en $G$ por conjugación y sea $\rho\colon G\to\GL(V)$,
+  $\rho_g(e_h)=e_{ghg^{-1}}$.  Observemos que en la base $\{e_g:g\in G\}$ la
+  matriz de $\rho_g$ es
+  \[
+   (\rho_g)_{ij}=\begin{cases} 
+    1 & \text{si $g_ig=gg_j$},\\
+    0 & \text{en otro caso}.
+  \end{cases}
+  \]
+  Sea $\chi$ el caracter de la
+  representación $\rho$. Entonces 
+  \[
+    \chi(g)=\trace\rho_g=\sum_{k}(\rho_g)_{kk}=|\{k:g_kg=gg_k\}|=|C_G(g)|.
+  \]
+  Sean $m_1,\dots,m_r\in\N_0$ tales que 
+  \[
+	\chi=\sum_{i=1}^rm_i\chi_i.
+  \]
+  Entonces, si $c_j$ es el tamaño de la clase de conjugación de $g_j$, la
+  cantidad $m_i$ de veces que la representación irreducible con caracter
+  $\chi_i$ aparece en $\rho$ es igual a 
+  \[
+	  m_i=\langle\chi,\chi_i\rangle=\frac{1}{|G|}\sum_{g\in G}\chi(g)\overline{\chi_i(g)}
+	  =\frac{1}{|G|}\sum_{j=1}^rc_j|C_G(g_j)|\overline{\chi_i(g_j)}
+	  =\sum_{j=1}^r\overline{\chi_i(g_j)}.
+  \]
+  Luego $\sum_{j=1}^r\chi_i(g_j)=\overline{m_i}=m_i\in\N_0$.
+\end{proof}
+

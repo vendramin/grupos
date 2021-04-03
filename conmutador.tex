@@ -1,0 +1,236 @@
+\chapter{Conmutadores}
+
+Sea $G$ un grupo finito y sean $C_1,\dots,C_s$ sus clases de conjugación. 
+Vimos en el teorema~\ref{theorem:algebraic} que 
+\[
+\omega_\chi(C_i)=\frac{|C_i|\chi(C_i)}{\chi(1)}
+\]
+es un número algebraico para todo $\chi\in\Irr(G)$ y todo $i\in\{1,\dots,s\}$. 
+Vimos además en la fórmula~\eqref{eq:omega} 
+que
+\begin{gather*}
+    \left(\frac{|C_i|}{\chi(1)}\chi(C_i)\right)
+    \left(\frac{|C_j|}{\chi(1)}\chi(C_j)\right)
+    =\sum_{k=1}^sa_{ijk}\left(\frac{|C_k|}{\chi(1)}\chi(C_k)\right),
+\shortintertext{es decir}
+\omega_{\chi}(C_i)\omega_{\chi}(C_j)=\sum_{k=1}^sa_{ijk}\omega_{\chi}(C_k),
+\end{gather*}
+donde $a_{ijk}$ es la cantidad de soluciones de la ecuación $xy=z$ 
+con $x\in C_i$, $y\in C_j$ y $z\in C_k$. 
+
+\begin{theorem}[Burnside]
+\index{Teorema!de Burnside}
+Si $G$ es un grupo finito y $C_1,\dots,C_s$ son sus clases de conjugación, entonces 
+\[
+a_{ijk}=\frac{|C_i||C_j|}{|G|}\sum_{\chi\in\Irr(G)}\frac{\chi(C_i)\chi(C_j)\overline{\chi(C_k)}}{\chi(1)}.
+\]
+\end{theorem}
+
+\begin{proof}
+Sabemos que 
+\[
+    \left(\frac{|C_i|}{\chi(1)}\chi(C_i)\right)
+    \left(\frac{|C_j|}{\chi(1)}\chi(C_j)\right)
+    =\sum_{k=1}^sa_{ijk}\left(\frac{|C_k|}{\chi(1)}\chi(C_k)\right),
+\]
+que puede reescribirse como
+\[
+\frac{|C_i||C_j|\chi(C_i)\chi(C_j)}{\chi(1)}=\sum_{k=1}^sa_{ijk}|C_k|\chi(C_k).
+\]
+Al multiplicar esta igualdad por $\overline{\chi(C_l)}$ y luego sumar sobre
+todos los $\chi\in\Irr(G)$ tenemos 
+\begin{align*}
+    |C_i||C_j|\sum_{\chi\in\Irr(G)}\frac{\overline{\chi(C_l)}}{\chi(1)}\chi(C_i)\chi(C_j)
+    &=\sum_{\chi\in\Irr(G)}\sum_{k=1}^sa_{ijk}|C_k|\chi(C_k)\overline{\chi(C_l)}\\
+    &=\sum_{k=1}^sa_{ijk}|C_k|\sum_{\chi\in\Irr(G)}\chi(C_k)\overline{\chi(C_l)}\\
+    &=a_{ijl}|G|,
+\end{align*}
+ya que, gracias a la segunda relación de ortogonalidad de Schur, sabemos que
+\[
+\sum_{\chi\in\Irr(G)}\chi(C_k)\overline{\chi(C_l)}=\begin{cases}
+\frac{|G|}{|C_l|} & \text{si $k=l$},\\
+0 & \text{en otro caso}.
+\end{cases}\qedhere
+\]
+\end{proof}
+
+Veamos ahora algunos corolarios sobre conmutadores. 
+
+\begin{theorem}[Burnside]
+Sea $G$ un grupo finito y sean $g,x\in G$. Entonces $g$ y $[x,y]$ son conjugados para algún $y\in G$ si y sólo si 
+\[
+\sum_{\chi\in\Irr(G)}\frac{|\chi(x)|^2\chi(g)}{\chi(1)}>0.
+\]
+\end{theorem}
+
+\begin{proof}
+Sean $C_1,\dots,C_s$ las clases de conjugación de $G$. Supongamos que $x\in C_i$ y que $g\in C_k$. 
+Para $i\in\{1,\dots,s\}$ sea $C_i^{-1}=\{z^{-1}:z\in C_i\}$. El teorema de Burnside 
+en el caso $C_j=C_i^{-1}$ implica entonces que
+\[
+a_{ijk}=\frac{|C_i|^2}{|G|}\sum_{\chi\in\Irr(G)}\frac{|\chi(C_i)|^2\overline{\chi(C_k)}}{\chi(1)}.
+\]
+Para cada $i\in\{1,\dots,s\}$ sea $g_i\in C_i$. 
+
+Demostremos primero la implicación $\impliedby$. Como en este caso 
+$a_{ijk}>0$, existen $u\in C_i$ y $v\in C_j$ tales que $g=uv$. Si $x$ y $u$ son conjugados, entonces
+$x^{-1}$ y $v$ también, digamos
+\[
+u=zxz^{-1},\quad
+v=z_1x^{-1}z_1^{-1}
+\]
+para ciertos $z,z_1\in G$. 
+Si $y=z^{-1}z_1$, entonces $y^{-1}z^{-1}=z_1^{-1}$ y luego 
+$g$ y $[x,y]$ son conjugados, pues 
+\[
+g=uv=(zxz^{-1})(z_1x^{-1}z_1^{-1})=zxyx^{-1}y^{-1}z^{-1}. 
+\]
+
+Demostremos ahora la implicación $\implies$. Si existe $y\in G$ tal que 
+$g$ y $[x,y]$ son conjugados, entonces $g=z(xyx^{-1}y^{-1})z^{-1}$ para algún $z\in G$. Si $v=yxy^{-1}$, entonces
+$v^{-1}=yx^{-1}y^{-1}$ y luego $g$ y 
+$[x,y]=xyx^{-1}y^{-1}=xv^{-1}$ son conjugados. En particular, $g\in C_iC_i^{-1}=C_iC_j$ y luego $a_{ijk}>0$.  
+\end{proof}
+
+%\begin{lemma}[Weil]
+\begin{exercise}
+    Si $G$ es un grupo finito, $g,h\in G$ y $\chi\in\Irr(G)$, entonces 
+    \[
+    \chi(g)\chi(h)=\frac{\chi(1)}{|G|}\sum_{z\in G}\chi(zgz^{-1}h).
+    \]
+\end{exercise}
+
+\begin{exercise}
+Si $G$ es un grupo finito, $g,h\in G$ y $\chi\in\Irr(G)$, entonces 
+\[
+\sum_{h\in G}\chi([g,h])=\frac{|G|}{\chi(1)}|\chi(g)|^2.
+\]
+\end{exercise}
+
+Sea $G$ un grupo finito. Para $g\in G$ sea 
+\[
+\tau(g)=|\{(x,y)\in G\times G:[x,y]=g\}|.
+\]
+Vamos a demostrar una fórmula descubierta por Frobenius que nos permite calcular
+el valor de $\tau(g)$ a partir de la tabla de caracteres de $G$. 
+
+% \begin{proof}
+% Fijemos $z_1\in G$. Como $\chi$ es una función de clases, 
+% \[
+% \sum_{z\in G}\chi(zgz^{-1}h)=\sum_{z\in G}\chi((z_1zgz^{-1}z_1^{-1})(z_1hz_1^{-1}))
+% =\sum_{z\in G}\chi((zgz^{-1})(z_2hz_2^{-1})),
+% \]
+% para un cierto $z_2\in G$, pues como $z$ recorre todo $G$ y $z_1$ 
+% está fijo, entonces $z_2=z_1z$ recorre todo $G$. 
+
+% Sean $C_1,\dots,C_s$ las clases de conjugación de $G$ y para cada $i\in\{1,\dots,s\}$ sea
+% $g_i\in C_i$. Entonces, la fórmula anterior, en particular, implica que 
+% \begin{align*}
+%     \sum_{z\in G}\chi(zg_iz^{-1}g_j)=\sum_{z\in G}\chi((zg_iz^{-1})(z_2g_jz_2^{-1})).    
+% \end{align*}
+% Al sumar estas expresiones sobre todo $z_2\in G$ obtenemos
+% \begin{align*}
+% |G|\sum_{z\in G}\chi(zg_iz^{-1}g_j)&=\sum_{z_2\in G}\sum_{z\in G}\chi((zg_iz^{-1})(z_2g_jz_2^{-1}))\\
+% &=|C_G(g_i)||C_G(g_j)|\sum_{x\in C_i}\sum_{y\in C_j}\chi(xy)\\
+% &=|C_G(g_i)||C_G(g_j)|\sum_{k=1}^s|C_k|a_{ijk}\chi(C_k)\\
+% &=|C_G(g_i)||C_G(g_j)|\frac{|C_i||C_j|}{\chi(1)}\chi(C_i)\chi(C_j).
+% \end{align*}
+% Luego 
+% \[
+% \sum_{z\in G}\chi(zg_iz^{-1}g_j)=
+% \frac{|G|}{\chi(1)}\chi(C_i)\chi(C_j),
+% \]
+% que es equivalente a la primera fórmula que queríamos demostrar. 
+% En particular, si $g_j=g_i^{-1}$, se concluye que 
+% \[
+% \sum_{z\in G}\chi([z,g_i])=\frac{|G|}{\chi(1)}|\chi(g_i)|^2.\qedhere
+% \]
+% \end{proof}
+
+\begin{theorem}[Frobenius]
+    \index{Teorema!de los conmutadores de Frobenius}
+    Si $G$ es un grupo finito, entonces
+    \[
+    \tau(g)=|G|\sum_{\chi\in\Irr(G)}\frac{\chi(g)}{\chi(1)}.
+    \]
+\end{theorem}
+
+\begin{proof}
+    Si $\chi$ es irreducible, entonces
+    \begin{equation}
+    \label{eq:chi}
+    \begin{aligned}
+        1=\langle \chi,\chi\rangle &= \frac{1}{|G|}\sum_{z\in G}\chi(z)\overline{\chi(z)}\\
+        &=\frac{1}{|G|}\sum_{C}|C|\chi(C)\chi(C^{-1}),
+    \end{aligned}
+    \end{equation}
+    donde la última suma se hace sobre todas las clases de conjugación de $G$. 
+
+    Sea $g\in G$ y sea $C$ la clase de conjugación de $g$ en $G$. Sabemos
+    que la ecuación $xu^{-1}=g$, donde $x\in C$ y $u\in C^{-1}$ tiene 
+    \[
+    \frac{|C||C^{-1}|}{|G|}\sum_{\chi\in\Irr(G)}\frac{\chi(C)\chi(C^{-1})\chi(g^{-1})}{\chi(1)}.
+    \]
+    Si $(x,u)$ es una solución, entonces existen $|C_G(x)|$ elementos $y$ tales que 
+    $yxy^{-1}=u$. La ecuación $[x,y]=g$ tiene entonces 
+    \[
+    |C|\sum_{\chi\in\Irr(G)}\frac{\chi(C)\chi(C^{-1})\chi(g^{-1})}{\chi(1)}.
+    \]
+    soluciones. Al sumar sobre todas las clases de conjugación y utilizar 
+    la fórmula~\eqref{eq:chi} obtenemos
+    \begin{align*}
+    \sum_C|C|\sum_{\chi\in\Irr(G)}\frac{\chi(C)\chi(C^{-1})\chi(g^{-1})}{\chi(1)}
+    &=\sum_{\chi\in\Irr(G)}\left(\sum_C|C|\chi(C)\chi(C^{-1})\right)\frac{\chi(g^{-1})}{\chi(1)}\\
+    &=|G|\sum_{\chi\in\Irr(G)}\frac{\chi(g^{-1})}{\chi(1)}.
+    \end{align*}
+    Como este número es un entero (pues cuenta la cantidad de soluciones de una cierta ecuación), 
+    es en particular un número real. En consecuencia, al conjugar obtenemos
+    el resultado que queríamos demostrar.
+    % Como $\tau$ es una función de clases, podemos escribir 
+    % \[
+    % \tau=\sum_{\chi\in\Irr(G)}\langle\tau,\chi\rangle\chi.
+    % \]
+    % El lema de Weil en el caso $g=h$ implica que
+    % \[
+    % |\chi(g)|^2=\chi(g^{-1})\chi(g)=\frac{\chi(1)}{|G|}\sum_{z\in G}\chi([g,z]).
+    % \]
+    % Por la primera relación de ortogonalidad de Schur, entonces
+    % \[
+    % |G|=\sum_{g\in G}|\chi(g)|^2=\frac{\chi(1)}{|G|}\sum_{x,y\in G}\chi([x,y])=\frac{\chi(1)}{|G|}\sum_{g\in G}\tau(g)\chi(g),
+    % \]
+    % por la definición de $\tau$. Por otro lado, como 
+    % \[
+    % \overline{\langle \tau,\chi\rangle}=\frac{1}{|G|}\sum_{g\in G}\tau(g)\chi(g)=\frac{|G|}{\chi(1)},
+    % \]
+    % entonces $\langle\tau,\chi\rangle=|G|/\chi(1)$ y luego 
+    % \[
+    % \tau(g)=\sum_{\chi\in\Irr(G)}\langle\tau,\chi\rangle\chi(g)=|G|\sum_{\chi\in\Irr(G)}\frac{\chi(g)}{\chi(1)}.\qedhere
+    % \]
+\end{proof}
+
+El teorema de Frobenius obviamente implica 
+el siguiente resultado demostrado en forma independiente 
+por Burnside: Si $G$ es un 
+grupo finito y $g\in G$, entonces $g$ 
+es un conmutador si y sólo si 
+\[
+\sum_{\chi\in\Irr(G)}\frac{\chi(g)}{\chi(1)}\ne 0.
+\]
+
+\index{Conjetura!de Ore}
+En 1951 Ore conjeturó que todo elemento de un grupo simple finito no abeliano es un conmutador. 
+El resultado fue demostrado en 2010:
+
+\begin{theorem}[Liebeck--O'Brien--Shalev--Tiep]
+\index{Teorema!de Liebeck--O'Brien--Shalev--Tiep}
+Todo elemento de un grupo simple finito no abeliano es un conmutador. 
+\end{theorem}
+
+La demostración puede consultarse en~\cite{MR2654085}. Ocupa unas 70 páginas y 
+utiliza la clasificación de grupos simples finitos y teoría de caracteres, 
+en particular los teoremas que presentamos en este capítulo. Para más información sobre 
+el teorema de Liebeck--O'Brien--Shalev--Tiep
+referimos a~\cite{MR3289286}.
+
+Para otras aplicaciones de la teoría de caracteres a los grupos simples finitos referiremos a 
+\cite{MR3821142}. 

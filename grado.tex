@@ -1,0 +1,544 @@
+\chapter{El grado de un caracter}
+
+Nuestro objetivo ahora es demostrar el teorema de Frobenius, que afirma
+que el grado de una representación irreducible es un divisor del orden del grupo. 
+
+\begin{definition}
+	\index{Entero algebraico}
+	Sea $\alpha\in\C$. Se dice que $\alpha$ es un \textbf{entero algebraico} si
+	$\alpha$ es raíz de un polinomio mónico con coeficientes en $\Z$.  
+\end{definition}
+
+Escribiremos $\A$ para denotar al conjunto de enteros algebraicos.  
+
+Toda raíz $n$-ésima de la
+unidad es un entero algebraico. Los autovalores de una matriz
+$A\in\Z^{n\times n}$ son enteros algebraicos. 
+
+\begin{proposition}
+  \label{pro:Z}
+  $\Q\cap\A=\Z$.
+\end{proposition}
+
+\begin{proof}
+  Sea $m/n\in\Q$ con $(m:n)=1$ y $n>0$. Supongamos que $m/n$ es raíz del
+  polinomio $t^k+a_{k-1}t^{k-1}+\cdots+a_1t+a_0\in\Z[t]$. Entonces
+  \[
+	0=(m/n)^k+a_{k-1}(m/n)^{k-1}+\cdots+a_1m/n+a_0.
+  \]
+  Al multiplicar por $n^k$,
+  \[
+	0=m^k+a_{k-1}m^{k-1}n+\cdots+a_1mn^{k-1}+a_0n^{k},
+  \]
+  y entonces $n$ divide a $m^k$ pues podemos escribir 
+  \[
+	 m^k=-n(a_{k-1}m^{k-1}+\cdots+a_1mn^{k-2}+a_0n^{k-1}). 
+	\]
+  Como $m$ y $n$ son coprimos se concluye así que $m/n\in\Z$ pues $n\in\{-1,1\}$. 
+\end{proof}
+
+\begin{lemma}
+  \label{lem:matriz_entera}
+  Sea $x\in\C$. Entonces $x\in\A$ si y sólo si $x$ es autovalor de una matriz
+  entera. 
+\end{lemma}
+
+\begin{proof}
+  Supongamos que $x\in\A$, digamos que $x$ es raíz de
+  \[
+    f=t^n+a_{n-1}t^{n-1}+\cdots+a_1t+a_0\in\Z[t].
+  \]
+  Entonces $x$ es autovalor de la matriz compañera de $f$:
+  \[
+    C(f)=\begin{pmatrix}
+      0 & 0 & \cdots &0 & -a_0\\
+      1 & 0 & \cdots &0 & -a_1\\
+      0 & 1 & \cdots &0 & -a_2\\
+      \vdots &\vdots & \ddots & \vdots & \vdots\\
+      0 & 0 & \cdots &1 & -a_{n-1}
+    \end{pmatrix}
+  \]
+  Recíprocamente, si $x$ es autovalor de una matriz $A\in\Z^{n\times n}$,
+  entonces $x$ es raíz del polinomio mónico $f(t)=\det(tI-A)\in\Z^{n\times n}$. 
+\end{proof}
+
+\begin{theorem}
+  \label{theorem:subanillo}
+  $\A$ es un subanillo de $\C$.
+\end{theorem}
+
+\begin{proof}
+  Sean $\alpha,\beta\in\A$. Gracias el lema anterior podemos suponer que $\alpha$ es autovalor de
+  $A\in\Z^{n\times n}$ y que $\beta$ es autovalor de $B\in\Z^{m\times m}$, digamos
+  $Av=\alpha v$ y $Bw=\beta w$.  Como 
+  \[
+	(A\otimes I_{m\times m}+I_{n\times n}\otimes B)(v+w)=(\alpha+\beta)(v+w),
+	\quad
+	(A\otimes B)(v\otimes w)=\alpha\beta(v\otimes w),
+  \]
+  se concluye que $\alpha+\beta\in\A$ y que $\alpha\beta\in\A$. 
+\end{proof}
+
+\begin{theorem}
+  \label{theorem:chi(g)inA}
+  Si $\chi$ es un caracter de un grupo finito $G$, entonces $\chi(g)\in\A$ para todo
+  $g\in G$.
+\end{theorem}
+
+\begin{proof}
+  Sea $\rho$ una representación con caracter $\chi$. Sabemos que $\rho_g$
+  es diagonalizable con autovalores $\lambda_1,\dots,\lambda_k$. Los
+  $\lambda_j$ son enteros algebraicos por ser raíces de la unidad. Luego
+  $\chi(g)=\trace\rho_g=\lambda_1+\cdots+\lambda_k\in\A$.
+\end{proof}
+
+\begin{lemma}
+  \label{lem:combinacion_lineal}
+  Sea $x\in\C$. Entonces $x\in\A$ si y sólo si existen $z_1,\dots,z_k\in\C$ no
+  todos cero tales que $xz_i=\sum_{j=1}^ka_{ij}z_j$, $a_{ij}\in\Z$, para todo
+  $i\in\{1,\dots,k\}$.
+\end{lemma}
+
+\begin{proof}
+  Supongamos que $x\in\A$ es raíz del polinomio 
+  \[
+    t^k+a_{k-1}t^{k-1}+\cdots+a_1t+a_0\in\Z[t].
+  \]
+  Sean $z_i=x^{i-1}$, $i\in\{1,\dots,k\}$. Entonces $xz_i=x^i=z_{i+1}$ para
+  todo $i\in\{1,\dots,k-1\}$ y $xz_{k-1}=x^k=-a_{0}-\cdots-a_{k-1}x^{k-1}$.
+
+  Demostremos la otra implicación. Sean $A=(a_{ij})$ y $Z=(z_1,\dots,z_k)^T$. 
+  Entonces $AZ=xZ$ pues para cada $i\in\{1,\dots,k\}$ se tiene
+  \[
+    (AZ)_i=\sum_{j=1}^ka_{ij}z_j=xz_i=(xZ)_i.
+  \]
+  Como $Z\ne0$, $x$ es autovalor de la matriz $A\in\Z^{k\times k}$. Luego
+  $x\in\A$.
+\end{proof}
+
+\begin{theorem}
+  \label{theorem:algebraic}
+  Sean $G$ un grupo finito, $g\in G$ y $\chi\in\Irr(G)$. Si $K$ es la clase de
+  conjugación de $g$ en $G$, entonces
+  \[
+    \frac{|K|\chi(g)}{\chi(1)}\in\A.
+  \]
+\end{theorem}
+
+\begin{proof}
+  Sea $\phi$ una representación con caracter $\chi$.  Sean $C_1,\dots,C_r$ las
+  clases de conjugación de $G$. Para cada $i\in\{1,\dots,r\}$ 
+  definimos 
+  \[
+    T_i=\sum_{x\in C_i}\phi_x.
+  \]
+
+  Vamos a demostrar que $T_i=\left(\frac{|C_i|\chi(C_i)}{\chi(1)}\right)\id$,
+  donde $\chi(C_i)$ denota el valor de $\chi$ en la clase de conjugación $C_i$. 
+  Cada $T_i$
+  es un morfismo de representaciones, pues 
+  \[
+    \phi_g\circ T_i\circ \phi_{g^{-1}}
+	=\sum_{x\in C_i}\phi_g
+	=\sum_{x\in C_i}\phi_{gxg^{-1}}
+	=\sum_{x\in C_i}\phi_x
+	=T_i,
+  \]
+  y entonces el lema de Schur implica que $T_i=\lambda\id$ para algún
+  $\lambda\in\C$. 
+  
+  Calculemos ahora $\lambda$:
+  \[
+    \chi(1)\lambda 
+	=\trace(\lambda\id)
+	=\trace(T_i)
+	=\sum_{x\in C_i}\trace(\phi_x)
+	=\sum_{x\in C_i}\chi(x)
+	=\chi(C_i)|C_i|.
+  \]
+
+
+  Veamos ahora que $T_iT_j=\sum_{k=1}^r a_{ijk}T_k$, donde $a_{ijk}\in\N_0$.
+  Calculamos
+  \[
+	T_iT_j=\sum_{x\in C_i}\sum_{y\in C_j}\phi_x\phi_y=\sum_{\substack{x\in C_i\\y\in C_j}}\phi_{xy}=\sum_{g\in G}a_{ijg}\phi_g,
+  \]
+  donde $a_{ijg}$ es la cantidad de veces que $g$ puede escribirse como $g=xy$
+  con $x\in C_i$, $y\in C_j$. 
+  Veamos que los $a_{ijg}$ dependen únicamente de la clase de conjugación de
+  $g$. En efecto, sea 
+  \[
+    X_g=\{(x,y)\in C_i\times C_j:xy=g\}.
+  \]
+  Si $h=kgk^{-1}$, entonces la función 
+  \[
+	 X_g\to X_h, \quad(x,y)\mapsto
+  (kxk^{-1},kyk^{-1}) 
+   \]
+   está bien definida y es biyectiva con inversa $X_h\to
+  X_g$, $(a,b)\mapsto (k^{-1}ak,k^{-1}bk)$. En particular, $|X_g|=|X_h|$. 
+
+  Como los $a_{ijg}$ dependen de la clase de conjugación de $g$,
+  \[
+	T_iT_j=\sum_{g\in G}a_{ijg}\phi_g
+	=\sum_{k=1}^r\sum_{g\in C_k}a_{ijg}\phi_g
+	=\sum_{k=1}^ra_{ijk}\sum_{g\in C_k}\phi_g
+	=\sum_{k=1}^ra_{ijk}T_k,
+  \]
+  tal como queríamos demostrar. De esta igualdad obtenemos:
+  \begin{equation}
+  \label{eq:omega}
+    \left(\frac{|C_i|}{\chi(1)}\chi(C_i)\right)
+    \left(\frac{|C_j|}{\chi(1)}\chi(C_j)\right)
+    =\sum_{k=1}^sa_{ijk}\left(\frac{|C_k|}{\chi(1)}\chi(C_k)\right),
+  \end{equation}
+  y se concluye que $|C_i|\chi(C_i)/\chi(1)\in\A$ gracias al
+  lema~\ref{lem:combinacion_lineal}.
+\end{proof}
+
+\begin{theorem}[Frobenius]
+  \label{theorem:chi(1)||G|}
+  \index{Teorema de!Frobenius}
+  \index{Frobenius!teorema de}
+  Sean $G$ un grupo finito y $\chi\in\Irr(G)$. Entonces $\chi(1)$ divide al
+  orden de $G$.
+\end{theorem}
+
+\begin{proof}
+  Sea $\phi$ una representación irreducible con caracter $\chi$. Como $\chi$ es
+  irreducible, $1=\langle\chi,\chi\rangle$ y entonces 
+  \[
+    \frac{|G|}{\chi(1)}=\frac{|G|}{\chi(1)}\langle\chi,\chi\rangle=\sum_{g\in G}\frac{\chi(g)}{\chi(1)}\overline{\chi(g)},
+  \]
+  Sean $C_1,\dots,C_r$ las clases de conjugación de $G$. Entonces
+  \[
+    \frac{|G|}{\chi(1)}
+    =\sum_{i=1}^r\sum_{g\in C_i}\frac{\chi(g)}{\chi(1)}\overline{\chi(g)}
+    =\sum_{i=1}^r\left(\frac{|C_i|}{\chi(1)}\chi(C_i)\right)\overline{\chi(C_i)}\in\A,
+  \]
+  por los teoremas~\ref{theorem:subanillo},~\ref{theorem:chi(g)inA}
+  y~\ref{theorem:algebraic}.  Luego $|G|/\chi(1)\in\Q\cap\A=\Z$
+  (proposición~\ref{pro:Z}). En particular, $\chi(1)$ divide al orden de $G$.
+\end{proof}
+
+\begin{exercise}
+	\label{xca:p2_abeliano}
+  Sea $p$ un primo. Demuestre que todo grupo de orden $p^2$ es abeliano.
+\end{exercise}
+
+\begin{exercise}
+	\label{xca:pq}
+  Sean $p<q$ primos tales que $q\centernot\equiv1\mod p$. Demuestre que todo grupo de
+  orden $pq$ es abeliano.
+\end{exercise}
+
+Veamos una aplicación.
+
+\begin{theorem}
+    Si $G$ es un grupo finito simple, $\chi(1)\ne 2$ para todo $\chi\in\Irr(G)$. 
+\end{theorem}
+
+\begin{proof}
+    Sea $\chi\in\Irr(G)$ tal que $\chi(1)=2$ y sea
+    $\rho\colon G\to\GL_2(\C)$ una representación de $G$ con caracter $\chi$. Como $G$ es simple y $\ker\rho$ es normal en $G$, 
+    $\ker\rho=\{1\}$, es decir $\rho$ es inyectiva. 
+    
+    Como $G$ tiene un caracter irreducible de grado dos, $G$ es no abeliano, entonces 
+    $[G,G]=G$ pues $[G,G]\ne\{1\}$. Sabemos que $G$ tiene exactamente $(G:[G,G])$ caracteres irreducible de grado uno, entonces 
+    el único caracter irreducible de $G$ de grado uno es el trivial. La función
+    \[
+    G\to\C^{\times},\quad
+    g\mapsto\det(\rho_g),
+    \]
+    es un morfismo de grupos, luego es un caracter de grado uno. Como tiene que ser el caracter trivial, 
+    $\det(\rho_g)=1$ para todo $g\in G$. 
+    
+    Por el teorema de Frobenius, 
+    $\chi(1)$ divide al orden de $G$ y luego 
+    $G$ tiene orden par. Sea $x\in G$ un elemento de orden dos. Como $\rho$ es inyectiva, 
+    $\rho_x$ tiene orden dos en $\GL_2(\C)$. Como $\rho_x$ es diagonalizable, existe $C\in\GL_2(\C)$ tal que
+    \[
+    C\rho_xC^{-1}=\begin{pmatrix}
+    \lambda & 0\\
+    0 & \mu 
+    \end{pmatrix},
+    \]
+    donde $\lambda,\mu\in\{-1,1\}$ pues $\rho_x^2$ es la matriz identidad. Como $1=\det(\rho_g)=\lambda\mu$, entonces
+    $\lambda=\mu=-1$, lo que implica que la matriz $\rho_x$ es central en $\GL_2(\C)$. Como $\rho$ es inyectiva, 
+    $x$ es también central en $G$, es decir $xg=gx$ para todo $g\in G$. Luego $\langle x\rangle$ es un subgrupo propio 
+    normal no trivial de $G$.
+\end{proof}
+
+Vamos a demostrar una mejora del teorema de Frobenius. 
+
+\begin{proposition}
+Sean $G$ y $G_1$ dos grupos finitos. 
+Si $\rho$ es una representación irreducible de $G$ y $\rho_1$ es
+  una representación irreducible de $G_1$, entonces $\rho\otimes\rho_1$ 
+  es una representación irreducible de $G\times G_1$. 
+%     \item Toda representación irreducible de $G\times G_1$ es equivalente a una representación $\rho\otimes\rho_1$, donde
+%     $\rho$ es una representación irreducible de $G$ y $\rho_1$ es una representación irreducible de $G_1$. 
+%   \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+    Sea $\chi$ el caracter de $\rho$ y $\chi_1$ el caracter de $\rho_1$. 
+    Como $\rho$ y $\rho_1$ son irreducibles, $\langle\chi,\chi\rangle=\langle\chi_1,\chi_1\rangle=1$. Entonces
+    \begin{align*}
+    \langle\chi\otimes\chi_1,\chi\otimes\chi_1\rangle
+    &=\frac{1}{|G\times G_1|}\sum_{(g,g_1)\in G\times G_1}\chi(g)\chi_1(g_1)\overline{\chi(g)}\overline{\chi_1(g_1)}\\
+    &=\left(\frac{1}{|G|}\sum_{g\in G}\chi(g)\overline{\chi(g)}\right)\left(\frac{1}{|G_1|}\sum_{g_1\in G_1}\chi_1(g_1)\overline{\chi_1(g_1)}\right)\\
+    &=\langle\chi,\chi\rangle\langle\chi_1,\chi_1\rangle=1.
+    \end{align*}
+    Luego $\rho\otimes\rho_1$ es irreducible. 
+\end{proof}
+
+\begin{exercise}
+    Sean $G$ y $G_1$ grupos finitos. 
+    Demuestre que toda representación irreducible de $G\times G_1$ es de la forma $\rho\otimes\rho_1$, donde $\rho$ es una representación
+    irreducible de $G$ y $\rho_1$ es una representación irreducible de $G_1$. 
+\end{exercise}
+
+\begin{theorem}[Schur]
+    \index{Teorema!de Schur}
+    \index{Schur!teorema de}
+    Sean $G$ un grupo finito y $\chi\in\Irr(G)$. Entonces $\chi(1)$ divide al índice $(G:Z(G))$.
+\end{theorem}
+
+\begin{proof}
+    Sea $\rho\colon G\to\GL(V)$, $g\mapsto\rho_g$, una representación con caracter $\chi$. 
+    Si $z\in Z(G)$, entonces $\rho_z$ conmuta con $\rho_g$ para todo $g\in G$. Por el lema de Schur, 
+    $\rho_z(v)=\lambda(z)v$ para todo $v\in V$. Sea $\lambda\colon Z(G)\to\C^\times$, $z\mapsto \lambda(z)$. Como 
+    \[
+    \lambda(z_1z_2)v=\rho_{z_1z_2}(v)=\rho_{z_1}\rho_{z_2}(v)=\lambda(z_1)\lambda(z_2)v
+    \]
+    para todo $v\in V$, $\lambda$ es morfismo de grupos. 
+    
+    Para $n\in\N$ sea $G^n=G\times\cdots\times G$ ($n$-veces) y 
+    sea 
+    \[
+    \sigma\colon G^n\to\GL(V^{\otimes n}),
+    \quad 
+    (g_1,\dots,g_n)\mapsto \rho_{g_1}\otimes\cdots\otimes\rho_{g_n}.
+    \]
+    La representación $\sigma$ tiene
+    caracter $\chi^{n}$ y es irreducible. 
+    Como 
+    \begin{align*}
+    \sigma(z_1,\dots,z_n)(v_1\otimes\cdots\otimes v_n)
+    &=z_1\cdot v_1\otimes\cdots\otimes z_n\cdot v_n\\
+    &=\lambda(z_1)\cdots\lambda(z_n)(v_1\otimes\cdots\otimes v_n)\\
+    &=\lambda(z_1\cdots z_n)(v_1\otimes\cdots\otimes v_n),
+    \end{align*}
+    el subgrupo 
+    \[
+    H=\{(z_1,\dots,z_n)\in Z(G)\times\cdots\times Z(G):z_1\cdots z_n=1\}
+    \]
+    de $G^n$ actúa trivialmente
+    en $V^{\otimes n}$, lo que nos da una representación 
+    \[
+    \tau\colon G^n/H\to\GL(V^{\otimes n}),
+    \]
+    es decir una
+    estructura de $\C[G^n/H]$-módulo sobre $V^{\otimes n}$. Como $V^{\otimes n}$ 
+    es un $\C[G^n]$-módulo simple, $V^{\otimes n}$ también es simple como $\C[G^n/H]$-módulo. 
+    Por el teorema de Frobenius aplicado al $\C[G]$-módulo $V$ sabemos que 
+    el grado $\chi(1)$ divide a $|G|$, digamos $|G|=\chi(1)s$ para algún $s\in\Z$. 
+    Ese mismo teorema, ahora 
+    aplicado al $\C[G^n/H]$-módulo $V^{\otimes n}$, nos dice que
+    el grado $\chi(1)^n$ de $\tau$ 
+    divide al entero $(G^n:H)=(G:Z(G))^{n-1}|G|$, digamos $|G|(G:Z(G))^{n-1}=\chi(1)^nr$ para algún $r\in\Z$. 
+    Sean $a,b\in\Z$ tales que $\gcd(a,b)=1$ y 
+    \[
+    \frac{a}{b}=\frac{(G:Z(G))}{\chi(1)}.
+    \]
+    Como 
+    \[
+    s\frac{a^{n-1}}{b^{n-1}}=s\frac{(G:Z(G))^{n-1}}{\chi(1)^{n-1}}=\frac{|G|(G:Z(G))^{n-1}}{\chi(1)^n}\in\Z,
+    \]
+    Luego $b^{n-1}$ divide a $s$. Como $n$ es arbitrario, se sigue que $b=1$. 
+    % \[
+    % \frac{(G:Z(G))}{\chi(1)}=\frac{r}{s}\in\A\cap\Q=\Z.\qedhere
+    % \]
+    % %$\deg\sigma=(\dim V)^m$ divide al entero 
+    %\[
+    % \frac{|G|^m}{|Z(G)|^{m-1}}=\frac{(\dim V)^mt^m|Z(G)|}{|Z(G)|^{m}},
+    % \]
+    % lo que equivale a decir que $\dim V$ divide a $(G:Z(G))$. 
+\end{proof}
+
+% Antes de demostrar una generalización del teorema anterior encontrada por It\^o, necesitamos un lema. 
+
+% \begin{lemma}
+% Sea $G$ un grupo finito y sea $A$ un subgrupo normal abeliano de $G$. Si $\rho\colon G\to\GL(V)$ 
+% es una representación irreducible, entonces
+% \begin{enumerate}
+%     \item existe un subgrupo $H$ de $G$ tal que $A\subseteq H\subsetneq G$ y una 
+%     representación irreducible $\sigma$ de $H$ que induce a la representación $\rho$, o bien 
+%     \item la restricción $\rho|_A$ es la suma directa finitas representaciones irreducibles isomorfas.
+% \end{enumerate}
+% \end{lemma}
+
+% \begin{proof}
+%     Sea $V=\oplus_{i=1}^nV_i$ la descomposición de la restricción $\rho|_A$ en irreducibles. Como $\rho(s)$ permuta los $V_i$, 
+%     los permuta transitivamente pues $V$ es un módulo simple. 
+% \end{proof}
+
+% \begin{theorem}[It\^o]
+% \index{Teorema!de It\^o}
+% \index{It\^o|teorema de}
+% Sea $G$ un grupo finito y sea $A$ un subgrupo normal y abeliano de $G$. Si $\chi\in\Irr(G)$, entonces
+% $\chi(1)$ divide a $(G:A)$. 
+% \end{theorem}
+
+% \begin{proof}
+%     Sea $\rho\colon G\to\GL(V)$ una representación irreducible 
+%     de $G$ con caracter $\chi$. Si nos encontramos en el primer caso del lema anterior, entonces
+%     $\deg\sigma$ divide al índice $(H:A)$ y entonces, al multiplicar en ambos miembros por $(G:H)$ obtememos que 
+%     \[
+%     \deg\rho=\deg\sigma(G:H)\text{ divide al entero }(G:H)(H:A)=(G:A).
+%     \]
+    
+%     Si estamos en el segundo caso del lema anterior, sea $G_1=\rho(G)$ y sea $A_1=\rho(A)$. El morfismo canónico $G/A\to G_1/A_1$
+%     es sobreyectivo y entonces $(G_1:A_1)$ divide a $(G:A)$. Como para cada $a\in A$ se tiene $\rho_a=\lambda(a)\id$ 
+%     para $\lambda(a)\in\C$. En particular, $\rho(A)\subseteq Z(G_1)$ y luego, por el teorema de Schur, 
+%     $\deg\rho$ divide al índice $(G_1:A_1)$, que a su vez divide al índice $(G:A)$. 
+% \end{proof}
+
+La demostración anterior fue descubierta por Tate y está basada en 
+el "truco del producto tensorial". Para más información 
+sobre este truco referimos al blog de Terence Tao: 
+\url{https://terrytao.wordpress.com}. Allí encontraremos una 
+entrada dedicada exclusivamente muchas de las aplicaciones
+de este poderoso truco. 
+
+\medskip
+El teorema de Schur también puede generalizarse. 
+En 1951 It\^o demostró el siguiente resultado: 
+
+\begin{theorem}[It\^o]
+\index{Teorema!de It\^o}
+Si $G$ es un grupo finito y $\chi\in\Irr(G)$, entonces
+$\chi(1)$ divide a $(G:A)$ para todo subgrupo normal abeliano $A$. 
+\end{theorem}
+
+La demostración, que no es más difícil que la demostración del 
+teorema de Frobenius o del teorema de Schur que vimos en este capítulo, puede consultarse por ejemplo 
+en~\cite[\S8.1]{MR0450380}. 
+
+\medskip
+Para terminar con el capítulo vamos a mencionar algunas de las conjeturas de conteo más famosas. 
+En 1971 McKay hizo la siguiente conjetura:
+
+\begin{conjecture}[McKay]
+\index{Conjetura!de McKay}
+Sea $p$ un primo. 
+Si $G$ es un grupo finito y $P\in\Syl_p(G)$, entonces
+\[
+|\{\chi\in\Irr(G):p\nmid \chi(1)\}|
+=|\{\psi\in\Irr(N_G(P))|:p\nmid\psi(1)\}|.
+\]
+\end{conjecture}
+
+En la versión original de McKay el grupo $G$ es simple y el primo es $p=2$. La versión general 
+de la conjetura fue en realidad formulada por Alperin en~\cite{MR0404417} e independientemente
+por Isaacs en~\cite{MR332945}.
+
+\index{Teorema!de Malle-Sp\"ath}
+Se sabe que la conjetura es verdadera para varias clases de grupos. 
+Isaacs la demostró para grupos resolubles, ver por ejemplo~\cite{MR332945,MR3791517}. Malle y Sp\"ath demostraron que 
+la conjetura de McKay es cierta para el primo $p=2$. 
+
+\begin{theorem}[Malle--Sp\"ath]
+\index{Teorema!de Malle--Sp\"ath}
+Si $G$ es un grupo finito y $P\in\Syl_2(G)$, entonces
+\[
+|\{\chi\in\Irr(G):2\nmid \chi(1)\}|
+=|\{\psi\in\Irr(N_G(P))|:2\nmid\psi(1)\}|.
+\]
+\end{theorem}
+
+La demostración aparece en~\cite{MR3549625} y utiliza 
+la clasificación de grupos simples finitos. Se basa en 
+demostrar que todo grupo simple cumple con ciertas propiedades 
+bastante más complicadas que la conjetura de McKay, 
+un resultado de Isaacs, Malle y Navarro~\cite{MR2336079}. 
+
+Podemos verificar computacionalmente algunos casos
+de la conjetura de McKay con la siguiente función:
+
+\begin{lstlisting}
+gap> McKay := function(G, p)
+> local N, n, m;
+> N := Normalizer(G, SylowSubgroup(G, p));
+> n := Number(Irr(G), x->Degree(x) mod p <> 0);
+> m := Number(Irr(N), x->Degree(x) mod p <> 0);
+> if n = m then
+> return true;
+> else
+> return false;
+> fi;
+> end;
+function( G, p ) ... end
+\end{lstlisting}
+
+Como ejemplo vamos a verificar computacionalmente la conjetura de McKay para el grupo 
+de Mathieu $M_{11}$. Se sabe que $M_{11}$ es un grupo simple de orden 7920. 
+
+\begin{lstlisting}
+gap> M11 := MathieuGroup(11);;
+gap> PrimeDivisors(Order(M11));
+[ 2, 3, 5, 11 ]
+gap> McKay(M11,2);
+true
+gap> McKay(M11,3);
+true
+gap> McKay(M11,5);
+true
+gap> McKay(M11,11);
+true
+\end{lstlisting}
+
+% \begin{exercise}
+% Verifique la conjetura de McKay para el grupo $\Sym_3$.
+% \end{exercise}
+La siguiente conjetura 
+es un refinamiento de la conjetura de McKay y 
+fue formulada por Isaacs y Navarro:
+
+\begin{conjecture}[Isaacs--Navarro]
+\index{Conjetura!de Isaacs--Navarro}
+Sean $p$ un primo y $k\in\Z$. 
+Si $G$ es un grupo finito y $P\in\Syl_p(G)$, entonces
+\begin{align*}
+|\{\chi\in\Irr(G):&p\nmid \chi(1)\text{ y }\chi(1)\equiv\pm k\bmod p\}|\\
+&=|\{\psi\in\Irr(N_G(P))|:p\nmid\psi(1)\text{ y }\psi(1)\equiv\pm k\bmod p\}|.
+\end{align*}
+\end{conjecture}
+
+Se sabe que la conjetura de Isaacs--Navarro es verdadera para varias clases de grupos, por ejemplo 
+para grupos resolubles, para los grupos simples esporádicos y para el grupo simétrico, 
+ver por ejemplo~\cite{MR1935849} y las referencias allí contenidas. 
+
+Para verificar la conjetura de Isaacs--Navarro en algunos
+ejemplos de orden pequeño utilizaremos el siguiente código:
+
+\begin{lstlisting}
+gap> IsaacsNavarro := function(G, k, p)
+> local mG, mN, N;
+> N := Normalizer(G, SylowSubgroup(G, p));
+> mG := Number(Filtered(Irr(G), x->Degree(x)\
+> mod p <> 0), x->Degree(x) mod p in [-k,k] mod p);
+> mN := Number(Filtered(Irr(N), x->Degree(x)\
+> mod p <> 0), x->Degree(x) mod p in [-k,k] mod p);
+> if mG = mN then
+> return mG;
+> else
+> return false;
+> fi;
+> end;
+function( G, k, p ) ... end
+\end{lstlisting}
+
+Dejamos como ejercicio verificar la conjetura de Isaacs--Navarro 
+por ejemplo para el grupo de Mathieu $M_{11}$. 

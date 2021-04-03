@@ -1,0 +1,715 @@
+\chapter{Representaciones de grupos}
+
+\index{Representación!de un grupo}
+\index{Grado!de una representación}
+Salvo que se mencione lo contrario, trabajaremos sobre el cuerpo $\C$ de los números complejos. 
+
+Si $G$ es un grupo finito, un morfismo de grupos $\rho\colon G\to\GL(V)$, $g\mapsto\rho_g$, donde $V$ es un espacio
+vectorial complejo de dimensión finita, se dice una 
+\textbf{representación} de $G$. La dimensión de $V$ es el \textbf{grado} 
+de la representación, es decir $\deg\rho=\dim V$. 
+Si el espacio vectorial $V$ tiene dimensión $n$, al fijar una base 
+para $V$ podemos considerar $\rho\colon G\to\GL(V)\simeq\GL_n(\C)$. Observemos que 
+toda representación de un grupo finito será de dimensión finita. 
+ 
+\begin{example}
+Como $\Sym_3=\langle (12),(123)\rangle$, la función $\rho\colon \Sym_3\to\GL_3(\C)$,
+\[
+(12)\mapsto\begin{pmatrix}
+0 & 1 & 0\\
+1 & 0 & 0\\
+0 & 0 & 1
+\end{pmatrix},\quad
+(123)\mapsto\begin{pmatrix}
+0 & 0 & 1\\
+1 & 0 & 0\\
+0 & 1 & 0
+\end{pmatrix}
+\] 
+es una representación de $\Sym_3$. 
+\end{example}
+
+% \begin{example}
+% Como el grupo de cuaterniones $Q_8=\{1,-1,i,-i,j,-j,k,-k\}$ está generado por $\{i,j\}$, 
+% la función $\rho\colon G\to\GL_2(\C)$, 
+% \[
+% i\mapsto\begin{pmatrix}
+% i & 0\\
+% 0 & i
+% \end{pmatrix},
+% \quad
+% j\mapsto\begin{pmatrix}
+% 0 & -1\\
+% 1 & 0	
+% \end{pmatrix}
+% \]
+% es una representación de $Q_8$.
+% \end{example}
+
+\begin{example}
+Sea $G=\langle g\rangle$ cíclico de orden seis. 
+La función $\rho\colon G\to\GL_2(\C)$, 
+\[
+g\mapsto
+\begin{pmatrix}
+1&1\\
+-1&0
+\end{pmatrix}
+\] 
+es una representación del grupo $G$ cíclico de orden seis. 
+\end{example}
+
+\begin{example}
+Sea $G=\langle g\rangle$ cíclico de orden cuatro. 
+La función $\rho\colon G\to\GL_2(\C)$, 
+\[
+g\mapsto
+\begin{pmatrix}
+0&-1\\
+1&0
+\end{pmatrix}
+\] 
+es una representación del grupo $G$ cíclico de orden cuatro. 
+\end{example}
+
+
+\begin{example}
+  Sea $G=\langle a,b:a^2=b^3=(ab)^3=1\rangle$. La asignación 
+  \[
+    a\mapsto\begin{pmatrix}
+    0 & 1 & -1\\
+    1 & 0 & -1\\
+    0 & 0 & -1
+    \end{pmatrix},
+    \quad
+    b\mapsto\begin{pmatrix}
+      0 & 0 & 1\\
+      1 & 0 & 0\\
+      0 & 1 & 0
+    \end{pmatrix},
+  \]
+  define una representación $G\to\GL_3(\C)$. 
+\end{example}
+
+% \begin{example}
+% 	Sea $G=\langle x,y:x^2=y^2=1\rangle$. Vamos a demostrar que $G$ es
+% 	infinito. Sea
+% 	\[
+% 	\rho\colon G\to\GL_2(\C),
+% 	\quad
+% 	x\mapsto\begin{pmatrix}
+% 		1 & 0\\
+% 		0 & -1
+% 	\end{pmatrix},
+% 	\quad
+% 	y\mapsto\begin{pmatrix}
+% 		1 & 1\\
+% 		0 & -1
+% 	\end{pmatrix}.
+% 	\]
+% 	Como $\rho_x^2=\rho_y^2=\id$, $\rho$ es una representación. Al usar $\rho$
+% 	podemos demostrar que si $(xy)^n=(xy)^m$ entonces $n=m$.  Luego $G$ tiene
+% 	infinitos elementos.
+% \end{example}
+
+\begin{example}
+  Sea $X$ un $G$-conjunto y sea $V=\C X$ el espacio vectorial con base $\{x:x\in
+  X\}$. Entonces
+  \[
+	\rho\colon G\to\GL(V),\quad
+	\rho_g\left(\sum_{x\in X}\lambda_x x\right)
+	=\sum_{x\in X}\lambda_x\rho_g(x)
+	=\sum_{x\in X}\lambda_{g^{-1}x}x
+  \]
+  es una representación de grado $|X|$.
+\end{example}
+
+\begin{example}
+El signo $\sgn\colon\Sym_n\to\GL_1(\C)=\C$ es una representación de $\Sym_n$.
+\end{example}
+
+\index{Representación!fiel}
+Una representación $\rho\colon G\to\GL(V)$ se dice \textbf{fiel} si $\rho$
+es inyectivo.
+
+\begin{example}
+	Sea $Q_8=\langle i,j,k:i^2=j^2=k^2,\,i^4=1,\,ij=k\rangle$. Entonces 
+	\[
+		\rho\colon Q_8\to\GL_2(\C),\quad
+		i\mapsto\begin{pmatrix}
+			i & 0\\
+			0 & -i
+		\end{pmatrix},
+		\quad
+		j\mapsto\begin{pmatrix}
+			0 & -1\\
+			1 & 0
+		\end{pmatrix},
+		\quad
+		k\mapsto\begin{pmatrix}
+			0 & -i\\
+			-i & 0
+		\end{pmatrix},
+	\]
+	es una representación fiel. 
+\end{example}
+
+Observemos que existe una correspondencia biyectiva 
+\[
+\{\text{representaciones de $G$}\}\leftrightarrow\{\text{$\C[G]$-módulos de dimensión finita}\}.
+\]
+Si $\rho\colon G\to\GL(V)$ es una representación, entonces 
+$V$ es un $\C[G]$-módulo con
+\[
+\left(\sum_{g\in G}\lambda_gg\right)\cdot v=\sum_{g\in G}\lambda_g\rho(g)(v).
+\]
+Recíprocamente, si $V$ es un $\C[G]$-módulo, entonces $\rho\colon G\to\GL(V)$, 
+$\rho(g)(v)=g\cdot v$, es una representación de $G$ en $V$. Puede verificarse que estas
+construcciones son una la inversa de la otra.  
+
+%\begin{definition}
+%\index{Módulo!simple}
+%\index{Módulo!irreducible}
+%Un módulo $M$ se dice \textbf{simple} (o irreducible) si $M\ne\{0\}$ y $M$ no tiene
+%submódulos propios no triviales.  
+%\end{definition}
+%
+%\begin{example}
+%Si $A$ es un álgebra, vimos que todo $A$-módulo es un espacio vectorial. Los módulos
+%de dimensión uno serán entonces módulos simples.
+%\end{example}
+
+
+%\begin{example}
+%Sea $M=\R^2$ con la estructura de $\R[X]$-módulo dada por
+%\[
+%\left(\sum_{i=0}^n a_iX^i\right)\cdot m=\sum_{i=0}^n a_iT^i(m).
+%\]
+%donde $T\colon\R^2\to\R^2$, $T(x,y)=(y,-x)$. 
+%Veamos que $M$ es simple. Si $N$ es un submódulo no nulo, sea $(x_0,y_0)\in N\setminus\{(0,0)\}$. Si $(x,y)\in M$, veamos que 
+%existen
+%$\alpha,\beta\in\R$ tales que
+%\[
+%(\alpha+\beta X)\cdot (x_0,y_0)=(x,y).
+%\]
+%En efecto, basta tomar 
+%\[
+%\alpha=\frac{x_0x+y_0y}{x_0^2+y_0^2},\quad
+%\beta=\frac{y_0x-x_0y}{x_0^2+y_0^2},
+%\]
+%pues
+%\begin{align*}
+%(\alpha+\beta X)\cdot (x_0,y_0)&=\alpha(x_0,y_0)+\beta\cdot (X\cdot (x_0,y_0))\\
+%&=(\alpha x_0,\alpha y_0)+(\beta y_0,-\beta x_0)\\
+%&=(\alpha x_0+\beta y_0,\alpha y_0-\beta x_0)\\
+%&=(x,y).	
+%\end{align*}
+%\end{example}
+
+%\begin{definition}
+%\index{Módulo!semisimple}
+%\index{Módulo!completamente reducible}
+%Un módulo $M$ se dice \textbf{semisimple} (o completamente reducible) 
+%si es suma directa de módulos simples.
+%\end{definition}
+%
+%Vimos en el capítulo anterior que si $M$ es un módulo, se dice que un submódulo $S$ de $M$ se complementa en $M$ si existe un submódulo $T$ de $M$ tal que $M=S\oplus T$.
+
+\begin{proposition}
+  Sean $G$ un grupo finito, $g\in G$ y $\rho\colon G\to\GL(V)$ una representación. Entonces
+  $\rho_g$ es diagonalizable. 
+\end{proposition}
+
+\begin{proof}
+  Como $G$ es finito, existe $n\in\N$ tal que $g^n=1$. Luego $\rho_g$ es raíz
+  del polinomio $X^n-1$. Como este polinomio tiene todas sus raíces distintas y
+  se factoriza linealmente en $\C[X]$, también tiene estas propiedades el
+  polinomio minimal de $\rho_g$. Luego $\rho_g$ es diagonalizable.
+\end{proof}
+
+\index{Representaciones!equivalentes}
+Sea $G$ un grupo y sean $\phi\colon G\to\GL(V)$ y $\psi\colon G\to\GL(W)$ 
+representaciones. Se dice que $\phi$ y $\psi$ son \textbf{equivalentes} si
+existe un isomorfismo $T\colon V\to W$ tal que 
+\[
+	\psi_g\circ T=T\circ \phi_g
+\]
+para todo $g\in G$. Notación: $\phi\simeq\psi$. Observemos que $\phi\simeq\psi$ si y sólo si $V$
+y $W$ son isomomorfos como $\C[G]$-módulos.
+
+\begin{example}
+  La representación  
+  \begin{gather*}
+  \phi\colon\Z/n\to\GL_2(\C),\quad
+  \phi(m)=
+  \begin{pmatrix}
+    \cos(2\pi m/n) & -\sin(2\pi m/n)\\
+    \sin(2\pi m/n) & \cos(2\pi m/n)
+  \end{pmatrix},
+  \shortintertext{es equivalente a la representación}
+  \psi\colon\Z/n\to\GL_2(\C),
+  \quad 
+  \psi(m)=\begin{pmatrix}
+    e^{2\pi im/n} & 0\\
+    0 & e^{-2\pi im/n}
+  \end{pmatrix}.
+  \end{gather*}
+  La equivalencia sea realiza con la matriz $T=\begin{pmatrix} i & -i\\
+    1&1\end{pmatrix}$. En efecto, $\phi_m\circ =T\circ\psi_m$ para todo $m$.
+\end{example}
+
+\index{Subespacio invariante}
+\index{Subrepresentación}
+Traducimos ahora la noción de submódulo al contexto de la teoría de representaciones. 
+Sea $\phi\colon V\to\GL(V)$ una representación. Un subespacio $W\subseteq V$ se dice
+\textbf{$G$-invariante} si $\phi_g(W)\subseteq W$ para todo $g\in G$.  Si $W$
+es un subespacio $G$-invariante, entonces la restricción $\rho|_W$ de $\phi$
+a $W$ es una representación, que se llama \textbf{subrepresentación} de
+$\phi$.
+
+Una representación $\phi\colon G\to\GL(V)$ no nula se dice \textbf{irreducible} si los $\{0\}$
+y $V$ son los únicos subespacios $G$-invariantes de $V$.
+Claramente una representación $\rho\colon G\to\GL(V)$ es irreducible si y sólo si $V$ es
+simple como $\C[G]$-módulo.
+
+\begin{example}
+  Toda representación de grado uno es irreducible.
+\end{example}
+
+En el siguiente ejemplo trabajaremos sobre los números reales. 
+
+\begin{example}
+Sea $G=\langle g\rangle$ cíclico de orden tres y sea 
+\[
+\rho\colon G\to\GL_3(\R),\quad
+g\mapsto\begin{pmatrix}
+  0&1&0\\
+  0&0&1\\
+  1&0&0
+\end{pmatrix},
+\]
+es decir que $g$ actúa en $\R^{3\times1}$ por multiplicación de matrices. 
+El conjunto
+\[
+N=\{(x,y,z)^T\in\R^{3\times1}:x+y+z=0\}
+\]
+es un subespacio $G$-invariante de $\R^3$. Veamos que $N$ es irreducible. Si $N$ contiene un subespacio $G$-invariante, 
+sea $(x_0,y_0,z_0)\in S\setminus\{(0,0,0)\}$. Como $S$ es $G$-invariante, 
+\[
+\begin{pmatrix}
+y_0\\
+z_0\\
+x_0
+\end{pmatrix}
+=
+\begin{pmatrix}
+  0&1&0\\
+  0&0&1\\
+  1&0&0
+\end{pmatrix}
+\begin{pmatrix}
+x_0\\
+y_0\\
+z_0
+\end{pmatrix}\in S.
+\]
+Afirmamos
+que $\{(x_0,y_0,z_0),(y_0,z_0,x_0)\}$ es un conjunto linealmente independiente. Si existe $\lambda\in\R$ 
+tal que $\lambda(x_0,y_0,z_0)=(y_0,z_0,x_0)$, entonces $x_0=\lambda^3 x_0$. Como $x_0=0$ implica que 
+$y_0=z_0=0$, entonces $\lambda=1$. En particular, $x_0=y_0=z_0$, una contradicción, pues $x_0+y_0+z_0=0$. 
+Luego $\dim S=2$ y entonces
+$S=N$. 
+\end{example}
+
+\begin{exercise}
+    ¿Qué pasa en el ejemplo anterior sobre los números complejos?
+\end{exercise}
+
+% \begin{exercise}
+%   Toda representación equivalente una representación irreducible es
+%   irreducible.
+% \end{exercise}
+
+\begin{proposition}
+  \label{pro:deg2}
+  Sea $\phi\colon G\to \GL(V)$ una representación de grado dos. Entonces $\phi$ es
+  irreducible si y sólo si no existe autovector común para todos los $\phi_g$,
+  $g\in G$.
+\end{proposition}
+
+\begin{proof}
+  Supongamos que $\phi$ no es irreducible. Existe $W\subseteq V$
+  subespacio no nulo $G$-invariante, $\dim W=1$. Sea $w\in W\setminus\{0\}$.
+  Para cada $g\in G$, $\phi_g(w)\in W$ y entonces $\phi_g(w)=\lambda w$ para
+  algún $\lambda$. Luego $w$ es un autovector común para todos los $\phi_g$.
+  Recíprocamente, si $\phi$ admite un autovector en común $v\in V$, entonces el
+  subespacio generado por $v$ es $G$-invariante.
+\end{proof}
+
+\begin{example}
+  \label{exa:S3deg2}
+  Sabemos que $\Sym_3$ está generado por $(12)$ y $(23)$. La asignación
+  \[(12)\mapsto\begin{pmatrix}
+    -1 & 1\\
+    0 & 1
+  \end{pmatrix},
+  \quad
+  (23)\mapsto\begin{pmatrix}
+    1 & 0\\
+    1 & -1
+  \end{pmatrix}
+  \]
+  define una representación $\phi$ de $\Sym_3$. 
+%  $(12)\mapsto\begin{pmatrix}
+%    -2 & -1\\
+%    3 & 2
+%  \end{pmatrix}$, $(23)\mapsto\begin{pmatrix}
+%    1 & 0\\
+%    -3 & -1
+%  \end{pmatrix}$ define una representación de $\Sym_3$. 
+  La proposición~\ref{pro:deg2} nos dice que esta representación 
+  es irreducible pues las matrices $\phi_{(12)}$ y $\phi_{(23)}$
+  no tienen autovectores en común.
+
+%   Como $\Sym_3$ tiene tres
+%   clases de conjugación, $\Sym_3$ admite tres representaciones
+%   irreducibles. Ya encontramos una de grado dos. Las otras son de grado uno: la
+%   representación trivial dada por $\chi(g)=1$ para todo $g\in\Sym_3$, y la
+%   representación signo dado por
+%   \[
+% 	  \sgn(g)=\begin{cases}
+% 		  1 & \text{si $g\in\{\id,(123),(132)\}$},\\
+% 		  -1 & \text{si $g\in\{(12),(13),(23)\}$}.
+% 	  \end{cases}
+%   \]
+%   Observar $6=1^2+1^2+2^2$.
+\end{example}
+
+\index{Representación!completamente reducible}
+Una representación $\rho\colon G\to\GL(V)$ se dice \textbf{completamente reducible} si
+$V$ puede descomponerse como $V=V_1\oplus\cdots\oplus V_n$, donde cada $V_i$
+es un subespacio $G$-invariantes y cada restricción $\phi|_{V_i}$ es irreducible.
+
+% \begin{definition}
+% 	\index{Representación!descomponible}
+% 	\index{Representación!indescomponible}
+%   Una representación $(\phi,V)$ no nula se dice \textbf{descomponible} si $V$
+%   puede descomponerse como $V=S\oplus T$, donde $S$ y $T$ son subespacios no
+%   nulos $G$-invariantes. Una representación no descomponible se dice
+%   \textbf{indescomponible}.
+% \end{definition}
+
+% \begin{exercise}
+%   Toda representación equivalente a una representación irreducible (resp. completamente 
+%   reducible) es irreducible (resp. completamente reducible).
+% \end{exercise}
+
+\begin{proposition}
+  \label{proposition:Lin(G)}
+  Sea $G$ un grupo finito. Las representaciones de grado uno están en biyección
+  con las representaciones de grado uno del grupo $G/[G,G]$.
+\end{proposition}
+
+\begin{proof}
+  Sea $\pi\colon G\to G/[G,G]$ el morfismo canónico. 
+  Si $\rho\colon G/[G,G]\to\C^{\times}$ es una representación, 
+  $\rho\circ\pi\colon G\to\C$ también es una representación. 
+  
+  Veamos que toda representación de $G$ de grado uno se obtiene de esta forma.
+  Sea $\phi\colon G\to\C^\times$ una representación de grado uno. Como
+  $G/\ker\phi\simeq\phi(G)$ es abeliano, $[G,G]\subseteq\ker\phi$. Sea
+  $\rho\colon G/[G,G]\to\C^\times$, $x[G,G]\mapsto\phi(x)$. La función $\rho$
+  está bien definida pues si $x[G,G]=y[G,G]$ entonces $xy^{-1}\in [G,G]$ y
+  luego 
+  \[
+    \rho(x[G,G])=\phi(x)=\phi(y)=\rho(y[G,G]). 
+  \]
+  Además $\rho$ es morfismo pues
+  \[
+	\rho(x[G,G]y[G,G])
+	=\rho(xy[G,G])=\phi(xy)
+	=\phi(x)\phi(y)=\rho(x[G,G])\rho(y[G,G]).
+  \]
+  Por construcción, $\rho\circ\pi=\phi$.
+\end{proof}
+
+\index{Caracter lineal}
+Diremos que un caracter $\chi$ es \textbf{lineal} si $\chi(1)=1$. Los caracteres lineales son representaciones de grado uno. 
+
+\begin{example}
+Como $[\Sym_n,\Sym_n]=\Alt_n$ y $(\Sym_n:\Alt_n)=2$, el grupo 
+simétrico $\Sym_n$ tiene dos caracteres lineales. Uno de esos caracteres es el trivial, el otro es el signo. 
+\end{example}
+
+Veamos algunos ejemplos generales de representaciones:
+
+\begin{example}
+    \index{Representación!trivial}
+    El morfismo trivial $\rho\colon G\to\C$, $g\mapsto 1$, es una representación, 
+    es la \textbf{representación trivial} de $G$. En el lenguaje de módulos, 
+	$\C$ es trivial como $\C[G]$-módulo con la acción
+	\[
+	g\cdot \lambda=\lambda
+	\]
+	para $g\in G$ y $\lambda\in\C$.
+\end{example}
+
+\begin{example}
+  Sean $\rho\colon G\to\GL(V)$ y $\psi\colon G\to\GL(W)$ dos representaciones.
+  Entonces $\rho\oplus\psi\colon G\to\GL(V\oplus W)$, $g\mapsto (\rho_g,\psi_g)$, 
+  es una representación, es la 
+  \textbf{suma directa} de las representaciones y corresponde al $\C[G]$-módulo 
+  $V\oplus W$ dado por 
+  \[
+  g\cdot (v,w)=(g\cdot v,g\cdot w)
+  \]
+  para $g\in G$, $v\in V$ y $w\in W$. 
+\end{example}
+
+\index{Producto tensorial!de espacios vectoriales}
+Para los ejemplos que sigen 
+necesitamos productos tensoriales. 
+El \textbf{producto tensorial} de los $K$-espacios vectoriales $U$ y $V$ es
+el espacio vectorial cociente $K[U\times V]/T$, donde $K[U\times V]$ es el
+espacio vectorial con base $\{(u,v):u\in U,v\in V\}$ y $T$ es el subespacio
+generado por los elementos de la forma
+	\[
+		(\lambda u+\mu u',v)-\lambda(u,v)-\mu(u',v),\quad
+		(u,\lambda v+\mu v')-\lambda(u,v)-\mu(u,v')
+	\]
+	para $\lambda,\mu\in K$, $u,u'\in U$ y $v,v'\in V$.
+
+El producto tensorial de $U$ y $V$ será denotado por $U\otimes_KV$ o por
+$U\otimes V$ si la referencia al cuerpo $K$ puede omitirse. Dados $u\in U$
+y $v\in V$ escribiremos $u\otimes v$ para denotar a la coclase $(u,v)+T$.
+
+\begin{theorem}
+\index{Producto tensorial!propiedad universal}
+	Sean $U$ y $V$ espacios vectoriales.  Existe entonces una función bilineal
+	$U\times V\to U\otimes V$, $(u,v)\mapsto u\otimes v$, tal que todo
+	elemento de $U\otimes V$ es una suma finita de la forma
+	\[
+		\sum_{i=1}^N u_i\otimes v_i
+	\]
+	para $u_1,\dots,u_N\in U$ y $v_1,\dots,v_N\in V$. 
+	Más aún, dado un espacio vectorial $W$ y una función
+	bilineal $\beta\colon U\times V\to W$, existe una función lineal
+	$\overline{\beta}\colon U\otimes V\to W$ tal que $\overline{\beta}(u\otimes
+	v)=\beta(u,v)$ para todo $u\in U$ y $v\in V$.
+\end{theorem}
+
+\begin{proof}
+	Por la definición del producto tensorial, la función 
+	\[
+	U\times V\to U\otimes V,\quad
+	(u,v)\mapsto u\otimes v,
+	\]
+	es bilineal. También de la definición se deduce inmediatamente que todo
+	elemento de $U\otimes V$ es una combinación lineal finita de elementos de
+	la forma $u\otimes v$, donde $u\in U$ y $v\in V$. Como $\lambda(u\otimes
+	v)=(\lambda u)\otimes v$ para todo $\lambda\in K$, la primera afirmación
+	queda demostrada.
+
+	Como $U\times V$ es base de $K[U\times V]$, existe una transformación lineal 
+	\[
+		\gamma\colon K[U\times V]\to W,\quad
+	\gamma(u,v)=\beta(u,v). 
+	\]
+	Como $\beta$ es bilineal por hipótesis, $T\subseteq\ker\gamma$. Existe
+	entonces una transformación lineal $\overline{\beta}\colon U\otimes V\to
+	W$ tal que 
+	\[
+	\begin{tikzcd}
+		K[U\times V] \arrow[r]\arrow[d] & W \\
+		U\otimes V\arrow[ur, dashrightarrow]
+	\end{tikzcd}
+	\]
+	conmuta. En particular, $\overline{\beta}(u\otimes v)=\beta(u,v)$. 
+\end{proof}
+
+\begin{exercise}
+	\label{xca:tensorial_unicidad}
+	Demuestre que las propiedades mencionadas en el teorema anterior
+	caracterizan el producto tensorial salvo isomorfismo.
+\end{exercise}
+
+Veamos algunas propiedades del producto tensorial de espacios vectoriales. 
+%Observemos
+%que todo elemento de $U\otimes V$ es una suma finita
+%de la forma 
+%\[
+%	\sum_{i=1}^N u_i\otimes v_i
+%\]
+%para $N\in\N$, $u_i\in U$ y $v_i\in V$. Esta expresión no es única. Vale además
+%que $u\otimes 0=0=0\otimes v$ para todo $u\in U$ y $v\in V$.
+
+\begin{lemma}
+	\index{Producto tensorial!de transformaciones lineales}
+	Sean $\varphi\colon U\to U'$ y $\psi\colon V\to V'$ transformaciones
+	lineales. Existe entonces una única transformación lineal
+	$\varphi\otimes\psi\colon U\otimes V\to U'\otimes V'$ tal que
+	\[
+		(\varphi\otimes\psi)(u\otimes v)=\varphi(u)\otimes\psi(v)
+	\]
+	para todo $u\in U$ y $v\in V$.
+\end{lemma}
+
+\begin{proof}
+	Como la función $U\times V\to U\otimes V$,
+	$(u,v)\mapsto\varphi(u)\otimes\psi(v)$, es bilineal, existe una
+	transformación lineal $U\otimes V\to U\otimes V$, $u\otimes
+	v\to\varphi(u)\otimes\psi(v)$. Luego la función
+	\[
+		\sum u_i\otimes v_i\mapsto\sum\varphi(u_i)\otimes\psi(v_i)
+	\]
+	está bien definida. 
+\end{proof}
+
+\begin{exercise}
+	Demuestre las siguientes afirmaciones:
+	\begin{enumerate}
+		\item $(\varphi\otimes\psi)(\varphi'\otimes\psi')=(\varphi\varphi')\otimes(\psi\psi')$.
+		\item Si $\varphi$ y $\psi$ son isomorfismos, entonces
+			$\varphi\otimes\psi$ es un isomorfismo. 
+		\item $(\lambda\varphi+\lambda'\varphi')\otimes\psi=\lambda\varphi\otimes\psi+\lambda'\varphi'\otimes\psi$.
+		\item $\varphi\otimes(\lambda\psi+\lambda'\psi')=\lambda\varphi\otimes\psi+\lambda'\varphi\otimes\psi'$.
+		\item Si $U\simeq U'$ y $V\simeq V'$, entonces $U\otimes V\simeq U'\otimes V'$.
+	\end{enumerate}
+\end{exercise}
+
+\begin{lemma}
+	Si $U$ y $V$ son espacios vectoriales, entonces 
+	$U\otimes V\simeq V\otimes U$.
+\end{lemma}
+
+\begin{proof}
+	Como la función $U\times V\to V\otimes U$, $(u,v)\mapsto v\otimes u$,
+	existe una transformación lineal $U\otimes V\to V\otimes U$, $u\otimes
+	v\mapsto v\otimes u$. Similarmente se demuestra que existe una
+	transformación lineal $V\otimes U\to U\otimes V$, $v\otimes u\mapsto
+	u\otimes v$. Luego $U\otimes V\simeq V\otimes U$.
+\end{proof}
+
+\begin{exercise}
+	\label{xca:UxVxW}
+	Demuestre que $(U\otimes V)\otimes W\simeq U\otimes(V\otimes W)$.
+\end{exercise}
+
+\begin{exercise}
+	\label{xca:UxK}
+	Demuestre que $U\otimes K\simeq K\simeq K\otimes U$.
+\end{exercise}
+
+\begin{lemma}
+	\label{lem:U_LI}
+	Sea $\{u_1,\dots,u_n\}\subseteq U$ un conjunto linealmente independiente y
+	sean $v_1,\dots,v_n\in V$ tales que $\sum_{i=1}^n u_i\otimes v_i=0$.
+	Entonces $v_i=0$ para todo $i\in\{1,\dots,n\}$.
+\end{lemma}
+
+\begin{proof}
+	Sea $i\in\{1,\dots,n\}$ y sea $f_i\colon U\to K$, $f_i(u_j)=\delta_{ij}$.
+	Como la función $U\times V\to V$, $(u,v)\mapsto f_i(u)v$, es bilineal, existe una función
+	$\alpha_i\colon U\otimes V\to V$ lineal tal que $\alpha_i(u\otimes
+	v)=f_i(u)v$. Luego
+	\[
+		v_i=\sum_{j=1}^n\alpha_i(u_j\otimes v_j)=\alpha_i\left(\sum_{j=1}^nu_j\otimes v_j\right)=0.\qedhere
+	\]
+\end{proof}
+
+\begin{exercise}
+	\label{xca:uxv=0}
+	Demuestre que si $u\otimes v=0$ y $v\ne 0$, entonces $u=0$.
+\end{exercise}
+
+\begin{theorem}
+	Si $\{u_i:i\in I\}$ es una base de $U$ y $\{v_j:j\in J\}$ es una base de
+	$V$, entonces $\{u_i\otimes v_j:i\in I,j\in J\}$ es una base de $U\otimes
+	V$.
+\end{theorem}
+
+\begin{proof}
+	Los $u_i\otimes v_j$ forman un conjunto de generadores pues  
+	si $u=\sum_i\lambda_iu_i$ y $v=\sum_j\mu_jv_j$, entonces
+	$u\otimes v=\sum_{i,j}\lambda_i\mu_ju_i\otimes v_j$. 
+	Veamos ahora que los $u_i\otimes v_j$ son linealmente independientes. Para
+	eso, queremos ver que cualquier subconjunto finito de los $u_i\otimes v_j$
+	es linealmente independiente. Si $\sum_k\sum_l\lambda_{kl}u_{i_k}\otimes
+	v_{j_l}=0$, entonces
+	$0=\sum_{k}u_{i_k}\otimes\left(\sum_{l}\lambda_{kl}v_{j_l}\right)$ y luego,
+	como los $u_{i_k}$ son linealmente indepentientes, el lema~\ref{lem:U_LI}
+	implica que $\sum_{l}\lambda_{kl}v_{j_l}=0$. Luego $\lambda_{kl}=0$ para
+	todo $k,l$ pues los $v_{j_l}$ son linealmente independientes.
+\end{proof}
+
+El teorema anterior implica inmediatamente que si $U$ y $V$ son espacios
+vectoriales de dimensión finita entonces
+\[
+	\dim(U\otimes V)=(\dim U)(\dim V).
+\]
+
+\begin{corollary}
+	Si $\{u_i:i\in I\}$ es base de $U$, entonces todo elemento de $U\otimes V$
+	se escribe unívocamente como una suma finita $\sum_{i}u_i\otimes v_i$.
+\end{corollary}
+
+\begin{proof}
+	Sabemos que todo elemento de $U\otimes V$ es una suma finita
+	$\sum_i x_i\otimes y_i$, donde $x_i\in U$ y $y_i\in V$. Si escribimos 
+	$x_i=\sum_j\lambda_{ij}u_j$, entonces
+	\[
+		\sum_i x_i\otimes y_i=\sum_i\left(\sum_j\lambda_{ij}u_j\right)\otimes y_i		
+		=\sum_j u_j\otimes\left(\sum_i\lambda_{ij}y_i\right).\qedhere
+	\]
+\end{proof}
+
+Ahora sí, el ejemplo que estábamos esperando. 
+
+\begin{exercise}
+    \index{Producto tensorial!de representaciones}
+	Sea $G$ un grupo finito. Demuestre que si $V$ y $W$ son $\C[G]$-módulos, el producto
+	tensorial $V\otimes W$ es un $\C[G]$-módulo con 
+	\[
+	g\cdot (v\otimes w)=g\cdot v\otimes
+	g\cdot w
+	\]
+	para $g\in G$, $v\in V$ y $w\in W$.
+\end{exercise}
+
+Otro ejemplo importante:
+
+\begin{proposition}
+	Sea $G$ un grupo finito. Si $V$ y $W$ son $\C[G]$-módulos, entonces
+	$\Hom_{\C}(V,W)$ es un $\C[G]$-módulo con 
+	\[
+	(gf)(u)=gf(g^{-1}u),
+	\]
+	donde $g\in G$,
+	$f\in\Hom_{\C}(U,V)$ y $u\in U$.
+\end{proposition}
+
+\begin{proof}
+	Calculamos
+	\begin{align*}
+		\left( (gh)f \right)(u)&=(gh)f\left( (gh)^{-1}u \right)\\
+		&=g(h(f(h^{-1}(gu))))=h\left( (hf)(gu) \right)=(g(hf))(u).\qedhere
+	\end{align*}
+\end{proof}
+
+\index{Representación!dual}
+\index{Dual!de una representación}
+La proposición anterior nos dice, en particular, que el dual
+$U^*=\Hom_{\C}(U,\C)$ es un $\C[G]$-módulo con $(gf)(u)=f(g^{-1}u)$. 
+
+\begin{exercise}
+	Sea $G$ un grupo finito. Si $V$ y $W$ son $\C[G]$-módulos de dimensión finita, entonces
+	$U^*\otimes V\simeq\Hom_{\C}(U,V)$ 
+	como $\C[G]$-módulos.
+% 	Primero vemos que la función $\psi\colon U^*\otimes V\to $
+% 	Si $g\in G$, $f\in U^*$ y $u\in U$, entonces
+% 	\begin{align*}
+% 	    &\psi(g\cdot (f\otimes v))(u) = \psi(g\cdot f\otimes g\cdot v)(u)
+% 	    =(g\cdot f)(u)(g\cdot v)=f(g^{-1}\cdot u)(g\cdot v),\\
+% 	    &(g\cdot \psi(f\otimes v))(u)=g\cdot (\psi(f\otimes v)(g^{-1}\cdot u))=g\cdot (f(g^{-1}\cdot u)v).
+% 	\end{align*}
+\end{exercise}
