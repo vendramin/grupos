@@ -6,8 +6,7 @@ El resultado es fundamental
 en la clasificación de grupos simples finitos. Daremos dos demostraciones, una basada en 
 teoría de caracteres y una demostración alternativa completamente elemental. 
 
-Comenzaremos con la demostración que usa teoría de caracteres, 
-es entonces el momento de introducir dos representaciones de importancia. 
+Comenzaremos con la demostración que usa teoría de caracteres.
 
 \index{Parte!simétrica}
 \index{Parte!antisimétrica}
@@ -91,6 +90,8 @@ se concluye que $\dim S(V\otimes V)=n(n+1)/2$ y que $\dim A(V\otimes V)=n(n-1)/2
     $\chi_S(g)=\frac12(\chi^2(g)+\chi(g^2))$.
 \end{proof}
 
+\index{Involución}
+Una \textbf{involución} en un grupo es un elemento $x\ne 1$ tal que $x^2=1$. 
 Es posible la cantidad de involuciones 
 con la tabla de caracteres:
 
@@ -123,8 +124,10 @@ Luego $\theta(x)=\sum_{\chi\in\Irr(G)}\langle\chi_S-\chi_A,\chi_1\rangle\chi$ y 
 al evaluar esta expresión en $x=1$. 
 \end{proof}
 
-Recordemos la desigualdad de Cauchy--Schwartz. Si $x_1,\dots,x_n\in\R$, entonces
-$\sum x_i^2\geq\frac{1}{n}(\sum x_i)^2$. 
+\index{Desigualdad!de Cauchy--Schwartz}
+Necesitamos un lema:
+% Recordemos la desigualdad de Cauchy--Schwartz. Si $x_1,\dots,x_n\in\R$, entonces
+% $\sum x_i^2\geq\frac{1}{n}(\sum x_i)^2$. 
 
 \begin{lemma}
 Sea $G$ un grupo finito con $k$ clases de conjugación. 
@@ -157,6 +160,9 @@ t^2\leq\left(\sum_{i=2}^k\chi_i(1)\right)^2
 \leq\sum_{i=2}^k\chi(1)^2=(k-1)(|G|-1).\qedhere
 \]
 \end{proof}
+
+Estamos en condiciones de dar la primera demostración del teorema de
+Brauer--Fowler. 
 
 \begin{theorem}[Brauer--Fowler]
 \index{Teorema!de Brauer--Fowler}
@@ -215,13 +221,14 @@ pero sabemos que...
 
 \subsubsection*{Una demostración elemental del teorema de Brauer--Fowler}
 
-Supongamos primero que existe un subgrupo propio $H$ de $G$ tal que
-$(G:H)\leq n^2$. En ese caso, hacemos actuar a $G$ en $G/H$ por multiplicación a izquierda 
-y tenemos un morfismo de grupos $\rho\colon G\to\Sym_{n^2}$. Como $G$ es un grupo simple, 
-$\ker\rho=\{1\}$ o bien $\ker\rho=G$. Si $\ker\rho=G$, entonces $\rho(g)(yH)=yH$ para todo
-$g\in G$ e $y\in G$, lo que implica que $g\in H$, una contradicción. Luego $\rho$ es inyectiva
-y entonces $G$ es isomorfo a un subgrupo de $\Sym_{n^2}$. En particular, $|G|$ divide a $(n^2)!$
-
+% Supongamos primero que existe un subgrupo propio $H$ de $G$ tal que
+% $(G:H)\leq n^2$. En ese caso, hacemos actuar a $G$ en $G/H$ por multiplicación a izquierda 
+% y tenemos un morfismo de grupos $\rho\colon G\to\Sym_{n^2}$. Como $G$ es un grupo simple, 
+% $\ker\rho=\{1\}$ o bien $\ker\rho=G$. Si $\ker\rho=G$, entonces $\rho(g)(yH)=yH$ para todo
+% $g\in G$ e $y\in G$, lo que implica que $g\in H$, una contradicción. Luego $\rho$ es inyectiva
+% y entonces $G$ es isomorfo a un subgrupo de $\Sym_{n^2}$. En particular, $|G|$ divide a $(n^2)!$
+Tal como hicimos en el primer párrafo de la demostración del teorema de Brauer--Fowler, alcanza con
+encontrar un subgrupo de índice $\leq 2n^2$. 
 Sea $X$ la clase de conjugación de $x$. Para $g\in G$ definimos
 \[
 J(g)=\{z\in X:zgz^{-1}=g^{-1}\}.
@@ -247,19 +254,22 @@ pues $(g,z)\in J$ si y sólo si $z\in J(g)$. Luego $|G|\leq kn^2$, pues
 \]
 
 \begin{claim}
-Existe alguna clase de conjugación que tiene $\leq n^2$ elementos.
+Existe alguna clase de conjugación que tiene $\leq 2n^2$ elementos.
 \end{claim}
 
-De lo contrario, si $C_1,\dots,C_k$ son las clases de conjugación de $G$ y 
-$|C_i|>n^2$ para todo $i\in\{1,\dots,k\}$, entonces 
+De lo contrario, si $C_1,\dots,C_k$ son las clases de conjugación de $G$, donde 
+$C_1=\{1\}$ y $|C_i|>2n^2$ para todo $i\in\{2,\dots,k\}$, entonces 
 \[
-|G|=\sum_{i=1}^k|C_i|>\sum_{i=1}^kn^2=kn^2\geq |G|,
+|G|=1+\sum_{i=2}^k|C_i|>1+\sum_{i=2}^kn^2=1+(k-1)2n^2\geq |G|,
 \]
 una contradicción. 
 
 \begin{claim}
-Existe un subgrupo $H$ de $G$ tal que $(G:H)\leq n^2$.
+Existe un subgrupo $H$ de $G$ tal que $(G:H)\leq 2n^2$.
 \end{claim}
 
-Sea $C$ alguna clase de conjugación de $G$ tal que $|C|\leq n^2$ y sea $g\in C$.  
-Entonces $H=C_G(g)$ es un subgrupo de $G$ tal que $(G:H)\leq n^2$. 
+Sea $C$ alguna clase de conjugación de $G$ tal que $|C|\leq 2n^2$ y sea $g\in C$.  
+Entonces $H=C_G(g)$ es un subgrupo de $G$ tal que $(G:H)\leq 2n^2$.\qed
+
+\medskip
+Este resultado es uno de los primeros pasos hacia la clasificación de grupos simples finitos. 
