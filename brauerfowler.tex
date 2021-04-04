@@ -1,13 +1,194 @@
 \chapter{El teorema de Brauer--Fowler}
 
-En este capítulo vamos a demostrar el teorema de Brauer--Fowler. El resultado es fundamental
+En este capítulo vamos a demostrar el teorema de Brauer--Fowler. 
+
+El resultado es fundamental
 en la clasificación de grupos simples finitos. Daremos dos demostraciones, una basada en 
 teoría de caracteres y una demostración alternativa completamente elemental. 
 
+Comenzaremos con la demostración que usa teoría de caracteres, 
+es entonces el momento de introducir dos representaciones de importancia. 
+
+\index{Parte!simétrica}
+\index{Parte!antisimétrica}
+Sea $\rho\colon G\to\GL(V)$ 
+una representación
+con caracter $\chi$. Vimos que el $\C[G]$-módulo $V\otimes V$ tiene caracter $\chi^2$. Sea 
+$v_1,\dots,v_n$ una base de $V$ y sea 
+\[
+T\colon V\to V,\quad
+v_i\otimes v_j\mapsto v_j\otimes v_i.
+\]
+Dejamos como ejercicio verificar que $T(v\otimes w)=w\otimes v$ para todo 
+$v,w\in V$. Luego la transformación lineal 
+$T$ no depende de la base elegida. Observemos que
+además $T$ es morfismo de $\C[G]$-módulos, pues
+\[
+T(g\cdot (v\otimes w))=T((g\cdot v)\otimes (g\cdot w))=(g\cdot w)\otimes (g\cdot v)=g\cdot T(w\otimes v)
+\]
+para todo $g\in G$ y $v,w\in V$. 
+En particular, la \textbf{parte simétrica} 
+\begin{gather*}
+S(V\otimes V)=\{x\in V\otimes V:T(x)=x\}
+\shortintertext{la \textbf{parte antisimétrica}}
+A(V\otimes V)=\{x\in V\otimes V:T(x)=-x\}
+\end{gather*}
+de $V\otimes V$ son ambas 
+$\C[G]$-submódulos de $V\otimes V$. Estos nombres están motivados por la siguiente observación 
+\[
+V\otimes V=S(V\otimes V)\oplus A(V\otimes V).
+\]
+En efecto, 
+$S(V\otimes V)\cap A(V\otimes V)=\{0\}$ pues 
+si $x\in S(V\otimes V)\cap A(V\otimes V)$, entonces $x=T(x)$ y $x=-T(x)$ y luego $x=0$. Además 
+$V\otimes V=S(V\otimes V)+ A(V\otimes V)$ pues todo $x\in V\otimes V$ puede escribirse como 
+\[
+x=\frac12(x+T(x))+\frac12(x-T(x))
+\]
+con $\frac12(x+T(x))\in S(V\otimes V)$ y $\frac12(x-T(x))\in A(V\otimes V)$. 
+
+Veamos que el conjunto $\{v_i\otimes v_j+v_j\otimes v_i:1\leq i,j\leq n\}$ es
+base de $S(V\otimes V)$ 
+y que el conjunto 
+\[
+\{v_i\otimes v_j-v_j\otimes v_i:1\leq i<j\leq n\}
+\]
+es base de $A(V\otimes V)$. Como ambos conjuntos son linealmente independientes, 
+entonces 
+$\dim S(V\otimes V)\geq n(n+1)/2$ y también 
+$\dim A(V\otimes V)\geq n(n-1)/2$. Como además 
+\[
+n^2=\dim (V\otimes V)=\dim S(V\otimes V)+\dim A(V\otimes V),
+\]
+se concluye que $\dim S(V\otimes V)=n(n+1)/2$ y que $\dim A(V\otimes V)=n(n-1)/2$. 
+
+\begin{proposition}
+    Sea $G$ un grupo finito y  
+    sea $V$ un $\C[G]$-módulo de dimensión finita con caracter $\chi$. Si el módulo $S(V\otimes V)$ 
+    tiene caracter $\chi_S$ y el módulo $A(V\otimes V)$ tiene caracter $\chi_A$, entonces 
+    \begin{align*}
+        &\chi_S(g)=\frac12(\chi^2(g)+\chi(g^2)),\\
+        &\chi_A(g)=\frac12(\chi^2(g)-\chi(g^2)).
+    \end{align*}
+\end{proposition}
+
+\begin{proof}
+    Sea $g\in G$. Sea $\rho\colon G\to\GL(V)$ la representación asociada al módulo $V$, es decir $\rho(g)(v)=\rho_g(v)=g\cdot v$. 
+    Sabemos que $\rho_g$ es diagonalizable. Sea $\{e_1,\dots,e_n\}$ una base de autovectores de $\rho_g$, digamos
+    $g\cdot e_i=\lambda_ie_i$ con $\lambda_i\in\C$ para $i\in\{1,\dots,n\}$. En particular, $\chi(g)=\sum_{i=1}^n\lambda_i$. 
+    
+    Como $\{e_i\otimes e_j-e_j\otimes e_i:1\leq i<j\leq n\}$ es base de $A(V\otimes V)$ y además 
+    \[
+    g\cdot (e_i\otimes e_j-e_j\otimes e_i)=\lambda_i\lambda_j(e_i\otimes e_j-e_j\otimes e_i),
+    \]
+    tenemos $\chi_A(g)=\sum_{1\leq i<j\leq n}\lambda_i\lambda_j$. Por otro lado, como $g^2\cdot e_i=\lambda_i^2e_i$ para todo $i$,
+    $\chi(g^2)=\sum_{i=1}^n\lambda_i^2$. Luego
+    \[
+    \chi^2(g)=\chi(g)^2=\sum_{i=1}^n\sum_{j=1}^n\lambda_i\lambda_j=2\sum_{1\leq i<j\leq n}\lambda_i\lambda_j+\sum_{i=1}^n\lambda_i^2=2\chi_A(g)+\chi(g^2).
+    \]
+    Como además $V\otimes V=S(V\otimes V)\oplus A(V\otimes V)$, se tiene 
+    $\chi(g)=\chi_S(g)+\chi_A(g)$, es decir 
+    $\chi_S(g)=\frac12(\chi^2(g)+\chi(g^2))$.
+\end{proof}
+
+Es posible la cantidad de involuciones 
+con la tabla de caracteres:
+
+\begin{proposition}
+Si $G$ es un grupo finito con $t$ involuciones, entonces 
+\[
+1+t=\sum_{\chi\in\Irr(G)}\langle\chi_S-\chi_A,\chi_1\rangle\chi(1).
+\]
+\end{proposition}
+
+\begin{proof}
+Supongamos que $\Irr(G)=\{\chi_1,\dots,\chi_k\}$, donde $\chi_1$ es el caracter trivial de $G$. 
+Para $x\in G$ sea 
+\[
+\theta(x)=|\{y\in G:y^2=x\}|.
+\]
+Como $\theta$ es una función de clases
+$\theta$ puede escribirse como combinación lineal de los $\chi_j$, digamos
+\[
+\theta=\sum_{\chi\in\Irr(G)}\langle\theta,\chi\rangle\chi.
+\]
+Calculamos
+\begin{align*}
+    \langle\chi_S-\chi_A,\chi_1\rangle 
+    &=\frac{1}{|G|}\sum_{g\in G}\chi(g^2)\\
+    &=\frac{1}{|G|}\sum_{x\in G}\sum_{\substack{g\in G\\g^2=x}}\chi(g^2)
+    =\frac{1}{|G|}\sum_{x\in G}\theta(x)\chi(x)=\langle\theta,\chi\rangle.
+\end{align*}
+Luego $\theta(x)=\sum_{\chi\in\Irr(G)}\langle\chi_S-\chi_A,\chi_1\rangle\chi$ y el resultado se obtiene
+al evaluar esta expresión en $x=1$. 
+\end{proof}
+
+Recordemos la desigualdad de Cauchy--Schwartz. Si $x_1,\dots,x_n\in\R$, entonces
+$\sum x_i^2\geq\frac{1}{n}(\sum x_i)^2$. 
+
+\begin{lemma}
+Sea $G$ un grupo finito con $k$ clases de conjugación. 
+Si $t$ es la cantidad de involuciones de $G$, entonces 
+$t^2\leq (k-1)(|G|-1)$. 
+\end{lemma}
+
+\begin{proof}
+Supongamos que $\Irr(G)=\{\chi_1,\dots,\chi_k\}$, donde $\chi_1$ es el 
+caracter trivial de $G$. Primero vamos a demostrar que 
+$t\leq\sum_{i=2}^k\chi_i(1)$. En efecto, 
+como 
+\[
+|\langle\chi_A-\chi_S,\chi_1\rangle|
+=\frac{1}{|G|}\left|\sum_{g\in G}\chi(g^2)\right|
+\leq\frac{1}{|G|}\sum_{g\in G}|\chi(g^2)|\leq 1,
+\]
+entonces 
+\begin{align*}
+1+t=\theta(1)
+&=\left|\sum_{\chi\in\Irr(G)}\langle\chi_S-\chi_A,\chi_1\rangle\chi(1)\right|\\
+&\leq\sum_{\chi\in\Irr(G)}|\langle\chi_S-\chi_A,\chi_1\rangle|\chi(1)
+\leq\sum_{\chi\in\Irr(G)}\chi(1),
+\end{align*}
+de donde se obtiene inmediatamente que $t\leq\sum_{i=2}^k\chi_i(1)$. 
+Si utilizamos ahora 
+la desigualdad de Cauchy--Schwartz, 
+\[
+t^2\leq\left(\sum_{i=2}^k\chi_i(1)\right)^2
+\leq\sum_{i=2}^k\chi(1)^2=(k-1)(|G|-1).\qedhere
+\]
+\end{proof}
+
 \begin{theorem}[Brauer--Fowler]
 \index{Teorema!de Brauer--Fowler}
-Sea $G$ un grupo finito y simple y sea $x$ una involución. Si $|C_G(x)|=n$, entonces $|G|\leq (n^2)!$.	
+Sea $G$ un grupo finito y simple y sea $x$ una involución. Si $|C_G(x)|=n$, entonces $|G|\leq (n^2)!$	
 \end{theorem}
+
+\begin{proof}
+Supongamos primero que existe un subgrupo propio $H$ de $G$ tal que
+$(G:H)\leq n^2$. En ese caso, hacemos actuar a $G$ en $G/H$ por multiplicación a izquierda 
+y tenemos un morfismo de grupos $\rho\colon G\to\Sym_{n^2}$. Como $G$ es un grupo simple, 
+$\ker\rho=\{1\}$ o bien $\ker\rho=G$. Si $\ker\rho=G$, entonces $\rho(g)(yH)=yH$ para todo
+$g\in G$ e $y\in G$, lo que implica que $g\in H$, una contradicción. Luego $\rho$ es inyectiva
+y entonces $G$ es isomorfo a un subgrupo de $\Sym_{n^2}$. En particular, $|G|$ divide a $(n^2)!$
+
+Sea $m=(|G|-1)/t$. 
+Como $|C_G(x)|=n$, el grupo $G$ tiene al menos $|G|/n$ involuciones, es decir $t\geq |G|/n$. Luego
+$m=(|G|-1)/t<n$. Basta demostrar entonces que $G$ contiene un subgrupo de índice $\leq m^2$. 
+
+Sean $C_1,\dots,C_k$ las clases de conjugación de $G$, donde $C_1=\{1\}$. 
+Como $G$ es simple, $|C_i|>1$ 
+para todo $i\in\{2,\dots,k\}$.  
+Si $|C_i|>m$ para todo $i\in\{2,\dots,k\}$, entonces, como
+\[
+|G|-1\leq\frac{(k-1)(|G|-1)^2}{t^2}=(k-1)m^2,
+\]
+tendríamos 
+\[
+|G|-1=\sum_{i=2}^k|C_i|>(k-1)m^2,
+\]
+una contradicción. Luego existe una clase de conjugación $C$ de $G$ tal que $|C|\leq m^2$. Si $g\in C$, entonces
+$C_G(g)$ es un subgrupo de $G$ de índice $|C|\leq m^2$.
+\end{proof}
 
 La cota del teorema de Brauer--Fowler no es importante, ya que
 para considerar una forma posible de atacar la clasificación de grupos simples 
@@ -15,18 +196,22 @@ solamente es necesario saber que existen
 finitos grupos simples finitos con un cierto centralizador de invouciones.
 
 \begin{corollary}
-...
+Sea $n\in\N$. Existe (a lo sumo) una cantidad finita de grupos simples 
+finitos con una involución con centralizador de orden $n$. 
 \end{corollary}
 
 Veamos un ejemplo sencillo que da una idea de cómo es que pueden clasificarse grupos simples
 una vez que se tiene fija la estructura del centralizador de una involución. 
 
-Vamos a demostrar
-que si $G$ es un grupo simple finito y $x$ es una involución tal que $C_G(x)\simeq\Z/2$, entonces
+\begin{proposition}
+Si $G$ es un grupo simple finito y $x$ es una involución tal que $C_G(x)\simeq\Z/2$, entonces
 $G\simeq\Z/2$. 
+\end{proposition}
 
+\begin{proof}
 Supongamos que $\Irr(G)=\{\chi_1,\chi_2,\dots,\chi_k\}$. No conocemos la tabla de caracteres del grupo $G$ 
 pero sabemos que...
+\end{proof}
 
 \subsubsection*{Una demostración elemental del teorema de Brauer--Fowler}
 
