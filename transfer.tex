@@ -1,0 +1,312 @@
+\chapter{El morfismo de transferencia}
+
+%\section{El morfismo de transferencia}
+
+\index{Morfismo de transferencia}
+Sea $G$ un grupo y sea $H$ un subgrupo de índice finito. Vamos a definir un
+morfismo de grupos $G\to H/[H,H]$, el \textbf{morfismo de transferencia} de $G$
+en $H$. Fijemos un \textbf{transversal a izquierda}\footnote{Un transversal a
+izquierda de $H$ en $G$ es simplemente un conjunto de representantes de coclases
+a izquierda de $H$ en $G$.} \index{Transversal} $T$ de $H$ en $G$.
+
+\begin{lemma}
+	\label{lemma:sigma}
+	Sean $G$ un grupo y $H$ un subgrupo de índice $n$. Sean
+	$S=\{s_1,\dots,s_n\}$ y $T=\{t_1,\dots,t_n\}$ transversales de $H$ en $G$.
+	Dado $g\in G$, existen únicos $h_1,\dots,h_n\in H$ y una permutación
+	$\sigma\in\Sym_n$  
+	tales que
+	\[
+		gt_i=s_{\sigma(i)}h_i,\quad
+		i\in\{1,\dots,n\}.
+	\]
+\end{lemma}
+
+\begin{proof}
+	Si $i\in\{1,\dots,n\}$ existe un único $j\in\{1,\dots,n\}$ tal que $gt_i\in
+	s_jH$. Luego existe un único $h_i\in H$ tal que $gt_i=s_jh_i$. Al tomar
+	$\sigma(i)=j$ queda entonces definida una función
+	$\sigma\colon\{1,\dots,n\}\to\{1,\dots,n\}$.  Para ver que
+	$\sigma\in\Sym_n$ basta ver que $\sigma$ es inyectiva. Si
+	$\sigma(i)=\sigma(k)=j$, como $gt_i=s_jh_i$ y $gt_k=s_jh_k$, tenemos que
+	$t_i^{-1}t_k=h_i^{-1}h_k\in H$ y luego $i=k$ pues $t_iH=t_kH$.
+\end{proof}
+
+%\begin{exercise} 
+%	Demuestre que la acción de $G$ en el conjunto de coclases $H\backslash G$
+%	dada por $(Hx)\cdot g=H(xg)$ induce una acción a derecha de $G$ en $T$. 
+%\end{exercise}
+%
+%\begin{svgraybox}
+%	Si $t\in T$ y $g\in G$ existe un único $t\cdot g\in T$ tal que $(Ht)\cdot
+%	g=H(t\cdot g)$. Como $G$ actúa en $H\backslash G$ por multiplicación a
+%	derecha, $H(t\cdot (g_1g_2))=H((t\cdot g_1)\cdot g_2)$ para todo $t\in T$,
+%	$g_1,g_2\in G$.
+%\end{svgraybox}
+%
+%\begin{exercise} 
+%	Demuestre que si $t\in T$ y $g\in G$ entonces $tg(t\cdot g)^{-1}\in H$.
+%\end{exercise}
+%
+%\begin{svgraybox}
+%	Sean $t\in T$ y $g\in G$. Entonces $t\cdot g\in H$ es el único elemento de
+%	$H$ tal que $H(tg)=H(t\cdot g)$. Luego $(tg)(t\cdot g)^{-1}\in H$.
+%\end{svgraybox}
+
+\begin{definition}
+	\label{definition:nu_T}
+	Sea $G$ un grupo y sea $H$ un subgrupo de $G$ de índice finito $n$. Si
+	$T=\{t_1,\dots,t_n\}$ es un transversal de $H$ en $G$, se define la función 
+	\[
+		\nu_T\colon G\to H/[H,H],\quad
+		\nu_T(g)=\prod_{i=1}^n h_i
+	\]
+	donde $gt_i=t_jh_i$.
+\end{definition}
+
+\begin{lemma}
+	\label{lemma:nu_T}
+	Sea $G$ un grupo y sea $H$ un subgrupo de $G$ de índice finito. Si $T$ y
+	$S$ son transversales de $H$ en $G$, entonces $\nu_T=\nu_S$.
+\end{lemma}
+
+\begin{proof}
+	Supongamos que $gs_i=s_{\sigma(i)}h_i$ para todo $i$ y escribamos
+	$s_i=t_ik_i$, $k_i\in H$. Entonces, si $l_i=k_{\sigma(i)}h_ik_i^{-1}$, 
+	\[
+	gt_i=gs_ik_i^{-1}=s_{\sigma(i)}h_ik_i^{-1}=t_{\sigma(i)}k_{\sigma(i)}h_ik_i^{-1}=t_{\sigma(i)}l_i
+	\]
+	para todo $i\in\{1,\dots,n\}$. Además 
+	\[
+			s_{\sigma(i)}^{-1}gs_i=k_{\sigma(i)}^{-1}t_{\sigma(i)}^{-1}gt_ik_i.
+	\]
+	Como $H/[H,H]$ es un grupo abeliano, tenemos 
+	\begin{align*}
+		\nu_S(g)
+		&=\prod_{i=1}^n s_{\sigma(i)}^{-1}gs_i
+		=\prod_{i=1}^n k_{\sigma(i)}^{-1}t_{\sigma(i)}^{-1}gt_ik_i\\
+		&=\prod_{i=1}^n k_{\sigma(i)}^{-1}\prod_{i=1}^n k_i\prod_{i=1}^n t_{\sigma(i)}^{-1}gt_i
+		=\prod_{i=1}^n t_{\sigma(i)}^{-1}gt_i
+		=\nu_T(g).
+	\end{align*}
+\end{proof}
+
+El lema~\ref{lemma:nu_T} demuestra que si $H$ es un subgrupo de $G$ de índice
+finito, queda bien definida la función
+\[
+\nu\colon G\to H/[H,H],
+\quad
+\nu(g)=\nu_T(g),
+\]
+donde $T$ es algún transversal de $H$ en $G$. 
+
+\begin{theorem}
+	\label{theorem:transfer}
+	Sea $G$ un grupo y sea $H$ un subgrupo de $G$ de índice finito. Entonces
+	$\nu(xy)=\nu(v)\nu(y)$ para todo $x,y\in G$.
+\end{theorem}
+
+\begin{proof}
+	Sea $T=\{t_1,\dots,t_n\}$ un transversal de $H$ en $G$. Sean $x,y\in G$. Por el
+	lema~\ref{lemma:sigma} existen únicos $h_1,\dots,h_n,k_1,\dots,k_n\in H$ y
+	existen $\sigma,\tau\in\Sym_n$ tales que $xt_i=t_{\sigma(i)}h_i$,
+	$yt_i=t_{\tau(i)}k_i$. Como
+	\[
+	xyt_i=xt_{\tau(i)}k_i=t_{\sigma\tau(i)}h_{\tau(i)}k_i,
+	\]
+	y el grupo $H/[H,H]$ es abeliano, 
+	\[
+		\nu(xy)=\prod_{i=1}^n h_{\tau(i)}k_i=\prod_{i=1}^n h_{\tau(i)}\prod_{i=1}^n k_i=\nu(x)\nu(y).
+	\]
+\end{proof}
+
+El teorema~\ref{theorem:transfer} afirma que $\nu$ es un morfismo de grupos.
+Queda entonces justificada la siguiente definición:
+
+
+\begin{definition}
+	Sea $G$ un grupo y sea $H$ un subgrupo de índice finito. El
+	\textbf{morfismo de transferencia} es el morfismo $\nu\colon G\to H/[H,H]$,
+	$\nu(g)=\nu_T(g)$, donde $T$ es algún transversal de $H$ en $G$.
+\end{definition}
+
+\begin{example}
+	% explicar mucho mejor!
+	% ademas vamos a hacer reciprocidad como aplicación de Fourier
+	\index{Gauss!lema de}
+	Sea $p$ un número primo. Sean $G=\F_p^\times$ y $H=\{-1,1\}$. Entonces
+	$(G:H)=\frac{p-1}{2}$. Calculemos el morfismo de transferencia:
+	\[
+		\nu\colon G\to H,\quad
+		\nu(x)=x^{\frac{p-1}{2}}=\legendre{x}{p}=\begin{cases}
+			1 & \text{si $x$ es un cuadrado},\\
+			-1 & \text{en otro caso}.
+		\end{cases}.
+	\]
+	Elegimos un transversal $T=\{1,2,\dots,\frac{p-1}{2}\}$. Para $x\in G$, $t\in T$ definimos
+	\[
+	\epsilon(x,t)=\begin{cases}
+		1 & \text{si $xt\in T$},\\
+		-1 & \text{si $xt\not\in T$}.
+	\end{cases}
+	\]
+	Al calcular el morfismo de transferencia obtenemos el \textbf{lema de
+	Gauss}:
+	\[
+	\legendre{x}{p}=\prod_{t\in T}\epsilon(x,t).
+	\]
+\end{example}
+
+\begin{theorem}
+	\label{theorem:P_noabeliano}
+	Sea $G$ un grupo finito. Sea $p$ un primo que divide al orden de $[G,G]\cap
+	Z(G)$. Si $P\in\Syl_p(G)$ entonces $P$ es no abeliano.
+\end{theorem}
+
+\begin{proof}
+	Supongamos que $P$ es abeliano y sea $T=\{t_1,\dots,t_n\}$ un transversal
+	de $P$ en $G$. Como $[G,G]\cap Z(G)$ es un subgrupo normal de $G$, podemos
+	suponer que $P\cap [G,G]\cap Z(G)\ne1$. Sea $z\in P\cap [G,G]\cap Z(G)$ tal
+	que $z\ne1$. 
+
+	Sea $\nu\colon G\to P$ el morfismo de transferencia. Vamos a calcular
+	$\nu(z)$ con el lema~\ref{lemma:sigma}. Para cada $i\in\{1,\dots,n\}$ sean
+	$x_1,\dots,x_n\in P$ y sea $\sigma\in\Sym_n$ tales que
+	$zt_i=t_{\sigma(i)}x_i$. Como $z\in Z(G)$, se tiene
+	$t_i=t_{\sigma(i)}x_iz^{-1}$ y luego la unicidad del lema~\ref{lemma:sigma}
+	implica que $\sigma=\id$ y $x_i=z$ para todo $i$. Luego 
+	\[
+	\nu(z)=z^{|T|}=z^{(G:P)}. 
+	\]
+
+	Como $P$ es abeliano, $[G,G]\subseteq\ker\nu$. Luego $\nu(z)=1$. Esto es
+	una contradicción pues $1\ne z\in P$ y $z^{(G:P)}=1$ implica que $z$ tiene
+	orden no divisible por $p$. 
+\end{proof}
+
+% rotman 7.47, 7.48
+
+\begin{lemma}
+	\label{lemma:evaluation}
+	Sea $G$ un grupo y sea $H$ un subgrupo de índice $n$. Sea
+	$T=\{t_1,\dots,t_n\}$ un transversal de $H$ en $G$.  Para cada $g\in G$
+	existen $s_{1},\dots,s_{m}\in T$ y enteros positivos $n_1,\dots,n_m$
+	(que dependen de $g$) tales que 
+	$s_i^{-1}g^{n_i}s_i\in H$,
+	$n_1+\cdots+n_m=n$ y 
+	\[
+		\nu(g)=\prod_{i=1}^m s_i^{-1}g^{n_i}s_i.
+	\]
+\end{lemma}
+
+% TODO: explicar mejor!
+
+\begin{proof}
+	Para cada $i$ existen $h_1,\dots,h_n\in H$ y $\sigma\in\Sym_n$ tales que
+	$gt_i=t_{\sigma(i)}h_i$. Escribimos $\sigma$ como producto de ciclos
+	disjuntos
+	\[
+		\sigma=\alpha_1\cdots\alpha_m.
+	\]
+
+	Para cada $i\in\{1,\dots,n\}$, escribamos 
+	$\alpha_i=(j_{1}\cdots j_{n_i})$. Como 
+	\[
+		g t_{j_k}=t_{\sigma(j_k)}h_{j_k}=\begin{cases}
+			t_{j_1}h_{n_i} & \text{si $i=n_i$},\\
+			t_{j_{k+1}}h_{k} & \text{en otro caso},
+		\end{cases}
+	\]
+	entonces
+	\[
+	t_{j_1}^{-1}g^{n_i}t_{j_1}
+	=t_{j_1}^{-1}gg^{n_i-1}t_{j_1}
+	=t_{j_1}^{-1}gt_{j_r}h_{j_{r-1}}\cdots h_{j_1}
+	=h_{j_r}\cdots h_{j_1}\in H,
+	\]
+	y definimos $s_i=t_{j_1}$. Como $\nu(g)=h_1\cdots h_{n}$, 
+	de aquí se deduce inmediatamente el lema.
+\end{proof}
+
+\begin{proposition}
+	\label{proposition:v(g)=g^n}
+	Sea $G$ un grupo y sea $H$ un subgrupo abeliano de índice $n$ tal que
+	$H\subseteq Z(G)$. Entonces $\nu(g)=g^n$ para todo $g\in G$.
+\end{proposition}
+
+\begin{proof}
+	Sea $g\in G$. Por el lema~\ref{lemma:evaluation} existen $s_1,\dots,s_m\in
+	H$ tales que $s_i^{-1}g^{n_i}s_i\in H$ y $\nu(g)=\prod_{i=1}^m
+	s_i^{-1}g^{n_i}s_i$.  Como $H$ es normal en $G$ por ser central,
+	\[
+	g^{n_i}=s_i(s_i^{-1}g^{n_i}s_i)s_i^{-1}\in H\subseteq Z(G).
+	\]
+	Luego 
+	\[
+		\nu(g)
+		=\prod_{i=1}^m s_i^{-1}g^{n_i}s_i
+		=\prod_{i=1}^m g^{n_i}
+		=g^{\sum_{i=1}^m n_i}
+		=g^n.
+	\]
+\end{proof}
+
+\begin{corollary}
+	Si un grupo $G$ tiene un subgrupo $H$ de índice $n$ tal que $H\subseteq
+	Z(G)$ entonces $g\mapsto g^n$ es un morfismo de grupos.
+\end{corollary}
+
+\begin{proof}
+	La función $g\mapsto g^n$ es el morfismo de transferencia, ver la
+	proposición~\ref{proposition:v(g)=g^n} y el teorema~\ref{theorem:transfer}.
+\end{proof}
+
+\begin{corollary}
+	\label{corollary:[x,y]^n=1}
+	Sea $G$ un grupo tal que $(G:Z(G))=n$. Si $x,y\in G$ entonces $[x,y]^n=1$. 
+\end{corollary}
+
+\begin{proof}
+	Como $Z(G)$ es abeliano, el núcleo del morfismo de transferencia $\nu\colon
+	G\to Z(G)$, $\nu(g)=g^n$, contiene al conmutador $[G,G]$.
+\end{proof}
+
+\begin{corollary}
+	\label{corollary:semidirecto}
+	Sea $G$ un grupo finito y sea $H$ un subgrupo abeliano de
+	índice $n$, donde $n$ es coprimo con $|H|$.  Sea
+	$N=\ker(\nu\colon G\to H)$. Entonces $G\simeq N\rtimes H$.
+\end{corollary}
+
+\begin{proof}
+	Como $H$ es abeliano, $H=H/[H,H]$ y el morfismo de transferencia es
+	$\nu\colon G\to H$. Por el lema~\ref{lemma:evaluation}, podemos escribir
+	\[
+		\nu(h)
+		=\prod_{i=1}^m s_i^{-1}h^{n_i}s_i
+		=\prod_{i=1}^m h^{n_i}
+		=h^{\sum_{i=1}^m n_i}=h^n.
+	\]
+	La composición $H\hookrightarrow G\xrightarrow{\nu} H$ es morfismo de
+	grupos. 
+	
+	Vamos a demostrar que es un isomorfismo. Es inyectiva pues si $h^n=1$
+	entonces $|h|$ divide a $|H|$ y divide a $n$; y como $n$ y $|H|$ son
+	coprimos, $h=1$. Veamos que es sobreyectiva. Como $n$ y $|H|$ son coprimos,
+	existe $m\in\Z$ tal que $nm\equiv 1\bmod |H|$. Si $h\in H$ entonces $h^m\in
+	H$ y $\nu(h^m)=h^{nm}=h$. 
+
+	Tenemos entonces que $G\simeq N\rtimes H$ pues $N$ es normal en $G$, $N\cap
+	H=1$ y $G=NH$ (pues $|NH|=|N||H|$ y $G/N\simeq H$).
+\end{proof}
+
+\begin{corollary}[Frobenius]
+	Sea $H$ un subgrupo central de un grupo finito $G$. Si $|H|$
+	y $|G/H|$ son coprimos entonces $G\simeq H\times G/H$.
+\end{corollary}
+
+\begin{proof}
+	Es consecuencia inmediata del corolario~\ref{corollary:semidirecto} pues
+	$H$ es normal por ser un subgrupo central.
+\end{proof}
+

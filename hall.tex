@@ -1,0 +1,130 @@
+\chapter{Teoría de Hall para grupos resolubles}
+\label{Hall}
+
+\medskip
+\index{$\pi$-número}
+\index{$\pi$-grupo}
+\index{$\pi$-subgrupo}
+Sea $G$ un grupo finito y sea $\pi$ un conjunto de números primos. Diremos que
+$G$ es un $\pi$-grupo si todo primo que divide a $|G|$ pertenece a $\pi$.
+Obviamente un $\pi$-subgrupo de $G$ es un subgrupo de $G$ que además es un
+$\pi$-grupo. Un $\pi$-número es un entero tal que sus divisores primos están en
+$\pi$. El complemento de $\pi$ en el conjunto de los números primos será
+denotado por $\pi'$. Luego un $\pi'$-número será un entero no divisible por los
+primos de $\pi$.
+
+\begin{definition}
+	\index{Hall!subgrupo de}
+	\index{Subgrupo!de Hall}
+	Sea $\pi$ un conjunto de números primos. Un subgrupo $H$ de $G$ se dice un
+	\textbf{$\pi$-subgrupo de Hall} si $H$ es $\pi$-subgrupo de $G$ y el índice $(G:H)$
+	es un $\pi'$-número.
+\end{definition}
+
+\begin{theorem}[Hall]
+	\index{Teorema!de Hall}
+	\index{Hall!teorema de}
+	\label{theorem:HallE}
+	Sea $\pi$ un conjunto de primos y sea $G$ un grupo finito resoluble. Entonces
+	$G$ tiene un $\pi$-subgrupo de Hall.
+%	Si $G$ es un grupo resoluble de orden $nm$ con $(n:m)=1$ entonces $G$
+%	contiene un subgrupo de orden $m$.
+\end{theorem}
+
+\begin{proof}
+	Supongamos que $G$ tiene orden $nm>1$ con $(n:m)=1$. Demostraremos por
+	inducción en $|G|$ que 	existe un subgrupo de orden $m$. Sea $K$ un
+	subgrupo de $G$ minimal-normal. Sea $\pi\colon G\to G/K$ el morfismo
+	canónico.  Como $G$ es resoluble, $K$ es un $p$-grupo por el
+	lema~\ref{lemma:minimal_normal}.
+	
+	Hay dos casos a considerar.  Supongamos primero que $p$ divide a $m$. Como
+	$|G/K|<|G|$, por hipótesis inductiva y por la correspondencia, existe un
+	subgrupo $J$ de $G$ que contiene a $K$ tal que $\pi(J)$ es un subgrupo de
+	$\pi(G)=G/K$ de orden $m/|K|$. Entonces $J$ tiene orden $m$ pues 
+	\[
+	m/|K|=|\pi(J)|=\frac{|J|}{|K\cap J|}=(J:K).
+	\]
+
+	Supongamos ahora que $p$ no divide a $m$. Por hipótesis inductiva y por la
+	correspondencia, existe un subgrupo $H$ de $G$ que contiene a $K$ tal que
+	$\pi(H)$ es un subgrupo de $G/K$ de orden $m$.  Como $|H|=m|K|$, $K$ es
+	normal en $H$ y $|K|$ es coprimo con $|H:K|$, el teorema de
+	Schur--Zassenhaus~\ref{theorem:SchurZassenhaus} implica que existe un
+	complemento $J$ de $K$ en $H$. Luego $J$ es un subgrupo de $G$ de orden
+	$|J|=m$.
+\end{proof}
+
+\begin{example}
+	El grupo $\Alt_5$ contiene un un $\{2,3\}$-subgrupo de Hall isomorfo a
+	$\Alt_4$.
+\end{example}
+
+\begin{example}
+	El grupo simple $\PSL_3(2)$ de orden $168$ no contiene $\{2,7\}$-subgrupos
+	de Hall.
+\end{example}
+
+\begin{remark}
+	El teorema~\ref{theorem:HallE} dice que para todo conjunto de primos $\pi$
+	todo grupo finito contiene $\pi$-subgrupos de Hall.
+\end{remark}
+
+\begin{theorem}[Hall]
+	\index{Teorema!de Hall}
+	\index{Hall!teorema de}
+	\label{theorem:HallC}
+	Sea $G$ un grupo finito resoluble y sea $\pi$ un conjunto de primos. Todos los
+	$\pi$-subgrupos de Hall de $G$ son conjugados.
+\end{theorem}
+
+\begin{proof}
+	Podemos suponer que $G\ne1$. Procederemos por inducción en $|G|$.  Sean $H$
+	y $K$ dos $\pi$-subgrupos de Hall de $G$. Sea $M$ un subgrupo de $G$
+	minimal-normal y sea $\pi\colon G\to G/M$ el morfismo canónico. Como $G$ es
+	resoluble, el lema~\ref{lemma:minimal_normal} implica que  $M$ es un
+	$p$-grupo para algún primo $p$.  Como $\pi(H)$ y $\pi(K)$ son
+	$\pi$-subgrupos de Hall de $G/M$, los subgrupos $\pi(H)$ y $\pi(K)$ con
+	conjugados en $G/M$. Luego existe $g\in G$ tal que $gHMg^{-1}=KM$. 
+
+	Hay dos casos a considerar. Supongamos primero que $p\in\pi$. Como $|HM|$ y
+	$|KM|$ son $\pi$-números y $|H|=|K|$ es el mayor $\pi$-número que divide al
+	orden de $G$, se concluye que $H=HM$ y $K=KM$. En particular, $gHg^{-1}=K$. 
+
+	Supongamos ahora que $p\not\in\pi$. Es evidente que $K$ complementa a $M$ en
+	$KM$ pues $K\cap M=1$. Veamos que $gHg^{-1}$ complementa a $M$ en $KM$:
+	como $M$ es normal en $G$, 
+	\[
+	(gHg^{-1})M=gHMg^{-1}=KM,
+	\]
+	y $gHg^{-1}\cap M=1$ ya que $p\not\in\pi$. Estos complementos tienen que
+	ser conjugados por el teorema de
+	Schur--Zassenhaus~\ref{theorem:SchurZassenhaus:conjugacion}.
+\end{proof}
+
+\begin{corollary}
+	Sea $G$ un grupo finito y sea $N$ un subgrupo normal de $G$ de orden $n$.
+	Supongamos que $N$ o $G/N$ es resoluble. Si $|G:N|=m$ es coprimo con $n$ y
+	$m_1$ divide a $m$, todo subgrupo de $G$ de orden $m_1$ está contenido en
+	algún subgrupo de orden $m$.
+\end{corollary}
+
+\begin{proof}
+	Sea $H$ un complemento para $N$ en $G$. Entonces $|H|=m$. Sea $H_1$
+	subgrupo de $G$ tal que $|H_1|=m_1$. 
+	%Entonces,
+	%como  $G=NH$ y $N\subseteq NH_1$, el lema de Dedekind~\ref{lemma:Dedekind}
+	%implica que 
+	%\[
+	%NH_1=NH_1\cap NH=N(H\cap NH_1).
+	%\]
+	Como $n$ y $m$ son coprimos, $m_1=|H_1|=|H\cap NH_1|$ pues
+	\[
+	\frac{|H||N||H_1|}{|H\cap NH_1|}=
+	\frac{|H||NH_1|}{|H\cap NH_1|}=|H(NH_1)|=|G|=|NH|=|N||H|.
+	\]
+	Como $H_1$ y $H\cap NH_1$ son complementos para $N$ en $NH_1$, ambos de
+	orden coprimo con $n$, existe $g\in G$ tal que $H_1=g(H\cap NH_1)g^{-1}$. Luego 
+	$H_1\subseteq gHg^{-1}$ y $|gHg^{-1}|=m$. 
+\end{proof}
+

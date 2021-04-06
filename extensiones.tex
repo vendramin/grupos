@@ -1,0 +1,1304 @@
+\chapter{Extensiones}
+\label{extensiones}
+
+\begin{definition}
+	\index{Extensión}
+	Sean $K$ y $Q$ grupos. Una \textbf{extension} de $K$ por $Q$ es un grupo
+	$G$ que tiene un subgrupo normal $N$ isomorfo a $K$ tal que $G/N\simeq Q$.
+	Equivalentemente: una \textbf{extensión} de $K$ por $Q$ es una sucesión
+	exacta corta\footnote{$\iota$ es inyectiva, $p$ es sobreyectiva y $\ker
+	p=\iota(N)$.}
+	\[
+	1\to K\xrightarrow{\iota}G\xrightarrow{p} Q\to1.
+	\]
+\end{definition}
+
+\begin{example}
+	$C_6$ y $\Sym_3$ son extensiones de $C_3$ por $C_2$.
+\end{example}
+
+\begin{example}
+	$C_6$ es extensión de $C_2$ por $C_3$.
+\end{example}
+
+\begin{example}
+	Sean $K$ y $Q$ grupos. El producto directo $K\times Q$ es extensión de $K$
+	por $Q$. También es extensión de $Q$ por $K$.
+\end{example}
+
+\begin{remark}
+	\label{remark:extension}
+	Sea $G$ una extensión de $K$ por $Q$. Si $L$ es un subgrupo de $G$ que
+	contiene a $K$ entonces $L$ es una extensión de $K$ por $L/K$. 
+\end{remark}
+
+\begin{definition}
+	\index{Morfismo!de extensiones}
+	Un \textbf{morfismo} entre las extensiones 
+	\[
+	1\to K\xrightarrow{\iota}G\xrightarrow{p} Q\to1,
+	\quad
+	1\to K_1\xrightarrow{\iota_1}G_1\xrightarrow{p_1} Q_1\to1,
+	\]
+	es una terna $(\alpha,\beta,\gamma)$ de morfismos tal que el siguiente
+	diagrama conmuta:
+	\[
+	\xymatrix{
+	1\ar[r] 
+	& K
+	\ar[d]^\alpha
+	\ar[r]^-{\iota}
+	& G
+	\ar[r]^-{p}
+	\ar[d]^\beta
+	& Q\ar[r]
+	\ar[d]^\gamma
+	& 1
+	\\
+	1\ar[r] 
+	& K_1
+	\ar[r]^-{\iota_{1}}
+	& G_1
+	\ar[r]^-{p_{1}}
+	& Q_1\ar[r]
+	& 1
+	}
+	\]
+\end{definition}
+
+\begin{definition}
+	\index{Isomorfismo!de extensiones}
+	\index{Equivalencia!de extensiones}
+	Diremos que las extensiones 
+	\[
+	E\colon 1\to K\xrightarrow{\iota}G\xrightarrow{p} Q\to1,
+	\quad
+	E_1\colon 1\to K_1\xrightarrow{\iota_1}G_1\xrightarrow{p_1} Q\to1,
+	\]
+	son \textbf{isomorfas} si existe un morfismo $(\alpha,\beta,\id)$ entre $E$
+	y $E_1$ con $\alpha$ isomorfismo. Las extensiones $E$ y $E_1$ se diran
+	\textbf{equivalentes} si $K=K_1$ y $(\id,\beta,\id)$ es un isomorfismo
+	entre $E$ y $E_1$.
+\end{definition}
+
+\begin{exercise}
+	Demuestre que si $(\alpha,\beta,\id)$ es un isomorfismo de extensiones
+	entonces $\beta$ es un isomorfismo de grupos.
+\end{exercise}
+
+\begin{svgraybox}
+	Veamos que $\ker\beta=1$. Sea $g\in G$ tal que $\beta(g)=1$. Como $g\in\ker
+	p=\iota(K)$ pues $p(g)=p_1\beta(g)=p_1(1)=1$, existe $k\in K$ tal que
+	$g=\iota(k)$. Entonces $1=\beta(g)=\beta\iota(k)=\iota_1\alpha(k)$. Como
+	$\iota_1$ y $\alpha$ son morfismos inyectivos, $k=1$ y luego $g=1$.
+	
+	Veamos ahora que $\beta(G)=G_1$. Sea $g_1\in G_1$. Como $p$ es
+	sobreyectiva, $p_1(g_1)=p(g)$ para algún $g\in G$. Como
+	$\beta(g)g_1^{-1}\in \ker p_1=\iota_1(K_1)$ y $\alpha$ es epimorfismo,
+	existe $k\in K$ tal que
+	$\beta(g)g_1^{-1}=\iota_1(\alpha(k))=\beta(\iota(k))$. Luego
+	$\beta(g\iota(k)^{-1})=g_1$.
+\end{svgraybox} 
+
+%\begin{definition}
+%	\index{Equivalencia!de extensiones}
+%	Diremos que las extensiones 
+%	\[
+%	1\to K\xrightarrow{\iota}G\xrightarrow{p} Q\to1,
+%	\quad
+%	1\to K_1\xrightarrow{\iota_1}G_1\xrightarrow{p_1} Q\to1,
+%	\]
+%	son \textbf{equivalentes} si existe un morfismo 
+%	$(\id,\beta,\id)$ entre esas extensiones. 
+%\end{definition}
+%
+
+\begin{definition}
+	\index{Levantamiento} 
+	Sea $E\colon 1\to K\xrightarrow{\iota}G\xrightarrow{p} Q\to1$ una
+	extensión.  Un \textbf{levantamiento} para $E$ es una función $\ell\colon
+	Q\to G$ tal que $p(\ell(x))=x$ para todo $x\in Q$. 
+\end{definition}
+
+\begin{exercise}
+	\label{exercise:lifting}
+	Sea $E\colon 1\to K\xrightarrow{\iota}G\xrightarrow{p} Q\to1$ una
+	extensión.  Demuestre las siguientes afirmaciones:
+	\begin{enumerate}
+		\item Si $\ell\colon Q\to G$ es un levantamiento, $\ell(Q)$
+			es un transversal para $\ker p$ en $G$.
+		\item Todo transversal a $\ker p$ en $G$ induce un levantamiento $\ell\colon
+			Q\to G$.
+		\item Si $\ell\colon Q\to G$ es un levantamiento entonces
+			$\ell(xy)\ker p=\ell(x)\ell(y)\ker p$.
+	\end{enumerate}
+\end{exercise}
+
+\begin{svgraybox}
+	Sea $N=\iota(K)=\ker p$. 
+	\begin{enumerate}
+		\item Veamos que las $\ell(x)N$ son disjuntas. 
+			Si $\ell(x)N=\ell(y)N$, existe $n\in N$ tal que
+			$\ell(x)=\ell(y)n$. Luego 
+			\[
+			x=p(\ell(x))=p(\ell(y)n)=p(\ell(y))p(n)=y.
+			\]
+			Sea $g\in G$ y sea $x=p(g)\in Q$. Como $x=p(\ell(x))$ y $p$ es
+			morfismo de grupos, $x^{-1}=p(\ell(x)^{-1})$. Luego
+			$g=\ell(x)\left(\ell(x)^{-1}g\right)$ y $\ell(x)^{-1}g\in N$ pues
+			\[
+			p(\ell(x)^{-1}g)=p(\ell(x)^{-1})p(g)=x^{-1}x=1.
+			\]
+		\item Sea $L$ un transversal a $N$ en $G$. Si $x\in Q$ entonces existe
+			$g\in G$ tal que $x=p(g)$.  Sea $\ell(x)\in L\subseteq G$ tal que
+			$gN=\ell(x)N$. Como $g^{-1}\ell(x)\in N=\ker p$, se concluye que
+			$p(\ell(x))=x$ pues 
+			\[
+			x^{-1}p(\ell(x))=p(g)^{-1}p(\ell(x))=p(g^{-1}\ell(x))=1.
+			\]
+		\item Sean $x,y\in Q$ y sean $g,h\in G$ tales que $x=p(g)$, $y=p(h)$. 
+			Como por definición $gN=\ell(x)N$, $hN=\ell(y)N$ y $p$ es morfismo de grupos, 
+			\[
+				\ell(xy)N=(gh)N=(gN)(hN)=\ell(x)\ell(y)N.
+			\]
+	\end{enumerate}
+\end{svgraybox}
+
+%\begin{definition}
+%	\index{Acoplamiento}
+%	Un morfismo de grupos $\chi\colon Q\to\Out(K)$ se denomina un
+%	\textbf{acoplamiento} de $Q$ en $K$.
+%\end{definition}
+%
+%\begin{theorem}
+%	\label{theorem:coupling}
+%	Toda extensión $1\to K\xrightarrow{\iota}G\xrightarrow{p} Q\to1$ determina
+%	un acoplamiento de $Q$ en $K$.
+%\end{theorem}
+%
+%\begin{proof}
+%	Sea $N=\ker p$. Como $N$ es normal en $G$, para cada $x\in Q$ se tiene un
+%	automorfismo $\gamma_{\ell(x)}$ dado por $n\mapsto \ell(x)n\ell(x)^{-1}$ de
+%	$N$. Como $\iota\colon K\to\iota(K)=N$ es un isomorfismo, tenemos un automorfismo
+%	$\lambda_x\in\Aut(K)$ que hace conmutar al diagrama
+%    \[
+%    \xymatrix{
+%    N
+%	\ar[r]^-{\gamma_{\ell(x)}}
+%    & N
+%	\ar[d]^{\iota^{-1}}
+%    \\
+%    K
+%	\ar[u]^{\iota}
+%	\ar[r]_{\lambda_x}
+%    & K
+%    }
+%    \]
+%	es decir:	
+%	\[
+%	\iota(\lambda_x(k))=\ell(x)\iota(k)\ell(x)^{-1},\quad
+%	k\in K.
+%	\]
+%	Estudiemos cómo depende 
+%	esta función del levantamiento elegido. Si $\ell_1\colon Q\to G$
+%	es un levantamiento, existe $n\in
+%	N$ tal que $\ell(x)=\ell_1(x)n$. Si $k\in K$ y $l\in K$ es tal
+%	que $\iota(l)=n$, entonces $\lambda_x$ y $(\lambda_1)_x$ pertenecen a la
+%	misma coclase módulo $\Inn(K)$ pues 
+%	\begin{align*}
+%		\iota(\lambda_x(k))&=\ell(x)\iota(k)\iota(x)^{-1}
+%		=\ell_1(x)n\iota(k)n^{-1}\ell_1(x)^{-1}\\
+%		&=\ell_1(x)\iota(lkl^{-1})\ell_1(x)^{-1}
+%		=\iota((\lambda_1)_x(lkl^{-1})).
+%	\end{align*}
+%	Queda bien definida entonces la función $\lambda\colon Q\to\Out(K)$,
+%	$x\mapsto\lambda_x$. 
+%	
+%	Veamos que $\lambda$ es morfismo de grupos. Por el ejercicio~\ref{exercise:lifting}  
+%	existe $n\in N$ tal que
+%	$\ell(xy)=\ell(x)\ell(y)n$. Si escribimos $n=\iota(l)$ para algún $l\in K$
+%	entonces vemos que $\lambda_x\lambda_y=\lambda_{xy}\gamma_l$ y luego
+%	$\lambda(x)\lambda(y)=\lambda(xy)$. 
+%\end{proof}
+%
+%\begin{exercise}
+%	Demuestre que extensiones equivalentes dan el mismo acoplamiento.
+%\end{exercise}
+%
+%\begin{svgraybox}
+%	Si las extensiones 
+%	\[
+%	E\colon 1\to K\xrightarrow{\iota}G\xrightarrow{p} Q\to1,
+%	\quad
+%	E_1\colon 1\to K_1\xrightarrow{\iota_1}G_1\xrightarrow{p_1} Q\to1,
+%	\]
+%	son equivalentes entonces el diagrama 
+%	\[
+%	\xymatrix{
+%	0\ar[r] 
+%	& K
+%	\ar@{=}[d]
+%	\ar[r]^-{\iota}
+%	& G
+%	\ar[r]^-{p}
+%	\ar[d]^\beta
+%	& Q\ar[r]
+%	\ar@{=}[d]
+%	& 0
+%	\\
+%	0\ar[r] 
+%	& K
+%	\ar[r]^-{\iota_{1}}
+%	& G_1
+%	\ar[r]^-{p_{1}}
+%	& Q\ar[r]
+%	& 0
+%	}
+%	\]
+%	es conmutativo. Si $\ell\colon Q\to G$ es un levantamiento para $E$
+%	entonces $\beta\ell$ es un levantamiento para $E_1$ pues
+%	$p_1(\beta\ell)=(p_1\beta)\ell=p\ell=\id$. 
+%
+%	Si $x\in Q$ y $k\in K$ entonces
+%	$\iota(\lambda_x(k))=\ell(x)\iota(k)\ell(x)^{-1}$. Al aplicar $\beta$ y
+%	usar la conmutatividad del diagrama:
+%	\begin{align*}
+%		\iota_1(\lambda_x(k))&=\beta\iota\lambda_x(k)
+%		=\beta(\ell(x))\beta\iota(k)\beta(\ell(x)^{-1})\\
+%		&=\beta\ell(x)\iota_1(k)(\beta\ell(x))^{-1}
+%		=\iota_1((\lambda_1)_x(k)).
+%	\end{align*}
+%	Como $\iota_1$ es inyectiva,
+%	$\chi(x)(k)=\lambda_x(k)=(\lambda_1)_x(k)=\chi_1(x)(k)$.
+%\end{svgraybox}
+
+\begin{definition}
+	\index{Extensión!que se parte}
+	Se dice que una extensión se \textbf{parte} si existe un levantamiento que
+	es morfismo de grupos.
+\end{definition}
+
+%\begin{lemma}
+%	\label{lemma:split}
+%	Si una extensión $E\colon 1\to K\xrightarrow{\iota}G\xrightarrow{p} Q\to1$
+%	se parte entonces $N=\iota(K)$ admite un complemento en $G$.
+%\end{lemma}
+%
+%\begin{proof}
+%	
+%\end{proof}
+
+%\begin{definition}
+%	Sea $E\colon 1\to K\xrightarrow{\iota}G\xrightarrow{p} Q\to1$ una
+%	extensión. Diremos que un $\gamma\in\Aut(G)$ \textbf{estabiliza} a $E$ si 
+%	el diagrama 
+%	\[
+%	\xymatrix{
+%	0\ar[r] 
+%	& K
+%	\ar@{=}[d]
+%	\ar[r]^-{\iota}
+%	& G
+%	\ar[r]^-{p}
+%	\ar[d]^\gamma
+%	& Q\ar[r]
+%	\ar@{=}[d]
+%	& 0
+%	\\
+%	0\ar[r] 
+%	& K
+%	\ar[r]^-{\iota}
+%	& G
+%	\ar[r]^-{p}
+%	& Q\ar[r]
+%	& 0
+%	}
+%	\]
+%	es conmutativo. El \textbf{estabilizador} de la extensión $E$ es el
+%	conjunto de $\gamma\in\Aut(G)$ que estabilizan a $E$.
+%\end{definition}
+%
+%\begin{theorem}
+%	\label{theorem:estabilizador_abeliano}
+%	El estabilizador de una extensión 
+%	$E\colon 1\to K\xrightarrow{\iota}G\xrightarrow{p} Q\to1$ 
+%	es un grupo abeliano.
+%\end{theorem}
+%
+%\begin{proof}
+%	Sea $S$ el estabilizador de la extensión $E$ y sea $\gamma\in S$. 
+%	Sea $T$ un transversal a $N=\ker p$ en $G$. Si $g\in G$ existen $n,n_1\in N$ y
+%	$t,t_1\in T$ tales que $g=nt$ y $\gamma(g)=n_1t_1$. 
+%	Como entonces $tN=t_1N$ pues 
+%	\[
+%		p(t_1)=p(n_1t_1)=p(\gamma(g))=p(g)=p(nt)=p(n)p(t)=p(t),
+%	\]
+%	se concluye que $\gamma(g)=n_1t$. Luego 
+%	\[
+%	g\gamma(g)^{-1}=nt(n_1t)^{-1}=ntt^{-1}n_1=nn_1\in N.
+%	\]
+%
+%	Veamos ahora que $g\gamma(g)^{-1}\in Z(N)$. Si $n\in N$ entonces
+%	$\gamma(n)=n$ pues $n=\iota(k)$ para
+%	algún $k\in K$ y entonces $\gamma(n)=\gamma\iota(k)=\iota(k)=n$. Luego 
+%	\[
+%	[g\gamma(g)^{-1},n]=g\gamma(g)^{-1}n\gamma(g)g^{-1}n^{-1}=g\gamma(g^{-1}ng)g^{-1}n^{-1}=1.
+%	\]
+%
+%	Sea 
+%	\[
+%	\Psi\colon S\to\prod_{g\in G}Z(N),
+%	\quad
+%	\gamma\mapsto (g^{-1}\gamma(g))_{g\in G}. 
+%	\]
+%	
+%	
+%
+%\end{proof}
+
+%\section{Derivaciones y complementos}
+
+\begin{definition}
+	\index{Derivación}
+	\index{$1$-cociclo}
+	Sean $Q$ y $K$ grupos. Supongamos que $Q$ actúa por automorfismos en $K$.
+	Una función $\varphi\colon Q\to K$ se dice un  $1$-\textbf{cociclo} (o una
+	\textbf{derivación}) si 
+	\[
+		\varphi(xy)=\varphi(x)(x\cdot\varphi(y))
+	\]
+	para todo $x,y\in Q$.  El conjunto de \textbf{derivaciones} de $Q$ en $K$
+	se define como
+	\[
+	\Der(Q,K)=Z^1(Q,K)=\{\delta\colon Q\to K:\text{$\delta$ es $1$-cociclo}\}.
+	\]
+\end{definition}
+
+\begin{exercise}
+	Sea $Q$ un grupo que actúa por automorfismos en $K$. Para cada $k\in K$, la
+	función $Q\to K$, $x\mapsto [k,x]=kxk^{-1}x^{-1}$, es una derivación.
+\end{exercise}
+
+\begin{svgraybox}
+	Para $k\in K$ y $x\in Q$ escribimos $\delta_k(x)=[k,x]$. Entonces 
+	\[
+	\delta_k(x)(x\delta_k(y)x^{-1})
+	=kxk^{-1}x^{-1}xkyk^{-1}y^{-1}x^{-1}
+	=k(xy)k^{-1}(xy)^{-1}
+	=\delta_k(xy).
+	\]
+\end{svgraybox}
+
+\begin{exercise}
+	\label{exercise:1cocycle}
+	Sea $\varphi\colon Q\to K$ un $1$-cociclo. Demuestre las siguientes afirmaciones:
+	\begin{enumerate}
+		\item $\varphi(1)=1$.
+		\item $\varphi(y^{-1})=(y^{-1}\cdot\phi(y))^{-1}=y^{-1}\cdot\phi(y)^{-1}$.
+		\item El conjunto $\ker\varphi=\{x\in Q:\varphi(x)=1\}$ 	es un
+			subgrupo de $Q$. 
+	\end{enumerate}
+\end{exercise}
+
+\begin{svgraybox}
+	La primera afirmación es fácil pues, como 
+	\[
+		\varphi(1)=\varphi(11)=\varphi(1)(1\cdot \varphi(1))=\varphi(1)^2,
+	\]
+	se concluye que $\varphi(1)=1$. 
+	
+	Veamos que $\ker\varphi$ es un subgrupo. 
+	Como $\varphi(1)=1$, $K$ es no vacío. Sean
+	$x,y\in \ker\varphi$. Como $1=\varphi(y^{-1}y)=\varphi(y^{-1})(y^{-1}\cdot
+	\varphi(y))$, se tiene que
+	\[
+	\varphi(y^{-1})=(y^{-1}\cdot\phi(y))^{-1}.
+	\]
+	Similarmente se demuestra que 
+	\[
+		\varphi(y^{-1})=y^{-1}\cdot\phi(y)^{-1}.
+	\]
+	De estas fórmulas se deduce que si $x\in \ker\varphi$ entonces
+	$x^{-1}\in \ker\varphi$. Luego $\ker\varphi$ es un subgrupo pues si $x,y\in \ker\varphi$, 
+	$\varphi(xy)=\varphi(x)(x\cdot \varphi(y))=1(x\cdot 1)=1$. 
+\end{svgraybox}
+
+\begin{theorem}
+	\label{theorem:complementos}
+	Sea $Q$ un grupo que actúa por automorfismos en el grupo $K$.  Existe una
+	biyección entre el conjunto de complementos de $K$ en $K\rtimes Q$ y el
+	conjunto $\Der(Q,K)$.
+\end{theorem}
+
+\begin{proof}
+	El grupo $Q$ actúa en $K$ por conjugación, entonces $\delta\in\Der(Q,K)$ si
+	y sólo si $\delta(xy)=\delta(x)x\delta(y)x^{-1}$, $x,y\in Q$. En este caso,
+	las fórmulas del ejercicio~\ref{exercise:1cocycle} quedan así:
+	$\delta(1)=1$, $\delta(x^{-1})=x^{-1}\delta(x)^{-1}x$.
+	
+	Sea $\mathcal{C}$ el conjunto de complementos de $K$ en $K\rtimes Q$.  Sea
+	$C\in\mathcal{C}$. Si $x\in Q$, por el lemma~\ref{lemma:semidirecto}
+	existen únicos $k\in K$ y $c\in C$ tales que $x=k^{-1}c$. Queda bien
+	definida entonces la función $\delta_C\colon Q\to K$, $x\mapsto k$. Vale
+	que $\delta(x)x=c\in C$. 
+	
+	Veamos que $\delta_C\in\Der(Q,K)$. Si $x,x_1\in Q$, escribimos $x=k^{-1}c$
+	y $x_1=k_1^{-1}c_1$, donde $k,k_1\in K$ y $c,c_1\in C$. Como $K$ es normal
+	en $K\rtimes Q$, podemos escribir a $xx_1$ como $xx_1=k_2c_2$, donde
+	$k_2=k^{-1}(ck_1^{-1}c^{-1})\in K$, $c_2=cc_1\in C$. Luego 
+	\[
+		\delta(xx_1)xx_1=cc_1=\delta(x)x\delta(x_1)x_1
+	\]
+	implica que $\delta(xx_1)=\delta(x)x\delta(x_1)x^{-1}$. 
+	Tenemos así una función $F\colon\mathcal{C}\to\Der(Q,K)$, $F(C)=\delta_C$.
+
+	Vamos a construir ahora $G\colon\Der(Q,K)\to\mathcal{C}$. 
+	Para
+	cada $\delta\in\Der(Q,K)$ vamos a definir un complemento $\Delta$ de $K$ en $K\rtimes Q$: 
+	\[
+	\Delta=\{\delta(x)x:x\in Q\}.
+	\]
+
+	Veamos que $\Delta$ es un subgrupo de $K\rtimes Q$. Como $\delta(1)=1$,
+	$1\in X$. Si $x,y\in \Delta$ entonces
+	$\delta(x)x\delta(y)y=\delta(x)x\delta(y)x^{-1}xy=\delta(xy)xy\in \Delta$.
+	Por último si $x\in \Delta$ entonces
+	$(\delta(x)x)^{-1}=x^{-1}\delta(x)^{-1}xx^{-1}=\delta(x^{-1})x^{-1}$.
+	Veamos que $\Delta\cap K=1$. Si $x\in Q$ es tal que $\delta(x)x\in K$
+	entonces, como $\delta(x)\in K$, $x\in K\cap Q=1$. Si $g\in G$ entonces
+	existen únicos $k\in K$, $x\in Q$ tales que $g=kx$. Escribimos
+	$g=k\delta(x)^{-1}\delta(x)x$. Como $k\delta(x)^{-1}\in K$ y $\delta(x)x\in
+	\Delta$, se concluye que $G=K\Delta$. Queda bien definida entonces la
+	función $G\colon\Der(Q,K)\to\mathcal{C}$, $G(\delta)=\Delta$.
+
+	Veamos ahora que $G\circ F=\id_{\mathcal{C}}$. 
+	Sea $C\in\mathcal{C}$. Entonces 
+	\[
+	G(F(C))=G(\delta_C)=\{\delta_C(x)x:x\in
+	Q\}=C,
+	\]
+	por construcción. (Vimos que $\delta_C(x)x\in C$. Recíprocamente,  si $c\in
+	C$, escribimos $c=kx$ para únicos $k\in K$, $x\in Q$ y luego $x=k^{-1}c$
+	que implica $c=\delta_c(x)x$.)
+
+	Por último veamos que $F\circ G=\id_{\Der(Q,K)}$. Sea $\delta\in\Der(Q,K)$.
+	Entonces 
+	\[
+	F(G(\delta))=F(\Delta)=\delta_{\Delta}.
+	\]
+	Queremos demostrar que $\delta_\Delta=\delta$.  Sea $x\in Q$. Existe
+	$\delta(y)y\in\Delta$ para algún $y\in Q$ tal que $x=k^{-1}\delta(y)y$.
+	Luego $\delta_{\Delta}(x)x=\delta(y)y$ y luego $\delta(x)=\delta(y)$ por la
+	unicidad de la escritura.
+\end{proof}
+
+\begin{definition}
+	\index{Derivación!interior}
+	\index{$1$-coborde}
+	Sean $Q$ y $K$ grupos. Supongamos que $Q$ actúa por automorfismos en $K$.
+	Un $\delta\in\Der(Q,K)$ se dice \textbf{interior} si existe $k\in K$ tal
+	que $\delta(x)=[k,x]$ para todo $x\in Q$. El conjunto de
+	\textbf{derivaciones interiores} será denotado por
+	\[
+		\Inn(Q,K)=B^1(Q,K)=\{\delta\in\Der(Q,K):\text{$\delta$ es interior}\}.
+	\]
+	Una derivación interior también se llama \textbf{$1$-coborde}.
+\end{definition}
+
+\begin{theorem}
+	\index{Teorema!de Sysak}
+	\index{Sysak, Y.}
+	\label{theorem:Sysak}
+	Sean $Q$ y $K$ grupos tales que $Q$ actúa por automorfismos en $K$. Sea
+	$\delta\in\Der(Q,K)$.
+	\begin{enumerate}
+		\item $\Delta=\{\delta(x)x:x\in Q\}$ es un complemento para $K$ en $K\rtimes Q$.
+		\item $\delta\in\Inn(Q,K)$ si y sólo si $Q$ y $\Delta$ son conjugados en
+			$K$.
+		\item $\ker\delta=Q\cap\Delta$.
+		\item $\delta$ es sobreyectiva si y sólo si $K\rtimes Q=\Delta Q$.
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	Vimos en la demostración del teorema~\ref{theorem:complementos} que
+	el conjunto $\Delta$ es un complemento para $K$ en $K\rtimes Q$. 
+
+	Demostremos la segunda afirmación. Si suponemos que $\delta$ es interior,
+	existe $k\in K$ tal que $\delta(x)=[k,x]=kxk^{-1}x^{-1}$ para todo $x\in
+	Q$. Como $\delta(x)x=kxk^{-1}$ para todo $x\in Q$,  $\Delta=kQk^{-1}$.
+	Recíprocamente, si existe $k\in K$ tal que $\Delta=kQk^{-1}$, para cada
+	$x\in Q$ existe $y\in Q$ tal que $\delta(x)x=kyk^{-1}$. Como
+	$[k,y]=kyk^{-1}y^{-1}\in K$, $\delta(x)\in K$ y $\delta(x)x=[k,y]y\in KQ$,
+	se concluye que $x=y$ y luego $\delta(x)=[k,x]$. 
+
+	Demostremos la tercera afirmación. Si $x\in Q$ es tal que $\delta(x)x=y\in
+	Q$ entonces $\delta(x)=yx^{-1}\in K\cap Q=1$. Recíprocamente, si $x\in Q$
+	es tal que $\delta(x)=1$ entonces $x=\delta(x)x\in Q\cap\Delta$. 
+
+	Demostremos la cuarta afirmación. Si $\delta$ es sobreyectiva, para cada
+	$k\in K$ existe $y\in Q$ tal que $\delta(y)=k$. Luego $K\rtimes Q\subseteq
+	\Delta Q$ pues $kx=\delta(y)x=(\delta(y)y)y^{-1}x\in \Delta Q$. Además
+	$\Delta Q\subseteq K\rtimes Q$ pues si $\delta(x)\in K$ para todo $x\in Q$.
+	Recíprocamente, si $k\in K$ y $x\in Q$ existen 
+	$y,z\in Q$ tales que $kx=\delta(y)yz$; en particular, 
+	por la unicidad de la escritura de $K\rtimes Q$,
+	$k=\delta(y)$. 
+\end{proof}
+
+\begin{definition}
+	Un grupo $G$ admite una \textbf{factorización triple} si tiene subgrupos
+	$A$, $B$ y $M$ tales que $G=MA=MB=AB$ y $A\cap M=B\cap M=1$.
+\end{definition}
+
+%%% TODO:
+%%% ejemplos de factorizacion triple
+%%% caracterizacion de 1-cociclos biyectivos
+%%% ejemplo con anillo radical
+%%% braces?
+
+\begin{corollary}
+	Supongamos que el grupo $Q$ actúa por automorfismos en $K$. Sea
+	$\delta\in\Der(Q,K)$ sobreyectivo. Entonces $G=K\rtimes Q$ admite una
+	factorización triple.
+\end{corollary}
+
+\begin{proof}
+	Es consecuencia inmediata del teorema~\ref{theorem:Sysak}. 
+\end{proof}
+
+\begin{exercise}
+	\label{exercise:ker1cocycle}
+	Sea $\delta\in\Der(Q,K)$. Entonces $\delta$ es inyectiva si y sólo si
+	$\ker\delta=1$.
+\end{exercise}
+
+\begin{proof}
+	Sean $x,y\in Q$ tales que $\delta(x)=\delta(y)$. Como $\delta(x^{-1}y)=1$
+	pues 
+	\[
+	\delta(x^{-1}y)=\delta(x^{-1})(x^{-1}\delta(y)x)=\delta(x^{-1})x^{-1}\delta(x)x=\delta(x^{-1}x)=\delta(1)=1
+	\]
+	y $\delta$ es inyectiva, $x^{-1}y=1$. La afirmación recíproca es trivial.
+\end{proof}
+
+\begin{corollary}
+	Si $\delta\in\Der(Q,K)$ es biyectivo entonces $K$ admite un complemento
+	$\Delta$ en $K\rtimes Q$ tal que $K\rtimes Q=K\rtimes\Delta=\Delta Q$ y
+	$Q\cap\Delta=1$.
+\end{corollary}
+
+\begin{proof}
+	Vimos en el teorema~\ref{theorem:Sysak} que $\delta$ es sobreyectiva si y
+	sólo si $K\rtimes Q=\Delta Q$ y que $\ker\delta=Q\cap\Delta$.
+\end{proof}
+
+%\section{Aplicación: subespacios invariantes}
+%
+%Sea $A$ un grupo que actúa por automorfismos en un grupo $G$. Definimos
+%\[
+%C_G(A)=\{g\in G:g\cdot a=a\text{ para todo $a\in A$}\}.
+%\]
+%
+%Como aplicación de la teoría de Schur--Zassenhaus vamos a demostrar los
+%teoremas de Sylow para subespacios $A$-invariantes.
+%Necesitamos el siguiente lema:
+%
+%\begin{lemma}
+%	\label{lemma:Glauberman}
+%	Sean $A$ y $G$ grupos finitos de órdenes coprimos. Supongamos que $A$ actúa
+%	por automorfismos en $G$ y que $A$ o $G$ es resoluble. Supongamos que $A$
+%	actúa en un conjunto $X$ y que $G$ actúa transitivamente en $X$ de forma tal que
+%	\begin{equation}
+%		\label{equation:Glauberman:compatibilidad}
+%		a\cdot (g\cdot x)=(aga^{-1})\cdot (a\cdot x)
+%	\end{equation}
+%	para todo $a\in A$, $g\in G$, $x\in X$. Valen las siguientes afirmaciones:
+%	\begin{enumerate}
+%		\item Existe un $x\in X$ invariante por la acción de $A$.
+%		\item Si $x,y\in X$ son invariantes por la acción de $A$ entonces
+%			existe $c\in C_G(A)$ tal que $c\cdot x=y$.
+%	\end{enumerate}
+%\end{lemma}
+%
+%\begin{proof}
+%	Sea $\Gamma=G\rtimes A$ el producto semidirecto. Todo $\gamma$ se escribe
+%	en forma única como $\gamma=ga$ con $g\in G$, $a\in A$. Veamos que $\Gamma$
+%	actúa en $X$ por
+%	\[
+%		\gamma\cdot x=(ga)\cdot x=g\cdot (a\cdot x).
+%	\]
+%	Es fácil ver que es una acción pues la igualdad
+%	\[
+%	(ga)\cdot ((hb)\cdot x)=((ga)(hb))\cdot x=(gaha^{-1})\cdot ((ab)\cdot x)
+%	\]
+%	es consecuencia de la relación de
+%	compatibilidad~\eqref{equation:Glauberman:compatibilidad}.\framebox{completar}
+%
+%\end{proof}
+%\begin{theorem}
+%	\label{theorem:Sylow_Ainv}
+%\end{theorem}
+%
+%
+\section*{Cohomología}
+
+\begin{definition}
+	\index{$G$-módulo}
+	Sea $G$ un grupo. Un $G$-módulo es un grupo abeliano $A$ con una acción por
+	automorfismos de $G$. 
+\end{definition}
+
+En esta sección $G$ es un grupo y $A$ es un $G$-módulo. El grupo $A$ será
+escrito aditivamente. 
+
+\begin{definition}
+	\index{Cocadena}
+	Sea $n\geq0$. Una \textbf{cocadena}
+	de grado $n$ (o $n$-cocadena) de $G$ con valores en $A$ es una función
+	$f\colon G\times\cdots\times G\to A$, $(s_1,\dots,s_n)\mapsto
+	f(s_1,\dots,s_n)$. 
+\end{definition}
+
+\begin{remark}
+	El conjunto $C^n(G,A)$ de $n$-cocadenas de $G$ con valores en
+	$A$ es un grupo abeliano. 
+\end{remark}
+
+\begin{definition}
+	\index{Coborde}
+	Sea $f\in C^n(G,A)$. Se define el \textbf{coborde} de $f$ como el elemento $df\in
+	C^{n+1}(G,A)$ dado por 
+	\begin{align*}
+		df(s_1,\dots,&s_{n+1})=s_1\cdot f(s_2,\dots,s_{n+1})\\
+		&+\sum_{i=1}^n (-1)^i f(s_1,\dots,s_{i-1},s_is_{i+1},s_{i+2},\dots,s_{n+1})
+		+(-1)^{n+1}f(s_1,\dots,s_n).
+	\end{align*}
+\end{definition}
+
+\begin{example}
+	Veamos la función $d\colon C^0(G,A)\to C^1(G,A)$.  Si $a\in C^0(G,A)=A$
+	entonces 
+	\[
+	da(s)=s\cdot a-a.
+	\]
+	Luego $da=0$ si y sólo si $s\cdot a=0$ para
+	todo $s\in G$.
+\end{example}
+
+\begin{example}
+	Veamos ahora la función $d\colon C^1(G,A)\to C^2(G,A)$. Si $f\in C^1(G,A)$
+	entonces
+	\[
+	df(s,t)=s\cdot f(t)-f(st)+f(s).
+	\]
+\end{example}
+
+\begin{example}
+	Veamos ahora la función $d\colon C^2(G,A)\to C^3(G,A)$. Si $f\in C^2(G,A)$
+	entonces
+	\[
+	df(u,v,w)=u\cdot f(v,w)-f(uv,w)+f(u,vw)-f(u,v).
+	\]
+\end{example}
+
+\begin{lemma}
+	\label{lemma:dd=0}
+	La composición $C^n(G,A)\xrightarrow{d} C^{n+1}(G,A)\xrightarrow{d}
+	C^{n+2}(G,A)$ es cero.
+\end{lemma}
+
+\begin{definition}
+	\index{Cociclo}
+	\index{Coborde}
+	Sea $f$ una cocadena $f$ de grado $n$. Se dice que $f$ es un
+	\textbf{cociclo} de grado $n$ si $df=0$. Denotaremos por $Z^n(G,A)$ al
+	conjunto de $n$-cociclos de $G$ en $A$. Se dice que $f$ es un
+	\textbf{coborde} de grado $n$ si existe una cocadena $g$ de grado $(n-1)$
+	tal que $f=dg$. Denotaremos por $B^n(G,A)$ al conjunto de $n$-cobordes de
+	$G$ en $A$.
+\end{definition}
+
+Obviamente $Z^n(G,A)$ es un grupo abeliano y $B^n(G,A)\subseteq Z^n(G,A)$.
+
+\begin{definition}
+	\index{Cohomología}
+	El $n$-ésimo \textbf{grupo de cohomología} de $G$ con valores en $A$
+	es el grupo abeliano
+	\[
+	H^n(G,A)=Z^n(G,A)/B^n(G,A).
+	\]
+\end{definition}
+
+\begin{exercise}
+	Demuestre que $H^0(G,A)=A^G$, donde 
+	\[
+	A^G=\{a\in A:s\cdot a=a\text{ para todo $s\in G$}\}. 
+	\]
+\end{exercise}
+
+\begin{svgraybox}
+	Pues para todo $a\in A=C^0(G,A)$ se tiene que $da=0$ si y sólo si $a\in
+	A^G$.
+\end{svgraybox}
+
+\begin{example}
+	$f\in Z^1(G,A)$ si y sólo si $f(st)=s\cdot f(t)+f(s)$ para todo $s,t\in G$.
+	En particular, si $G$ actúa trivialmente en $A$, $Z^1(G,A)=\hom(G,A)$. Como
+	en este caso $B^1(G,A)=0$, se concluye que $H^1(G,A)\simeq\hom(G,A)$. 
+\end{example}
+
+\begin{example}
+	$f\in Z^2(G,A)$ si y sólo si $f$ es un \textbf{factor}, es decir:
+	\begin{equation}
+		\label{eq:2cociclo}
+		u\cdot f(v,w)-f(uv,w)+f(u,vw)-f(u,v)=0
+	\end{equation}
+	para todo $u,v,w\in G$.
+\end{example}
+
+\begin{exercise}
+	Sea $f\in Z^2(G,A)$ tal que $f(1,1)=0$. Demuestre que 
+	\[
+	f(1,x)=f(x,1)=0
+	\]
+	para todo $x\in G$.
+\end{exercise}
+
+\begin{svgraybox}
+	Al usar la fórmula~\eqref{eq:2cociclo} con $(u,v,w)=(1,1,x)$ se obtiene
+	$f(1,x)=f(1,1)$. Con $(u,v,w)=(x,1,1)$ se obtiene $x\cdot f(1,1)=f(x,1)$. 
+\end{svgraybox}
+
+\begin{definition}
+	\index{Cohomólogos!cociclos}
+	\index{Cociclos!cohomólogos}
+	Sean $f,g\in Z^2(G,A)$. Se dice que $f$ y $g$ son \textbf{cohomólogos} si
+	existe algún coborde $h$ tal que $f-g=dh$. 
+\end{definition}
+
+Un factor $f\in Z^2(G,A)$ se dice \textbf{normalizado} si $f(1,1)=0$. 
+
+\begin{lemma}
+	\label{lemma:normalizado}
+	Todo $f\in Z^2(G,A)$ es cohomólogo a un factor normalizado. 
+\end{lemma}
+
+\begin{proof}
+	Sea $\gamma\colon G\to A$ tal que $\gamma(1)=-f(1,1)$. Sea
+	$g=f+d\gamma$. Entonces $g\in Z^2(G,A)$, $g(1,1)=0$ y $dg=d(f+d\gamma)=df$ pues
+	$d^2=0$. 
+\end{proof}
+
+\begin{theorem}
+	\label{theorem:|G|H^2=0}
+	Sea $G$ un grupo finito y sea $A$ un $G$-módulo. Entonces 
+	\[
+	|G|H^n(G,A)=0.
+	\]
+\end{theorem}
+
+\begin{proof}
+	Sea $m=|G|$. Sea $f\in Z^n(G,A)$. Vamos a demostrar que $mf$ es un coborde. Sea 
+	\[
+	F(s_1,\dots,s_{n-1})=\sum_{s\in G}f(s_1,\dots,s_{n-1},s).
+	\]
+	Como $f\in Z^n(G,A)$, 
+	\begin{align*}
+		0=s_1\cdot f(s_2,\dots,s_{n+1})-f(s_1s_2,s_3,\dots,s_{n+1})+\cdots&+(-1)^nf(s_1,\dots,s_ns_{n+1})\\
+		&+(-1)^{n+1}f(s_1,\dots,s_n).
+	\end{align*}
+	%Si $s_{n+1}$ recorre todo $G$ entonces $s_ns_{n+1}$ también lo hace. Luego, 
+	Al sumar estas igualdades sobre todo $s_{n+1}\in G$ obtenemos 
+	\begin{align*}
+		0=s_1\cdot F(s_2,\dots,s_n)-F(s_1s_2,\dots,s_n)+\cdots&+(-1)^nF(s_1,\dots,s_{n-1})\\
+		&+(-1)^{n+1}mf(s_1,\dots,s_n).
+	\end{align*}
+	Luego $0=dF(s_1,\dots,s_n)-(-1)^nmf(s_1,\dots,s_n)$, es decir $mf=d(
+	(-1)^nF)$.
+\end{proof}
+
+\begin{corollary}
+	\label{corollary:a->|G|a}
+	Sea $G$ un grupo finito y $A$ un $G$-módulo. Si $a\mapsto |G|a$ es un
+	automorfismo de $A$ entonces $H^n(G,A)=0$ para todo $n\geq1$. 
+\end{corollary}
+
+\begin{proof}
+	Como la función $x\mapsto |G|x$ es un automorfismo de $C^n(G,A)$ que
+	conmuta con $d$, induce un automorfismo $H^n(G,A)\to H^n(G,A)$, $x\mapsto
+	|G|x$. Como $|G|H^n(G,A)=0$ por el teorema~\ref{theorem:|G|H^2=0}, se
+	concluye que $H^n(G,A)=0$.
+\end{proof}
+
+\begin{corollary}
+	\label{corollary:H^n=0}
+	Sea $G$ un grupo finito y $A$ un $G$-módulo. Si $A$ es finito y de orden
+	coprimo con $|G|$ entonces $H^n(G,A)=0$ para todo $n\geq1$. 
+\end{corollary}
+
+\begin{proof}
+	Como $|G|H^n(G,A)=0$ por el teorema~\ref{theorem:|G|H^2=0} y $a\mapsto
+	|G|a$ es un automorfismo de $A$, $H^n(G,A)$ por el
+	corolario~\ref{corollary:a->|G|a}.
+\end{proof}
+
+\begin{corollary}
+	Sea $G$ un grupo finito y $A$ un $G$-módulo finitamente generado.  Entonces
+	$H^n(G,A)$ es finito para todo $n\geq1$. 	
+\end{corollary}
+
+\begin{proof}
+	Como $C^n(G,A)$ es finitamente generado, $H^n(G,A)$ es finitamente
+	generado.  Luego $H^n(G,A)$ es finito por ser un grupo abeliano finitamente
+	generado y de torsión.
+\end{proof}
+
+\section*{Extensiones abelianas}
+
+%En esta sección estudiaremos extensiones $G$ de $K$ por $Q$ en el caso en que
+%$K$ sea un grupo abeliano.	En este caso $\Der(Q,A)$ es un grupo abeliano con
+%la operación 
+%\[
+%(\delta_1\delta_2)(x)=\delta_1(x)\delta_2(x).
+%\]
+%
+%\begin{exercise}
+%	Sea $Q$ un grupo que actúa por automorfismos en un grupo abeliano $K$.
+%	Demuestre que $\Inn(Q,A)$ es un subgrupo del grupo abeliano $\Der(Q,A)$. 
+%\end{exercise}
+%
+%\begin{svgraybox}
+%	Si $\delta_k,\delta_l\in\Inn(Q,K)$ entonces para $x\in Q$ se tiene
+%	\[
+%	\delta_k\delta_l(x)=k(xk^{-1}x^{-1})lxl^{-1}x^{-1}=(kl)x(kl)^{-1}x^{-1}=\delta_{kl}(x)
+%	\]
+%	pues $xk^{-1}x^{-1}\in K$ y $K$ es abeliano. Además 
+%	\[
+%	\delta_k(x)^{-1}
+%	=(kxk^{-1}x^{-1})^{-1}
+%	=k(k^{-1}xkx^{-1})k^{-1}
+%	=k\delta_{k^{-1}}(x)k^{-1}
+%	=\delta_{k^{-1}}
+%	\]
+%	pues $K$ es abeliano.
+%\end{svgraybox}
+%
+%\begin{theorem}
+%	\label{theorem:semidirecto:Kabeliano}
+%	Sea $K$ un $G$-módulo y sea $Q$ un grupo que actúa por automorfismos en
+%	$K$. Existe una correspondencia biyectiva entre clases de conjugación de
+%	complementos de $K$ en $K\rtimes Q$ y $\Der(Q,K)/\Inn(Q,K)$.
+%\end{theorem}
+%
+%\begin{proof}
+%	Sean $C$ y $D$ complementos de $K$ y supongamos que existe $g\in K\rtimes
+%	Q$ tal que $C=gDg^{-1}$. Como $G=KQ$, existe $k\in K$ tal que $C=kDk^{-1}$.
+%	Si $x\in Q$, existe $d\in D$ tal que
+%	\[
+%		\delta_C(x)x=kdk^{-1}.
+%	\]
+%	Como $K$ es abeliano,
+%	\[
+%		[x^{-1}d,k]=(x^{-1}d)k(x^{-1}d)^{-1}k^{-1}=1. 
+%	\]
+%	Esto implica que $[k,d]=[k,x]$ y entonces $[k,x]^{-1}\delta_C(x)x=d$. Luego 
+%	\[
+%	\delta_D(x)x=[k,d]d=[k,x]d\dots
+%	\]
+%
+%	Sean $\delta_C,\delta_D\in\Der(Q,K)$ tales que
+%	$\delta_D(x)=\delta_C(x)[k,x]^{-1}$ para algún $k\in K$. Como $K$ es
+%	abeliano y $xkx^{-1}\in K$, se concluye que  
+%	$D=k^{-1}Ck$ ya que $C=\{\delta_C(x)x:x\in Q\}$, $D=\{\delta_D(x)x:x\in
+%	Q\}$ y 
+%	\[
+%	\delta_D(x) 
+%	= \delta_C(x)[k,x]^{-1}
+%	=\delta_C(x)xkx^{-1}k^{-1}
+%	=\delta_C(x)k^{-1}xkx^{-1}
+%	=k^{-1}\delta_C(x)xkx^{-1}.
+%	\]
+%	\framebox{completar}
+%\end{proof}
+
+\begin{definition}
+	\index{Dato!para una extensión}
+	Un \textbf{dato} es un par $(Q,K)$, donde $Q$ es un grupo y $K$ es
+	$Q$-módulo.  Se dice que un grupo $G$ \textbf{realiza} el dato $(Q,K)$ si
+	$G$ es una extensión de $K$ por $Q$ y para todo levantamiento $\ell\colon
+	Q\to G$ se tiene  
+	\[
+	x\cdot a=\ell(x)a\ell(x)^{-1},\quad a\in K,x\in Q.
+	\]
+\end{definition}
+
+%\begin{exercise}
+%	\label{exercise:extension}
+%	Sea $G$ una extensión de $K$ por $Q$. Supongamos que $K$ es abeliano. Si
+%	$\ell\colon Q\to G$ es un levantamiento demuestre que existe un morfismo
+%	$\chi\colon Q\to\Aut(K)$ tal que el grupo $G$ realiza el dato $(Q,K,\chi)$.
+%\end{exercise}
+%
+%\begin{svgraybox}
+%	Vimos en el teorema~\ref{theorem:coupling} que toda extensión determina un
+%	acoplamiento $\chi\colon Q\to\Out(K)\simeq\Aut(K)$, donde
+%	$\Out(K)\simeq\Aut(K)$ pues $K$ es abeliano.  Luego $G$ realiza el dato
+%	$(Q,K,\chi)$, donde $\chi\colon Q\to\Aut(K)$.
+%\end{svgraybox}
+
+\begin{definition}
+	\index{Factor}
+	Sea $Q$ un grupo y sea $K$ un $Q$-módulo. Sea $1\to K\to G\to Q\to 1$ una
+	extensión de $K$ por $Q$ que realiza el dato $(K,Q)$ y sea $\ell\colon Q\to
+	G$ un levantamiento tal que $\ell(1)=1$. Un \textbf{factor} para $\ell$ es
+	una función $f\colon Q\times Q\to K$ tal que 
+	\begin{equation}
+		\label{eq:ell}
+		\ell(x)\ell(y)=f(x,y)\ell(xy)
+	\end{equation}
+	para todo $x,y\in Q$. 
+\end{definition}
+
+\begin{lemma}
+	Sea $Q$ un grupo y sea $K$ un $Q$-módulo. Sea $1\to K\to G\to Q\to 1$ una
+	extensión de $K$ por $Q$ que realiza el dato $(K,Q)$. Si $f$ es un factor
+	para $\ell$ entonces
+	\begin{align}
+		\label{eq:f(1x)}&f(1,x)=f(x,1)=1,\\
+		\label{eq:fcocycle}&f(x,y)f(xy,z)=(x\cdot f(y,z))f(x,yz)
+	\end{align}
+	para todo $x,y,z\in Q$.
+\end{lemma}
+
+\begin{proof}
+	Si hacemos $x=1$ en~\eqref{eq:f(1x)} obtenemos $1=f(1,y)$. De la misma
+	forma se obtiene la otra igualdad. Para demostrar la
+	igualdad~\eqref{eq:fcocycle} calculamos 
+	\begin{align*}
+		&(\ell(x)\ell(y))\ell(z)=(f(x,y)\ell(xy))\ell(z)
+		=f(x,y)(\ell(xy)\ell(z))
+		=f(x,y)f(xy,z)\ell(xyz).
+	\end{align*}
+	Por otro lado, como 
+	la extensión realiza el dato $(K,Q)$, 
+	\begin{align*}
+		\ell(x)(\ell(y)\ell(z))&=\ell(x)(f(y,z)\ell(yz))\\
+		&=(x\cdot f(y,z))\ell(x)\ell(yz)=(x\cdot f(y,z))f(x,yz)\ell(xyz).
+	\end{align*}
+	La igualdad~\eqref{eq:fcocycle} se obtiene al observar que el producto de
+	$G$ es asociativo.
+\end{proof}
+
+\begin{lemma}
+	\label{lemma:G(K,Q,f)}
+	Sea $Q$ un grupo y sea $K$ un $Q$-módulo. Sea $f\colon Q\times Q\to K$ una
+	función que satisface \eqref{eq:f(1x)} y~\eqref{eq:fcocycle}. Entonces
+	existe una extensión $1\to K\to G\to Q\to 1$ de $K$ por $Q$ que realiza el
+	dato $(K,Q)$ y existe un levantamiento $\ell\colon Q\to G$ cuyo factor es
+	$f$.
+\end{lemma}
+
+\begin{proof}
+	Sea $G=K\times Q$ con el producto
+	\[
+		(a,x)(b,y)=(a(x\cdot b)f(x,y),xy).
+	\]
+	Veamos que el producto es asociativo:
+	\begin{align*}
+		((a,x)(b,y))(c,z)&=(a(x\cdot b)f(x,y),xy)(c,z)\\
+		&=(a(x\cdot b)f(x,y)((xy)\cdot c))f(xy,z),xyz)
+	\end{align*}
+	Por otro lado
+	\begin{align*}
+		(a,x)((b,y)(c,z)) &= (a,x)(b(y\cdot c)f(y,z),yz)\\
+		&=(a(x\cdot (b(y\cdot c)f(y,z))f(x,yz),xyz)\\
+		&=(a(x\cdot b)(xy)\cdot c)(x\cdot f(y,z))f(x,yz),xyz).
+	\end{align*}
+	Es fácil verificar que el neutro es $(1,1)$ y el inverso de $(a,x)$ es 
+	\[
+	(a,x)^{-1}=(x^{-1}\cdot (f(x,x^{-1})a)^{-1},x^{-1}).
+	\]
+	Sea $\ell\colon Q\to G$ un levantamiento. Si $x\in Q$ existe $b\in K$ tal
+	que $\ell(x)=(b,x)$. Veamos que la extensión realiza el dato $(K,Q)$. Como
+	$f(x,1)=1$ y $K$ es abeliano, 
+	\begin{align*}
+		\ell(x)(a,1)\ell(x)^{-1}
+		&=(b,x)(a,1)(b,x)^{-1}\\
+		&=(b(x\cdot a)f(x,1),x)(x^{-1}\cdot (f(x,x^{-1})b)^{-1},x^{-1})\\
+		&=(b(x\cdot a)b^{-1}f(x,x^{-1})^{-1}f(x,x^{-1}),1)\\
+		&=(x\cdot a,1).
+	\end{align*}
+	Por último, para ver que existe un levantamiento con factor $f$ basta
+	considerar $\ell\colon Q\to G$, $\ell(x)=(1,x)$ pues 
+	\[
+		\ell(x)\ell(y)(\ell(xy)^{-1}=(1,x)(1,y)(1,xy)^{-1}=(f(x,y),1).
+	\]
+\end{proof}
+
+Si $Q$ es un grupo, $K$ es un $Q$-módulo y $f\colon Q\times Q\to K$ es una
+función que satisface~\eqref{eq:f(1x)} y~\eqref{eq:fcocycle}. El grupo $G$ del
+lema~\ref{lemma:G(K,Q,f)} será denotado por $G(K,Q,f)$. 
+
+\begin{lemma}
+	\label{lemma:existe_f}
+	Sea $Q$ un grupo y sea $K$ un $Q$-módulo. Sea $1\to K\to G\to Q\to 1$ una
+	extensión de $K$ por $Q$ que realiza el dato $(K,Q)$. Entonces existe
+	un factor $f\colon Q\times Q\to K$ tal que $G\simeq G(K,Q,f)$. 
+\end{lemma}
+
+\begin{proof}
+	Sea $\ell\colon Q\to G$ un levantamiento y sea $f$ su factor. Como $G$ es
+	unión disjunta de coclases
+	\[
+		G=\bigcup_{x\in Q}K\ell(x),
+	\]
+	para cada $g\in G$ existen únicos $a\in K$ y $x\in Q$ tales que
+	$g=a\ell(x)$. Queda entonces bien definida una función biyectiva
+	$\phi\colon G\to G(K,Q,f)$, $a\ell(x)\mapsto (a,x)$. Veamos que $\phi$ es
+	un morfismo de grupos: 
+	\begin{align*}
+		\phi(a\ell(x)b\ell(y)) 
+		&=\phi(a\ell(x)b\ell(x)^{-1}\ell(x)\ell(y))\\
+		&=\phi(a\ell(x)b\ell(x)^{-1}f(x,y)\ell(xy))\\
+		&=\phi(a(x\cdot b)f(x,y)\ell(xy))\\
+		&=(a(x\cdot b)f(x,y),xy)\\
+		&=\phi(a\ell(x))\phi(b\ell(y)).
+	\end{align*}
+\end{proof}
+
+\begin{lemma}
+	\label{lemma:coborde}
+	Sean $Q$ un grupo, $K$ un $Q$-módulo y $1\to K\to G\to Q\to 1$ una
+	extensión de $K$ por $Q$ que realiza el dato $(K,Q)$. Para $j\in\{1,2\}$
+	sea $\ell_j\colon Q\to G$ un levantamiento con factor $f_j$ tal que
+	$\ell_j(1)=1$.  Entonces existe $\gamma\colon Q\to K$ tal que $\gamma(1)=1$
+	y 
+	\[
+		f_2(x,y)=\gamma(x)(x\cdot \gamma(y))f_1(x,y)\gamma(xy)^{-1}
+	\]
+	para todo $x,y\in Q$.
+\end{lemma}
+
+\begin{proof}
+	Como $\ell_1(x)$ y $\ell_2(x)$ están en la misma coclase de
+	$K$, existe $\gamma(x)\in K$ tal que $\ell_2(x)=\gamma(x)\ell_1(x)$. Como
+	$\ell_1(1)=\ell_2(1)=1$, $\gamma(1)=1$. Además 
+	\begin{align*}
+		f_2(x,y)\ell_2(xy)&=\ell_2(x)\ell_2(y) = \gamma(x)\ell_1(x)\gamma(y)\ell_1(y)\\
+		&=\gamma(x)\ell_1(x)\gamma(y)\ell_1(x)^{-1}\ell_1(x)\ell_1(y)\\
+		&=\gamma(x)(x\cdot \gamma(y))f_1(x,y)\ell_1(xy)
+		=\gamma(x)(x\cdot \gamma(y))f_1(x,y)\gamma(xy)^{-1}\ell_2(xy),
+	\end{align*}
+	que implica lo que se quería demostrar.
+\end{proof}
+
+\begin{definition}
+	Sean $Q$ un grupo y $K$ un $Q$-módulo. Una función $g\colon Q\times Q\to K$
+	se dice un \textbf{coborde} si existe una función $\gamma\colon Q\to K$ con
+	$\gamma(1)=1$ tal que
+	\[
+	g(x,y)=(x\cdot \gamma(y))\gamma(xy)^{-1}\gamma(x)
+	\]
+	para todo $x,y\in Q$.
+\end{definition}
+
+\begin{lemma}
+	\label{lemma:equivalencia}
+	Sean $Q$ un grupo y $K$ un $Q$-módulo. Dos extensiones $G_1$ y $G_2$ de $K$ por $Q$ 
+	que realizan el dato $(K,Q)$ son
+	equivalentes si y sólo existe un factor  $f_1$ de $G_1$ y un factor $f_2$
+	de $G_2$ tales que $f_1f_2^{-1}$ es un coborde.
+\end{lemma}
+
+\begin{proof}
+	Para cada $j\in\{1,2\}$ sea $\ell_j\colon Q\to G$ un levantamiento con
+	factor $f_j$ y tal que $\ell_j(1)=1$. 
+	Como $G$ es unión disjunta de coclases
+	\[
+	G=\bigcup_{x\in Q}K\ell_1(x)
+	\]
+	todo $g_1\in G_1$ se escribe unívocamente como $g_1=a\ell_1(x)$ para $a\in
+	K$ y $x\in Q$. Sea $\phi\colon G_1\to G_2$, $a\ell_1(x)\mapsto
+	a\gamma(x)\ell_2(x)$. Es evidente que $\phi$ hace conmutar al diagrama
+	\begin{equation}
+		\label{eq:diagrama}
+	\xymatrix{
+	0\ar[r] 
+	& K
+	\ar@{=}[d]
+	\ar[r]%@{^{(}->}[r]
+	& G_1
+	\ar[r]^{p_1}
+	\ar[d]^\phi
+	& Q\ar[r]
+	\ar@{=}[d]
+	& 0
+	\\
+	0\ar[r] 
+	& K
+	\ar[r]
+	& G_2
+	\ar[r]^{p_2}
+	& Q\ar[r]
+	& 0
+	}
+	\end{equation}
+	Veamos que $\phi$ es morfismo. Por un lado tenemos
+	\[
+		\phi(a\ell_1(x)b\ell_1(y))=\phi(a(x\cdot b)f_1(x,y)\ell_1(xy))=a(x\cdot b)f_1(x,y)\gamma(xy)\ell_2(xy).
+	\]
+	Por otro lado, se tiene 
+	\begin{align*}
+		\phi(a\ell_1(x))\phi(b\ell_1(y))
+		&=a\gamma(x)\ell_2(x)b\gamma(y)\ell_2(y)\\
+		&=a\gamma(x)(x\cdot b)\ell_2(x)\gamma(y)\ell_2(y)\\
+		&=a\gamma(x)(x\cdot b)(x\cdot \gamma(y))\ell_2(x)\ell_2(y)\\
+		&=a\gamma(x)(x\cdot b)(x\cdot \gamma(y))f_2(x,y)\ell_2(xy)\\
+		&=a(x\cdot b)\gamma(x)(x\cdot \gamma(y))f_2(x,y)\ell_2(xy)
+	\end{align*}
+	pues $K$ es abeliano.  Por el lema~\ref{lemma:coborde}, existe una función
+	$\gamma\colon Q\to K$ con $\gamma(1)=1$ y tal que  
+	$f_1(x,y)=\gamma(x)(x\cdot \gamma(y))f_2(x,y)\gamma(xy)^{-1}$ 
+	para todo $x,y\in Q$. Luego $\phi$ es morfismo de grupos. 
+
+	Recíprocamente, supongamos que existe $\gamma$ tal que el
+	diagrama~\eqref{eq:diagrama} conmuta. En particular, $\gamma(a)=a$ para
+	todo $a\in K$ y la función $\phi\ell_1\colon Q\to G_2$ es un levantamiento pues 
+	$x=p_1\ell_1(x)=p_2\phi\ell_1(x)$ 
+	para todo $x\in Q$. Como
+	\[
+	\phi\ell_1(x)\phi\ell_1(y)=\phi f_1(x,y)\phi\ell_1(xy)=f_1(x,y)\phi\ell_1(xy)
+	\]
+	para todo $x,y\in Q$, $f_1$ es también un factor para la extensión $G_2$.
+	Si $f_2$ es un factor para $G_2$, entonces $f_1f_2^{-1}$ es un coborde por
+	el lemma~\ref{lemma:coborde}. 
+\end{proof}
+
+\begin{example}
+	Sea $p$ un número primo impar. Sean $K=\langle a\rangle\simeq C_p$, $G=\langle
+	g\rangle\simeq C_{p^2}$ y $Q=\langle gK\rangle=G/K\simeq C_p$.  Veamos que
+	las extensiones
+	\[
+	\xymatrix{
+	0\ar[r] 
+	& K
+	\ar@{=}[d]
+	\ar[r]^{\iota_1}
+	& G_1
+	\ar[r]^{p_1}
+	\ar@{-->}[d]^\phi
+	& Q\ar[r]
+	\ar@{=}[d]
+	& 0
+	\\
+	0\ar[r] 
+	& K
+	\ar[r]^{\iota_2}
+	& G_2
+	\ar[r]^{p_2}
+	& Q\ar[r]
+	& 0
+	}
+	\]
+	donde $\iota_1(a)=g^p$, $\iota_2(a)=g^{2p}$ y $p_1(g)=p_2(g)=gK$, no son
+	equivalentes. Si existe $\phi$ entonces
+	$\phi(g^p)=\phi\iota_1(a)=\iota_2(a)=g^{2p}$. Esto implica que
+	$\phi(g)=g^2$ y luego $g\in K$ pues $gK=p_1(g)=p_2\phi(g)=g^2K$, una
+	contradicción. 
+\end{example}
+
+Sea $Q$ un grupo y sea $K$ un $Q$-módulo. Sea $E(Q,K)$ el conjunto de clases de
+equivalencia de extensiones $1\to K\to G\to Q\to 1$ que realizan el dato $(Q,K)$. 
+
+\begin{theorem}[Schreier]
+	\label{theorem:Schreier:extensiones_abelianas}
+	Sean $Q$ un grupo y $K$ un $Q$-módulo.  Existe una correspondencia
+	biyectiva entre $H^2(Q,K)$ y el conjunto $E(Q,K)$ de clases de equivalencia
+	de extensiones que realizan el dato $(Q,K)$. Bajo esta correspondencia, el
+	factor nulo se corresponde con la clase de equivalencia de extensiones que
+	se parten.
+\end{theorem}
+
+\begin{proof}
+	Sea $[G]$ la clase de equivalencia de $1\to K\to G\to Q\to 1$. Sea
+	$\phi\colon H^2(Q,K)\to E(Q,K)$ dado por $f+B^2(Q,K)\mapsto [G(K,Q,f)]$,
+	donde $[G(K,Q,f)]$ es la clase de una extensión que realiza el dato $(Q,K)$
+	(existe gracias al lemma~\ref{lemma:G(K,Q,f)}). El
+	lemma~\ref{lemma:equivalencia} implica que $\phi$ está bien definida y es
+	una función inyectiva. La función $\phi$ es sobreyectiva pues el
+	lemma~\ref{lemma:existe_f} implica que si $[G]\in E(Q,K)$ entonces
+	$[G]=[G(K,Q,f)]=\phi(f+B^2(Q,K))$ para algún $f$. %La última afirmación es evidente. 
+\end{proof}
+
+\begin{remark}
+	Como aplicación del teorema de Schreier podemos dar una demostración breve
+	de la existencia del complemento en el teorema de
+	Schur--Zassenhaus~\ref{theorem:SchurZassenhaus:abeliano}.  Para $Q=G/N$
+	consideramos la extensión $1\to N\to G\to Q\to 1$. Como $|N|$ y $|Q|$ son
+	coprimos, $H^2(Q,N)=0$ por el corolario~\ref{corollary:H^n=0}.  Por el
+	teorema de Schreier~\ref{theorem:Schreier:extensiones_abelianas}, $E(Q,N)$
+	contiene un único elemento y luego la extensión $1\to N\to G\to Q\to 1$ se
+	parte.
+\end{remark}
+
+% TODO: corolario sobre extensiones centrales
+
+%\begin{definition}
+%	Sea $G$ una extensión de $K$ por $Q$ y sea $\pi\colon G\to Q$ un morfismo sobreyectivo. 
+%	%Un \textbf{levantamiento} 
+%	%de $x\in Q$ es un elemento $\ell(x)\in G$ tal que $\pi(\ell(x))=x$. 
+%	Un \textbf{levantamiento} es una función $\ell\colon Q\to G$ tal que
+%	$\pi(\ell(x))=x$ para todo $x\in Q$. 
+%\end{definition}
+%
+%\begin{exercise}
+%	Si $G$ es una extensión de $K$ por $Q$, $\pi\colon G\to Q$ es un morfismo
+%	sobreyectivo y $\ell\colon Q\to G$ es un levantamiento, entonces la imagen
+%	$\ell(Q)$ es un transversal para $\ker\pi$ en $G$.
+%\end{exercise}
+%
+%\begin{svgraybox}
+%	Si $\ell(x)\ker\pi=\ell(y)\ker\pi$, existe $k\in\ker\pi$ tal que
+%	$\ell(x)=\ell(y)k$. Luego 
+%	\[
+%	x=\pi(\ell(x))=\pi(\ell(y)k)=\pi(\ell(y))\pi(k)=y.
+%	\]
+%	Sea $g\in G$ y sea $x=\pi(g)\in Q$. Como $x=\pi(\ell(x))$ y $\pi$ es
+%	morfismo de grupos, $x^{-1}=\pi(\ell(x)^{-1})$. Luego
+%	$g=\ell(x)\left(\ell(x)^{-1}g\right)$ y $\ell(x)^{-1}g\in\ker\pi$ pues
+%	\[
+%		\pi(\ell(x)^{-1}g)=\pi(\ell(x)^{-1})\pi(g)=x^{-1}x=1.
+%	\]
+%\end{svgraybox}
+%
+%\begin{theorem}
+%	\label{theorem:extensions}
+%	Sea $G$ una extensión de $K$ por $Q$. Supongamos que $K$ es abeliano y sea
+%	$\ell\colon Q\to G$ un levantamiento. Existe un morfismo $\theta\colon
+%	Q\to\Aut(K)$ tal que
+%	\[
+%		\theta_x(a)=\ell(x)a\ell(x)^{-1}
+%	\]
+%	para todo $a\in K$, $x\in Q$.
+%\end{theorem}
+%
+%\begin{proof}
+%	Para $g\in G$ sea $\gamma_g\colon G\to G$, $\gamma_g(x)=gxg^{-1}$.  Como
+%	$K$ es normal en $G$, $\gamma_g|_K\in\Aut(K)$.  Sea $\mu\colon
+%	G\to\Aut(K)$, $\mu(g)=\gamma_g|_K$. Entonces $K\subseteq\ker\mu$ y luego
+%	$\mu$ induce un morfismo $G/K\to\Aut(K)$ dado por $gK\mapsto\mu(g)$. 
+%	
+%	Sea $\lambda\colon Q\to G/K$, $\lambda(x)=\ell(x)K$. La función $\lambda$
+%	es morfismo de grupos pues si $x,y\in Q$ entonces
+%	\[
+%	\lambda(xy)=\ell(xy)K=\ell(x)\ell(y)K=\lambda(x)\lambda(y)
+%	\]
+%	pues $\pi(\ell(xy))=\pi(\ell(x)\ell(y))$. 
+%
+%	Además $\lambda$ es inyectiva ya que $\ell(x)=\ell(y)K$
+%
+%
+%
+%
+%\end{proof}

@@ -1,0 +1,459 @@
+\chapter{El teorema de la cremallera}
+
+El siguiente resultado de Wielandt es muy útil y se conoce como el
+\textbf{teorema de la cremallera}. 
+
+\begin{theorem}[Wielandt]
+	\index{Cremallera!teorema de}
+	\index{Teorema!de la Cremallera}
+	\label{theorem:zipper}
+	Sea $G$ un grupo finito y sea $S$ un subgrupo de $G$ tal que $S$ es
+	subnormal en todo subgrupo propio de $G$ que contiene a $S$. Si $S$ no es
+	subnormal en $G$ entonces existe un único maximal de $G$ que contiene a
+	$S$.
+\end{theorem}
+
+\begin{proof}
+	Procederemos por inducción en $(G:S)$. Si $S$ no es subnormal en $G$
+	entonces $S\ne G$ y entonces el caso $(G:S)=1$ es trivialmente cierto. 
+
+	Como $S$ no es subnormal en $G$, $N_G(S)\ne G$. Entonces $S\subseteq
+	N_G(S)\subseteq M$ para algún subgrupo maximal $M$ de $G$. Supongamos que
+	$S\subseteq K$ para algún subgrupo maximal $K$ de $G$. Vamos a demostrar
+	que $K=M$. Como $S\subseteq K\ne G$, $S$ es subnormal en $K$. Si $S$ es
+	normal en $K$ entonces $K\subseteq N_G(S)\subseteq M$ y luego $K=M$ por
+	maximalidad de $K$. Si $S$ no es normal en $K$, existen $m\geq2$ 
+	subgrupos $S_0,\dots,S_m$ de $K$ tales que 
+	\[
+		S=S_0\triangleleft S_1\triangleleft\cdots\triangleleft S_m=K,
+	\]
+	donde $S$ no es normal en $S_2$.  Sea $x\in S_2$ tal que $xSx^{-1}\ne S$ y
+	sea $T=\langle S,xSx^{-1}\rangle\subseteq K$. 
+
+	Como $xSx^{-1}\subseteq xS_1x^{-1}=S_1\subseteq N_G(S)$, se tiene que
+	$T\subseteq N_G(S)\subseteq M$. Además $S$ es normal en $T$ y luego $T\ne
+	G$. 
+
+	Veamos que el grupo $T$ satisface las hipótesis del teorema. Si $T$ fuera
+	subnormal en $G$ entonces, como $S$ es normal en $T$, $S$ sería subnormal
+	en $G$. Si $H$ es un subgrupo propio de $G$ que contiene a $T$ entonces,
+	como $S\subseteq H$, $S$ es subnormal en $H$. Además $xSx^{-1}$ es también
+	subnormal en $H$.  Luego $T$ es subnormal en $H$ por el
+	teorema~\ref{theorem:STsubnormal}.
+
+	Como $S\subsetneq T$, $(G:T)<(G:S)$. Por hipótesis inductiva, $T$ está
+	contenido en un único maximal de $G$. Luego $K=M$ pues $T\subseteq M$ y
+	$T\subseteq K$.
+\end{proof}
+
+\subsubsection*{Aplicaciones del teorema de la cremallera}
+% 2.8 pag 50 es una aplicación del zipper
+% 2.11
+
+La primera aplicación es el siguiente criterio para detectar subnormalidad.
+Antes de enunciar y demostrar el teorema, necesitamos un lema.
+
+\begin{lemma}
+	\label{lemma:H=G}
+	Sea $G$ un grupo y $H$ un subgrupo de $G$. Si $(xHx^{-1})H=G$ para algún
+	$x\in G$ entonces $H=G$.
+\end{lemma}
+
+\begin{proof}
+	Escribimos $x=uv$ con $u\in xHx^{-1}$, $v\in H$. Como $u\in xHx^{-1}$ y
+	$u^{-1}x=v\in H$, se tiene que 
+	$H=vHv^{-1}=u^{-1}(xHx^{-1})u=xHx^{-1}$. Luego 
+	$G=H$. 
+\end{proof}
+
+Dos subgrupos $S$ y $T$ de un grupo $G$ se dicen \textbf{permutables} si
+$ST=TS$. 
+
+\begin{theorem}
+	Sea $G$ un grupo finito y sea $S$ un subgrupo de $G$ permutable con todos
+	sus conjugados.  Entonces $S$ es subnormal en $G$.
+\end{theorem}
+
+\begin{proof}
+	Procederemos por inducción en $|G|$. Supongamos que $S$ es subnormal en
+	todo subgrupo $H$ tal que $S\subseteq H\subsetneq G$.  Si $S$ no es
+	subnormal en $G$ entonces, por el teorema~\ref{theorem:zipper}, existe un
+	único subgrupo maximal $M$ de $G$ tal que $S\subseteq M$. Sea $x\in G$ y
+	sea $T=xSx^{-1}$. Por el lema~\ref{lemma:H=G} $ST\ne G$ (pues $S\ne G$) y
+	entonces $ST$ está contenido en algún subgrupo maximal de $G$. Como
+	$S\subseteq ST$ y $S$ está contenido en un único maximal, se concluye que
+	$T\subseteq ST\subseteq M$.  Como $S^G=\langle xSx^{-1}:x\in
+	G\rangle\subseteq M\ne G$, por hipótesis inductiva $S$ es subnormal en
+	$S^G$. Luego $S$ es subnormal en $G$ pues $S^G$ es normal en $G$, una
+	contradicción.
+\end{proof}
+
+\begin{theorem}[Baer]
+	\index{Teorema!de Baer}
+	\index{Baer!teorema de}
+	\label{theorem:Baer}
+	Sean $G$ un grupo finito y $H$ un subgrupo de $G$. Entonces $H\subseteq
+	F(G)$ si y sólo si $\langle H,xHx^{-1}\rangle$ es nilpotente para todo
+	$x\in G$.
+\end{theorem}
+
+\begin{proof}
+	Si $H\subseteq F(G)$ entonces $xHx^{-1}\subseteq F(G)$ para todo $x\in G$
+	pues $F(G)$ es normal en $G$. Luego $\langle H,xHx^{-1}\rangle$ es
+	nilpotente por ser un subgrupo de $F(G)$.
+
+	Demostraremos la recíproca. Supongamos que $\langle H,xHx^{-1}\rangle$ es nilpotente para todo $x\in
+	G$. Como $H\subseteq \langle H,xHx^{-1}\rangle$, $H$ es nilpotente. Por el
+	teorema~\ref{theorem:F(G)subnormalidad} basta ver que $H$ es subnormal en
+	$G$. Procederemos por inducción en $|G|$. Supongamos que $H$ no es subnormal en $G$. 
+	Si $H$ está contenido propiamente en algún subgrupo $K$ entonces, como
+	$\langle H,kHk^{-1}\rangle$ es nilpotente para todo $k\in K$, $H$ es
+	subnormal en $K$ por hipótesis inductiva. Por el
+	teorema~\ref{theorem:zipper}, existe un único maximal $M$ de $G$ que
+	contiene a $H$. 
+	Vamos a considerar dos casos posibles: a) $G=\langle H,xHx^{-1}\rangle$
+	para algún $x\in G$. Como $G$ entonces es nilpotente, $H$ es subnormal en
+	$G$ por el teorema~\ref{theorem:subnormal}, una contradicción. 
+	b) $\langle H,xHx^{-1}\rangle\ne G$ para todo $x\in G$. En este caso, para
+	cada $x\in G$ existe un subgrupo maximal que contiene a $\langle
+	H,xHx^{-1}\rangle$. Como $H\subseteq \langle H,xHx^{-1}\rangle$ y $H$
+	está contenido en un único maximal, se concluye que $\langle
+	H,xHx^{-1}\rangle\subseteq M$ para todo $x\in G$. En particular, la
+	clausura normal $H^G$ de $H$ está propiamente contenida en $G$. Como por
+	hipótesis inductiva $H$ es subnormal en $H^G$ y $H^G$ es normal en $G$, se
+	concluye que $H$ es subnormal en $G$, una contradicción.
+\end{proof}
+
+\begin{theorem}[Zenkov]
+	\index{Teorema!de Zenkov}
+	\index{Zenkov!teorema de}
+	\label{theorem:Zenkov}
+	Sean $G$ un grupo finito y $A,B$ subgrupos abelianos de $G$. Sea 
+	$M\in\{A\cap gBg^{-1}:g\in G\}$ tal que ningún $A\cap gBg^{-1}$ está propiamente
+	contenido en $M$. Entonces $M\subseteq F(G)$.
+\end{theorem}
+
+\begin{proof}
+	Sin pérdida de generalidad podemos suponer que $M=A\cap B$. Demostraremos
+	por inducción en $|G|$ que $M\subseteq F(G)$.
+
+	Supongamos que $G=\langle A,gBg^{-1}\rangle$ para algún $g\in G$. Como $A$
+	y $B$ son abelianos, $A\cap gBg^{-1}\subseteq Z(G)$. Luego
+	\[
+		A\cap gBg^{-1}=g^{-1}(A\cap gBg^{-1})g\subseteq A\cap B=M.
+	\]
+	Por la minimalidad de $M$, $M=A\cap gBg^{-1}\subseteq Z(G)\subseteq F(G)$
+	por el corolario~\ref{corollary:Z(G)subsetF(G)}.
+
+	Supongamos ahora que $G\ne \langle A,gBg^{-1}\rangle$ para todo $g\in G$.
+	Fijemos $g\in G$. Sean  $H=\langle A,gBg^{-1}\rangle\ne G$ y $C=B\cap H$.
+	Al usar que $A\subseteq H$ se obtiene fácilmente que 
+	$M=A\cap B=A\cap C$ y que 
+	$A\cap hCh^{-1}=A\cap hBh^{-1}$
+	para todo $h\in H$. Esto implica que ningún
+	$A\cap hCh^{-1}$ está propiamente contenido en $A\cap C$. Al aplicar la
+	hipótesis inductiva al subgrupo $H$ obtenemos entonces  
+	\[
+		M=A\cap B=A\cap C\subseteq F(H).
+	\]
+
+	Vamos a demostrar ahora que todo $p$-subgrupo de Sylow $P$ de $M$ está
+	contenido en $F(G)$. Como $M$ está generado por sus subgrupos de Sylow,
+	esto implica que $M\subseteq F(G)$.
+	Si $P\in\Syl_p(M)$ entonces $P\subseteq M\subseteq F(H)$. Como $O_p(H)$ es
+	el único $p$-subgrupo de Sylow de $F(H)$, $P\subseteq O_p(H)$. Como
+	$P\subseteq M\subseteq B$, 
+	\[
+	gPg^{-1}\subseteq gBg^{-1}\subseteq H
+	\]
+	para todo $g\in G$. Entonces $O_p(H)(gPg^{-1})$ es un $p$-subgrupo de $H$ que
+	contiene a $\langle P,gPg^{-1}\rangle$. Luego $\langle P,gPg^{-1}\rangle$
+	es nilpotente para todo $g\in G$ por ser un $p$-grupo. Por el teorema de
+	Baer~\ref{theorem:Baer}, $P\subseteq F(G)$ para todo $p$-subgrupo de Sylow $P$ de $M$.
+	%$gPg^{-1}$ normaliza a $O_p(H)$, es decir:
+	%$gPg^{-1}\subseteq N_H(O_p(H))$. 
+\end{proof}
+
+\begin{corollary}
+	\label{corollary:Zenkov}
+	Sea $G$ un grupo finito no trivial y sea $A$ un subgrupo abeliano tal que
+	$|A|\geq(G:A)$. Entonces $A\cap F(G)\ne1$.
+\end{corollary}
+
+\begin{proof}
+	Sea $g\in G$. Podemos suponer que $G\ne A$ y luego $(gAg^{-1})A\ne G$ por
+	el lema~\ref{lemma:H=G}. Como 
+	$|gAg^{-1}||A|=|A|^2\geq |A|(G:A)=|G|$, 
+	\[
+		|G|>|gAg^{-1}A|
+		=\frac{|A||gAg^{-1}|}{|A\cap gAg^{-1}|}
+		\geq \frac{|G|}{|A\cap gAg^{-1}|}.
+	\]
+	Luego $A\cap gAg^{-1}\ne 1$ para todo $g\in G$. En particular, ningún
+	$A\cap gAg^{-1}$ está propiamente contenido en $A$ y luego, por el teorema
+	de Zenkov~\ref{theorem:Zenkov}, $A\subseteq F(G)$.
+\end{proof}
+
+\begin{corollary}
+	Sea $G=NA$ un grupo finito, donde $N$ es normal en $G$, $A$ es un subgrupo
+	abeliano y $C_A(N)=1$.  Si $F(N)=1$, entonces $|A|<|N|$. 
+\end{corollary}
+
+\begin{proof}
+	Como $N$ es normal en $G$, 
+	$N\cap F(G)=F(N)=1$ por 
+	el corolario~\ref{corollary:McapF(G)}. Luego $[N,F(G)]=1$ porque
+	$N$ y $F(G)$ son ambos normales en $G$.  Como 
+	\[
+	|A|\geq |N|\geq \frac{|N|}{|N\cap A|}=(NA:A)=(G:A),
+	\]
+	$A\cap F(G)\ne 1$ por el corolario~\ref{corollary:Zenkov}. Si $1\ne a\in
+	A\cap F(G)$, entonces $a\in C_A(N)=1$, una contradicción.
+\end{proof}
+
+\begin{theorem}[Brodkey]
+	\index{Teorema!de Brodkey}
+	\index{Brodkey!teorema de}
+	\label{theorem:Brodkey}
+	Sea $G$ un grupo finito tal que existe $P\in\Syl_p(G)$ abeliano. Entonces
+	existen $S,T\in\Syl_p(G)$ tales que $S\cap T=O_p(G)$.
+\end{theorem}
+
+\begin{proof}
+	Al aplicar el teorema de Zenkov~\ref{theorem:Zenkov} con $A=B=P$ se tiene
+	que $P\cap gPg^{-1}\subseteq F(G)$ para algún $g\in G$. Como $O_p(G)$ es el
+	único $p$-subgrupo de Sylow de $F(G)$, $P\cap gPg^{-1}\subseteq O_p(G)$.
+	Luego $P\cap gPg^{-1}=P_p(G)$ pues $O_p(G)$ está contenido en todo
+	$p$-subgrupo de Sylow de $G$.
+\end{proof}
+
+\begin{corollary}
+	\label{corollary:GP2}
+	Sea $G$ un grupo finito. Si existe $P\in \Syl_p(G)$ abeliano,
+	\[
+	(G:O_p(G))\leq (G:P)^2. 
+	\]
+\end{corollary}
+
+\begin{proof}
+	Por el teorema de Brodkey~\ref{theorem:Brodkey}, existen $S,T\in\Syl_p(G)$
+	tales que $S\cap T=O_p(G)$. Entonces
+	\[
+		|G|\geq |ST|=\frac{|S||T|}{|S\cap T|}=\frac{|P|^2}{|O_p(G)|},
+	\]
+	que implica el corolario.
+\end{proof}
+
+\begin{corollary}
+	Sea $G$ un grupo finito. Si existe un subgrupo $P\in\Syl_p(G)$ abeliano tal que
+	$|P|<\sqrt{|G|}$ entonces $O_p(G)\ne1$.
+\end{corollary}
+
+\begin{proof}
+	Como $(G:P)^2<|G|$, el corolario~\ref{corollary:GP2} implica que
+	$O_p(G)\ne1$.
+\end{proof}
+
+\begin{exercise}
+	\label{exercise:G/Z(G)}
+	Sea $G$ un grupo y sea Sea $K\subseteq Z(G)$. Demuestre que si $G/K$ es
+	cíclico entonces $G$ es abeliano.
+\end{exercise}
+
+\begin{svgraybox}
+	Sean $g,h\in G$ y sea $\pi\colon G\to G/K$ el morfismo canónico. Como $G/K$
+	es cíclico, existe $x\in G$ tal que $G/K=\langle xK\rangle$. Sean $k,l$ tales que 
+	$\pi(g)=x^k$, $\pi(h)=x^l$. Entonces existen $z_1,z_2\in K$ tales que 
+	$g=x^kz_1$, $h=x^lz_2$. Luego $[g,h]=[x^k,x^l]=1$. 
+\end{svgraybox}
+
+\begin{exercise}
+	Sea $G$ un grupo y sea $A$ un subgrupo de $G$.  Demuestre que
+	$\Core_{G}(A)=\bigcap_{x\in G}xAx^{-1}$ es el mayor subgrupo normal de $G$
+	contenido en $A$.
+\end{exercise}
+
+\begin{svgraybox}
+	Hagamos actuar a $G$ por multiplicación en las coclases de $A$: $g\cdot
+	xA=gxA$. Esta acción induce un morfismo $\rho\colon G\to \Sym_{G/A}$ con
+	núcleo
+	\[
+		\ker\rho=\bigcap_{x\in G}xAx^{-1}=\Core_G(A).
+	\]
+	Es claro entonces que $\Core_G(A)$ es un subgrupo normal de $G$ contenido
+	en $A$. Si $K$ es un subgrupo normal de $G$ tal que $K\subseteq A$,
+	entonces $K=xKx^{-1}\subseteq xAx^{-1}$ para todo $x\in G$. Luego
+	$K\subseteq\Core_G(A)$.
+\end{svgraybox}
+
+\begin{theorem}[Lucchini]
+	\index{Lucchini!teorema de}
+	\index{Teorema de!Lucchini}
+	\label{theorem:Lucchini}
+	Sea $G$ un grupo finito y sea $A$ un subgrupo cíclico propio. Si
+	$K=\Core_G(A)$ entonces $(A:K)<(G:A)$.
+\end{theorem}
+
+\begin{proof}
+	Procederemos por inducción en $|G|$. Sea $\pi\colon G\to G/K$ el morfismo
+	canónico. Observemos que $\Core_{G/K}\pi(A)$ es trivial. 
+
+	Supongamos primero que $K\ne 1$. Como $\pi(A)$ es un subgrupo cíclico propio de
+	$G/K$ y $K\subseteq A$, la hipótesis inductiva implica que 
+	\[
+		(A:K)=|\pi(A)|=(\pi(A):\pi(K))<(\pi(G):\pi(A))=\frac{(G:K)}{(A:K)}=(G:A).
+	\]
+
+	Supongamos ahora que $K=1$. Queremos demostrar que $|A|<(G:A)$. Supongamos
+	entonces que $|A|\geq (G:A)$. Como $A\ne G$, $A\cap F(G)\ne1$ por el
+	corolario~\ref{corollary:Zenkov}. En particular, $F(G)\ne 1$. Sea $E$ un
+	subgrupo minimal-normal de $G$ tal que $E\subseteq F(G)$. Por el
+	teorema~\ref{theorem:Z(nilpotent)}, $E\cap Z(F(G))\ne 1$.  Luego, como
+	$E\cap Z(F(G))$ es normal en $G$ y $E$ es minimal, $E\cap Z(F(G))=E$, es
+	decir $E\subseteq Z(F(G))$. En particular, $E$ es abeliano y luego, por la
+	minimalidad de $E$, existe un primo $p$ tal que $x^p=1$ para todo $x\in E$. 
+
+	\begin{claim}
+		$A\cap F(G)$ es un subgrupo normal de $EA$.
+	\end{claim}
+
+	Como $E$ es normal en $G$, $EA$ es un subgrupo de $G$. Como $A\cap
+	F(G)\subseteq A$, $A\cap F(G)$ es un subgrupo de $EA$.  Como $F(G)$ es
+	normal en $G$, $a(A\cap F(G))a^{-1}=A\cap F(G)$ para todo $a\in A$. Por
+	otro lado $E\subseteq Z(F(G))$ y $A\cap F(G)\subseteq F(G)$ implican que
+	$x(A\cap F(G))x^{-1}=A\cap F(G)$ para todo $x\in E$. 
+
+	\begin{claim}
+		$EA\ne G$.
+	\end{claim}
+
+	Si $G=EA$ entonces, como $A\cap F(G)$ es un subgrupo normal de $G$
+	contenido en $A$, se concluye que $1\ne A\cap F(G)\subseteq K=1$, una
+	contradicción.
+%como $F(G)$ es normal en $G$, 
+%	\[
+%	A\cap F(G)=g(A\cap F(G))g^{-1}=gAg^{-1}\cap F(G)\subseteq gAg^{-1}
+%	\]
+	para todo $g\in G$. Luego $1\ne A\cap F(G)\subseteq K$, una contradicción pues $K=1$.
+
+	\medskip
+	Sea $p\colon G\to G/E$ el morfismo canónico. Por la correspondencia, existe
+	un subgrupo normal $M$ de $G$ con $E\subseteq M$ tal que
+	$p(M)=\Core_{G/E}(p(A))$. Como $EA\ne G$, $p(A)$ es un subgrupo cíclico
+	propio de $p(G)$. Como $p(A)\simeq A/A\cap E\simeq EA/E$ y $p(M)\simeq
+	M/E$, la hipótesis inductiva implica que 
+	$(EA:M)<(G:EA)$ pues 
+	\[
+	\frac{|EA/E|}{|M/E|}
+	=(p(A):p(M))
+	<(p(G):p(A))
+	=\frac{|G/E|}{|EA/E|}.
+	\]
+
+	\begin{claim}
+		$MA=EA$. 
+	\end{claim}
+
+	Como $E\subseteq M$ entonces $EA\subseteq MA$. Recíprocamente, si $m\in M$
+	entonces, como $p(m)\in\Core_{G/E}(p(A))$, en particular 
+	$p(m)\in p(A)$. Luego $m\in EA$. 
+
+	\medskip
+	Sea $B=A\cap M$. Al usar que $(AE:M)<(G:EA)$, 
+	que
+	\[
+	(A:B)=|A/A\cap M|=|AM/M|=(EA:M)
+	\]
+	y la  hipótesis inductiva
+	obtenemos
+	\begin{equation}
+		\label{eq:(M:B)leq|B|}
+	\begin{aligned}
+		(M:B)&=(M:A\cap M)=(MA:A)\\
+		&=(EA:A)
+		=\frac{(G:A)}{(G:EA)}
+		<\frac{(G:A)}{(AE:M)}
+		=\frac{(G:A)}{(A:B)}\leq |B|
+	\end{aligned}
+	\end{equation}
+	pues $|A|\geq (G:A)$. 
+
+	\begin{claim}
+		$M=EB$.
+	\end{claim}
+
+	Como $E\cup B\subseteq M$ entonces $EB\subseteq M$. Recíprocamente, si
+	$m\in M$ entonces $m=ea$ para algún $e\in E$, $a\in A$. Como $e^{-1}m=a\in
+	A\cap M=B$ pues $E\subseteq M$ entonces $m\in EB$.
+
+	\begin{claim}
+		$M$ es no abeliano.
+	\end{claim}
+
+	Supongamos que $M$ es abeliano. La función $f\colon M\to M$, $m\mapsto
+	m^p$, es un morfismo de grupos tal que $E \subseteq\ker f$. Como $M=EB$,
+	$f(M)\subseteq f(B)\subseteq B\subseteq A$. Como $M$ es normal en $G$,
+	$f(M)$ es normal en $G$. Luego $f(M)=1$ pues $K=\Core_G(A)=1$ es el
+	mayor subgrupo normal de $G$ contenido en $A$; en particular, como $B$ es
+	normal en $M=EB$, $M/B$ es un $p$-grupo. Como $B\subseteq M$,  $f(B)=1$;
+	además como $B\subseteq A$ es cíclico, $|B|\leq p$. Luego, por la
+	fórmula~\eqref{eq:(M:B)leq|B|}, 
+	$(M:B)<|B|\leq p$. Esto implica que $M=B\subseteq A$ y que $M=E=1$ (porque
+	$M$ es normal en $G$ y $\Core_G(A)=K=1$ es el mayor subgrupo normal de $G$
+	que contiene a $A$), una contradicción.
+
+	\begin{claim}
+		$Z(M)$ es cíclico.	
+	\end{claim}
+
+	Como $M$ es no abeliano y $M/E=EB/E\simeq B/E\cap B$ es ciclico,
+	$E\not\subseteq Z(M)$ (ejercicio~\ref{exercise:G/Z(G)}), es decir $E\cap
+	Z(M)\subsetneq E$.  Luego 
+	\begin{equation}
+		\label{equation:EcapZ(M)}
+		E\cap Z(M)=1
+	\end{equation}
+	por la minimalidad de $E$. Entonces
+	\[
+	Z(M)=Z(M)/Z(M)\cap E\simeq p(Z(M))\subseteq p(M)=\Core_{G/E}p(A)\subseteq p(A)
+	\]
+	y luego $Z(M)$ es cíclico pues $p(A)$ es cíclico.
+
+	\medskip
+	Como $B\subseteq A$ es abeliano y $(M:B)<|B|$, $B\cap F(M)\ne1$ por el
+	corolario~\ref{corollary:Zenkov}. Entonces $[E,F(M)]=1$ (pues $E\subseteq
+	Z(F(G))$ y $F(M)\subseteq F(G)$ por el corolario~\ref{corollary:McapF(G)}).
+	Luego $B\cap F(M)\subseteq Z(M)$ pues $M=BE$, $[B\cap F(M),E]\subseteq
+	[F(M),E]=1$ y también $[B\cap F(M),B]=1$ porque $B$ es abeliano. Como
+	$Z(M)$ es cíclico, $B\cap F(M)$ es característico en $Z(M)$. Luego, como
+	$Z(M)$ es normal en $G$, $1\ne B\cap F(M)$ es un subgrupo normal de $G$
+	contenido en $A$, una contradicción.
+\end{proof}
+
+Para terminar la sección veamos una aplicación del teorema de Lucchini.
+
+\begin{corollary}[Horosevskii]
+	\index{Horosevskii!teorema de}
+	\index{Teorema de!Horosevskii}
+	Sea $G\ne1$ un grupo finito y sea $\sigma\in\Aut(G)$. Entonces
+	$|\sigma|<|G|$.
+\end{corollary}
+
+\begin{proof}
+	Sea $A=\langle\sigma\rangle$. Como $A$ actúa por automorfismos en $G$,
+	podemos considerar el grupo $\Gamma=G\rtimes A$ con la operación 
+	\[
+	(g,\sigma^k)(h,\sigma^l)=(g\sigma^k(h),\sigma^{k+l}).
+	\]
+	Identificamos $A$ con $1\times A$ y $G$ con $G\times 1$. 
+	Como $K\cap G\subseteq A\cap G=1$ y $A\cap C_{\Gamma}(G)=1$, 
+	\[
+		K\subseteq A\cap C_{\Gamma}(G)=1
+	\]
+	pues si $k\in K$ y $g\in G$ entonces $gkg^{-1}k^{-1}\in G\cap K=1$ (porque
+	$K$ y $G$ son normales en $\Gamma$).  Por el teorema de
+	Lucchini~\ref{theorem:Lucchini}, $(A:K)<(\Gamma:A)$, es decir
+	\[
+		|\sigma|=|A|=(A:K)<(\Gamma:A)=|G|.
+	\]
+\end{proof}

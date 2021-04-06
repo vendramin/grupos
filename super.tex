@@ -1,0 +1,657 @@
+\chapter{Super resolubilidad}
+
+%\section{Grupos superresolubles}
+\label{super}
+
+\begin{definition}
+	\index{Grupo!superresoluble}
+	Un grupo $G$ se dice \textbf{superresoluble} si existe una sucesión de
+	subgrupos normales
+	\[
+		G=G_0\supseteq G_1\supseteq\cdots\supseteq G_n=1
+	\]
+	tales que cada cociente $G_{i-1}/G_i$ es cíclico.
+\end{definition}
+
+\begin{example}
+	El grupo $\D_{2n}$ es superresoluble pues $\D_{2n}\supseteq \langle
+	r\rangle\supseteq 1$ es una sucesión de subgrupos normales con factores
+	cíclicos.
+\end{example}
+
+\begin{remark}
+	Todo grupo superresoluble es resoluble, ver ejercicio~\ref{exercise:resoluble}.
+\end{remark}
+
+\begin{example}
+	El grupo $\Alt_4$ es resoluble pero no es superresoluble. El único 
+	subgrupo propio no trivial normal de $\Alt_4$ es
+	\[
+	\{\id,(12)(34),(13)(24),(14)(23)\}\simeq C_2\times C_2.
+	\]
+	Luego $\Alt_4$ no posee una sucesión de subgrupos normales con factores
+	cíclicos.	
+\end{example}
+
+% aff(Z) es superresoluble
+
+\begin{example}
+	El grupo $\SL_2(3)$ es resoluble pero no es superresoluble:
+\begin{lstlisting}
+gap> IsSolvable(SL(2,3));
+true
+gap> IsSupersolvable(SL(2,3));
+false
+\end{lstlisting}
+\end{example}
+
+\begin{exercise}
+	\label{exercise:super}
+	Demuestre las siguientes afirmaciones:
+	\begin{enumerate}
+		\item Todo subgrupo de un grupo superresoluble es superresoluble.
+		\item Todo cociente de un grupo superresoluble es superresoluble.
+	\end{enumerate}
+\end{exercise}
+
+\begin{svgraybox}
+	Sea $G$ un grupo superresoluble y sea 			
+	\[ 
+	G=G_0\supseteq G_1\supseteq \cdots\supseteq G_n=1 
+	\] 
+	una sucesión de subgrupos normales
+	donde cada cociente $G_{i-1}/G_{i}$ es cíclico. 
+	\begin{enumerate}
+		\item Sea $H$ un subgrupo de $G$. Como $G$ es
+			superresoluble, Sea 
+			\[
+			H=H\cap G_0\supseteq H\cap G_1\supseteq\cdots\supseteq H\cap G_n=1
+			\]
+			una sucesión de subgrupos de $H$. Cada $H\cap G_i$ es normal en $H$
+			pues $G_i$ es normal en $G$. Fijemos $i\in\{1,\dots,n\}$ y sea
+			$\pi_{i-1}\colon G_{i-1}\to G_{i-1}/G_{i}$ el morfismo canónico. La
+			restricción de $\pi_{i-1}$ al subgrupo $H\cap G_{i-1}$ es un morfismo con
+			núcleo $G_{i}\cap H$.  Al usar el teorema de isomorfismos vemos que 
+			\[
+			\frac{H\cap G_{i-1}}{H\cap G_{i}}\simeq \pi_{i-1}(H\cap G_i)\subseteq G_{i-1}/G_i
+			\]
+			es un grupo cíclico por ser subgrupo de un grupo cíclico. 
+		\item Sea $K$ un subgrupo normal de $G$ y sea $\pi\colon G\to G/K$ el
+			morfismo canónico. Para cada $i$ sea $Q_i=\pi(G_i)$. Cada $Q_i$ es
+			normal en $Q_n=\pi(G_n)=G/K$ pues $G_i$ es normal en $G$. Como
+			$G_{i-1}K=G_{i-1}(G_iK)$ para todo $i$, 
+			el grupo
+			\begin{align*}
+			Q_{i-1}/Q_i
+			&\simeq\frac{G_{i-1}/G_{i-1}\cap K}{G_i/G_i\cap K}
+			\simeq \frac{G_{i-1}K/K}{G_{i}K/K}\\
+			&\simeq\frac{ G_{i-1}K}{G_iK}
+			\simeq\frac{ G_{i-1}(G_iK)}{G_iK}
+			\simeq\frac{ G_{i-1}}{G_iK\cap G_{i-1}}
+			\simeq\frac{ G_{i-1}/G_i}{G_iK\cap G_{i-1}/G_i}
+			\end{align*}
+			es cíclico por ser un cociente de un grupo cíclico.
+	\end{enumerate}
+\end{svgraybox}
+
+\begin{exercise}
+	\label{exercise:directosuper}
+	Demuestre que el producto directo de grupos superresolubles es
+	superresoluble.
+\end{exercise}
+
+\begin{svgraybox}
+	Supongamos que $G$ admite una sucesión $G=G_0\supseteq G_1\supseteq
+	\cdots\supseteq G_n=1$ de de subgrupos normales tales que cada cociente
+	$G_{i-1}/G_i$ es cíclico, y que $H$ admite una sucesión $H=H_0\supseteq
+	H_1\supseteq \cdots\supseteq H_m=1$ de subgrupos normales donde cada
+	$H_{i-1}/H_i$ es cíclico. Consideramos la sucesión 
+	\[
+		1=G_0\times H_0\supseteq G_1\times H_0\supseteq\cdots\supseteq G_n\times H_0\supseteq G_n\times H_1\supseteq \cdots\supseteq G_n\times H_m=G\times H
+	\]
+	tiene factores cíclicos pues 
+	cada $G_{i-1}\times H_0/G_i\times H_0\simeq G_{i-1}/G_i$ es cíclico y cada 
+	$G_n\times H_{j-1}/G_n\times H_j$ también pues
+	\[
+	G_n\times H_{j-1}/G_n\times H_j
+	\simeq \frac{GH_{j-1}/G}{GH_j/G}
+	\simeq \frac{H_{j-1}/H_{j-1}\cap G}{H_j/H_j\cap G}\simeq H_{j-1}/H_j.
+	\]
+\end{svgraybox}
+
+\begin{exercise}
+	Sean $H$ y $K$ subgrupos normales de un grupo $G$ tales que $G/K$ y $G/H$
+	son superresolubles. Demuestre que $G/H\cap K$ es superresoluble.
+\end{exercise}
+
+\begin{svgraybox}
+	El producto directo $G/H\times G/K$ es superresoluble. Sea $\partial\colon
+	G\to G/H\times G/K$, $g\mapsto (gH,gK)$.  Como $\ker\partial=H\cap K$, se
+	tiene que $G/H\cap K\simeq\partial(G)$, que es superresoluble por ser un
+	subgrupo de un grupo superresoluble.
+\end{svgraybox}
+
+\begin{proposition}
+	\label{proposition:Nciclico}
+	Sea $N$ un subgrupo normal cíclico de un grupo $G$. Si $G/N$ es
+	superresoluble entonces $G$ es superresoluble.
+\end{proposition}
+
+\begin{proof}
+	Sea $\pi\colon G\to G/N$ el morfismo canónico y sea $Q=G/N$. Como $Q$ es
+	superresoluble, tenemos una sucesión
+	\[
+		Q=Q_0\supseteq Q_1\supseteq \cdots\supseteq Q_n=1
+	\]
+	de subgrupos normales de $Q$ tales que cada cociente $Q_{i-1}/Q_i$ es
+	cíclico. Cada elemento de la sucesión
+	\[
+	G=\pi^{-1}(Q)\supseteq\pi^{-1}(Q_1)\supseteq\cdots\supseteq \pi^{-1}(Q_n)=N\supseteq 1
+	\]
+	es normal en $G$ (por la correspondencia) cada cociente es cíclico $N$ es cíclico y cada 
+	\[
+	\frac{\pi^{-1}(Q_j)}{\pi^{-1}(Q_{j+1})}
+		=\frac{Q_jN}{Q_{j+1}N}
+		\simeq\frac{Q_jN/N}{Q_{j+1}N/N}
+		\simeq\frac{Q_j(Q_{j+1}N)}{Q_{j+1}N}
+		\simeq\frac{Q_j/Q_{j+1}}{Q_{j+1}N\cap Q_j}
+	\]
+	es cíclico por ser cociente de un grupo cíclico.
+\end{proof}
+
+\begin{theorem}
+	\label{theorem:ZorCp}
+	Sea $G$ un grupo superresoluble no trivial. Entonces $G$ posee una sucesión
+	de subgrupos $G=G_0\supseteq G_1\supseteq\cdots\supseteq G_n=1$ de
+	subgrupos normales tales que cada cociente $G_{i-1}/G_i$ es cíclico de
+	orden primo o isomorfo a $\Z$.
+\end{theorem}
+
+\begin{proof}
+	Sea $G=G_0\supseteq G_1\supseteq\cdots\supseteq G_n=1$ una sucesión de
+	subgrupos normales tal que cada cociente $G_{i-1}/G_i$ es cíclico. Sea
+	$i\in\{1,\dots,n\}$ tal que el cociente $G_{i-1}/G_i\simeq C_n$ para algún
+	$n$ que no es primo y sea $\pi\colon G_{i-1}\to G_{i-1}/G_i$ el morfismo
+	canónico.  Sea $p$ un primo que divide a $n$ y sea $H$ un subgrupo de $G$
+	tal que $\pi(H)$ es un subgrupo de $G_{i-1}/G_i$ de orden $p$. Por el
+	teorema de la correspondencia, $G_{i}\subseteq H\subseteq G_{i-1}$. 
+	
+	Veamos que $H$ es normal en $G$. Sea $g\in G$. Como $\pi(gHg^{-1})$ es un
+	subgrupo de orden $p$ del cíclico $G_{i-1}/G_i$, $\pi(gHg^{-1})=\pi(H)$. Luego
+	$gHg^{-1}=G_{i}H$,
+	\[
+	\frac{gHg^{-1}}{G_i}=\frac{G_{i}H}{G_{i}}\simeq \frac{H}{G_i\cap H}=\frac{H}{G_i}
+	\]
+	y entonces $gHg^{-1}\subseteq H$.  Observemos que $H/G_i$ es cíclico de orden
+	primo pues 
+	\[
+		H/G_i=H/H\cap G_i\simeq \pi(H)\simeq C_p
+	\]
+	y que $G_{i-1}/H$ también es cíclico pues 
+	\[
+	G_{i-1}/H\simeq\frac{G_{i-1}/G_i}{H/G_i}
+	\]
+	es cociente de un grupo cíclico. Demostramos que al insertar $H$ en la
+	sucesión obtenemos una nueva sucesión con factores cíclicos y donde
+	$H/G_{i}$ es cíclico de orden primo. Al repetir este proceso se obtiene el
+	resultado deseado.
+\end{proof}
+
+\begin{corollary}
+	Un grupo finito superresoluble admite una sucesión de subgrupos 
+	$G=G_0\supseteq G_1\supseteq\cdots\supseteq G_n=1$ 
+	normales donde cada cociente $G_{i-1}/G_i$ es cíclico de orden primo.
+\end{corollary}
+
+\begin{proof}
+	Es consecuencia inmediata del teorema~\ref{theorem:ZorCp}.
+\end{proof}
+
+\begin{theorem}
+	\label{theorem:super_structure}
+	Sea $G$ un grupo superresoluble. 
+	\begin{enumerate}
+		\item Si $N$ es minimal-normal en $G$ entonces $N\simeq C_p$ para algún primo $p$.
+		\item Si $M$ es maximal en $G$ entonces $(G:M)=p$ para algún primo $p$.
+		\item El conmutador $[G,G]$ es nilpotente.
+		\item Si $G$ es no abeliano existe un subgrupo normal $N\ne G$ tal que
+			$Z(G)\subsetneq N$.
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	Demostremos la primera afirmación. 
+	%Como $G$ es superresoluble, $N$ es
+	%resoluble. El conmutador $[N,N]$ es característico en $N$ y luego $[N,N]$
+	%es normal en $G$. Por la minimalidad, $N$ entonces un grupo abeliano. 
+	Como $G$ es superresouble, existe una sucesión $G=G_0\supseteq G_1\supseteq
+	G_2\supseteq\cdots\supseteq G_n=1$ de subgrupos normales con factores
+	$G_{i-1}/G_i$ cíclicos. Como cada $G_i\cap N\subseteq N$ es normal en $G$,
+	cada $G_i\cap N$ es trivial o igual a $N$. Además $N\cap G_0=1$ y $N\cap
+	G_n=N$. Sea $j$ el máximo entero tal que $N\cap G_j=1$. Como $N\subseteq
+	G_{j+1}$ (pues $N\cap G_{j+1}=N$), la composición
+	\[
+	N\hookrightarrow G_{j+1}\to G_{j+1}/G_j
+	\]
+	es un monomorfismo pues tiene núcleo igual a $N\cap G_{j}=1$. Luego $N$ es
+	cíclico por ser isomorfo a un subgrupo del cíclico $G_{i+1}/G_i$. Si
+	$G_{i+1}/G_i\simeq\Z$ entonces $N\simeq\Z$ pero no sería minimal-normal ya
+	que por ejemplo $2\Z$ es un subgrupo característico de $\Z$ y por lo tanto
+	es normal en $G$. Luego $N$ es cíclico y finito y entonces $N\simeq C_p$
+	por el lema~\ref{lemma:minimal_normal}.
+
+	Demostremos la segunda afirmación. Sea $M$ un subgrupo maximal de $G$. 
+	Si $M$ es normal en $G$ entonces $G/M$ no contiene subgrupos propios no
+	triviales. 
+	%Como $G/M$ es superresoluble, la sucesión $1\supseteq
+	%G/M$ tiene factores isomorfos cíclicos de orden primo (por el
+	%teorema~\ref{theorem:ZorCp}) y 
+	Luego $G/M\simeq C_p$ para algún
+	primo $p$.  Supongamos entonces que $M$ no es normal en $G$. Sea $H=\cap_{g\in
+	G}gMg^{-1}$ y sea $\pi\colon G\to G/H$.  Como $\pi(M)$ es maximal en
+	$\pi(G)=G/H$ y además
+	\[
+		(G:M)=(G/H:M/H)=(G/H:M/H\cap M)=(\pi(G):\pi(M)),
+	\]
+	podemos suponer que $M$ es simple. Como $G$ es superresoluble
+	existe una sucesión $G=G_0\supseteq G_1\supseteq\cdots\supseteq G_n=1$ de
+	subgrupos normales con factores isomorfos a $\Z$ o cíclicos de orden primo.
+	Sea $N=G_1$. Como $N$ es cíclico, todo subgrupo de $N$ es característico en
+	$N$ y por lo tanto es normal en $G$. En particular, $M\cap N$ es normal en
+	$G$ y luego $M\cap N=1$. Como $M\subseteq
+	NM\subseteq G$, entonces, por la maximalidad de $M$, $M=NM$ o bien $G=NM$.
+	Pero como $N\subseteq NM=M$ es una contradicción, se concluye que $G=NM$.
+	Si $N\simeq C_p$ para algún primo $p$, entonces $(G:M)=p$ y la afirmación
+	queda demostrada.  Si $N\simeq\Z$ sea $H$ un subgrupo propio de $N$. Como
+	$H$ es característico en $N$, $H$ es normal en $G$ y luego, como
+	$M\subseteq HM\subseteq NM=G$, la maximalidad de $M$ implica que $HM=M$ o
+	bien $HM=G$. Como el caso $HM=M$ implica que $H\subseteq M\cap N=1$,
+	podemos suponer que $HM=G$. Si $n\in N\setminus H$ entonces $n=hm$ para
+	algún $h\in H$, $m\in M$. Luego $h=n$ pues $h^{-1}n\in N\cap M=1$, una
+	contradicción.
+
+	Demostremos ahora la tercera afirmación. Como $G$ es superresoluble, existe
+	una sucesión
+	\[
+	G=G_0\supseteq G_1\supseteq\cdots\supseteq G_n=1
+	\]
+	de subgrupos normales tal que cada $G_i/G_{i+1}$ es cíclico. Para cada
+	$i\in\{0,\dots,n\}$ sea $H_i=[G,G]\cap G_i$. Como $[G,G]$ y los $G_i$ son
+	normales en $G$, se tiene una sucesión
+	\[
+	[G,G]=H_0\supseteq H_1\supseteq\cdots\supseteq H_n=1
+	\]
+	de subgrupos normales de $G$. Como $H_i$ y $H_{i+1}$ es normal en $G$, el
+	grupo $G$ actúa por conjugación en $H_i/H_{i+1}$. Esto induce un morfismo
+	$\gamma\colon G\to\Aut(H_i/H_{i+1})$. Como $H_i/H_{i+1}$ es cíclico, 
+	$\Aut(H_i/H_{i+1})$ es abeliano y luego $[G,G]\subseteq\ker \gamma$. Luego
+	$[G,G]$ actúa trivialmente por conjugación en $H_{i}/H_{i+1}$ y entonces
+	\[
+	H_i/H_{i+1}\subseteq Z([G,G]/H_{i+1}).
+	\]
+	%%% TODO: explicar mejor
+
+	Por último demostremos la cuarta afirmación. Como $G$ es no abeliano,
+	$Z(G)\ne G$. Sea $\pi\colon G\to G/Z(G)$ el morfismo canónico.  El cociente
+	$G/Z(G)$ es superresoluble y la sucesión
+	\[
+	G/Z(G)=\pi(G)\supseteq \pi(G_1)\supseteq\cdots\supseteq \pi(1)=1
+	\]
+	es una sucesión de subgrupos normales de $G/Z(G)$ con cocientes cíclicos.
+	En particular, $1\ne \pi(G_1)$ es propio y normal en $G/Z(G)$.  Por el
+	teorema de la correspondencia, $\pi^{-1}(\pi(G_1))\ne G$ es un subgrupo normal
+	de $G$ que contiene propiamente a $Z(G)$. 
+\end{proof}
+
+\begin{example}
+	Si $G$ es resoluble no necesariamente $[G,G]$ es nilpotente. El grupo
+	$\Sym_4$ es resoluble pero $[\Sym_4,\Sym_4]=\Alt_4$ no es nilpotente.
+\end{example}
+
+\begin{proposition}
+	\label{proposition:psuper}
+	Sea $p$ un número primo.  Todo $p$-grupo finito es superresoluble.
+\end{proposition}
+
+\begin{proof}
+	Sea $G$ un contraejemplo de orden minimal. Podemos suponer que $|G|=p^n$
+	con $n>1$ (pues si $n=1$ el grupo $G$ es trivialmente superresoluble).
+	Como $G$ es un $p$-grupo, es nilpotente  y existe un subgrupo normal $N$ de
+	orden $p$. El cociente $G/N$ tiene orden $p^{n-1}$ entonces es
+	superresoluble pues $|G/N|<|G|$. Como $N$ es cíclico y $G/N$ es
+	superresoluble, $G$ es superresoluble por la
+	proposición~\ref{proposition:Nciclico}.
+\end{proof}
+
+\begin{corollary}
+	Todo grupo finito nilpotente es superresoluble.
+\end{corollary}
+
+\begin{proof}
+	Todo grupo finito nilpotente es producto directo (finito) de subgrupos de
+	Sylow. Como cada $p$-grupo es superresoluble por la
+	proposición~\ref{proposition:psuper}, el resultado se obtiene
+	inmediatamente del ejercicio~\ref{exercise:directosuper}.
+\end{proof}
+
+\begin{theorem}
+	Todo grupo superresoluble tiene subgrupos maximales.	
+\end{theorem}
+
+\begin{proof}
+	Procederemos por inducción en la longitud de la sucesión de
+	superresolubilidad. Si la longitud es uno, el teorema es cierto pues en
+	este caso el grupo es cíclico. Supongamos entonces que $G$ admite una
+	sucesión
+	\[
+		G=G_0\supseteq\cdots\supseteq G_k=1
+	\]
+	y que la afirmación es cierta para grupos superresolubles con sucesiones 
+	de longitud $<k$. Como $G_{k-1}$ es normal en $G$, sea $\pi\colon G\to
+	G/G_{k-1}$ el morfismo canónico. Entonces la sucesión
+	\[
+		G/G_{k-1}=\pi(G)\supseteq \pi(G_1)\supseteq\cdots\supseteq\pi(G_{k-1})=1
+	\]
+	prueba la resolubilidad de $\pi(G)$ y tiene longitud $<k$. Por hipótesis
+	inductiva, $G/G_{k-1}$ admite subgrupos maximales y luego, por el teorema
+	de la correspondencia, $G$ también admite subgrupos maximales.
+\end{proof}
+
+\begin{example}
+	Los grupos resolubles o nilpotentes no siempre admiten
+	subgrupos maximales, ver por ejemplo $\Q$.
+\end{example}
+
+\begin{definition}
+	\index{Grupo!que satisface la condición maximal para subgrupos}
+	Se dice que un grupo $G$ satisface la \textbf{condición maximal para
+	subgrupos} si 
+	todo subconjunto $\mathcal{S}$ no vacío de subgrupos tiene un subgrupo
+	maximal (es decir, no contenido en ningún otro subgrupo de $\mathcal{S}$). 
+	%toda sucesión creciente
+	%$S_1\subseteq S_2\subseteq S_3\subseteq\cdots$
+	%de subgrupos es finita. 
+	%%si todo subconjunto $\mathcal{S}$ 
+	%%no vacío de subgrupos tiene un elemento maximal, es decir: existe
+	%$M\in\mathcal{S}$ tal que $S\subseteq M$ para todo $S\in\mathcal{S}$.
+\end{definition}
+
+%\begin{lemma}
+%	Un grupo $G$ satisface la la condición maximal para subgrupos si y sólo si
+%	todo subconjunto $\mathcal{S}$ no vacío de subgrupos tiene un subgrupo
+%	maximal (es decir, no contenido en ningún otro subgrupo de $\mathcal{S}$). 
+%\end{lemma}
+
+\begin{lemma}
+	\label{lemma:MAX=fg}
+	Sea $G$ un grupo. Entonces $G$ satisface la condición maximal para
+	subgrupos si y sólo si todo subgrupo de $G$ es finitamente generado.
+\end{lemma}
+
+\begin{proof}
+	Supongamos que $G$ satisface la condición maximal para subgrupos y sea $H$
+	un subgrupo de $G$.  Sea $\mathcal{S}$ el conjunto de subgrupos de $H$
+	finitamente generados. Como $\mathcal{S}$ es no vacío (pues
+	$1\in\mathcal{S}$), existe un elemento maximal $M\in\mathcal{S}$.  Sea
+	$x\in H$. Como $\langle M,x\rangle\in\mathcal{S}$, $M=\langle M,x\rangle$ y
+	luego $x\in M$. Como entonces $H=M$, $H$ es finitamente generado.
+	%Supongamos que $G$ no es finitamente generado y satisface la condición maximal para subgrupos. Sea $1\ne g\in G$
+	%y sea $S_1=\langle g_1\rangle$. Como $S_1\ne G$, existe $g_2\in G\setminus S_1$, y entonces 
+	%$S_1\subseteq S_2=\langle x_1,x_2\rangle$. 
+
+	Supongamos ahora que todo subgrupo de $G$ es finitamente generado. Si
+	$\mathcal{S}$ es un subconjunto no vacío de subgrupos de $G$ sin elemento
+	maximal, podemos construir una sucesión de subgrupos $S_1\subseteq
+	S_2\subseteq\cdots$ que no se estabiliza (acá necesitamos utilizar el
+	axioma de elección). Como la unión 
+	\[
+		S=\bigcup_{j\geq1}S_j 
+	\]
+	es un subgrupo de $G$, es finitamente generado y luego $S\subseteq S_k$
+	para algún $k$ suficientemente grande, una contradicción.
+\end{proof}
+
+\begin{proposition}
+	\label{proposition:max:N}
+	Sea $G$ un grupo y sea $H$ un subgrupo de $G$.  Si $G$ satisface la
+	condición maximal para subgrupos entonces $H$ también. 
+\end{proposition}
+
+\begin{proof}
+	Es consecuencia inmediata del lemma~\ref{lemma:MAX=fg}.
+\end{proof}
+
+\begin{proposition}
+	\label{proposition:max:G/N}
+	Sea $G$ un grupo y sea $N$ un subgrupo normal de $G$.  Si $G/N$ y $N$
+	satisfacen la condición maximal para subgrupos entonces $G$ también. 
+\end{proposition}
+
+\begin{proof} 
+	Sea $\pi\colon G\to G/N$ el morfismo canónico.  Sea $\mathcal{S}$ un
+	subconjunto no vacío de subgrupos de $G$. El conjunto $\{S\cap
+	N:S\in\mathcal{S}\}$ tiene un elemento maximal $A$ y el conjunto
+	$\{\pi(S):S\in\mathcal{S},S\cap N=A\}$ tiene un elemento maximal $B$. Sea
+	$S\in\mathcal{S}$ tal que $\pi(S)=B$ y $S\cap N=A$. Si $S$ no es maximal en
+	$\mathcal{S}$, existe $T\in\mathcal{S}$ tal que $S\subseteq T$, $N\cap T=A$
+	y $\pi(T)=B$. Sea $x\in T\setminus S$. Como $\pi(xN)=\pi(x)\in\pi(T)=B$,
+	existe $y\in S$ tal que $xN=yN$. Luego $y^{-1}x\in N\cap T=A=N\cap S$, una
+	contradicción pues $x\not\in S$. 
+\end{proof}
+
+% TODO: agregar teorema de Huppert (ver por ejemplo Robinson, p. 268)
+% corolario: G super si y sólo G/\Phi(G) super
+% teorema de Iwasawa, Hall 342-345, 19.3
+% teorema de Zappa-Ore, Duke 5 (1939), 431-460, Duke 6 (1940), 511-512
+
+%\begin{definition}
+%	\index{Grupo!que satisface la condición minimal para subgrupos}
+%	Se dice que un grupo $G$ satisface la \textbf{condición minimal para
+%	subgrupos} si todo subconjunto no vacío de subgrupos tiene un elemento
+%	minimal.
+%\end{definition}
+%
+%\begin{example}
+%	El grupo $\Z$ no satisface la condición minimal para subgrupos pues
+%	el conjunto $\{2^n\Z:n\in\N\}$ no posee elemento minimal. 
+%\end{example}
+%
+%\begin{proposition}
+%	Sea $G$ un grupo que satisface la condición minimal sobre subgrupos.
+%	Entonces todo elemento de $G$ tiene orden finito.
+%\end{proposition}
+%
+%\begin{proof}
+%	Si existe $x\in G$ de orden infinito, la sucesión $\mathcal{S}$ de subgrupos 
+%	\[
+%	\langle x\rangle\supsetneq\langle x^2\rangle\supsetneq\langle
+%	x^4\rangle\supsetneq\cdots\supsetneq\langle x^{2^k}\rangle\supsetneq\cdots
+%	\]
+%	tiene infinitos elementos y luego no posee un elemento minimal. 
+%\end{proof}
+%
+%\begin{exercise}
+%	\label{exercise:min:N}
+%	Sea $G$ un grupo y sea $H$ un subgrupo de $G$.  Si $G$ satisface la
+%	condición minimal para subgrupos entonces $H$ también. 
+%\end{exercise}
+%
+%\begin{svgraybox}
+%	Si $\mathcal{S}$ es un subconjunto no vacío de subgrupos de $H$, entonces
+%	$\mathcal{S}$ posee un elemento minimal por ser un subconjunto no vacío de
+%	subgrupos de $G$.
+%\end{svgraybox}
+%
+%\begin{proposition}
+%	\label{proposition:min:G/N}
+%	Sea $G$ un grupo y sea $N$ un subgrupo normal de $G$.  Si $G/N$ y $N$
+%	satisfacen la condición minimal para subgrupos entonces $G$ también. 
+%\end{proposition}
+%
+%\begin{proof}
+%	
+%\end{proof}
+
+\begin{proposition}
+	\label{proposition:superfg}
+	Todo grupo superresoluble satisface la condición maximal para subgrupos. En
+	particular, todo grupo superresoluble es finitamente generado.
+\end{proposition}
+
+\begin{proof}
+	Procederemos por inducción en la longitud $n$ de la sucesión de
+	superresolubilidad.  El caso $n=1$ es trivial pues entonces $G$ es cíclico.
+	Supongamos entonces que el resultado vale para grupos superresolubles con
+	serie de longitud $\leq n-1$.  Sea $G$ un grupo superresoluble no trivial y sea 
+	\[
+	G=G_0\supsetneq
+	G_1\supsetneq\cdots\supsetneq G_n=1
+	\]
+	una sucesión de subgrupos normales de $G$ con factores cíclicos. Como
+	$G_{n-1}$ es superresoluble por el ejercicio~\ref{exercise:super},
+	$G_{n-1}$ satisface la condición maximal para subgrupos por hipótesis
+	inductiva.  Luego, por la proposición~\ref{proposition:max:G/N}, $G$ satisface la condición maximal para subgrupos porque
+	$G/G_{n-1}$ es un grupo cíclico.
+\end{proof}
+
+%\begin{proposition}\
+%	\begin{enumerate}
+%		\item Si un grupo superresoluble admite una serie de composición,
+%			entonces es finito. 
+%		\item Si un grupo superresoluble satisface la condición de minimal en
+%			subgrupos entonces es finito.
+%	\end{enumerate}
+%\end{proposition}
+%
+%\begin{proof}
+%	%Para probar la segunda afirmación obsevemos que todo cociente de $G$ es superresoluble 
+%	%y que por el teorema~\ref{theorem:ZorCp} todo factor de la serie debe ser finito pues
+%	%$\Z$ no satisface la condición minimal para subgrupos.
+%\end{proof}
+
+\begin{example}
+	El grupo abeliano $\Q$ es nilpotente pero no es superresoluble
+	porque no es finitamente generado.
+\end{example}
+
+%\begin{example}
+%	El grupo $\Sym_3$ es superresoluble pero no es nilpotente. 
+%\end{example}
+
+Si $G$ es un grupo y $x_1,\dots,x_{n+1}\in G$ se define 
+\[
+[x_1,\dots,x_{n+1}]=\left[ [x_1,\dots,x_n],x_{n+1} \right],\quad
+n\geq1.
+\]
+
+\begin{lemma}
+	\label{lemma:G_n}
+	Sea $G$ un grupo finitamente generado, digamos $G=\langle X\rangle$ con $X$
+	finito. Para cada $n\geq2$ se define
+	\[
+		G_n=\langle g[x_1,\dots,x_n]g^{-1}:x_1,\dots,x_n\in X,\,g\in G\rangle.
+	\]
+	Entonces $G_n=\gamma_n(G)$ para todo $n\geq2$. 
+\end{lemma}
+
+\begin{proof}
+	Observemos que cada $G_n$ es normal en $G$.  Procederemos por inducción en
+	$n$. El caso $n=2$ es trivial. Supongamos entonces que
+	$\gamma_{n-1}(G)=G_{n-1}$. Sean $x_1,\dots,x_n\in X$. Como
+	$[x_1,\dots,x_n]\in\gamma_{n}(G)$, $G_{n-1}\subseteq\gamma_n(G)$. Sea
+	$N=G_n$ y sea $\pi\colon G\to G/N$ el morfismo canónico. El grupo $G/N$ es
+	finitamente generado. Como
+	\[
+	[\pi([x_1,\dots,x_{n-1}]),\pi(x_n)]=\pi([x_1,\dots,x_n])=1,
+	\]
+	se tiene que $\pi([x_1,\dots,x_{n-1}])\in Z(G/N)$. Luego
+	$\pi(g[x_1,\dots,x_n]g^{-1})=1$ para todo $g\in G$ y, por hipótesis
+	inductiva, 
+	se concluye que 
+	\[
+	\pi(\gamma_{n-1}(G))=\pi(G_{n-1})\subseteq Z(G/N).
+	\]
+	Como entonces 
+	\[
+	\pi(\gamma_{n}(G))=\pi([\gamma_{n-1}(G),G])=[\pi(\gamma_{n-1}(G)),\pi(G)]=1,
+	\]
+	se concluye que $\gamma_n(G)\subseteq N=G_n$.
+\end{proof}
+
+\begin{lemma}
+	\label{lemma:gamma_n/gamma_n+1}
+	Sea $G$ un grupo finitamente generado.  Entonces
+	$\gamma_n(G)/\gamma_{n+1}(G)$ es finitamente generado. 
+\end{lemma}
+
+\begin{proof}
+	Supongamos que $G=\langle X\rangle$ con $X$ finito. 
+	Al escribir 
+	\[
+	g[x_1,\dots,x_n]g^{-1}=[g,[x_1,\dots,x_n]][x_1,\dots,x_n]
+	\]
+	y usar el lema~\ref{lemma:G_n} para obtener 
+	que $[g,[x_1,\dots,x_n]]\in \gamma_{n+1}(G)=G_{n+1}$, 
+	\[
+	g[x_1,\dots,x_n]g^{-1}\equiv [x_1,\dots,x_n]\bmod \gamma_{n+1}(G). 
+	\]
+	Luego $\gamma_{n}(G)/\gamma_{n+1}(G)$ está generado por 
+	el conjunto finito 
+	\[
+	\{[x_1,\dots,x_n]\gamma_{n+1}(G):x_1,\dots,x_n\in X\}. 
+	\]
+\end{proof}
+
+\begin{theorem}
+	\label{theorem:super=fg}
+	Sea $G$ un grupo nilpotente. Entonces $G$ es superresoluble si y sólo si
+	$G$ es finitamente generado.
+\end{theorem}
+
+\begin{proof}
+	Si $G$ es superresoluble, es finitamente generado por la
+	proposición~\ref{proposition:superfg}.  Supongamos que $G$ es finitamente
+	generado y nilpotente. Como por el lema~\ref{lemma:gamma_n/gamma_n+1} cada
+	$\gamma_{n}(G)/\gamma_{n+1}(G)$ es finitamente generado, digamos por
+	$y_1,\dots,y_m$. Sea $\pi\colon G\to G/\gamma_{n+1}(G)$ el morfismo
+	canónico.  Para cada $j\in\{1,\dots,m\}$ sea 
+	\[
+	K_j=\langle \gamma_{n+1}(G),y_1,\dots,y_j\rangle.
+	\]
+	Como
+	$[K_j,G]\subseteq [\gamma_n(G),G]=\gamma_{n+1}(G)$, 
+	se tiene que $\pi(K_j)$ es central en $\pi(G)$. Luego $\pi(K_j)$ es normal
+	en $\pi(G)$ y por lo tanto $K_j$ es normal en $G$. Como cada $K_j/K_{j-1}$
+	es cíclico generado por $y_jK_{j-1}$, entre $\gamma_n(G)$ y
+	$\gamma_{n+1}(G)$ pudimos construir una sucesión de subgrupos normales de
+	$G$ con factores cíclicos. Como $G$ es nilpotente, existe $c$ tal que
+	$\gamma_{c+1}(G)=1$ y luego $G$ es superresoluble.
+\end{proof}
+
+\begin{corollary}
+	\label{corollary:nilpotente=>max}
+	Todo grupo nilpotente finitamente generado satisface la condición maximal
+	en subgrupos.
+\end{corollary}
+
+\begin{proof}
+	Es consecuencia del teorema~\ref{theorem:super=fg} y la
+	proposición~\ref{proposition:superfg}.
+\end{proof}
+
+\begin{theorem}
+	Sea $G$ un grupo nilpotente y finitamente generado. Entonces $T(G)$ es
+	finito.
+\end{theorem}
+
+\begin{proof}
+	Como $G$ es nilpotente, $G$ satisface la condición maximal para subgrupos
+	por el corolario~\ref{corollary:nilpotente=>max} y entonces
+	todo subgrupo de $G$ es finitamente generado. Como $T(G)$ es un subgrupo por el teorema~\ref{theorem:T(nilpotent)}, 
+	es finitamente generado y de torsión. Luego $T(G)$ es finito por el
+	teorema~\ref{theorem:T(G)finito}.
+\end{proof}
+
+
+
+

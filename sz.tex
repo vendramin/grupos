@@ -1,0 +1,372 @@
+\chapter{El teorema de Schur--Zassenhaus}
+
+\begin{lemma}
+	\label{lemma:1cocycle}
+	Si $\varphi\colon G\to N$ es un $1$-cociclo con núcleo $K$ entonces
+	$\varphi(x)=\varphi(y)$ si y sólo si $xK=yK$. En particular,
+	$(G:K)=|\varphi(G)|$. 
+\end{lemma}
+
+\begin{proof}
+	Si $\varphi(x)=\varphi(y)$ entonces, como 
+	\[
+		\varphi(x^{-1}y)
+		=\varphi(x^{-1})(x^{-1}\cdot\varphi(y))
+		=\varphi(x^{-1})(x^{-1}\cdot\varphi(x))
+		=\varphi(x^{-1}x)=\varphi(1)
+		=1,
+	\]
+	tenemos $xK=yK$. Recíprocamente, si $x^{-1}y\in K$, entonces, como 
+	\[
+	1=\varphi(x^{-1}y)=\varphi(x^{-1})(x^{-1}\cdot \varphi(y)),
+	\]
+	tenemos que $\varphi(y)=x\cdot\varphi(x^{-1})^{-1}$. De acá obtenemos
+	$\varphi(x)=\varphi(y)$.
+
+	La segunda afirmación resulta ahora evidente pues $\varphi$ es constante en
+	cada coclase de $K$ y toma $(G:K)$ valores distintos. 
+\end{proof}
+
+\begin{lemma}
+	\label{lemma:d}
+	Sea $G$ un grupo finito, $N$ un subgrupo normal abeliano de $G$ y $S,T,U$
+	transversales de $N$ en $G$. Sea 
+	\[
+	d(S,T)=\prod st^{-1}\in N,
+	\]
+	donde el producto se hace sobre todos los $s\in S$ y $t\in T$ tales que
+	$sN=tN$. Valen las siguientes afirmaciones:
+	\begin{enumerate}
+		\item $d(S,T)d(T,U)=d(S,U)$.
+		\item $d(gS,gT)=gd(S,T)g^{-1}$ para todo $g\in G$.
+		\item $d(nS,S)=n^{(G:N)}$ para todo $n\in N$.
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	Si $s\in S$, $t\in T$, $u\in U$ con $sN=tN=uN$ entonces, como $N$ es
+	abeliano y $(st^{-1})(tu^{-1})=su^{-1}$, 
+	\[
+		d(S,T)d(T,U)=\prod (st^{-1})(tu^{-1})=\prod su^{-1}=d(S,U).
+	\]
+
+	Como $sN=tN$ si y sólo si $gsN=gtN$ para todo $g\in G$, 
+	\[
+	g\left(\prod st^{-1}\right)g^{-1}=\prod gst^{-1}g^{-1}=\prod (gs)(gt)^{-1}=d(gS,gT).
+	\]
+
+	Por último, como $N$ es normal, $nsN=sN$ para todo $n\in N$. Luego
+	\[
+		d(nS,S)=\prod (ns)s^{-1}=n^{(G:N)}.
+	\]
+\end{proof}
+
+\begin{theorem}[Schur--Zassenhaus]
+	\index{Schur--Zassenhaus!teorema de}
+	\index{Teorema!de Schur--Zassenhaus}
+	\label{theorem:SchurZassenhaus:abeliano}
+	Sea $G$ un grupo finito y sea $N$ un subgrupo normal abeliano de $G$. Si
+	$|N|$ y $(G:N)$ son coprimos, $N$ se complementa en $G$. Si $N$ se
+	complementa en $G$, todos los complementos son conjugados.  
+\end{theorem}
+
+\begin{proof}
+	Sea $T$ un transversal de $N$ en $G$. Sea $\theta\colon G\to N$,
+	$\theta(g)=d(gT,T)$. Como $N$ es abeliano, el lema~\ref{lemma:d} implica
+	que $\theta$ es un $1$-cociclo, donde $G$ actúa en $N$ por conjugación:
+	\begin{align*}
+		\theta(xy)&=d(xyT,T)
+		=d(xyT,xT)d(xT,T)\\
+		&=(xd(yT,T)x^{-1})d(xT,T)=(x\cdot\theta(y))\theta(x).
+	\end{align*}
+
+	\begin{claim}
+		$\theta|_N\colon N\to N$ es sobreyectiva.
+	\end{claim}
+
+	Si $n\in N$, el lema~\ref{lemma:d} implica que
+	$\theta(n)=d(nT,T)=n^{(G:N)}$. Pero como los números $|N|$ y $(G:N)$ son
+	coprimos, existen $r,s\in\Z$ tales que $r|N|+s(G:N)=1$. Luego
+	\[
+		n=n^{r|N|+s(G:N)}=(n^s)^{(G:N)}=\theta(n^s).
+	\]
+
+	Sea $H=\ker\theta$. Vamos a demostrar que $H$ es un complemento para $N$. 
+	Por el ejercicio~\ref{exercise:1cocycle}, $H$ es un
+	subgrupo de $G$. Como
+	\[
+		|N|=|\theta(G)|=(G:H)
+	\]
+	por el lema~\ref{lemma:1cocycle}, se concluye que $|H|$ divide a $(G:N)$.
+	Como $N\cap H$ es un subgrupo de $N$ y de $H$, entonces $N\cap H=1$ pues
+	$|N|$ y $(G:N)=|H|$ son coprimos.  Como $|NH|=|N||H|=|G|$, se concluye que
+	$G=NH$ y entonces $H$ es un complemento para $N$.
+
+	Veamos ahora que dos complementos para $N$ son conjugados. 
+	Sea $K$ un complemento de $N$ en $G$. Como $NK=G$ y $N\cap K=1$, $K$ es un
+	transversal para $N$. Sea $m=d(T,K)\in N$. Como $\theta|_N$ es
+	sobreyectiva, existe $n\in N$ tal que $\theta(n)=m$. Por el
+	lema~\ref{lemma:d}, para todo $k\in K$ se tiene
+	\[
+	kmk^{-1}=kd(T,K)k^{-1}=d(kT,kK)=d(kT,K)=d(kT,T)d(T,K)=\theta(k)m,
+	\]
+	y luego $\theta(k)\in N$. Entonces, como $N$ es abeliano,
+	$\theta(n^{-1})=m^{-1}$ y luego 
+	\begin{align*}
+		\theta(nkn^{-1})&=\theta(n)n\theta(kn^{-1})n^{-1}
+		=m\theta(kn^{-1})\\
+		&=m\theta(k)k\theta(n^{-1})k^{-1}
+		=m\theta(k)km^{-1}k^{-1}=1.
+	\end{align*}
+	Queda demostrado entonces que $nKn^{-1}\subseteq H=\ker\theta$. Como
+	$|K|=(G:N)=|H|$, se concluye que $nKn^{-1}=H$.
+\end{proof}
+
+En el siguiente teorema vemos que no es necesario suponer que el subgrupo
+normal $N$ es abeliano.
+
+\begin{theorem}[Schur--Zassenhaus]
+	\index{Schur--Zassenhaus!teorema de}
+	\index{Teorema!de Schur--Zassenhaus}
+	\label{theorem:SchurZassenhaus}
+	Sea $G$ un grupo finito y sea $N$ un subgrupo normal de $G$. Si $|N|$ y
+	$(G:N)$ son coprimos entonces $N$ se complementa en $G$.
+\end{theorem}
+
+\begin{proof}
+	Procederemos por inducción en $|G|$. Si existe un subgrupo propio $K$ de
+	$G$ tal que $NK=G$ entonces, como $(K:K\cap N)=(G:N)$ es coprimo con $|N|$,
+	es también coprimo con $|K\cap N|$. Como además $K\cap N$ es normal en $K$,
+	por hipótesis inductiva, $K\cap N$ se complementa en $K$, y luego existe un
+	subgrupo $H$ de $K$ tal que $|H|=(K:K\cap N)=(G:N)$. 
+	
+	Supongamos entonces que no existe un subgrupo propio $K$ de $G$ tal que
+	$NK=G$.  Podemos suponer que $N\ne1$ (de lo contrario, basta tomar $G$ como
+	complemento de $N$ en $G$).  Como $N$ está contenido en todo subgrupo
+	maximal de $G$ (pues si existe un maximal $M\subsetneq G$ tal que
+	$N\not\subseteq M$ entonces $NM=G$), se tiene que $N\subseteq\Phi(G)$. Por
+	el teorema de Frattini ~\ref{theorem:Frattini}, $\Phi(G)$ es nilpotente y
+	luego $N$ es nilpotente; en particular, $Z(N)\ne1$. Sea $\pi\colon G\to
+	G/Z(N)$ el morfismo canónico. Como $N$ es normal en $G$ y $Z(N)$ es
+	característico en $N$, $Z(N)$ es normal en $G$.  Además 
+	\[
+	(\pi(G):\pi(N))=\frac{|\pi(G)|}{|\pi(N)|}=\frac{|G/Z(N)|}{|N/N\cap Z(N)|}=(G:N)
+	\]
+	es coprimo con $|N|$, y entonces es también coprimo con $|\pi(N)|$. Por hipótesis
+	inductiva, $\pi(N)$ admite un complemento en $G/Z(N)$, digamos $\pi(K)$
+	para algún subgrupo $K$ de $G$. Luego $G=NK$ pues 
+	$\pi(G)=\pi(N)\pi(K)=\pi(NK)$. 
+	Como entonces $K=G$ (pues sabíamos que no existe $K$ tal que $G=NK$), 
+	$\pi(N)$ es abeliano pues 
+	\[
+		\pi(Z(N))=\pi(N)\cap\pi(K)=\pi(N)\cap\pi(G)=\pi(N).
+	\]
+	Luego $N\subseteq Z(N)$ es abeliano y entonces, por el
+	teorema~\ref{theorem:SchurZassenhaus:abeliano}, el subgrupo $N$ admite un
+	complemento. 
+\end{proof}
+
+\begin{theorem}
+	\label{theorem:SchurZassenhaus:conjugacion}
+	Sea $G$ un grupo finito y sea $N$ un subgrupo normal de $G$ tal que $|N|$ y
+	$(G:N)$ son coprimos. Si $N$ es resoluble o $G/N$ es resoluble, todos los
+	complementos de $N$ en $G$ son conjugados.
+\end{theorem}
+
+%\begin{proof}
+%	Sea $G$ un contraejemplo minimal, es decir: existen complementos $K_1$ y
+%	$K_2$ a $N$ en $G$ que no son conjugados.
+%
+%	\begin{claim}
+%		$N$ es minimal en $G$.
+%	\end{claim}
+%
+%	Si $M\subseteq N$ es minimal normal en $G$, $M\ne1$ pues $N\ne1$. Sea
+%	$\pi\colon G\to G/M$ el morfismo canónico. El grupo $\pi(G)$ contiene un
+%	subgrupo normal $\pi(N)$ de índice coprimo con $|\pi(N)|$. Además
+%	$\pi(K_1)$ y $\pi(K_2)$ complementan a $\pi(N)$. Como $|G|$ es minimal,
+%	$\pi(K_1)$ y $\pi(K_2)$ son conjugados en $\pi(G)$, es decir: existe $x\in G$ tal que 
+%	$\pi(K_1)=\pi(xK_2x^{-1})$.
+%
+%\end{proof}
+
+\begin{proof}
+	Sea $G$ un contraejemplo minimal, es decir: existen complementos $K_1$ y
+	$K_2$ a $N$ en $G$ tales que $K_1$ y $K_2$ no son conjugados, y $|G|$ toma
+	el menor valor posible.
+
+	\begin{claim}
+		Todo subgrupo $U$ de $G$ satisface las hipótesis del teorema con
+		respecto al subgrupo normal $U\cap N$.
+%		Sea $U$ un subgrupo de $G$. Entonces $U$ satisface las hipótesis del
+%		teorema con respecto al subgrupo normal $U\cap N$. Si $U$ contiene un
+%		complemento $H$ para $N$ en $G$, entonces $H$ complementa a $U\cap N$
+%		en $U$.
+	\end{claim}
+	
+	Como $N$ es normal en $G$, $U\cap N$ es normal en $U$. Además $|U\cap N|$ y
+	$(U:U\cap N)$ son coprimos pues $|U\cap N|$ divide a $|N|$ y $(U:U\cap
+	N)=(UN:N)$ divide a $(G:N)$.  Si $G/N$ es resoluble, entonces $U/U\cap N$
+	es resoluble pues $U/U\cap N$ es isomorfo a un subgrupo de $G/N$. Si $N$ es
+	resoluble, $U\cap N$ es resoluble.
+%
+%	Como $|H|$ divide a $|U|$ y $|H|$ es coprimo con $|U\cap N|$, se tiene que
+%	$|H|$ divide a $(U:U\cap N)$. Como además $(U:U\cap N)$ divide a
+%	$(G:N)=|H|$, se concluye que $|H|=|U:U\cap N|$. Luego $H$ complementa a
+%	$U\cap N$ en $U$.
+
+	\begin{claim}
+		Si existe un subgrupo normal $L$ de $G$ tal que $\pi(N)$ es normal en
+		$\pi(G)$, donde $\pi\colon G\to G/L$ es el morfismo canónico, entonces
+		$\pi(G)$ satisface las hipótesis del teorema con respecto a $\pi(N)$.
+		En este caso, si $H$ es un complemento para $N$ en $G$, $\pi(H)$ es un
+		complemento para $\pi(N)$ en $\pi(G)$.
+	\end{claim}
+
+	Si $N$ es resoluble, $\pi(N)$ es resoluble. Si $G/N$ es resoluble,
+	$\pi(G)/\pi(N)\simeq G/NL$ es resoluble. Además
+	$(\pi(G):\pi(N))=\frac{|G/L|}{|N/N\cap L|}$ divide a $(G:N)$. 
+	
+	Si $H$ es un complemento para $N$ en $G$, $|\pi(H)|$ y $|\pi(N)|$ son
+	coprimos. Luego $\pi(H)$ es un complemento para $\pi(N)$ pues
+	$\pi(G)=\pi(N)\pi(H)=\pi(NH)$ y la intersección
+	$\pi(N)\cap\pi(H)$ es trivial.
+
+	\begin{claim}
+		$N$ es minimal-normal en $G$.
+	\end{claim}
+
+	Sea $M\ne1$ normal tal que $M\subseteq N$. Sea $\pi\colon G\to G/M$ el
+	morfismo canónico. Vimos que $\pi(G)$ satisface las hipótesis del teorema
+	con respecto al subgrupo normal $\pi(N)$. Por la minimalidad de $G$, existe
+	$x\in G$ tal que $\pi(xK_1x^{-1})=\pi(K_2)$. Sabemos que el subgrupo
+	$U=MK_2$ también satisface las hipótesis del teorema con respecto al
+	subgrupo normal $U\cap N$. Como además $xK_1x^{-1}\cup K_2\subseteq U$,
+	podemos concluir que $xK_1x^{-1}$ y $K_2$ complementan a $U\cap N$ en $U$.
+	Luego $MK_2=G$ pues $xK_1x^{-1}$ y $K_2$ no son conjugados y $G$ es
+	minimal. Esto implica que $M=N$ pues 
+	\[
+		\frac{|K_2|}{|M\cap K_2|}=|MK_2|=|G|=|NK_2|=|N||K_2|.
+	\]
+
+	\begin{claim}
+		$N$ no es resoluble y $G/N$ es resoluble. 
+	\end{claim}
+	
+	En caso contrario, por el lema~\ref{lemma:minimal_normal} tendríamos que
+	$N$ es abeliano ya que $N$ es minimal-normal, y luego tendríamos una
+	contradicción al utilizar el teorema~\ref{theorem:SchurZassenhaus:abeliano}
+	que implicaría que $K_1$ y $K_2$ son conjugados.
+
+	\medskip
+	Sea $p\colon G\to G/N$ el morfismo canónico y sea $S$ tal que $p(S)$
+	minimal-normal en $p(G)=G/N$.  Por el lema~\ref{lemma:minimal_normal},
+	$p(S)$ un $p$-grupo para algún primo $p$.  Como $G=NK_1=NK_2$ y $N\subseteq
+	S$, el lema de Dedekind~\ref{lemma:Dedekind} implica que
+	\[
+	S=N(S\cap K_1)=N(S\cap K_2).
+	\]
+	Luego $S\cap K_1$ y $S\cap K_2$
+	complementan a $N$ en $S$. En particular $S\cap K_1$ y $S\cap K_2$ son
+	$p$-subgrupos de Sylow de $S$ pues 
+	\[
+		|S\cap K_1|=|S:N|=|S\cap K_2|,
+	\]
+	y $p$ no divide a $|N|$. 	
+	Por el teorema de Sylow, existe $s\in
+	S$ tal que \[
+	S\cap sK_1s^{-1}=S\cap K_2.
+	\]
+	En particular $S\ne G$ gracias a la minimalidad de $G$.
+	Sea 
+	\[
+		L=S\cap K_2=S\cap sK_1s^{-1}\ne1.
+	\]
+	Como $S$ es normal en $G$, $sK_1s^{-1}\cup K_2\subseteq N_G(L)$ (pues $L$
+	es normal en $sK_1s^{-1}$ y en $K_2$). Los subgrupos $sK_1s^{-1}\subseteq
+	N_G(L)$ y $K_2\subseteq N_G(L)$ complementan a $N\cap N_G(L)$ en $N_G(L)$, y luego
+	$N_G(L)=G$ por la minimalidad de $G$ (si $N_G(L)\ne G$ entonces
+	$sK_1s^{-1}$ y $K_2$ serían conjugados en $G$ por serlo en $N_G(L)$). Luego
+	$L$ es normal en $G$. 
+	
+	Sea $\pi_L\colon G\to G/L$ el morfismo canónico. Como
+	$\pi_L(K_1)$ y $\pi_L(K_2)$ complementan a $\pi_L(N)$ en $\pi_L(G)$, la minimalidad
+	de $|G|$ implica que existe $g\in G$ tal que $\pi_L(gK_1g^{-1})=\pi_L(K_2)$, es
+	decir: existe $g\in G$ tal que $(gK_1g^{-1})L=K_2L$.  Luego $gK_1g^{-1}\cup
+	K_2\subseteq \langle K_2,L\rangle=K_2$ pues $L\subseteq K_2$. Tenemos entonces que
+	$gK_1g^{-1}=K_2$, una contradicción por la minimalidad de $G$. 
+%	Sea $L$ un subgrupo maximal normal de $G$ tal que $N\subseteq L$. Por
+%	definición $L\ne G$. Como $L\cap K_1$ y $L\cap K_2$ complementan a $N$ en
+%	$L$, la minimalidad de $G$ implica que existe $x\in G$ tal que 
+%	\[ 
+%	L\cap K_2=x(L\cap K_1)x^{-1}=L\cap xK_1x^{-1}.
+%	\]
+%	Sea $D=L\cap K_2$. Como $L$ es normal en $G$, $D$ es normal en $K_2$ y en
+%	$xK_1x^{-1}$. Como $K_2$ y $xK_1x^{-1}$ son complementos para 
+%	$N$ en $G$ y además
+%	$xK_1x^{-1}\cup K_2\subseteq N_G(D)$, la minimalidad de $G$ implica que $N_G(D)=G$.
+
+
+%	Si $N$ es resoluble, $N\ne1$ (pues de lo contrario $G=H=K$ y no hay nada
+%	para demostrar). Sea $L\subseteq N$ un subgrupo minimal normal de $G$. Por
+%	el lema~\ref{lemma:minimal_normal}, $L$ es abeliano\dots
+%
+%	Si $G/N$ es resoluble,\dots 
+\end{proof}
+
+\begin{remark}
+	Por el teorema de Feit--Thompson, no es necesario suponer que $N$ o $G/N$
+	es resoluble en el teorema~\ref{theorem:SchurZassenhaus:conjugacion}: como
+	todo grupo de order impar es resoluble y $|N|$ es coprimo con $(G:N)$,
+	alguno de estos grupos tiene orden impar.
+\end{remark}
+
+Veamos una aplicación a grupos resolubles finitos.
+
+\begin{theorem}
+	\label{theorem:solvable_maximal}
+	Sea $G$ un grupo finito resoluble y sea $p$ un primo que divide al orden de $G$.
+	Entonces existe un maximal $M$ de indice una potencia de $p$.
+\end{theorem}
+
+\begin{proof}
+	Procederemos por inducción en $|G|$. Si $G$ es un $p$-grupo, el resultado
+	es verdadero. Veamos el caso general. Sea $p$ un primo que divide al orden
+	de $G$, sea $N$ un subgrupo minimal-normal y sea $\pi\colon G\to G/N$ el
+	morfismo canónico. Como $G$ es resoluble, Por el lema~\ref{lemma:minimal_normal}, $N$ es un
+	$q$-grupo para algún primo $q$. Como $G/N$ es resoluble, si $p$ divide a
+	$(G:N)$ entonces, por hipótesis inductiva, $G/N$ tiene un subgrupo maximal
+	$M_1$ de índice una potencia de $p$. Por el teorema de la correspondencia,
+	$M=\pi^{-1}(M_1)$ es un subgrupo maximal de $G$ de índice una potencia de
+	$p$. Si $p$ no divide a $(G:N)$, $p$ divide a $|N|$ y luego
+	$N\in\Syl_p(G)$. Como $N$ es normal en $G$ y $|N|$ es coprimo con $|G/N|$,
+	el teorema de Schur--Zassenhaus~\ref{theorem:SchurZassenhaus} implica que
+	existe un complemento $K$ a $N$ en $G$, es decir $G=NK$ y $N\cap K=1$. Sea
+	$M$ un subgrupo maximal que contiene a $K$. Entonces $(G:M)$ es una
+	potencia de $p$.
+\end{proof}
+
+Veamos ahora una aplicación a grupos superresolubles finitos.
+
+\begin{definition}
+	\index{Grupo!lagrangiano}
+	Un grupo finito $G$ se dice \textbf{lagrangiano} si para cada $d$ que
+	divide a $|G|$ existe un subgrupo de $G$ de orden $d$.
+\end{definition}
+
+\begin{example}
+	El grupo $\Alt_4$ no es lagrangiano pues no tiene subgrupos de orden seis.
+\end{example}
+
+\begin{theorem}
+	Todo grupo finito superresoluble es lagrangiano. 
+\end{theorem}
+
+\begin{proof}
+	Sea $p$ un primo que divide al orden de $G$.  Como los subgrupos de un
+	grupo superresoluble son superresolubles, basta ver que existe un subgrupo
+	índice $p$. Como $G$ es resoluble, existe un subgrupo maximal $M$ de índice
+	$p^{\alpha}$ por el teorema~\ref{theorem:solvable_maximal}. Como los
+	maximales de superresolubles tienen índice primo
+	(teorema~\ref{theorem:super_structure}), se concluye que $\alpha=1$.
+\end{proof}

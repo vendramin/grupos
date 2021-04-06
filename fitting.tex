@@ -1,0 +1,225 @@
+\chapter{El subgrupo de Fitting}
+
+\begin{definition}
+	\index{$p$-radical!de un grupo}
+	Sea $G$ un grupo finito y sea $p$ un número primo. Se define el
+	\textbf{$p$-radical} de $G$ como el subgrupo
+	\[
+		O_p(G)=\bigcap_{P\in\Syl_p(G)}P.
+	\]
+\end{definition}
+
+\begin{lemma}
+	\label{lemma:core:Op(G)}
+	Sea $G$ un grupo finito y sea $p$ un número primo. 
+	\begin{enumerate}
+		\item $O_p(G)$ es normal en $G$.
+		\item Si $N$ es un subgrupo normal de $G$ contenido en algún
+			$P\in\Syl_p(G)$, entonces $N\subseteq O_p(G)$.
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	Sea $P\in\Syl_p(G)$ y hagamos actuar a $G$ en $G/P$ por multiplicación a
+	izquierda. Tenemos entonces un morfismo $\rho\colon G\to\Sym_{G/P}$ con
+	núcleo
+	\begin{align*}
+		\ker\rho&=\{x\in G:\rho_x=\id\}
+		=\{x\in G:xgP=gP\;\forall g\in G\}\\
+		&=\{x\in G:x\in gPg^{-1}\;\forall g\in G\}=\bigcap_{g\in G}gPg^{-1}=O_p(G).
+	\end{align*}
+	Luego $O_p(G)$ es normal en $G$.
+
+	Sea ahora $N$ un subgrupo normal de $G$ tal que $N\subseteq P$. Como para
+	todo $g\in G$ se tiene $N=gNg^{-1}\subseteq gPg^{-1}$, se concluye que
+	$N\subseteq O_p(G)$.
+\end{proof}
+
+\begin{definition}
+	\index{Subgrupo!de Fitting}
+	\index{Fitting!subgrupo de}
+	Sea $G$ un grupo finito y sean $p_1,\dots,p_k$ los factores primos de
+	$|G|$.  Se define el \textbf{subgrupo de Fitting} como el subgrupo
+	\[
+		F(G)=O_{p_1}(G)\cdots O_{p_k}(G)
+	\]
+\end{definition}
+
+\begin{exercise}
+	Demuestre que $F(G)$ es characterístico en $G$.
+\end{exercise}
+
+\begin{svgraybox}
+	Sea $f\in\Aut(G)$ y sea $p$ un primo. Como $f$ 
+	permuta los $p$-subgrupos de Sylow de $G$, $f(O_p(G))=O_p(G)$. Luego
+	$f(F(G))=F(G)$.
+\end{svgraybox}
+
+
+\begin{example}
+	Sea $G=\Sym_3$. Es fácil ver que $O_2(G)=1$ y que $O_3(G)=\langle
+	(123)\rangle$. Entonces $F(G)=\langle (123)\rangle$.
+\end{example}
+
+\begin{theorem}[Fitting]
+	\label{theorem:Fitting}
+	Sea $G$ un grupo finito. El subgrupo de Fitting $F(G)$ es normal en $G$ y
+	nilpotente. Además $F(G)$ contiene a todo subgrupo normal nilpotente de
+	$G$.
+\end{theorem}
+
+\begin{proof}
+	Por definición $|F(G)|$ es el producto de los órdendes de los $O_p(G)$.
+	Como entonces $O_p(G)\in\Syl_p(F(G))$,  se concluye que $F(G)$ es
+	nilpotente por tener un $p$-subgrupo de Sylow normal para cada primo $p$.
+	Luego $F(G)$ es nilpotente por el teorema~\ref{theorem:nilpotente:eq}.
+
+	Sea $N$ un subgrupo normal de $G$ nilpotente y sea $P\in\Syl_p(N)$. Como
+	$N$ es nilpotente, $P$ es normal en $N$ y entonces $P$ es el único
+	$p$-subgrupo de Sylow de $N$. Luego $P$ es característico en $N$ y entonces
+	$P$ es normal en $G$. Como $N$ es nilpotente, $N$ es producto directo de
+	sus subgrupos de Sylow. Luego $N\subseteq O_p(G)$ por el
+	lema~\ref{lemma:core:Op(G)}.
+\end{proof}
+
+\begin{corollary}
+	\label{corollary:Z(G)subsetF(G)}
+	Sea $G$ un grupo finito. Entonces $Z(G)\subseteq F(G)$.
+\end{corollary}
+
+\begin{proof}
+	Como $Z(G)$ es nilpotente (por ser abeliano) y $Z(G)$ es normal en $G$,
+	$Z(G)\subseteq F(G)$ por el teorema~\ref{theorem:Fitting}.
+\end{proof}
+
+\begin{corollary}[Fitting]
+	\label{corollary:Fitting}
+	Sean $K$ y $L$ subgrupos normales nilpotentes de un grupo finito $G$.
+	Entonces $KL$ es nilpotente.
+\end{corollary}
+
+\begin{proof}
+	Por el teorema~\ref{theorem:Fitting} sabemos que $K\subseteq F(G)$ y
+	$L\subseteq F(G)$. Esto implica que $KL\subseteq F(G)$ y luego $KL$ es
+	nilpotente pues $F(G)$ es nilpotente.
+\end{proof}
+
+\begin{corollary}
+	\label{corollary:McapF(G)}
+	Sea $G$ un grupo finito y sea $N$ un subgrupo normal de $G$. Entonces
+	$N\cap F(G)=F(N)$.
+\end{corollary}
+
+\begin{proof}
+	Como $F(N)$ es característico en $N$, $F(N)$ es normal en $G$. Luego
+	$F(N)\subseteq N\cap F(G)$ pues $F(N)$ es nilpotente. Recíprocamente, como
+	$F(G)$ es normal en $G$, $F(G)\cap N$ es normal en $N$. Como $F(G)\cap N$
+	es nilpotente, $F(G)\cap N\subseteq F(N)$. 
+\end{proof}
+
+\begin{theorem}
+	Sea $G$ un grupo no trivial y resoluble. Todo subgrupo normal $N$ no
+	trivial contiene un subgrupo normal abeliano no trivial. 
+\end{theorem}
+
+\begin{proof}
+	Sabemos que $N\cap G^{(0)}=N\ne 1$. Como $G$ es resoluble, existe $m\in\N$ tal que $N\cap
+	G^{(m)}=1$. Sea $n\in\N$ maximal tal que $N\cap G^{(n)}\ne
+	1$. Como $[N,N]\subseteq N$ y $[G^{(n)},G^{(n)}]=G^{(n+1)}$, 
+	\[
+	[N\cap G^{(n)},N\cap G^{(n)}]\subseteq N\cap G^{(n+1)}=1.
+	\]
+	Luego $N\cap G^{(n)}$ es un subgrupo abeliano de $G$. Como además es normal
+	y nilpotente, $N\cap G^{(n)}\subseteq N\cap F(G)$.
+\end{proof}
+
+\begin{theorem}
+	\label{theorem:F(G)centraliza}
+	Si $G$ es un grupo finito y $N$ es un subgrupo minimal-normal entonces
+	entonces $F(G)\subseteq C_G(N)$.
+\end{theorem}
+
+\begin{proof}
+	Por el teorema~\ref{theorem:Fitting}, $F(G)$ es un subgrupo normal y nilpotente. 
+	Sea $N$ un subgrupo minimal-normal de $G$. 
+	El subgrupo $N\cap F(G)$
+	es normal en $G$.  Además $[F(G),N]\subseteq N\cap F(G)$. Si $N\cap F(G)=1$ entonces
+	$[F(G),N]=1$. Si no, $N=N\cap F(G)\subseteq F(G)$ por la minimalidad de $N$. Como
+	$F(G)$ es nilpotente, $N\cap Z(F(G))\ne 1$ por el
+	teorema~\ref{theorem:Z(nilpotent)}. Como $Z(F(G))$ es característico en $F(G)$ y
+	$F(G)$ es normal en $G$, $Z(F(G))$ es normal en $G$. Como $1\ne N\cap Z(F(G))$ es
+	normal en $G$, la minimalidad de $N$ implica que $N=N\cap Z(F(G))\subseteq
+	Z(F(G))$ y luego $[F(G),N]=1$. 
+\end{proof}
+
+\begin{corollary}
+	Sea $G$ un grupo finito y resoluble. 
+	\begin{enumerate}
+		\item Si $N$ es un subgrupo minimal-normal entonces $N\subseteq
+			Z(F(G))$. 
+		\item Si $H$ es un subgrupo normal entonces $H\cap F(G)\ne 1$.
+	\end{enumerate}
+\end{corollary}
+
+\begin{proof}
+	Demostremos la primera afirmación. Como $N$ es un $p$-grupo por el
+	lema~\ref{lemma:minimal_normal}, $N$ es nilpotente y luego $N\subseteq
+	F(G)$. 	Además $F(G)\subseteq C_G(N)$ por el
+	teorema~\ref{theorem:F(G)centraliza}.  Luego $N\subseteq Z(F(G))$. 
+
+	Demostremos ahora la segunda afirmación. El subgrupo $H$ contiene un
+	subgrupo minimal-normal $N$ y $N\subseteq F(G)$. Luego $H\cap F(G)\ne1$. 
+\end{proof}
+
+\begin{theorem}
+	Sea $G$ un grupo finito.
+	\begin{enumerate}
+		\item $\Phi(G)\subseteq F(G)$ y $Z(G)\subseteq F(G)$.
+		\item $F(G)/\Phi(G)\simeq F(G/\Phi(G))$.
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	Demostremos la primera afirmación. Como $\Phi(G)$ es normal en $G$ y
+	nilpotente por el teorema~\ref{theorem:Frattini} y $F(G)$ contiene a todo
+	subgrupo normal nilpotente de $G$ (teorema~\ref{theorem:Fitting}),
+	$\Phi(G)\subseteq F(G)$. Además $Z(G)$ es normal y nilpotente (por ser
+	abeliano) y luego $Z(G)\subseteq F(G)$.
+
+	Demostremos la segunda afirmación. Sea $\pi\colon G\to G/\Phi(G)$ el
+	morfismo canónico. Como $F(G)$ es nilpotente, $\pi(F(G))$ es nilpotente y
+	luego 
+	\[
+	\pi(F(G))\subseteq F(G/\Phi(G))
+	\]
+	por el teorema~\ref{theorem:Fitting}. Por otro lado, sea
+	$H=\pi^{-1}(F(G/\Phi(G)))$. Por la correspondencia, $H$ es un subgrupo
+	normal de $G$ que contiene a $\Phi(G)$. Si $P\in\Syl_p(H)$ entonces
+	$\pi(P)\in\Syl_p(\pi(H))$ pues $\pi(P)\simeq P/P\cap \Phi(G)$ es un
+	$p$-grupo y además $(\pi(H):\pi(P))$ es coprimo con $p$ pues 
+	\[
+	(\pi(H):\pi(P))
+	=\frac{|\pi(H)|}{|\pi(P)|}
+	=\frac{|H/\Phi(G)|}{|P/P\cap \Phi(G)|}
+	=\frac{(H:P)}{(\Phi(G):P\cap\Phi(G))}
+	\]
+	es un divisor de $(H:P)$, que es coprimo con $p$. Como $\pi(H)$ es
+	nilpotente, $\pi(P)$ es característico en $\pi(H)$ y luego $\pi(P)$ es
+	normal en $\pi(G)=G/\Phi(G)$. Entonces $P\Phi(G)=\pi^{-1}(\pi(P))$ es
+	normal en $G$. Como $P\in\Syl_p(P\Phi(G))$, el argumento de Frattini del
+	lema~\ref{lemma:Frattini_argument} implica que $G=\Phi(G)N_G(P)$. Luego $P$
+	es normal en $G$ por el lema~\ref{lemma:G=HPhi(G)}. Como $P$ es nilpotente
+	y normal en $G$, entonces $P\subseteq F(G)$ por el
+	teorema~\ref{theorem:Fitting}. Luego $H\subseteq F(G)$ y entonces
+	$F(G/\Phi(G))=\pi(H)\subseteq \pi(F(G))$.
+\end{proof}
+
+%\begin{exercise}
+%	Sea $G$ un grupo finito. Demuestre que
+%	$F(G)/Z(G)\simeq F(G/Z(G))$.
+%\end{exercise}
+%
+%\begin{svgraybox}
+%	Sea $\pi\colon G\to G/Z(G)$ el morfismo canónico. 
+%	Como $Z(G)$ es abeliano, $\pi(Z(G))$ es nilpotente y luego $\pi(Z(G))\subseteq F(G/Z(G))$. 
+%\end{svgraybox}<++>

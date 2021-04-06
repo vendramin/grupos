@@ -1,0 +1,352 @@
+\chapter{El subgrupo de Frattini}
+
+\begin{definition}
+	\index{Frattini!subgrupo de}
+	\index{Subgrupo!de Frattini}
+	Sea $G$ un grupo. Si $G$ posee grupos maximales, se define el
+	\textbf{subgrupo de Frattini} $\Phi(G)$ como la intersección de los
+	subgrupos maximales de $G$. En caso contrario, se define $\Phi(G)=G$.
+\end{definition}
+
+\begin{exercise}
+	Demuestre que $\Phi(G)$ es un subgrupo característico de $G$.
+\end{exercise}
+
+\begin{svgraybox}
+	Si $M$ es un subgrupo maximal de $G$ y $f\in\Aut(G)$ entonces $f(M)$ es
+	también un subgrupo maximal de $G$. La colección de subgrupos maximales de
+	$G$ es invariante por automorfismos de $G$ y luego $f(\Phi(G))\subseteq
+	\Phi(G)$.
+\end{svgraybox}
+
+\begin{example}
+	Sea $G=\Sym_3$.  Los subgrupos maximales de $G$ son 
+	\[
+	M_1=\langle (123)\rangle,
+	\quad
+	M_2=\langle (12)\rangle,
+	\quad
+	M_3=\langle (23)\rangle,
+	\quad
+	M_4=\langle (13)\rangle.
+	\]
+	Luego
+	$\Phi(G)=1$. 
+\end{example}
+
+\begin{example}
+	Sea $G=\langle g\rangle\simeq C_{12}$. Como $G$ es cíclico, los subgrupos de $G$ son 
+	\[
+	1,\quad
+	\langle g^6\rangle\simeq C_2,\quad
+	\langle g^4\rangle\simeq C_3,\quad
+	\langle g^3\rangle\simeq C_4,\quad
+	\langle g^2\rangle\simeq C_6,\quad
+	G.
+	\]
+	Como los únicos subgrupos maximales son $\langle g^3\rangle\simeq C_4$ y $\langle
+	g^2\rangle\simeq C_6$, obtenemos que $\Phi(G)=\langle g^3\rangle\cap \langle
+	g^2\rangle=\langle g^6\rangle\simeq C_2$.
+\end{example}
+
+\begin{example}
+	Sea $G=\SL_2(3)$. El siguiente código muestra que $\Phi(G)\simeq C_2$: 
+\begin{lstlisting}
+gap> StructureDescription(FrattiniSubgroup(SL(2,3)));
+"C2"
+\end{lstlisting}
+\end{example}
+
+\begin{lemma}[Dedekind]
+	\label{lemma:Dedekind}
+	\index{Lema!de Dedekind}
+	\index{Dedekind!lema de}
+	Sean $H,K,L$ subgrupos de $G$ tales que $H\subseteq L\subseteq G$. Entonces
+	$HK\cap L=H(K\cap L)$.
+\end{lemma}
+
+\begin{proof}
+	Demostraremos que $HK\cap L\subseteq H(K\cap L)$ pues la otra inclusión es
+	trivial. Si $x=hk\in HK\cap L$, donde $x\in L$, $h\in H$, $k\in K$,
+	entonces $k=h^{-1}x\in L\cap K$ pues $H\subseteq L$. Luego $x=hk\in H(L\cap
+	K)$.
+\end{proof}
+
+\begin{lemma}
+	\label{lemma:G=HPhi(G)}
+	Sea $G$ un grupo finito. Si $H$ es un subgrupo de $G$ tal que $G=H\Phi(G)$
+	entonces $H=G$.
+\end{lemma}
+
+\begin{proof}
+	Supongamos que $H\ne G$ y sea $M$ un subgrupo maximal de $G$ tal que
+	$H\subseteq M$. Como $\Phi(G)\subseteq M$, $G=H\Phi(G)\subseteq M$, una
+	contradicción.
+\end{proof}
+
+\begin{proposition}
+	\label{proposition:phi(N)phi(G)}
+	Sea $N$ un subgrupo normal de un grupo finito $G$. Entonces
+	$\Phi(N)\subseteq\Phi(G)$.
+\end{proposition}
+
+\begin{proof}
+	Como $\Phi(N)$ es característico en $N$ y $N$ es normal en $G$, $\Phi(N)$
+	es normal en $G$.  Sea $M$ un subgrupo maximal de $G$ tal que
+	$\Phi(N)\not\subseteq M$.  La maximalidad de $M$ implica que $\Phi(N)M=G$
+	pues de lo contrario $M=\Phi(N)M\supseteq\Phi(N)$.  Por el lema de
+	Dedekind~\ref{lemma:Dedekind} (con $H=\Phi(N)$, $K=M$ y $L=N$), 
+	\[
+		N=G\cap N=(\Phi(N)M)\cap N=\Phi(N)(M\cap N).
+	\]
+	Por el lema~\ref{lemma:G=HPhi(G)} esto implica que $\Phi(N)\subseteq
+	N\subseteq M$, una contradicción. Luego todo subgrupo maximal de $G$
+	contiene a $\Phi(N)$ y por lo tanto $\Phi(G)\supseteq\Phi(N)$. 
+\end{proof}
+
+\begin{lemma}
+	\label{lemma:nongenerators}
+	Sea $G$ un grupo finito. Entonces 
+	\[
+	\Phi(G)=\{x\in G:\text{si $G=\langle x,Y\rangle$ para algún $Y\subseteq G$ entonces $G=\langle Y\rangle$}\}.
+	\]
+%	$\Phi(G)$ es el conjunto de $x\in G$ tales que 
+%	si $G=\langle x,Y\rangle$ para algún subconjunto $Y$ de $G$ entonces
+%	$G=\langle Y\rangle$. 
+\end{lemma}
+
+\begin{proof}
+	Veamos primero la inclusión $\supseteq$.  Sea $x\in G$ y sea $M$ un
+	subgrupo maximal de $G$.  Si $x\not\in M$ entonces, como $G=\langle
+	x,M\rangle$, se tiene $G=\langle M\rangle=M$, absurdo. Luego $x\in M$ para
+	todo subgrupo maximal $M$ y entonces $x\in \Phi(G)$. 
+
+	Veamos ahora la inclusión $\subseteq$. Sea $x\in\Phi(G)$ tal que $G=\langle
+	x,Y\rangle$ para algún subconjunto $Y$ de $G$. Si $G\ne \langle Y\rangle$,
+	existe un subgrupo maximal $M$ tal que $\langle Y\rangle\subseteq M$. Como
+	$x\in M$, $G=\langle x,Y\rangle\subseteq M$, una contradicción.
+\end{proof}
+
+\begin{example}
+	Sea $p$ un número primo. Sea $G$ un $p$-grupo elemental abeliano, es decir
+	$G\simeq C_p^m$ para algún $m\in\N$.  Supongamos además que
+	$G=\langle x_1\rangle\times\cdots\times\langle x_m\rangle$ con $\langle x_j\rangle\simeq C_p$.  
+	Veamos que $\Phi(G)$ es trivial. 
+	Sea $j\in\{1,\dots,m\}$ y sea $n_j\in\{1,\dots,p-1\}$. Como el conjunto
+	\[
+	\{x_1,\dots,x_{j-1},x_j^{n_j},x_{j+1},\dots,x_m\}
+	\]
+	genera al grupo $G$ y $\{x_1,\dots,x_{j-1},x_{j+1},\dots,x_m\}$ no lo hace,
+	entonces $x_j^{n_j}\not\in\Phi(G)$ por el lema~\ref{lemma:nongenerators}.
+	Luego $\Phi(G)=1$.
+\end{example}
+
+\begin{theorem}[Frattini]
+	\label{theorem:Frattini}
+	\index{Teorema!de Frattini}
+	\index{Frattini!teorema de}
+	Sea $G$ un grupo finito. Entonces $\Phi(G)$ es nilpotente.
+\end{theorem}
+
+\begin{proof}
+	Sea $P\in\Syl_p(\Phi(G))$ para algún primo $p$. Como $\Phi(G)$ es normal en
+	$G$, gracias al argumento de Frattini, lema~\ref{lemma:Frattini_argument},
+	podemos escribir $G=\Phi(G)N_G(P)$. Por el lema~\ref{lemma:G=HPhi(G)},
+	$G=N_G(P)$. Como todo subgrupo de Sylow de $\Phi(G)$ es normal en $G$,
+	$\Phi(G)$ es nilpotente.
+\end{proof}
+
+\begin{exercise}
+	\label{exercise:G/M}
+	Sea $G$ un grupo y sea $M$ un subgrupo normal de $G$ maximal. Demuestre que
+	$G/M$ es cíclico de orden primo. 
+\end{exercise}
+
+\begin{svgraybox}
+	Por el teorema de la correspondencia, $G/M$ no tiene subgrupos no trivales.
+	Luego $G/M\simeq C_p$ para algún primo $p$.
+\end{svgraybox}
+
+\begin{theorem}[Gasch\"utz]
+	\label{theorem:Gaschutz}
+	\index{Teorema!de Gasch\"utz}
+	\index{Gasch\"utz!teorema de}
+	Si $G$ es un grupo finito entonces 
+	\[
+	[G,G]\cap Z(G)\subseteq\Phi(G).
+	\]
+\end{theorem}
+
+\begin{proof}
+	Sea $D=[G,G]\cap Z(G)$. Supongamos que $D$ no está contenido en $\Phi(G)$.
+	Como $\Phi(G)$ está contenido en todo subgrupo maximal de $G$, existe un
+	subgrupo maximal $M$ de $G$ tal que $D$ no está contenido en $M$.  Esto
+	implica que $G=MD$. Como $D\subseteq Z(G)$, $M$ es normal en $G$ pues si
+	$g=md\in G=MD$ entonces
+	\[
+		gMg^{-1}=(md)Md^{-1}m^{-1}=mMm^{-1}=M.
+	\]
+	El ejercicio~\ref{exercise:G/M} implica que $G/M$ es cíclico de orden
+	primo. Como en particular $G/M$ es abeliano, $[G,G]\subseteq M$. Luego
+	$D\subseteq [G,G]\subseteq M$, una contradicción.
+\end{proof}
+
+\begin{lemma}
+	\label{lemma:N_G(H)=H}
+	Sea $G$ un grupo finito y sea $P\in\Syl_p(G)$. Sea $H$ un subgrupo de $G$
+	tal que $N_G(P)\subseteq H$. Entonces $N_G(H)=H$.
+\end{lemma}
+
+\begin{proof}
+	Sea $x\in N_G(H)$. Como $P\in\Syl_p(H)$ y $Q=xPx^{-1}\in\Syl_p(H)$, existe
+	$h\in H$ tal que $hQh^{-1}=(hx)P(hx)^{-1}=P$. Entonces $hx\in
+	N_G(P)\subseteq H$ y luego $x\in H$. 
+\end{proof}
+
+\begin{theorem}[Wielandt]
+	\label{theorem:Wielandt}
+	\index{Teorema!de Wielandt}
+	\index{Wielandt!teorema de}
+	Sea $G$ un grupo finito. Entonces $G$ es nilpotente si y sólo si
+	$[G,G]\subseteq\Phi(G)$.
+\end{theorem}
+
+\begin{proof}
+	Supngamos que $[G,G]\subseteq\Phi(G)$. Sea $P\in\Syl_p(G)$. Si $N_G(P)\ne
+	G$ entonces $N_G(P)\subseteq M$ para algún subgrupo maximal $M$ de $G$. Si
+	$g\in G$ y $m\in M$ entonces, como 
+	\[
+		gmg^{-1}m^{-1}=[g,m]\in [G,G]\subseteq\Phi(G)\subseteq M,
+	\]
+	$M$ es normal en $G$. Como además $N_G(P)\subseteq M$, el
+	lema~\ref{lemma:N_G(H)=H} implica que 
+	\[
+	G=N_G(M)=M,
+	\]
+	una contradicción.
+	Luego $N_G(P)=G$. Todo subgrupo de Sylow de $G$ es normal en $G$ y entonces
+	$G$ es nilpotente.
+
+	Supongamos ahora que $G$ es nilpotente. Sea $M$ un subgrupo maximal de $G$.
+	Como $M$ es normal en $G$ y maximal, $G/M$ no tiene subgrupos propios.
+	Luego $G/M\simeq C_p$ para algún primo $p$. En particular $G/M$ es abeliano
+	y luego $[G,G]\subseteq M$. Como $[G,G]$ está contenido en
+	todo subgrupo maximal de $G$, $[G,G]\subseteq\Phi(G)$.
+\end{proof}
+
+\begin{theorem}
+	\label{theorem:G/phi(G)}
+	Sea $G$ un grupo finito. Entonces $G$ es nilpotente si y sólo si
+	$G/\Phi(G)$ es nilpotente.
+\end{theorem}
+%%% TODO: la demostración no está bien explicada!
+\begin{proof}
+	Si $G$ es nilpotente, entonces $G/\Phi(G)$ es nilpotente por el
+	teorema~\ref{theorem:nilpotente}. Supongamos que $G/\Phi(G)$ es
+	nilpotente. Sea $P\in\Syl_p(G)$. Como
+	$\Phi(G)P/\Phi(G)\in\Syl_p(G/\Phi(G))$ y $G/\Phi(G)$ es nilpotente,
+	$\Phi(G)P/\Phi(G)$ es un subgrupo normal de $G/\Phi(G)$. Luego, por el
+	teorema de la correspondencia, $\Phi(G)P$ es un subgrupo normal de $G$.
+	Como $P\in\Syl_p(\Phi(G)P)$, el argumento de Frattini del
+	lemma~\ref{lemma:Frattini_argument} implica que
+	\[
+		G=\Phi(G)PN_G(P)=\Phi(G)N_G(P)
+	\]
+	pues $P\subseteq N_G(P)$. Luego $G=N_G(P)$ por el
+	lema~\ref{lemma:nongenerators} y entonces $P$ es normal en $G$. Esto
+	implica que $G$ es nilpotente.
+\end{proof}
+
+\begin{theorem}[Hall]
+	\index{Teorema!de Hall}
+	\index{Hall!teorema de}
+	\label{theorem:Hall_nilpotente}
+	Sea $G$ un grupo finito y sea $N$ un subgrupo normal de $G$. Si $N$ y
+	$G/[N,N]$ son nilpotentes, entonces $G$ es nilpotente.
+\end{theorem}
+
+\begin{proof}
+	Como $N$ es nilpotente, $[N,N]\subseteq\Phi(N)$ por el
+	teorema~\ref{theorem:Wielandt}.	
+	Por la proposición~\ref{proposition:phi(N)phi(G)},
+	$[N,N]\subseteq\Phi(N)\subseteq\Phi(G)$. 
+	Por propiedad universal, existe un morfismo
+	$G/[N,N]\to G/\Phi(G)$ sobreyectivo que hace conmutar el diagrama
+    \[
+	\xymatrix{
+	G
+	\ar[d]
+	\ar[r]
+	& G/\Phi(G)
+	\\
+	G/[N,N]\ar@{-->}[ur]
+	}
+%    \xymatrix{ & P\ar[d]^f\ar@{-->}[ld]_h\\ M\ar[r]^g & N\ar[r] & 0 }
+    \]
+	Como por hipótesis $G/[N,N]$ es nilpotente, $G/\Phi(G)$ es nilpotente por
+	el teorema~\ref{theorem:nilpotente}. Luego $G$ es nilpotente por el
+	teorema~\ref{theorem:G/phi(G)}.
+\end{proof}
+
+\begin{definition}
+	Un \textbf{conjunto minimal de generadores} de un grupo $G$ es un conjunto
+	$X$ de generadores de $G$ tal que ningún subconjunto propio de $X$ genera a
+	$G$.
+\end{definition}
+
+\begin{remark}
+	Es importante observar que un conjunto minimal de generadores puede no
+	tener cardinal mínimo. Sea $G=\langle g\rangle\simeq C_6$.  Si $a=g^2$ y
+	$b=g^3$ entonces $\{a,b\}$ es un conjunto minimal de generadores de $G$,
+	aunque no tiene cardinal mínimo pues por ejemplo $G=\langle ab\rangle$.
+\end{remark}
+
+\begin{lemma}
+	\label{lemma:Burnside:minimal}
+	Sea $p$ un número primo y sea 
+	$G$ un $p$-grupo finito. Entonces $G/\Phi(G)$ es un espacio vectorial
+	sobre $\F_p$.
+\end{lemma}
+
+\begin{proof}
+	Sea $K$ un subgrupo maximal de $G$. Como $G$ es nilpotente por la
+	proposición~\ref{proposition:pgrupo_nilpotente}, $K$ es normal en $G$
+	(ejercicio~\ref{exercise:normalizadora}). Luego $G/K\simeq C_p$ por ser un $p$-grupo
+	simple. 
+	
+	Basta ver que $G/\Phi(G)$ es $p$-grupo elemental abeliano. En un $p$-grupo
+	pues $G$ es un $p$-grupo.  Sean $K_1,\dots,K_m$ son los subgrupos maximales
+	de $G$. Si $x\in G$ entonces $x^p\in K_j$ para todo $j\in\{1,\dots,m\}$ y
+	luego $x^p\in\Phi(G)=\cap_{j=1}^m K_j$. Además $G/\Phi(G)$ es abeliano pues
+	$[G,G]\subseteq \Phi(G)$ por ser $G$ nilpotente
+	(teorema~\ref{theorem:Wielandt}). 
+\end{proof}
+
+\begin{theorem}[Burnside]
+	\label{theorem:Burnside:basis}
+	Sea $p$ un número primo y sea $G$ un $p$-grupo finito. Si $X$ es un
+	conjunto minimal de generadores entonces $|X|=\dim G/\Phi(G)$. 
+\end{theorem}
+
+%%% TODO: explicar mejor la demostración
+
+\begin{proof}
+	Vimos en el lema~\ref{lemma:Burnside:minimal} que $G/\Phi(G)$ es un espacio
+	vectorial sobre $\F_p$. Sea $\pi\colon G\to G/\Phi(G)$ el morfismo canónico
+	y sea $\{x_1,\dots,x_n\}$ un conjunto minimal de generadores de $G$.
+	Veamos que $\{\pi(x_1),\dots,\pi(x_n)\}$ es un conjunto linealmente
+	independiente de $G/\Phi(G)$.  Supongamos sin perder generalidad que
+	$\pi(x_1)\in\langle \pi(x_2),\dots,\pi(x_n)\rangle$. Existe entonces $y\in
+	\langle x_2,\dots,x_n\rangle$ tal que $x_1y^{-1}\in\Phi(G)$. Como $G$ está
+	generado por $\{x_1y^{-1},x_2,\dots,x_n\}$ y $x_1y^{-1}\in\Phi(G)$, el
+	lema~\ref{lemma:nongenerators} implica que $G$ también está generado por
+	$\{x_2,\dots,x_n\}$, una contradicción a la minimalidad. Luego $n=\dim
+	G/\Phi(G)$.
+\end{proof}
+
+% TODO: agregar una aplicación (teorema de Hall). Ver Passman permutation groups, 11.7, pag 47
+
+%\begin{corollary}
+%	Sea $p$ un número primo y sea $G$ un $p$-grupo finito.  Todo elemento de
+%	$\Phi(G)$ pertenece a algún conjunto minimal de generadores.
+%\end{corollary}

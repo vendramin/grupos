@@ -1,0 +1,292 @@
+\chapter{El teorema del complemento normal}
+
+\begin{lemma}
+	\label{lemma:normal_complement}
+	Sea $G$ un grupo finito y sea $p$ un primo que divide al orden de $G$. Sea
+	$P\in\Syl_p(G)$. Si $g,h\in C_G(P)$ son conjugados en $G$ entonces son
+	conjugados en $N_G(P)$.
+\end{lemma}
+
+\begin{proof}
+	Sea $x\in G$ tal que $g=xhx^{-1}$. Entonces $g\in C_G(xPx^{-1})$. Luego $P$
+	y $xPx^{-1}$ son subgrupos de Sylow de $C_G(g)$. Por el teorema de Sylow,
+	existe $c\in C_G(g)$ tal que $P=cxP(cx)^{-1}$. Tenemos $cx\in N_G(P)$ y 
+	\[
+	(cx)h(cx)^{-1}=c(xhx^{-1})c^{-1}=cgc^{-1}=g.
+	\]
+\end{proof}
+
+\begin{definition}
+	\index{Complemento normal}
+	Sea $G$ un grupo finito y sea $p$ un primo que divide al orden de $G$. Un
+	\textbf{$p$-complemento normal} es un subgrupo normal $N$ de orden coprimo
+	con $p$ y tal que $(G:N)$ es una potencia de $p$.
+\end{definition}
+
+\begin{definition}
+	\index{$p$-nilpotente}
+	Un grupo finito se dice \textbf{$p$-nilpotente} si tiene un $p$-complemento
+	normal. 
+\end{definition}
+
+\begin{proposition}
+	Si $G$ tiene un $p$-complemento normal $N$, entonces $N$ es un subgrupo
+	característico de $G$.
+\end{proposition}
+
+\begin{proof}
+	Supongamos que $|G|=p^\alpha n$, donde $n$ es coprimo con $p$, y sea
+	$\pi\colon G\to G/N$ el morfismo canónico.  Por hipótesis, $N$ tiene orden
+	$n$. Vamos a demostrar que $N$ es el único subgrupo de $G$ de orden $n$. Si
+	$K$ es un subgrupo de $G$ de orden $n$, entonces  $\pi(K)\simeq K/K\cap N$
+	y luego el orden de $\pi(K)$ divide a $m$. Pero además el orden de $\pi(K)$
+	divide al primo $p$ pues $\pi(K)\leq G/N$. Luego $\pi(K)$ es trivial y
+	entonces $K=N$ y luego $G$ tiene un único subgrupo de orden $n$. En
+	particular, $N$ es un subgrupo característico de $G$.
+\end{proof}
+
+
+
+\begin{theorem}[Burnside]
+	\index{Burnside!teorema del complemento normal de}
+	\index{Teorema del complemento normal}
+	\label{theorem:Burnside:normal_complement}
+	Sea $G$ un grupo finito y sea $p$ un primo que divide a $|G|$. Sea
+	$P\in\Syl_p(G)$ tal que $P\subseteq Z(N_G(P))$. Entonces $G$ es
+	$p$-nilpotente.
+\end{theorem}
+
+\begin{proof}
+	Como $P$ es abeliano, sea $\nu\colon G\to P$ el morfismo de transferencia.
+	Sea $g\in P$.  Por el lema~\ref{lemma:evaluation} existen $s_1,\dots,s_m\in
+	G$ y existen $n_1,\dots,n_m$ tales que $n_1+\cdots+n_m=n$,
+	$s_i^{-1}g^{n_i}s_i\in P$ y 
+	\[
+		v(g)=\prod_{i=1}^m s_i^{-1}g^{n_i}s_i.
+	\]
+	Como $P$ es abeliano, $P\subseteq C_G(P)$. Por 
+	el lema~\ref{lemma:normal_complement}, existe $c_i\in N_G(P)$ tal
+	que 
+	\[
+	s_i^{-1}g^{n_i}s_i=c_i^{-1}g^{n_i}c_i,
+	\]
+	y luego $s_i^{-1}g^{n_i}s_i=g_i^{n_i}$ pues $P\subseteq Z(N_G(P))$. Tenemos
+	entonces que $\nu(g)=g^n$, donde $n=(G:P)$. Como $n$ y $|P|$ son coprimos,
+	existen $r,s\in\Z$ tales que $rn+s|P|=1$. Esto implica que $\nu|_P$ es
+	sobreyectiva pues
+	\[
+	g=(g^r)^n=\nu(g^r).
+	\]
+	Por el teorema de isomorfismos, $P/\ker\nu\cap P\simeq\nu(P)=P$. 
+	Luego $\ker\nu\cap P=1$. Además $\nu(G)=\nu(P)$ pues 
+	$P\supseteq \nu(G)\supseteq \nu(P)=P$.
+	
+	Veamos que $\ker\nu$ es un $p$-complemento normal en $G$. Es claro que $\ker\nu$ es normal en $G$. 
+	Como $(G:\ker\nu)=|\nu(G)|=|P|$ y $P$ es un $p$-subgrupo de Sylow, se concluye que $\ker\nu$ tiene orden coprimo con $p$.
+%	Sea $K=\ker\nu$. Por el primer teorema de isomorfismo, $G/K\simeq P$. El
+%	subgrupo $K$ es un complemento normal de $P$ en $G$ pues $G=KP$ y $K\cap
+%	P=1$ (pues $|K|=n$ y $|P|$ son coprimos).
+\end{proof}
+
+% $P\subseteq Z(N_G(P))$ si y sólo si $N_G(P)=C_G(P)$.
+
+
+\begin{lemma}
+	\label{lemma:NC}
+	Sea $G$ un grupo y $H$ un subgrupo de $G$. Entonces $C_G(H)$ es un subgrupo
+	normal de $N_G(H)$ y $N_G(H)/C_G(H)$ es isomorfo a un subgrupo de
+	$\Aut(H)$.
+\end{lemma}
+
+\begin{proof}
+	Sea $\phi\colon N_G(H)\to\Aut(H)$,  $\phi(g)=c_g|H$, donde
+	$c_g(h)=ghg^{-1}$.  La función $\phi$ está bien definida (pues su dominio
+	es $N_G(H)$) y es morfismo de grupos. Como $\ker\phi=C_G(H)$, se tiene que
+	$C_G(H)$ es normal en $N_G(H)$. Por el primer teorema de isomorfismo,
+	$N_G(H)/C_G(H)\simeq\phi(N_G(H))\leq\Aut(H)$.
+\end{proof}
+
+\begin{corollary}
+	\label{corollary:Sylow_ciclico}
+	Sea $G$ un grupo finito y sea $p$ el menor primo que divide a $|G|$. Si
+	algún $P\in\Syl_p(G)$ es cíclico, $G$ es $p$-nilpotente.
+\end{corollary}
+
+\begin{proof}
+	Supongamos que $|P|=p^m$.  Por el lema~\ref{lemma:NC}, $N_G(P)/C_G(P)$ es
+	isomorfo a un subgrupo de $\Aut(P)$. Como $P$ es cíclico, $|N_G(P)/C_G(P)|$ divide a 
+	\[
+		|\Aut(P)|=\phi(|P|)=p^{m-1}(p-1).
+	\]
+	Como $P\subseteq C_G(P)$ por ser $P$ abeliano, $p$ es coprimo con
+	$|N_G(P)/C_G(P)|$.  Luego $|N_G(P)/C_G(P)|$ divide a $p-1$. Pero $p-1$ y
+	$|G|$ son coprimos, pues $p$ es el menor primo que divide a $|G|$.  Como
+	además $|N_G(P)/C_G(P)|$ divide al orden de $G$, se concluye que
+	$|N_G(P)/C_G(P)|=1$, es decir: $N_G(P)=C_G(P)$. 
+
+	Como $P$ es abeliano, $P\subseteq Z(C_G(P))=Z(N_G(P))$. El teorema de
+	Burnside~\ref{theorem:Burnside:normal_complement} implica entonces que $G$
+	es $p$-nilpotente. 
+\end{proof}
+
+\begin{exercise}
+	Sea $G$ un grupo finito tal que todos sus subgrupos de Sylow son cíclicos.
+	Entonces $G$ es resoluble.
+\end{exercise}
+
+Vamos a demostrar algo más fuerte:
+
+\begin{corollary}
+	\label{corollary:Sylow_ciclicos:resoluble}
+	Sea $G$ un grupo finito tal que todos sus subgrupos de Sylow son cíclicos.
+	Entonces $G$ es superresoluble.
+\end{corollary}
+
+%\begin{proof}
+%	Supongamos que $G$ es no trivial y hagamos inducción en $|G|$. Si $p$ es el
+%	menor primo que divide a $|G|$, por el
+%	corolario~\ref{corollary:Sylow_ciclico} el grupo $G$ tiene un
+%	$p$-complemento normal $N$. Por hipótesis inductiva, $N$ es super
+%	resoluble, y entonces existe una sucesión
+%	\[
+%		1=N_0\subseteq N_1\subseteq\cdots\subseteq N_k=N
+%	\]
+%	de subgrupos normales de $N$ tal que cada cociente $N_{i+1}/N_i$ es cíclico
+%	de orden primo.  Como $K$ es un complemento normal, es un subgrupo
+%	característico de $G$ y luego cada $N_i$ es normal en $G$. Sea $P\in\Syl_p(G)$ 
+%	y supongamos que $|G|=p^{\alpha}m$ con $m$ no divisible por $p$. 
+%	Sea $\pi\colon G\to G/K\simeq P$ el morfismo canónico. 
+%	Sabemos que para cada $j\in\{1,\dots,\alpha-1\}$, existe un subgrupo $H_h$ tal que $K\subseteq H_j$ y $|\pi(H_j)|=p^j$. 
+%	Como $P$ es cíclico, todo subgrupo es característico en $P$ y luego 
+%\end{proof}
+%\begin{example}
+%	Si los Sylows de un grupo finito $G$ son cíclicos y $p$ es el menor primo que
+% 	divide a $|G|$, sabemos que existe un $p$-complemento. Este subgrupo podría no ser cíclico!
+%\end{example}
+
+\begin{proof}
+	Supongamos que $G$ es no trivial y hagamos inducción en $|G|$. Si $p$ es el
+	menor primo que divide a $|G|$, por el
+	corolario~\ref{corollary:Sylow_ciclico} el grupo $G$ tiene un
+	$p$-complemento normal $N$. Por hipótesis inductiva, $N$ es resoluble. Como
+	$G/N$ es un $p$-grupo, es resoluble. Luego $G$ es resoluble.
+\end{proof}
+
+\begin{corollary}
+	Sea $G$ un grupo finito cuyo orden es libre de cuadrados. Entonces $G$ es
+	resoluble.
+\end{corollary}
+
+\begin{proof}
+	Es consecuencia del corolario~\ref{corollary:Sylow_ciclicos:resoluble} pues
+	en este caso todo subgrupo de Sylow es cíclico.  
+\end{proof}
+
+\begin{corollary}
+	Sea $G$ un grupo finito simple no abeliano y sea $p$ el menor primo que
+	divide a $|G|$. Entonces $p^3$ divide a $|G|$ o bien $12$ divide a $|G|$.
+\end{corollary}
+
+\begin{proof}
+	Sea $P\in\Syl_p(G)$. Por el corolario~\ref{corollary:Sylow_ciclico}, $P$ no
+	es cíclico, y entonces $|P|\geq p^2$. Si $p^3$ no divide a $|G|$, $P\simeq
+	C_p\times C_p$ es un $\F_p$-espacio vectorial de dimensión dos. Como
+	$|N_G(P)/C_G(P)|$ divide al orden de $G$, los divisores primos de
+	$|N_G(P)/C_G(P)|$ son $\geq p$. Además, como $N_G(P)/C_G(P)$ es isomorfo a
+	un subgrupo de $\Aut(P)$ por el lema~\ref{lemma:NC} y
+	$\Aut(P)\simeq\GL_2(p)$ tiene orden $(p^2-1)(p^2-p)=p(p+1)(p-1)^2$,
+	$|N_G(P)/C_G(P)|$ divide a $p(p+1)(p-1)^2$.  Como $P$ es abeliano,
+	$P\subseteq C_G(P)$. Entonces $|N_G(P)/C_G(P)|$ es coprimo con $p$ y luego
+	$|N_G(P)/C_G(P)|$ divide a $(p+1)(p-1)^2$. Como $p$ es el menor primo que
+	divide a $|G|$, los números $p-1$ y $|N_G(P)/C_G(P)|$ son coprimos, y
+	entonces $|N_G(P)/C_G(P)|$ divide a $p+1$.  Además, por el teorema de
+	Burnside~\ref{theorem:Burnside:normal_complement}, $|N_G(P)/C_G(P)|\ne1$.
+	Esto implica que $p=2$ pues si $p$ es impar el menor primo que divide a
+	$|N_G(P)/C_G(P)|$ es $\geq p+2$.  Como entonces $p=2$, se concluye que
+	$|N_G(P)/C_G(P)|=3$ y luego $|G|$ es divisible por $12=2^23$. 
+\end{proof}
+
+\begin{theorem}
+	\label{theorem:[GG]PZNG(P)=1}
+	Sea $G$ un grupo finito y sea $P$ un subgrupo de Sylow abeliano. Entonces 
+	$[G,G]\cap P\cap Z(N_G(P))=1$.
+\end{theorem}
+
+\begin{proof}
+	Sea $x\in [G,G]\cap P\cap Z(N_G(P))$ y sea $\nu\colon G\to P$ el morfismo
+	de transferencia.  Por el lema~\ref{lemma:evaluation} existen
+	$s_1,\dots,s_m\in G$ y existen $n_1,\dots,n_m$ tales que
+	$n_1+\cdots+n_m=(G:P)$, $s_i^{-1}g^{n_i}s_i\in P$ y 
+	\[
+		v(x)=\prod_{i=1}^m s_i^{-1}x^{n_i}s_i.
+	\]
+	Como $P$ es abeliano, $P\subseteq C_G(P)$. Entonces $x^{n_i}$ y
+	$s_i^{-1}x^{n_i}s_i$ son conjugados en $N_G(P)$ por el
+	lema~\ref{lemma:normal_complement}. Como $x^{n_i}$ es central en $N_G(P)$ y
+	$[G,G]\subseteq\ker\nu$, se concluye que $x=1$ pues $1=\nu(x)=x^{(G:P)}$ y
+	$x\in P$.
+\end{proof}
+
+\begin{corollary}
+	Sea $G$ un grupo finito no abeliano y sea $P\in\Syl_2(G)$ tal que $P\simeq
+	C_{a_1}\times\cdots\times C_{a_k}$ con $a_1>a_2\geq a_3\geq\cdots\geq
+	a_k\geq 2$.  Entonces $G$ no es simple. 
+\end{corollary}
+
+\begin{proof}
+	Sea $S=\{x^{n/2}:x\in P\}$. Es fácil ver que $S$ es un subgrupo de $P$ y
+	que $S$ es característico en $P$, es decir: $f(S)\subseteq S$ para todo
+	$f\in\Aut(P)$. Como $S\simeq C_2$, podemos escribir $S=\{1,s\}$. Entonces
+	$s\in Z(N_G(P))$ pues $gsg^{-1}\in S$ para todo $g\in N_G(P)$. Por el
+	teorema~\ref{theorem:[GG]PZNG(P)=1}, $s\not\in[G,G]$ y luego $[G,G]\ne G$.
+	Si $G$ fuera simple, $G$ sería abeliano pues $[G,G]=1$.
+\end{proof}
+
+Vimos en el corolario~\ref{corollary:Sylow_ciclicos:resoluble} que todo grupo
+tal que todos sus subgrupos de Sylow son cíclicos es resoluble.
+
+\begin{definition}
+	\index{Z-grupo}
+	Un Z-grupo es un grupo finito $G$ tal que 
+	odos sus subgrupos de Sylow son
+	cíclicos.
+\end{definition}
+
+\index{Grupo!meta-cíclico}
+Un grupo $G$ se dice \emph{meta-cíclico} si $G$ tiene un subgrupo normal $N$
+cíclico tal que $G/N$ es cíclico.
+
+\begin{lemma}
+	Si $G$ es un grupo resoluble, entonces $C_G(F(G))=F(G)$.
+%	https://groupprops.subwiki.org/wiki/Solvable_implies_Fitting_subgroup_is_self-centralizing		
+\end{lemma}
+
+\begin{proof}
+	
+\end{proof}
+
+\begin{theorem}
+	\label{theorem:Z=>metacyclic}
+	Todo Z-grupo es meta-cíclico.
+\end{theorem}
+
+\begin{proof}
+	Sea $G$ un Z-grupo.	Por el
+	corolario~\ref{corollary:Sylow_ciclicos:resoluble}, $G$ es resoluble y
+	entonces, por el lema, el subgrupo de Fitting $F(G)$ satisface
+	$C_G(F(G))\subseteq F(G)$. 
+	
+	Demostremos que $F(G)$ es cíclico. En efecto, como $F(G)$ es nilpotente,
+	$F(G)$ es producto directo de sus subgrupos de Sylow. Como todo subgrupo de
+	Sylow de $F(G)$ es un $p$-subgrupo de $G$, todo Sylow de $F(G)$ es cíclico
+	(por estar contenido en algún subgrupo de Sylow de $G$). 
+
+	Como $F(G)$ es cíclico, $F(G)$ es en particular abeliano y luego
+	$F(G)\subseteq C_G(F(G))$. Si $G$ actúa en $F(G)$ por conjugación, se tiene
+	un morfismo $\gamma\colon G\to\Aut(F(G))$ tal que
+	$\ker\gamma=C_G(F(G))=F(G)$ (pues $\gamma_g(x)=gxg^{-1}$). En particular,
+	$G/F(G)$ es abeliano por ser isomorfo a un subgrupo del grup abeliano
+	$\Aut(F(G))$. Como además los subgrupos de Sylow de $G/F(G)$ son cíclicos (pues
+	son cocientes de los subgrupos de Sylow de $G$), $G/F(G)$ es cíclico.
+\end{proof}
+

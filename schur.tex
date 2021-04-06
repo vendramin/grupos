@@ -1,0 +1,215 @@
+\chapter{Un teorema de Schur}
+
+\begin{lemma}
+	\label{lemma:[s,t]} 
+	Sea $G$ un grupo y sea $T$ un transversal de $Z(G)$ en
+	$G$. Entonces todo conmutador de $G$ es de la forma $[s,t]$, $s,t\in T$. En
+	particular, $G$ tiene finitos conmutadores si $Z(G)$ es de índice finito.
+\end{lemma}
+
+\begin{proof}
+	Todo elemento de $G$ puede escribirse como $sx$, $s\in T$, $x\in
+	Z(G)$. Para demostrar la primera afirmación basta observar que
+	\[
+		[sx,ty]=[s,t]
+	\]
+	pues $x,y\in Z(G)$. La segunda afirmación es evidente ya que
+	$|T|=(G:Z(G))$.
+\end{proof}
+
+\begin{theorem}[Dietzmann]
+	\label{theorem:Dietzmann} 
+	Sea $G$ un grupo y sea $X\subseteq G$ un
+	subconjunto finito de $G$ cerrado por conjugación. Si existe $n\in\N$ tal
+	que $x^n=1$ para todo $x\in X$, entonces $\langle X\rangle$ es un subgrupo
+	finito de $G$.
+\end{theorem}
+
+\begin{proof}
+	Sea $S=\langle X\rangle$. Como $x^{-1}=x^{n-1}$, todo elemento de $S$ puede
+	escribirse como producto (finito) de elementos de $X$. 
+	
+	Fijemos $x\in X$. Vamos a demostrar que si $x\in X$ aparece $k\geq 1$ veces
+	en la representación de $s$, podemos escribir a $s$ como producto de $m$
+	elementos de $X$ donde los primeros $k$ son iguales a $x$.  Supongamos que
+	\[
+	s=x_1x_2\cdots x_{t-1}xx_{t+1}\cdots x_m,
+	\]
+	donde cada $x_j\ne x$ para todo $j\in\{1,\dots,t-1\}$. Entonces
+	\[
+		s=x(x^{-1}x_1x)(x^{-1}x_2x)\cdots (x^{-1}x_{t-1}x)x_{t+1}\cdots x_m
+	\]
+	es producto de $m$ elementos de $X$ pues $X$ es cerrado por conjugación, y
+	el primer elemento es nuestro $x$. Este mismo argumento implica que $s$
+	puede escribirse como
+	\[
+		s=x^ky_{k+1}\cdots y_m,
+	\]
+	donde los $y_j$ son elementos de $X\setminus\{x\}$.
+
+	Sea $s\in S$ y escribamos a $s$ como producto de $m$ elementos de $X$,
+	donde $m$ es el mínimo posible.  Para ver que $S$ es finito basta ver que 
+	$m\leq (n-1)|X|$. 
+	
+	Si suponemos que $m>(n-1)|X|$, 
+	al menos un $x\in X$ aparecería $n$ veces en la
+	representación de $s$. Sin pérdida de generalidad, podríamos escribir 
+	\[
+		s=x^nx_{n+1}\cdots x_m=x_{n+1}\cdots x_m,
+	\]
+	una contradicción a la minimalidad de $m$. 
+\end{proof}
+
+\begin{theorem}[Schur]
+	\label{theorem:Schur_commutador}
+	Si $Z(G)$ tiene índice finito en $G$ entonces $[G,G]$ es finito.
+\end{theorem}
+
+\begin{proof}
+	Sea $X=\{[x,y]:x,y\in G\}$. Por el lema~\ref{lemma:[s,t]}), $X$ es finito.
+	Además $X$ es cerrado por conjugación pues
+	\[
+		g[x,y]g^{-1}=[gxg^{-1},gyg^{-1}]
+	\]
+	para todo $g,x,y\in G$. Si $n=(G:Z(G))$ entonces $x^n=1$ para todo $x\in X$
+	por el corolario~\ref{corollary:[x,y]^n=1}. Luego el teorema queda demostrado 
+	al aplicar el teorema~\ref{theorem:Dietzmann}.
+\end{proof}
+
+\begin{corollary}[Sury]
+	Si el conjunto de conmutadores de un grupo $G$ es finito, entonces
+	$[G,G]$ es también finito.
+\end{corollary}
+
+\begin{proof}
+	Sea $C$ el conjunto de conmutadores de $G$ y sea $H$ el subgrupo de $G$
+	generado por $C$. Sabemos que $H$ es finitamente generado, digamos por los elementos 
+	$h_1,\dots,h_n$. Como $h\in Z(H)$ si y sólo si $h\in C_H(H_i)$ para todo
+	$i\in\{1,\dots,n\}$, se tiene que $Z(H)=\cap_{i=1}^n C_H(h_i)$. Además, si
+	$h\in H$, entonces $hh_ih^{-1}=ch_i$ para algún $c\in C$. Luego la clase de
+	conjugación de cada $h_i$ tiene a lo sumo tantos elementos como $C$. Esto
+	implica que
+	\[
+		|H/Z(H)|=|H/\cap_{i=1}^n C_H(H_i)|\leq\prod_{i=1}^n (H:C_H(h_i))\leq |C|^n.
+	\]
+	Como entonces $H/Z(H)$ es finito, $[H,H]$ es finito. Luego 
+	$[G,G]=\langle C\rangle\subseteq [H,H]$ 
+	es también un grupo finito.
+\end{proof}
+
+El corolario anterior puede utilizarse también para dar una demostración
+alternativa del teorema que demostraremos elementalente a condituación. 
+
+\begin{theorem}[Hilton--Niroomand]
+	\index{Teorema de!Hilton--Niroomand}	
+	Sea $G$ un grupo finitamente generado. Si $[G,G]$ es finito y $G/Z(G)$ está generado por 
+	$n$ elementos, entonces 
+	\[
+	|G/Z(G)|\leq |[G,G]|^n. 
+	\]
+\end{theorem}
+
+\begin{proof}
+	Supongamos que $G/Z(G)=\langle x_1Z(G),\dots,x_nZ(G)\rangle$. Sea 
+	\[
+		f\colon G/Z(G)\to [G,G]\times\cdots\times [G,G],
+		\quad
+		y\mapsto ([x_1,y],\dots,[x_n,y]).
+	\]
+	Primero observamos que $f$ está bien definida: si $y\in G$ y $z\in Z(G)$ entonces
+	\[
+		f(yz)=[x_i,yz]=[x_i,y]=f(y). 
+	\]
+	Ahora veamos que $f$ es inyectiva: Supongamos que $f(xZ(G))=f(yZ(G))$. Entonces
+	$[x_i,x]=[x_i,y]$ para todo $i\in\{1,\dots,n\}$. Para cada $i$ calculamos
+	\begin{align*}
+		[x^{-1}y,x_i] &= x^{-1}[y,x_i]x[x^{-1},x_i]\\
+		&=x^{-1}[y,x_i][x_i,x]x=x^{-1}[x_i,y]^{-1}[x_i,x]x=x^{-1}[x_i,y]^{-1}[x_i,y]x=1.
+	\end{align*}
+	Luego $x^{-1}y\in Z(G)$ pues, como 
+	todo $g\in G$ puede escribirse como $g=x_kz$ para algún $k\in\{1,\dots,n\}$ y algún $z\in Z(G)$, se tiene
+	que $[x^{-1}y,g]=[x^{-1}y,x_kz]=[x^{-1}y,x_k]=1$. Esto implica que $f$ es inyectiva y luego
+	$|G/Z(G)|\leq |[G,G]|^n$. 
+\end{proof}
+
+
+
+% serre, 7.12
+Veamos una aplicación del morfismo de transferencia a grupos infinitos.
+
+\begin{theorem}
+	Sea $G$ un grupo sin torsión que contiene un subgrupo de índice finito
+	isomorfo a $\Z$. Entonces $G\simeq\Z$.
+\end{theorem}
+
+\begin{proof}
+	Podemos suponer que $G$ contiene un subgrupo normal de índice finito
+	isomorfo a $\Z$ pues si $H$ un subgrupo de $G$ de índice finito isomorfo a
+	$\Z$, $K=\cap_{x\in G}xHx^{-1}$ es normal en $G$, $K$ es no trivial (pues $K=\Core_G(H)$ y 
+	$G$ no tiene torsión) y luego $K\simeq\Z$ (pues 
+	$K\subseteq H$) y $(G:K)=(G:H)(H:K)$ es finito.
+
+	La acción de $G$ en $K$ por conjugación induce un morfismo 
+	$\epsilon\colon G\to\Aut(K)$. Como $\Aut(K)=\{-1,1\}$ pues $K\simeq\Z$, 
+	hay que considerar dos casos. 
+	
+	Supongamos primero que $\epsilon=\id$. Como entonces $K\subseteq Z(G)$, sea
+	$\nu\colon G\to K$ el morfismo de transferencia. Por la
+	proposición~\ref{proposition:v(g)=g^n}, $\nu(g)=g^n$, donde $n$ es el
+	índice de $K$ en $G$.  Como $G$ no tiene torsión, $\nu$ es inyectiva. Luego
+	$G\simeq\Z$ por ser isomorfo a un subgrupo de $K$.
+
+	Supongamos ahora que $\epsilon\ne\id$. Sea $N=\ker\epsilon\ne G$. Como
+	$K\simeq\Z$ es abeliano, $K\subseteq N$. Al aplicar el resultado del
+	párrafo anterior al caso $\epsilon|_N=1$, se concluye que $N\simeq\Z$ pues
+	$N$ posee un subgrupo de índice finito isomorfo a $\Z$. Sea $g\in G\setminus N$. 
+	Como $N$ es normal en $G$, $g$ actúa por conjugación en $N$ y entonces
+	se tiene un morfismo de grupos $c_g\in\Aut(N)\simeq\{-1,1\}$. Como
+	$K\subseteq N$ y $g$ actúa de forma no trivial en $K$, 
+	$c_g(n)=gng^{-1}=n^{-1}$ para todo $n\in N$.  Como
+	$g^2\in N$, entonces
+	\[
+		g^2=gg^2g^{-1}=g^{-2}.
+	\]
+	Luego $g^4=1$, una contradicción porque $g\ne1$ y $G$ no tiene torsión. 
+\end{proof}
+
+
+%\section{Grupos simples}
+%
+%Vamos a demostrar un caso del teorema de clasificación de grupos simples.
+%Primero necesitamos un lema.
+%
+%\begin{lemma}
+%	\label{lemma:simple}
+%	Sea $G$ un grupo finito simple no abeliano y sea $H$ un subgrupo propio de
+%	$G$. Entonces $(G:H)\geq5$. Más aún, si $(G:H)=5$ entonces $|G|\leq60$.
+%\end{lemma}
+%
+%\begin{proof}
+%	Sea $n=(G:H)>1$. Como $G$ actúa en $G/H$ y $G$ es simple, tenemos un
+%	morfismo inyectivo $G\to\Sym_n$.  Luego $n>4$ pues $\Sym_n$ es resoluble si
+%	$n\in\{2,3,4\}$. 
+%	
+%	Supongamos ahora que $n=5$. Como $G\cap\Alt_5$ es normal en $G$, el 
+%	segundo teorema de isomorfismo implica que  
+%	\[
+%		|G/G\cap\Alt_5|=|G\Alt_5/\Alt_5|\leq |\Sym_5/\Alt_5|=2.		
+%	\]	
+%	Por la simplicidad de $G$, $G\cap\Alt_5=G$. Luego $G\subseteq \Alt_5$ y
+%	entonces $|G|\leq60$. 
+%\end{proof}
+%
+%\begin{theorem}
+%	\label{theorem:CFSG:leq200}
+%	Si $G$ es un grupo simple no abeliano de orden $\leq200$, entonces
+%	$|G|\in\{60,168\}$.
+%\end{theorem}
+%
+%\begin{proof}
+%	% necesito caso bobo de feit-thompson
+%	% necesito transfer! 7.15	
+%	% necesito burnside
+%	% pag 94-95
+%\end{proof}
+%

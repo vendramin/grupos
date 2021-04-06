@@ -1,0 +1,362 @@
+\chapter{Subnormalidad}
+
+\begin{definition}
+	\index{Subgrupo!subnormal}
+	Sea $G$ un grupo. Un subgrupo $H$ de $G$ es \textbf{subnormal} si existe
+	una sucesión de subgrupos 
+	\[
+		H=H_0\subseteq H_1\subseteq\cdots\subseteq H_k=G		
+	\]
+	con $H_i$ normal en $H_{i+1}$ para todo $i\in\{0,\dots,k-1\}$. 
+\end{definition}
+
+\begin{example}
+	Sea $G=\Sym_4$. El subgrupo $K=\{\id,(12)(34),(13)(24),(14)(23)\}$ es
+	normal en $G$.  El subgrupo $L=\{\id,(12)(34)\}$ no es normal en $G$ pero
+	es subnormal. 
+\end{example}
+
+\begin{exercise}
+	Demuestre que el teorema de la correspondencia también preserva la
+	subnormalidad.
+\end{exercise}
+
+\begin{theorem}
+	\label{theorem:subnormal}
+	Sea $G$ un grupo finito. Entonces $G$ es nilpotente si y sólo si todo
+	subgrupo es subnormal.
+\end{theorem}
+
+\begin{proof}
+	Supongamos que todo subgrupo de $G$ es subnormal. Sea $H$ un subgrupo
+	subnormal de $G$, donde 
+	\[
+		H=H_0\subseteq H_1\subseteq\cdots\subseteq H_k=G
+	\]
+	con $H_i$ normal en $H_{i+1}$. Sin pérdida de generaliadad podemos suponer
+	que $H\subsetneq H_1$. Como entonces $H\subsetneq H_1\subseteq N_G(H)$, 
+	$G$ es nilpotente por el ejercicio~\ref{exercise:normalizadora}.
+
+	Supongamos ahora que $G$ es nilpotente. Sea $H$ un subgrupo de $G$.
+	Procederemos por inducción en $(G:H)$. Si $(G:H)=1$ entonces $H=G$ y no hay
+	nada para demostrar. Si $H\ne G$, como $H\subsetneq N_G(H)$ por el
+	lema~\ref{lemma:normalizadora}, 
+	\[
+		(G:N_G(H))<(G:H).
+	\]
+	Por hipótesis inductiva, $N_G(H)$ es subnormal en $G$ y luego, como $H$ es
+	normal en $N_G(H)$, se concluye que $H$ subnormal en $G$.
+\end{proof}
+
+\begin{corollary}
+	Sea $G$ un grupo y sea $K$ un subgrupo de $G$ tal que $K\subseteq Z(G)$.
+	Entonces $G$ es nilpotente si y sólo si $G/K$ es nilpotente. 
+\end{corollary}
+
+\begin{proof}
+	Si $G$ es nilpotente, entonces $G/K$ es nilpotente por el
+	teorema~\ref{theorem:nilpotente}. Demostremos la afirmación recíproca. Sea
+	$\pi\colon G\to G/K$ el morfismo canónico. Sea $U$ un subgrupo de $G$. Como
+	$G/K$ es nilpotente, el teorema~\ref{theorem:subnormal} implica que
+	$\pi(U)$ es un subgrupo subnormal de $G/K$. La correspondencia implica que
+	$UK$ es un subgrupo subnormal de $G$, y luego, como $K$ es central, $U$ es
+	normal en $UZ$. Luego $U$ es subnormal en $G$ y entonces $G$ es nilpotente
+	por el teorema~\ref{theorem:subnormal}.
+\end{proof}
+
+\begin{theorem}
+	\label{theorem:F(G)subnormalidad}
+	Sea $G$ un grupo finito y sea $H$ un subgrupo de $G$. Entonces $H$ es
+	nilpotente y subnormal en $G$ si y sólo si $H\subseteq F(G)$.
+\end{theorem}
+
+\begin{proof}
+	Supongamos que $H\subseteq F(G)$. Como $F(G)$ es nilpotente por el
+	teorema~\ref{theorem:Fitting}, $H$ es nilpotente por el
+	teorema~\ref{theorem:nilpotente}. Además, como $H$ es subnormal en $F(G)$ por la
+	teorema~\ref{theorem:subnormal} y $F(G)$ es normal en $G$, $H$ es
+	subnormal en $G$.
+
+	Supongamos ahora que $H$ es nilpotente y subnormal en $G$.  Procederemos
+	por inducción en $|G|$. Si $H=G$ el resultado es trivialmente cierto.
+	Supongamos entonces que $H\ne G$. Como $H$ es subnormal en $G$, 
+	\[
+		H=H_0\triangleleft H_1\triangleleft\cdots\triangleleft H_k=G.
+	\]
+	Sea $M=H_{k-1}$. Como $M\ne G$ y $M$ es normal en $G$, 
+	$H\subseteq F(M)$ por hipótesis	inductiva. Luego $H\subseteq F(M)=M\cap
+	F(G)\subseteq F(G)$ por el corolario~\ref{corollary:McapF(G)}.
+\end{proof}
+
+\begin{lemma}
+	\label{lemma:McapN=1}
+	Sean $M$ y $N$ subgrupos normales de un grupo $G$ tales que $M\cap N=1$.
+	Entonces $M\subseteq C_G(N)$.
+\end{lemma}
+
+\begin{proof}
+	Sean $m\in M$ y $n\in N$. Entonces $[n,m]=(nmn^{-1})m\in M$ pues $M$ es
+	normal en $G$ y también $[n,m]=n(mn^{-1}m^{-1})\in N$ pues $N$ es normal en
+	$G$. Luego $[n,m]\in M\cap N=1$.
+\end{proof}
+
+\begin{theorem}[Wielandt]
+	\label{theorem:MsubsetNG(S)}
+	Sea $G$ un grupo finito. Si $S$ es un subgrupo subnormal de $G$ 
+	y $M$ es un subgrupo minimal-normal de $G$ entonces $M\subseteq N_G(S)$.
+\end{theorem}
+
+\begin{proof}
+	Procederemos por inducción en $|G|$. Si $S=G$ no hay nada para demostrar.
+	Supongamos que $S\ne G$.  Como $S$ es subnormal en $G$, existe una sucesión 
+	\[
+		S=S_0\triangleleft S_1\triangleleft\cdots\triangleleft S_{k-1}\triangleleft S_k=G.
+	\]
+	Sea $N=S_{k-1}$. 
+
+	Si $M\cap N\ne 1$ entonces $M\subseteq N$ (pues como $M$ y $N$ son normales
+	en $G$, $M\cap N=M$ por la minimalidad de $M$). Vamos a demostrar que
+	$M\subseteq\Soc(N)$.  Como $M\ne 1$ y $M$ es normal en $N$,
+	$M\cap\Soc(N)\ne 1$. Además $\Soc(N)$ es característico en $N$ y $N$ es
+	normal en $G$, entonces $\Soc(N)$ es normal en $G$. Luego $M\cap\Soc(N)$ es
+	un subgrupo normal de $G$. Como además $1\ne M\cap\Soc(N)\subseteq M$, se
+	concluye que $M\cap\Soc(N)=M$ por la minimalidad de $M$. Por hipótesis inductiva, 
+	todo subgrupo minimal-normal de $N$ normaliza a $S$; entonces 
+	$\Soc(N)\subseteq N_N(S)\subseteq N_G(S)$ y luego 
+	\[
+	M\subseteq\Soc(N)\subseteq N_G(S).
+	\]
+	Si $M\cap N=1$, el lema~\ref{lemma:McapN=1} implica que
+	\[
+	M\subseteq C_G(N)\subseteq C_G(S)\subseteq N_G(S). 
+	\]
+\end{proof}
+
+\begin{corollary}
+	Sea $G$ finito y sea $S$ un subgrupo subgrupo subnormal de $G$. Entonces
+	$\Soc(G)\subseteq N_G(S)$.
+\end{corollary}
+
+\begin{proof}
+	Como todo subgrupo minimal-normal de $G$ está contenido en $N_G(S)$ por 
+	el teorema~\ref{theorem:MsubsetNG(S)}, 
+	$\Soc(G)=\langle M:M\text{ subgrupo 
+	minimal-normal de $G$}\rangle\subseteq N_G(S)$.
+\end{proof}
+
+En el siguiente teorema demostraremos que los subgrupos normales forman un
+reticulado.
+
+\begin{theorem}[Wielandt]
+	\label{theorem:STsubnormal}
+	Sea $G$ un grupo finito y sean $S,T$ subgrupos subnormales. Entonces $S\cap T$ y 
+	$\langle S,T\rangle$ son subnormales en $G$.
+\end{theorem}
+
+\begin{proof}
+	Demostremos primero que $S\cap T$ es subnormal en $G$. Como la
+	subnormalidad es transivitiva, basta ver que $S\cap T$ es subnormal en $T$.
+	Como $S$ es subnormal en $G$, existe una sucesión 
+	\[
+		S=S_0\triangleleft S_1\triangleleft \cdots\triangleleft S_k=G.
+	\]
+	Cada $S_{j-1}\cap T$ es normal en $S_j\cap T$ y luego $S\cap T$ es
+	subnormal en $T$.
+	
+	
+	Para demostrar que $\langle S,T\rangle$ es subnormal en $G$ 
+	procederemos por inducción en $|G|$. Supongamos que $G\ne1$ y sea $M$ un
+	subgrupo minimal-normal de $G$. Sea $\pi\colon G\to G/M$ el morfismo
+	canónico. Como $\pi(S)$ y $\pi(T)$ son subnormales en $G/M$ y $|G/M|<|G|$,
+	la hipótesis inductiva implica que 
+	\[
+	\pi(\langle S,T\rangle M)=\pi(\langle S,T\rangle)=\langle \pi(S),\pi(T)\rangle
+	\]
+	es subnormal en $G/M$. Por la correspondencia, $\langle S,T\rangle M$ es
+	subnormal en $G$. Por otro lado, el teorema~\ref{theorem:MsubsetNG(S)}
+	implica que $M\subseteq N_G(S)$ y $M\subseteq N_G(T)$. Luego $M\subseteq
+	N_G(\langle S,T\rangle)$. Como entonces $\langle S,T\rangle$ es normal en
+	$\langle S,T\rangle M$ y $\langle S,T\rangle M$ es subnormal en $G$, se
+	concluye que $\langle S,T\rangle$ es subnormal en $G$.
+\end{proof}
+
+
+%\section{Torres de automorfismos}
+%
+%\begin{exercise}
+%	\label{exercise:Inn(G)}
+%	Sea $G$ un grupo. Demuestre las siguientes afirmaciones:
+%	\begin{enumerate}
+%		\item La conjugación $\gamma\colon G\to\Inn(G)$, $g\mapsto \gamma_g$,
+%			es morfismo con núcleo $Z(G)$.
+%		\item $\Inn(G)$ es normal en $\Aut(G)$.
+%		\item Si $Z(G)=1$ entonces $C_{\Aut(G)}(\Inn(G))=1$.
+%		\item Si $Z(G)=1$ entonces $Z(\Aut(G))=1$.
+%	\end{enumerate}
+%\end{exercise}
+%
+%\begin{svgraybox}
+%	\begin{enumerate}
+%		\item Es morfismo pues
+%			\[
+%			\gamma_{gh}(x)=(gh)x(gh)^{-1}=\gamma_g\gamma_h(x)
+%			\]
+%			y el núcleo es
+%			\[
+%			\ker\gamma=\{g\in G:\gamma_g=\id\}=\{g\in G:gxg^{-1}=x\text{ para todo $x\in G$}\}=Z(G).
+%			\]
+%		\item Es trivial pues $f\gamma_gf^{-1}=\gamma_{f(g)}$.
+%		\item Sea $f\in C_{\Aut(G)}(\Inn(G))$. Como
+%			$f\gamma_gf^{-1}=\gamma_{f(g)}$, 
+%	Sea $\sigma\in\Aut(\Aut(G))$. Sabemos por el
+%	ejercicio~\ref{exercise:Inn(G)} que $\Inn(G)$ es normal en $\Aut(G)$, y
+%	entonces $\sigma(\Inn(G))$ es normal en $\Aut(G)$. El grupo
+%	\[
+%	\Inn(G)\simeq G/Z(G)\simeq G
+%	\]
+%	es simple y $\sigma(\Inn(G))\cap \Inn(G)$ es normal en $\Inn(G)$; entonces
+%	hay dos posibilidades: $\Inn(G)\cap\sigma(\Inn(G))=1$ o bien
+%	$\Inn(G)\cap\sigma(\Inn(G))=\sigma(\Inn(G))$. Basta demostrar que
+%	$\Inn(G)\cap\sigma(\Inn(G))\ne1$. 
+%
+%	Si $\Inn(G)\cap\sigma(\Inn(G))=1$ entonces, al usar la normalidad de
+%	$\sigma(\Inn(G)$ y de $\Inn(G)$ en $\Aut(G)$, tendríamos
+%	$[\Inn(G),\sigma(\Inn(G))]\in \Inn(G)\cap \sigma(\Inn(G))=1$.  Luego, por
+%	el el ejercicio ~\ref{exercise:Inn(G)}, 
+%	\[
+%	G\simeq \Inn(G)\simeq\sigma(\Inn(G))\subseteq
+%	C_{\Aut(G)}(\Inn(G))=1,
+%	\]
+%	una contradicción.
+%\end{proof}
+%
+%\begin{theorem}
+%	\label{theorem:simple=>completo}
+%	Sea $G$ un grupo simple no abeliano. Entonces $\Aut(G)$ es completo.
+%\end{theorem}
+%
+%\begin{proof}
+%	Como $Z(G)=1$, el ejercicio~\ref{exercise:Inn(G)} implica que
+%	$Z(\Aut(G))=1$. Por el lema~\ref{lemma:Inn(G)char}, $\Inn(G)$ es
+%	característico en $\Aut(G)$. Queremos demostrar que 
+%	$\Aut(G)\subseteq \Inn(G)$.
+%	
+%	Sean $\sigma\in\Aut(\Aut(G))$, $g\in G$ y $\gamma_g\in\Inn(G)$. Como
+%	$\sigma(\Inn(G))\subseteq\Inn(G)$, existe $\alpha(g)\in G$ tal que
+%	$\sigma(\gamma_g)=\gamma_{\alpha(g)}$. Queda definida entonces una función
+%	$\alpha\colon G\to G$ tal que $\sigma(\gamma_g)=\gamma_{\alpha(g)}$ para
+%	todo $g\in G$.
+%
+%	\begin{claim}
+%		$\alpha\in\Aut(G)$. 
+%	\end{claim}
+%
+%	Veamos que $\alpha$ es inyectiva: si $\alpha(g)=\alpha(h)$ entonces
+%	\[
+%	\sigma(\gamma_g)=\gamma_{\alpha(g)}=\gamma_{\alpha(h)}=\sigma(\gamma_h)
+%	\]
+%	y luego $\gamma_g=\gamma_h$; esto implica que $h=g$ pues
+%	$\ker(\gamma)=Z(G)=1$.  Luego $\alpha$ es biyectiva. Además $\alpha$ es
+%	morfismo pues 
+%	\[
+%	\gamma_{\alpha(gh)}=\sigma(\gamma_{gh})=\sigma(\gamma_h\gamma_h)=\sigma(\gamma_h)\sigma(\gamma_h)=\gamma_{\alpha(g)}\gamma_{\alpha(h)}.
+%	\]
+%
+%	\begin{claim}
+%		$\sigma=\gamma_\alpha$.
+%	\end{claim}
+%
+%	Sea $\tau=\sigma\gamma_{\alpha}^{-1}$ y sea $h\in G$. Entonces
+%	\[
+%		\tau(\gamma_h)=\sigma\gamma_{\alpha}^{-1}\gamma_h
+%		=\sigma(\alpha^{-1}\gamma_h\alpha)
+%		=\sigma\gamma_{\alpha^{-1}(h)}
+%		=\gamma_{\alpha\alpha^{-1}(h)}=\gamma_h.
+%	\]
+%	Si $\beta\in\Aut(G)$ y $g\in G$ entonces 
+%	\[
+%		\beta\gamma_g\beta^{-1}
+%		=\gamma_{\beta(g)}
+%		=\tau(\gamma_{\beta(g)})
+%		=\tau(\beta)\tau(\gamma_g)\tau(\beta)^{-1}
+%		=\tau(\beta)\gamma_g\tau(\beta)^{-1}.
+%	\]
+%	Como entonces $\tau(\beta)\beta^{-1}\in C_{\Aut(G)}(\Inn(G))=1$ para todo
+%	$\beta$, $\tau=\id$ y luego $\sigma=\gamma_{\alpha}$.
+%\end{proof}
+%
+%Si $G$ es un grupo con centro trivial entonces $G\hookrightarrow\Aut(G)$ pues 
+%\[
+%G\simeq
+%G/Z(G)\simeq\Inn(G)\subseteq\Aut(G).
+%\]
+%Como también $\Aut(G)$ tiene centro trivial, al iterar este procedimiento
+%obtenemos una sucesión
+%\begin{equation}
+%	\label{equation:Aut(G)}
+%G\hookrightarrow\Aut(G)\hookrightarrow\Aut(\Aut(G))\hookrightarrow\cdots
+%\end{equation}
+%Como aplicación del concepto de subnormalidad veremos un teorema de Wielandt
+%que afirma que la sucesión~\eqref{equation:Aut(G)} se estabiliza. 
+%
+%\begin{lemma}
+%	\label{lemma:CG(S)=1}
+%	Sea $G$ un grupo y sea $S=S_1\triangleleft
+%	S_2\triangleleft\cdots\triangleleft S_r=G$.  Si $C_{S_{i+1}}(S_i)=1$ para
+%	todo $i\in\{1,\dots,r-1\}$ entonces $C_G(S)=1$. 
+%\end{lemma}
+%
+%\begin{proof}
+%	Procederemos por inducción en $r$. El caso $r=2$ es trivial pues
+%	$C_{G}(S)=C_{S_2}(S_1)=1$. Supongamos entonces que $r>2$. Al usar la
+%	hipótesis inductiva al grupo $S_{r-1}$ obtenemos 
+%	$C_G(S)\cap S_{r-1}=C_{S_{r-1}}(S)=1$.
+%	Como $S_1$ es normal en $S_2$, $C_{G}(S)$ también es normal en $S_2$ pues
+%	si $x\in C_G(S)$, $s_1\in S_1$, $s_2\in S_2$ entonces $s_2^{-1}s_1s_2\in
+%	S_1$ y luego 
+%	\[
+%		[s_2xs_2^{-1},s_1]=s_2x(s_2^{-1}s_1s_2)x^{-1}s_2^{-1}s_1^{-1}=1.
+%	\]
+%	La normalidad de $S_{r-1}$ en $G$ implica que 
+%	$[C_G(S),S_2]\subseteq C_G(S)\cap S_{r-1}=1$.
+%	Luego $C_G(S)\subseteq C_G(S_2)$
+%	Al usar la hipótesis inductiva en la sucesión 
+%	$S_2\triangleleft\cdots\triangleleft S_r=G$, se concluye que $C_G(S)=1$.
+%\end{proof}
+%
+%\begin{lemma}
+%	\label{lemma:CG(N)=Z(N)}
+%	Sea $N$ un subgrupo normal de un grupo finito $G$ tal que $C_G(N)\subseteq
+%	N$. Entonces $|G|$ divide a $|Z(N)||\Aut(N)|$. En particular, $|G|$ divide
+%	al factorial de $|N|$.
+%\end{lemma}
+%
+%\begin{proof}
+%	Al hacer actuar a $G$ en $N$ por conjugación obtenemos un morfismo
+%	$\rho\colon G\to\Aut(N)$ con núcleo
+%	\[
+%	\ker\rho=\{g\in G:gng^{-1}=n\text{ para todo $n\in N$}\}=C_G(N).
+%	\]
+%	Como $C_G(N)\subseteq N$, $\ker\rho=C_G(N)=Z(N)$ y luego $G/Z(N)$ es
+%	isomorfo a un subgrupo de $\Aut(N)$. 
+%
+%	Por el teorema de Lagrange, $|Z(N)|$ divide a $|N|$. Como 
+%	$\Aut(N)$ actúa fielmente en el conjunto $N\setminus\{1\}$, se tiene 
+%	un morfismo inyectivo $\Aut(N)\to\Sym_{|N|-1}$. Luego $|G|$ divide a $|N|!=|N|(|N|-1)!$.
+%	% recordemos que actuar fielmente quiere decir que $f\cdot n=n$ para todo $n$ implica que $f=\id$. 
+%\end{proof}
+%
+%Recordemos que si $G$ es un grupo, existe un único subgrupo normal minimal
+%$G^{\infty}$ con la siguiente propiedad: el cociente $G/G^{\infty}$ es
+%nilpotente.
+%
+%\begin{lemma}
+%	\label{lemma:Ginf=Sinf}
+%	Sea $G$ un grupo finito tal que $G=SF$ para algún subgrupo $S$ subnormal en
+%	$G$ y algún subgrupo nilpotente $F$ normal en $G$. Entonces
+%	$G^{\infty}=S^{\infty}$.
+%\end{lemma}
+%
+%\begin{proof}
+%	Sin perder generalidad podemos suponer que $S\ne G$.
+%\end{proof}

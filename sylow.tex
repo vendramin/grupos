@@ -1,0 +1,224 @@
+
+\chapter{Sistemas de Sylow}
+
+Dado un grupo finito $G$ escribimos $\pi(G)=\{p_1,\dots,p_k\}$ para denotar el
+conjunto de divisores primos de $|G|$. 
+
+\begin{definition}
+	\index{Sylow!sistema de}
+	Sea $G$ un grupo finito y sea $\pi(G)=\{p_1,\dots,p_k\}$. Para cada $j\in
+	\{1,\dots,k\}$ sea $Q_j$ un $p_j'$-subgrupo de Hall de $G$. El conjunto
+	$\{Q_1,\dots,Q_k\}$ se denomina un \textbf{sistema de Sylow} de $G$.
+\end{definition}
+
+La teoría de Hall demuestra el siguiente teorema:
+
+\begin{theorem}
+	Sea $G$ un grupo finito. Entonces $G$ es resoluble si y sólo si $G$ admite
+	un sistema de Sylow.	
+\end{theorem}
+
+\begin{proof}
+	Sea $\pi(G)=\{p_1,\dots,p_k\}$. Si $G$ es resoluble, entonces por el
+	teorema de Hall~\ref{theorem:HallE} aplicado al conjunto
+	$\pi(G)\setminus\{p_j\}$, para cada $j\in\{1,\dots,k\}$ existe un
+	$p'_j$-subgrupo de Hall $H_j$. Luego $\{H_1,\dots,H_k\}$ es un sistema de
+	Sylow de $G$. La recíproca es consecuencia directa del teorema de
+	Hall~\ref{theorem:Hall}.
+\end{proof}
+
+Recordemos que dos subgrupos $A$ y $B$ se dicen
+\textbf{permutables} si $AB=BA$.
+
+\begin{example}
+	Si $A\subseteq N_G(B)$ entonces $A$ y $B$ son permutables.
+\end{example}
+
+\begin{example}
+	Sean $G=\Sym_4$, $A=\Sym_3$ y $B=\langle (1234)\rangle$. Entonces $AB=BA=G$
+	pero $A\not\subseteq N_G(B)$ y $B\not\subseteq N_G(A)$.
+\end{example}
+
+\begin{exercise}
+	Sean $A_1,\dots,A_n$ subgrupos permutables dos a dos. Demuestre que
+	$A_1\cdots A_n$ es un subgrupo de $G$.
+\end{exercise}
+
+\begin{svgraybox}
+	El caso $n=2$ es el ejercicio~\ref{exercise:HK=KH}. Si por hipótesis inductiva
+	$A_1\cdots A_{n-1}$ es subgrupo, es entonces permutable con $A_n$ pues
+	\[
+	(A_1\cdots A_{n-1})A_n=(A_1\cdots A_{n-2})A_nA_{n-1}=\cdots=A_n(A_1\cdots A_{n-1}).
+	\]
+\end{svgraybox}
+
+\begin{lemma}
+	\label{lemma:indices_coprimos}
+	Sean $H$ y $K$ dos subgrupos de $G$ de índices finitos y coprimos. Entonces
+	$(G:H\cap K)=(G:H)(G:K)$.
+\end{lemma}
+
+\begin{proof}
+	La función $G/H\cap K\to G/H\times G/K$, $x(H\cap K)\mapsto(xH,xK)$, está
+	bien definida y es inyectiva; en particular $(G:H\cap K)\leq (G:H)(G:K)$.
+	Como $(G:H\cap K)=(G:H)(H:H\cap K)=(G:K)(K:H\cap K)$ y los índices $(G:H)$
+	y $(G:K)$ son coprimos, $(G:H)(G:K)$ divide a $(G:H\cap K)$. Luego 
+	\[
+	(G:H\cap K)=(G:H)(G:K).
+	\]
+\end{proof}
+
+\begin{lemma}
+	\label{lemma:system=>basis}
+%	Sea $\pi$ un conjunto de primos y 
+	Sea $\{Q_1,\dots,Q_k\}$ un sistema de
+	Sylow de un grupo finito resoluble $G$.	Entonces
+%	$\cap_{p_i\not\in\pi}Q_i$ es un $\pi$-subgrupo de Hall. En particular,
+	$P_i=\cap_{j\ne i}Q_j$ es un $p_i$-subgrupo de Sylow y los $P_j$ son
+	permutables dos a dos.
+\end{lemma}
+
+\begin{proof}
+	Sea $\pi$ un conjunto de primos.  Supongamos que $|G|=p_1^{\alpha_1}\cdots
+	p_k^{\alpha_k}$. Para cada $j$, $(G:Q_j)=p_j^{\alpha_j}$.  Sea
+	$Q=\cap_{p_i\not\in\pi}Q_i$. Entonces $Q$ es un $\pi$-subgrupo de Hall
+	pues, por el lema~\ref{lemma:indices_coprimos},
+	$(G:Q)=\prod_{p_i\not\in\pi}p_i^{\alpha_i}$. En particular, si
+	$\pi=\{p_i,p_j\}$ con $i\ne j$, el subgrupo $K=\cap_{k\not\in\{i,j\}}Q_k$
+	es un $\pi$-subgrupo de Hall de orden $p_i^{\alpha_i}p_j^{\alpha_j}$.  Como
+	$K$ contiene a $P_i\cup P_j$ y $|P_iP_j|=p_i^{\alpha_i}p_j^{\alpha_j}$, se
+	concluye que $P_iP_j=P_jP_i=K$.
+\end{proof}
+
+\begin{definition}
+	\index{Sylow!base de}
+	Sea $G$ un grupo finito. Una \textbf{base de Sylow} para $G$ es 
+	un conjunto $\{P_1,\dots,P_k\}$ de subgrupos de Sylow de $G$, uno por cada
+	primo $p_j$ que divide a $|G|$, donde $P_iP_j=P_jP_i$ para todo $i\ne j$. 
+\end{definition}
+
+\begin{proposition}
+	\label{proposition:sistemas=bases}
+	Sea $G$ un grupo finito resoluble. Existe una biyección entre el conjunto
+	de sistemas de Sylow para $G$ y el conjunto de bases de Sylow para $G$. 
+\end{proposition}
+
+\begin{proof}
+	Vimos en el lema~\ref{lemma:system=>basis} que todo sistema de Sylow
+	$\{Q_1,\dots,Q_k\}$ nos da una base de Sylow $\{P_1,\dots,P_k\}$ para $G$,
+	donde $P_i=\cap_{j\ne i}Q_j$. Recíprocamente, si $\{P_1,\dots,P_k\}$ es una
+	base de Sylow, sea $Q_i=\prod_{j\ne i}P_j$. Como los $P_j$ son permutables
+	dos a dos, $Q_i$ es un subgrupo de orden $p_i'$. Luego $\{Q_1,\dots,Q_k\}$
+	es un sistema de Sylow para $G$. Para completar la demostración queda
+	como ejercicio verificar que 
+	\[
+	\bigcap_{i\ne k}\prod_{j\ne i}P_j=P_j,\quad
+	\prod_{k\ne i}\bigcap_{j\ne k}Q_j=Q_i.
+	\]
+\end{proof}
+
+Dos sistemas de Sylow $\{Q_1,\dots,Q_k\}$ y $\{Q_1',\dots,Q_k'\}$ se dicen
+\textbf{conjugados} si existen $x\in G$ y $\sigma\in\Sym_k$ tales que $xQ_jx^{-1}=Q_{\sigma(j)}'$ para todo
+$j\in\{1,\dots,k\}$.
+
+\begin{theorem}
+	\label{theorem:sistemas_conj}
+	En un grupo finito y resoluble $G$ todos los sistemas de Sylow son conjugados.
+\end{theorem}
+
+\begin{proof}
+	Sea $\mathcal{S}_i$ el conjunto de $p_i'$-subgrupos de Hall. Como para todo
+	conjunto de primos $\pi$, los $\pi$-subgrupos de Hall son conjugados, el
+	grupo $G$ actúa transitivamente en $\mathcal{S}_i$. En particular, 
+	$|\mathcal{S}_i|=(G:N_G(Q_i))$ para todo $Q_i\in\mathcal{S}_i$. Como
+	\[
+	(G:N_G(Q_i))(N_G(Q):Q_i)=(G:Q_i)
+	\]
+	es una potencia de $p_i$, se concluye que $|\mathcal{S}_i|$ es una potencia
+	del primo $p_i$.
+	
+	El grupo $G$ actúa por conjugación en
+	$\mathcal{S}=\mathcal{S}_1\times\cdots\times\mathcal{S}_k$. Como el
+	estabilizador de $(Q_1,\dots,Q_k)$ es $N=\bigcap_{i=1}^k N_G(Q_i)$, y
+	además $(G:N)=\prod_{i=1}^k|\mathcal{S}_i|=|\mathcal{S}|$, la acción de $G$
+	en $\mathcal{S}$ es transitiva y luego todos los sistema de Sylow son
+	conjugados.
+\end{proof}
+
+Dos bases de Sylow $\{P_1,\dots,P_k\}$ y $\{P_1',\dots,P_k'\}$ se dicen
+\textbf{conjugadas} 
+si existen $x\in G$ y $\sigma\in\Sym_k$ tales que $xP_jx^{-1}=P_{\sigma(j)}'$ para todo
+$j\in\{1,\dots,k\}$.
+
+\begin{corollary}
+	En un grupo finito y resoluble $G$ todos las bases de Sylow son conjugadas.
+\end{corollary}
+
+\begin{proof}
+	Es consecuencia del teorema~\ref{theorem:sistemas_conj} y 
+	de la biyección de la proposición~\ref{proposition:sistemas=bases}.
+\end{proof}
+
+Si $\{P_1,\dots,P_k\}$ es una base de Sylow de $G$,
+el grupo
+\[
+	N=\bigcap_{i=1}^k N_G(P_i)
+\]
+se conoce como \textbf{el normalizador de la base de Sylow}. 
+
+\begin{theorem}
+	Sea $G$ finito y resoluble. Si $\{P_1,\dots,P_k\}$ es una base de Sylow de
+	$G$, su normalizador es un grupo nilpotente. 
+\end{theorem}
+
+\begin{proof}
+	Por definición $N=\bigcap_{i=1}^k N_G(P_i)\subseteq N_G(P_i)$. Entonces
+	$P_i$ es un subgrupo normal del subgrupo $NP_i$.  Como $(N:N\cap
+	P_i)=(NP_i:P_i)$ divide a $(G:P_i)$, se concluye que $P_i\cap
+	N\in\Syl_p(N)$.  Luego $N$ es nilpotente pues cada subgrupo de Sylow $P_i\cap N$ de $N$ es normal en
+	$N$.
+\end{proof}
+
+\begin{example}
+	Para calcular bases de Sylow se utiliza la función \lstinline{SylowSystem}.
+	Una base de Sylow para el grupo $\SL_2(3)$ es el conjunto
+	$\{A,B\}$, donde 
+	\[
+	A=\left\langle \begin{pmatrix}
+		1 & 1\\
+		0 & 1
+	\end{pmatrix}\right\rangle\simeq C_3,\quad
+	B=\left\langle \begin{pmatrix}
+		1 & 1\\
+		1 & 2
+	\end{pmatrix},
+	\begin{pmatrix}
+		2 & 1\\
+		1 & 1
+	\end{pmatrix},
+	\begin{pmatrix}
+		2 & 0\\
+		0 & 2
+	\end{pmatrix}\right\rangle\simeq Q_8.
+	\]
+	El normalizador $N$ del sistema es el subgrupo $N$ generado por
+	la matriz $\begin{pmatrix} 2 & 2\\0 & 2\end{pmatrix}$. Veamos el código:
+\begin{lstlisting}
+gap> SL23 := SL(2,3);;
+gap> basis := SylowSystem(SL23);
+[ Group([ [ [ Z(3)^0, Z(3)^0 ], [ Z(3)^0, Z(3) ] ], 
+      [ [ Z(3), Z(3)^0 ], [ Z(3)^0, Z(3)^0 ] ], 
+      [ [ Z(3), 0*Z(3) ], [ 0*Z(3), Z(3) ] ] ]), 
+  Group([ [ [ Z(3)^0, Z(3)^0 ], [ 0*Z(3), Z(3)^0 ] ] ]) ]
+gap> N := Intersection(Normalizer(SL23, basis[1]), \
+> Normalizer(SL23, basis[2]));;
+gap> GeneratorsOfGroup(N);
+[ [ [ Z(3)^0, Z(3)^0 ], [ 0*Z(3), Z(3)^0 ] ], 
+  [ [ Z(3), 0*Z(3) ], [ 0*Z(3), Z(3) ] ] ]
+gap> Order(N);
+6
+\end{lstlisting}
+\end{example}
+
+% hay mas sobre esto en Robinson, por ejemplo system normalizers
+% pags 262-265

@@ -1,0 +1,345 @@
+\chapter{El subgrupo de Chermak--Delgado}
+\label{CD}
+
+\begin{definition}
+	\index{Medida de Chermak--Delgado}
+	\index{Chermak--Delgado!medida de}
+	Sea $G$ un grupo finito y $H$ un subgrupo de $G$. Se define la
+	\textbf{medida de Chermak--Delgado} de $H$ como 
+	\[
+		m_G(H)=|H||C_G(H)|.
+	\]
+\end{definition}
+
+\begin{example}
+	Si $G$ es un grupo abeliano y $H$ es un subgrupo de $G$ entonces
+	$m_G(H)=|H||G|$.
+\end{example}
+
+\begin{example}
+	Sea $G=\Sym_3$. Los subgrupos de $G$ son:
+	\[
+		H_0=1,\quad
+		H_1=\langle (23)\rangle,\quad
+		H_2=\langle (12)\rangle,\quad
+		H_3=\langle (13)\rangle,\quad
+		H_4=\langle (123)\rangle,\quad
+		H_5=\Sym_3.
+	\]
+	Un cálculo directo muestra que
+	\[
+		m_G(H_j)=\begin{cases}
+			6 & \text{si $j\in\{0,5\}$},\\
+			4 & \text{si $j\in\{1,2,3\}$},\\
+			9 & \text{si $j=4$}.
+		\end{cases}
+	\]
+\end{example}
+
+\begin{lemma}
+	\label{lemma:CD1}
+	Sean $G$ un grupo finito y $H$ un subgrupo de $G$. Entonces 
+	\[
+	m_G(H)\leq m_G(C_G(H)).
+	\]
+	Si vale la igualdad, $H=C_G(C_G(H))$.
+\end{lemma}
+
+\begin{proof}
+	Sea $C=C_G(H)$. 
+	Como $H\subseteq C_G(C)$, 
+	\[
+	m_G(C)=|C||C_G(C)|\geq |C||H|=m_G(H). 
+	\]
+	Si $m_G(H)=m_G(C_G(H))$ entonces $|H|=|C_G(C_G(H))|$ y
+	luego $H=C_G(C_G(H))$ pues $H\subseteq C_G(C_G(H))$. 
+\end{proof}
+
+\begin{lemma}
+	Sean $G$ un grupo finito y 
+	$H,K$ subgrupos de $G$. Sean $D=H\cap K$ y $J=\langle H,K\rangle$. Entonces
+	\[
+		m_G(H)m_G(K)\leq m_G(D)m_G(J).
+	\]
+	Si vale la igualdad, $J=HK$ y $C_G(D)=C_G(H)C_G(K)$.
+	\label{lemma:CD2}
+\end{lemma}
+
+\begin{proof}
+	Sean $C_H=C_G(H)$, $C_K=C_G(K)$, $C_D=C_G(D)$, $C_J=C_G(J)$. Entonces
+	$C_J=C_H\cap C_K$ y $C_H\cup C_K\subseteq C_D$. Como
+	\[
+		|J|\geq |HK|=\frac{|H||K|}{|D|},
+		\quad
+		|C_D|\geq |C_HC_K|=\frac{|C_H||C_K|}{|C_J|},
+	\]
+	tenemos
+	\[
+		m_G(D)
+		=|D||C_D|\geq \frac{|H||K|}{|J|}\frac{|C_H||C_K|}{|C_J|}
+		=\frac{m_G(H)m_G(K)}{m_G(J)}.
+	\]
+	La segunda afirmación es evidente. 
+\end{proof}
+
+Sea $G$ un grupo finito y sea $\cL$ una colección de subgrupos de $G$. Diremos
+que $\cL$ es un \textbf{reticulado} si dados $H,K\in\cL$ se tiene que $H\cap
+K\in\cL$ y $\langle H,K\rangle\in\cL$. 
+
+Como el grupo $G$ es finito, tiene sentido considerar el conjunto $\cL(G)$ de
+subgrupos de $G$ donde la medida de Chermak--Delgado alcanza su máximo valor,
+digamos $M_G$. 
+
+\begin{exercise}
+	\label{exercise:M_S}
+	Sea $G$ un grupo finito y sea $H$ un subgrupo de $G$. Demuestre que
+	$M_H\leq M_G$.
+\end{exercise}
+
+\begin{svgraybox}
+	Sabemos que existe algún subgrupo $K$ de $H$ tal que $M_H=m_H(K)$. Como
+	$C_H(K)\subseteq C_G(K)$, 
+	\[
+		M_H=m_H(K)=|H||C_H(K)|\leq |H||C_G(K)|\leq m_G(H)\leq M_G.
+	\]
+\end{svgraybox}
+
+\begin{example}
+	\label{example:D8_CD}
+	Sea $G=\D_8=\langle r,s:r^4=s^2=1,srs=r^{-1}\rangle$ el grupo diedral de
+	ocho elementos. En los subgrupos
+	\[
+		G,
+		\quad
+		Z(G)=\{1,r^2\},\quad
+		A=\{1,r,r^2,r^3\},\quad
+		B=\{1, s,sr^2,r^2\},\quad
+		C=\{1,sr,sr^3,r^2\},
+	\]
+	la medida de Chermak--Deglado vale $16$, y este es el mayor valor posible
+	que puede tomar esta medida. Luego $\cL(G)=\{G,Z(G),A,B,C\}$ y $M_G=16$. 
+	\begin{lstlisting}
+gap> ChermakDelgado := function(group, subgroup)
+> return Size(subgroup)\
+> *Size(Centralizer(group, subgroup));
+> end;
+function( group, subgroup ) ... end
+gap> gr := DihedralGroup(IsPermGroup, 8);;
+gap> r := gr.1;;
+gap> s := gr.2;;
+gap> ChermakDelgado(gr, Subgroup(gr, [r]));
+16
+gap> ChermakDelgado(gr, Subgroup(gr, [s*r,s*r^3]));
+16
+gap> ChermakDelgado(gr, Subgroup(gr, [s,s*r^2]));
+16
+gap> ChermakDelgado(gr, Subgroup(gr, [r^2]));
+16
+gap> List(AllSubgroups(gr), x->ChermakDelgado(gr, x));
+[ 8, 16, 8, 8, 8, 8, 16, 16, 16, 16 ]
+	\end{lstlisting}
+\end{example}
+
+\begin{theorem}
+	Sea $G$ un grupo finito. 
+	Valen las siguientes afirmaciones:
+	\begin{enumerate}
+		\item $\cL(G)$ es un reticulado. 
+		\item Si $H,K\in\cL(G)$ entonces $\langle H,K\rangle=HK$.
+		\item Si $H\in\cL(G)$ entonces $C_G(H)\in\cL(G)$ y $C_G(C_G(H))=H$.
+	\end{enumerate}
+	\label{theorem:reticulado}
+\end{theorem}
+
+\begin{proof}
+	Si $H,K\in\cL(G)$ entonces $m_G(H)=m_G(K)=M_G$. Sean $D=H\cap K$ y $J=\langle
+	H,K\rangle$. Por el lema~\ref{lemma:CD2}, 
+	\[
+		M_G^2=m_G(H)m_G(K)\leq m_G(D)m_G(J).
+	\]
+	Como $m_G(D)\leq M_G$ y $m_G(J)\leq M_G$ por ser $M_G$ el máximo valor posible,
+	se concluye que $m_G(D)=m_G(J)=M_G$. Luego $\cL(G)$ es un reticulado. 
+
+	En particular, como $m_G(H)m_G(K)=m_G(D)m_G(J)=M_G^2$, se obtiene que 
+	$J=HK$ al aplicar el  
+	el lema~\ref{lemma:CD2}.
+
+	Por el lema~\ref{lemma:CD1}, 
+	\[
+	M_G=m_G(H)\leq m_G(C_G(H)).
+	\]
+	Como $M_G$ es maximal, $m_G(C_G(H))=M_G$ y luego $C_G(H)\in\cL(G)$.  Por el
+	lema~\ref{lemma:CD1}, $C_G(C_G(H))=H$.
+\end{proof}
+
+\index{Subgrupo!de Chermak--Delgado}
+\index{Chermak--Delgado!subgrupo de}
+Como aplicación del teorema~\ref{theorem:reticulado}, se demuestra la
+existencia del \textbf{subgrupo de Chermak--Delgado}:
+
+\begin{corollary}
+	\label{corollary:ChermakDelgado}
+	Sea $G$ un grupo finito. Entonces existe un único subgrupo $M$ minimal tal
+	que $m_G(M)$ toma el mayor valor posible entre los subgrupos de $G$. Además
+	$M$ es característico, abeliano y $Z(G)\subseteq M$. 
+\end{corollary}
+
+% f(C_G(H))=C_G(f(H))$ para todo $H$ y todo $f\in\Aut(G)$.
+
+\begin{proof}
+	%Sea $\cL$ la colección de subgrupos donde la medida de Chermak--Delgado es
+	%maximal. 
+	Por el teorema~\ref{theorem:reticulado}, $\cL(G)$ es un reticulado.
+	Sea
+	\[
+		M=\bigcap_{H\in\cL(G)}H\in\cL(G).
+	\]
+	Por el teorema~\ref{theorem:reticulado} sabemos que $C_G(M)\in\cL(G)$ y que
+	$M=C_G(C_G(M))\supseteq Z(G)$. Como $C_G(M)\in\cL(G)$, $M\subseteq C_G(M)$
+	y luego $M$ es abeliano. Además $M$ es característico pues $f(M)\in\cL(G)$
+	para todo $f\in\Aut(G)$.
+\end{proof}
+
+\begin{example}
+	Sea $G=\D_8$ el grupo diedral de ocho elementos.  Por lo visto en el
+	ejemplo~\ref{example:D8_CD}, el subgrupo de Chermak--Delgado de $G$ es
+	$Z(G)\simeq C_2$. 
+\end{example}
+
+\begin{theorem}[Chermak--Delgado]
+	\index{Chermak--Delgado!teorema de}
+	\index{Teorema!de Chermak--Delgado}
+	Sea $G$ un grupo finito. Entonces $G$ tiene un subgrupo abeliano
+	característico $M$ tal que $(G:M)\leq (G:A)^2$ para todo subgrupo abeliano
+	$A$.
+	\label{theorem:ChermakDelgado}
+\end{theorem}
+
+\begin{proof}
+	Sea $M$ el subgrupo de Chermak--Delgado del
+	corolario~\ref{corollary:ChermakDelgado} y sea $A$ un subgrupo abeliano de
+	$G$.  Como $A$ es abeliano, $A\subseteq C_G(A)$. Luego 
+	\[
+		m_G(M)\geq m_G(A)=|A||C_G(A)|\geq|A|^2,
+	\]
+	y entonces
+	\[
+	(G:A)^2
+	=\frac{|G|^2}{|A|^2}\geq\frac{|G|^2}{m_G(M)}
+	=\frac{|G|}{|M|}\frac{|G|}{|C_G(M)|}
+	=\frac{|G|}{|M|}
+	=(G:M).
+	\]
+\end{proof}
+
+\begin{corollary}
+	Sea $G$ un grupo finito y sea $H$ un subgrupo de $G$ tal que
+	\[
+	|H||C_G(H)|>|G|.
+	\]
+	Entonces $G$ 
+	no es simple no abeliano. 
+\end{corollary}
+
+\begin{proof}
+	Sea $M$ el subgrupo de Chermak--Delgado de $G$. 
+	Entonces 
+	\begin{equation}
+		\label{equation:mG}
+	m_G(M)\geq m_G(H)>|G|.
+	\end{equation}
+	Esta desigualdad implica que $M\ne1$ pues $m_G(M)=m_G(1)=|G|$. Si $G$ fuera
+	simple, $M=G$ sería abeliano. 
+%	Si $M=G$ entonces $G$ sería abeliano. 
+%	Como $m_G(M)=|G||Z(G)|$, se concluye
+%	de~\eqref{equation:mG} que $Z(G)\ne 1$. Si $G$ es simple, $G=Z(G)$ es abeliano y
+%	$G\simeq C_p$ para algún
+%	primo $p$. 
+\end{proof}
+
+\begin{corollary}
+	Sea $G$ un grupo finito no abeliano y sea $P\in\Syl_p(G)$ abeliano tal que
+	$|P|^2>|G|$.  Entonces $G$ no es simple.
+\end{corollary}
+
+\begin{proof}
+	Sea $M$ el subgrupo de Chermak--Delgado.  Como $P$ es abeliano, por el
+	teorema~\ref{theorem:ChermakDelgado}, $(G:M)\leq (G:P)^2<|G|$, y luego
+	$M>1$. Si $G$ fuera simple, entonces $M=G$ y luego $G$ resultaría abeliano. 
+\end{proof}
+
+%\section{El subgrupo de Chermak--Delgado}
+
+Veamos una aplicación del teorema de la cremallera al reticulado de
+Chermak--Delgado.
+
+\begin{lemma}
+	\label{lemma:L(G)L(S)}
+	Sea $G$ un grupo finito. Sea $H\in\cL(G)$ y sea $S$ un subgrupo de $G$ tal que 
+	$HC_G(H)\subseteq S$. Entonces $H\in\cL(S)$.
+\end{lemma}
+
+\begin{proof}
+	Como $C_G(H)\subseteq S$, $C_G(H)=C_S(H)$. Vimos en el
+	ejercicio~\ref{exercise:M_S} que $M_S\leq M_G$. Luego $M_G=M_S$ pues 
+	\[
+		M_G=m_G(H)=|H||C_G(H)|=|H||C_S(H)|=m_S(H)\leq M_S.
+	\]
+\end{proof}
+
+\begin{theorem}
+	\label{theorem:L(G)subnormal}
+	Sea $G$ un grupo finito. Todo $H\in\cL(G)$ es subnormal en $G$.
+\end{theorem}
+
+\begin{proof}
+	Procederemos por inducción en $|G|$. El caso $|G|=1$ es trivial.  Sea
+	$H\in\cL(G)$ y sea $K=HC_G(H)$. Como $H$ es normal en $K$, basta con
+	demostrar que $K$ es subnormal en $G$. Si $K=G$ no hay nada para hacer.
+	Supongamos entonces que $K\ne G$. 
+
+	Supongamos que $K$ no es subnormal en $G$. Por hipótesis inductiva y por el
+	teorema de la cremallera~\ref{theorem:zipper}, existe un único subgrupo
+	maximal $M$ que contiene a $K$.  Por el teorema~\ref{theorem:reticulado},
+	$C_G(H)\in\cL(G)$ y $K=HC_G(H)\in\cL(G)$. Por el lema~\ref{lemma:L(G)L(S)},
+	$H\in\cL(M)$ y luego $K\in\cL(M)$. Por hipótesis inductiva, $K$ es
+	subnormal en $M$.  Veamos que $M$ es normal en $G$. Sea $x\in G$. Como
+	$m_G(xKx^{-1})=m_G(K)$, el subgrupo $xKx^{-1}\in\cL(G)$ y luego
+	$K(xKx^{-1})\in\cL(G)$. 
+	
+	Si $K(xKx^{-1})=G$ entonces, como existen $k_1,k_2\in K$ tales que
+	$k_1(xk_2x^{-1})=x^{-1}$, se tiene que $x\in K$ pues $x^{-1}=k_2k_1\in K$;
+	esto implica que $xKx^{-1}\subseteq K$ y entonces $K=G$, una contradicción. 
+
+	Como $K(xKx^{-1})\ne G$, existe un subgrupo maximal $N$ tal que
+	$K(xKx^{-1})\subseteq N$. Como $K\subseteq N$, $N=M$ pues $M$ es el único
+	maximal que contiene a $K$. Como además $xKx^{-1}\subseteq M$, $K\subseteq
+	x^{-1}Mx$. Luego $x^{-1}Mx=M$ pues $x^{-1}Mx$ es un maximal que contiene a
+	$K$ y $M$ es el único maximal que contiene a $K$. 
+\end{proof}
+
+\begin{corollary}
+	Si $G$ un grupo simple finito no abeliano entonces $\cL(G)=\{1,G\}$. 
+\end{corollary}
+
+\begin{proof}
+	Sea $K\in\cL(G)$. Entonces $K$ es subnormal en $G$ por el
+	teorema~\ref{theorem:L(G)subnormal} y luego $K\in\{1,G\}$. Como
+	$m_G(1)=m_G(G)$, el corolario queda demostrado.
+\end{proof}
+
+\begin{corollary}
+	Sea $n\geq5$. Entonces $\cL(\Sym_n)=\{1,\Sym_n\}$. 
+\end{corollary}
+
+\begin{proof}
+	Sea $G=\Sym_n$ y sea $K\in\cL(G)$. Por el
+	teorema~\ref{theorem:L(G)subnormal}, $K$ es subnormal en $G$. Si $K\ne G$
+	entonces se tiene una sucesión estrictamente creciente de subgrupos 
+	\[
+	K=K_1\triangleleft
+	K_2\triangleleft\cdots\triangleleft K_{n-1}\triangleleft K_n=G.
+	\]
+	Como $K_{n-1}$ es normal en $G$, $K_{n-1}\in\{1,\Alt_n\}$ y luego $K=1$. 
+	El corolario queda demostrado al observar que $m_G(1)=m_G(G)$. 
+\end{proof}
