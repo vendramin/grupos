@@ -1,0 +1,162 @@
+\chapter{El teorema del matrimonio de Hall}
+
+Supongamos que tenemos un conjunto finito de personas $p_1,p_2,\dots,p_n$ y cada uno de esas 
+personas, digamos la persona $p_i$, se postuló en varios trabajos, digamos $T_i$. 
+Nos interesa saber bajo qué condiciones todas 
+las personas podrán obtener un trabajo al que se postularon. 
+
+\begin{theorem}[Hall]
+El problema tiene solución si y sólo si para 
+cada $k\in\{1,\dots,n\}$ cada conjunto de $k$ personas 
+se postula en al menos $k$ trabajos.
+\end{theorem}
+
+\begin{proof}
+    Demostremos primero la implicación fácil. Si existe un conjunto de $k$ personas que se postuló a menos de $k$ trabajos, entonces alguna de esas personas 
+    no podrá conseguir trabajo. 
+    
+    Para demostrar la afirmación recíproca procederemos por 
+    inducción en $n$, la cantidad de personas. El caso $n=1$ es trivial. Supongamos entonces que el teorema
+    es válido si hay $<n$ personas. Si hay $n$ personas, hay dos casos a considerar. 
+    
+    Si todo conjunto de $k$ personas, $k<n$, se postula colectivamente al menos a $k+1$ trabajos, entonces la condición de Hall se verifica (y sobrará un trabajo). Elegimos
+    cualquier persona para que trabaje donde se haya postulado. Como la condición de Hall vale para las $n-1$ personas restantes, esas personas conseguirán un trabajo al que se postularon 
+    gracias a la hipótesis inductiva. 
+    
+    Si, en cambio, existe un conjunto de $k$ personas que se postula colectivamente a exactamente $k$ trabajos, estas $k$ personas, por hipótesis inductiva, podrán conseguir trabajo. 
+    Quedan ahora $n-k$ personas sin trabajo. Para cada $l\leq n-k$, toda colección de $l$ de estas personas se postula al menos a $l$ trabajos 
+    (pues de lo contrario, estas $l$ personas junto con las $k$ personas anteriores se hubieran postulado colectivamente a $<l+k$ trabajos, una contradicción). Podemos 
+    aplicar entonces la hipótesis inductiva a esas $n-k$ personas y vemos que también podrán conseguir trabajo. 
+\end{proof}
+
+El teorema fue demostrado por Hall en 1935, aunque con una prueba distinta. La demostración que
+presentamos es básicamente la de Halmos y Vaughan~\cite{MR33330}, aunque allí el teorema se presenta en términos de 
+hombres, mujeres y matrimonios. 
+
+\begin{theorem}[Hall]
+Sea $G$ un grupo finito y $H\leq G$ tal que $(G:H)=n$. Existen $g_1,\dots,g_n\in G$ tales que
+$\{g_1H,\dots,g_nH\}=\{Hg_1,\dots,Hg_n\}$.
+\end{theorem}
+
+\begin{proof}
+     Supongamos que $\{x_1,\dots,x_n\}$ es un sistema completo de representantes de coclases de $H$ a derecha y 
+     $\{y_1,\dots,y_n\}$ es un sistema completo de representantes de coclases de $H$ a izquierda. Para
+     cada $i\in\{1,\dots,n\}$ sea 
+     \[
+     T_i=\{j:y_jH\cap Hx_i\ne\emptyset\}.
+     \]
+     Si $I\subseteq\{1,\dots,n\}$ es un subconjunto no vacío, sea $J=\cup_{i\in I}T_i$. Si $i\in I$ y $g\in Hx_i$, entonces
+     $y\in y_jH$ para algún $j\in\{1,\dots,n\}$. En particular, $j\in A_i$ y además 
+     \[
+     \bigcup_{i\in I}Hx_i\subseteq\bigcup_{j\in J}y_jH.
+     \]
+     Como las uniones son disjuntas, al tomar cardinalidad en esta última inclusión y observar que $|H|=|Hx_i|=|y_jH|$ para todo $i,j$, se concluye que
+     $|I|\leq |J|$. 
+
+    Por el teorema de Hall, existen elementos distintos $t_1\in T_1,\dots,t_n\in T_n$ tales que $Hx_i\cap y_{t_i}H\ne\emptyset$. Para cada $i\in\{1,\dots,n\}$ sea 
+    $g_i\in Hx_i\cap y_{t_i}H$. Entonces $g_1,\dots,g_n$ es un sistema completo de representantes de coclases de $H$ a derecha y a izquierda.
+\end{proof}
+
+Para poder demostrar el teorema de Weiss 
+necesitamos unos resultados auxiliares sobre coclases dobles. 
+
+\begin{lemma}
+     Sean $G$ un grupo finito, 
+     $H$ y $K$ subgrupos de $G$ del mismo índice y $x\in G$. Si $\alpha_1,\dots,\alpha_m$ es
+     un sistema completo de representantes de $H/(xKx^{-1}\cap H)$, entonces
+     \begin{equation}
+         \label{eq:Weiss}
+         HxK=\bigcup_{i=1}^m\alpha_ixK\quad(\text{unión disjunta}).
+     \end{equation}
+     En particular, 
+     \[
+     |HxK|=\frac{|H||K|}{|H\cap xKx^{-1}|}.
+     \]
+\end{lemma}
+
+\begin{proof}
+    Sea $L=xKx^{-1}\cap H$. 
+    Primero observemos que la unión es disjunta. Si $\alpha_ixK=\alpha_jxK$, entonces 
+    \[
+    x^{-1}\alpha_j^{-1}\alpha_ix=(\alpha_jx)^{-1}(\alpha_ix)\in K.
+    \]
+    Luego $\alpha_j^{-1}\alpha_i\in xKx\cap H=L$, es decir $\alpha_iL=\alpha_jL$, lo que implica $i=j$. 
+    
+    Veamos ahora
+    que $HxK\subseteq\cup_{i=1}^m\alpha_ixK$, ya que la otra inclusión es trivial. 
+    Como $H=\cup_{i=1}^m\alpha_iL$, entonces 
+    \[
+    HxK\subseteq\bigcup_{i=1}^m\alpha_iLxK=\bigcup_{i=1}^m\alpha_ixK,
+    \]
+    pues $LxK=xK$. 
+    
+    El tomar cardinalidad en~\eqref{eq:Weiss} obtenemos $|HxK|=m|K|$. 
+\end{proof}
+
+\begin{lemma}
+Sean $G$ un grupo finito y $x\in G$. Si $H$ y $K$ son subgrupos de $G$, entonces
+\[
+\#\{yK:yK\subseteq HxK\}=(H:xKx^{-1}\cap H).
+\]
+%la cantidad de coclases a izquierda de $K$ contenidas en $HxK$ es igual a
+%$(H:xKx^{-1}\cap H)$. 
+\end{lemma}
+
+\begin{proof}
+    Sea $L=xKx^{-1}\cap H$. Consideremos la función 
+    \[
+    \varphi\colon H/L\to\{yK:yK\subseteq HxK\},
+    \quad 
+    hL\mapsto hxK.
+    \]
+    
+    Veamos primero que $\varphi$ está bien definida. Si $hL=h_1L$ para $h,h_1\in H$, entonces
+    $h_1^{-1}h\in L=xKx^{-1}\cap H$, es decir $h_1^{-1}h=xkx^{-1}$ para algún $k\in K$. Como entonces $(h_1x)^{-1}(hx)=x^{-1}h_1^{-1}hx\in K$, se concluye que
+    $(hx)K=(h_1x)K$. 
+    
+    Claramente, $\varphi$ es sobreyectiva, pues $hxK=\varphi(hL)$ para todo $h\in H$ y $k\in K$. 
+    Veamos entonces que $\varphi$ es inyectiva. Si $hxK=h_1xK$, entonces $x^{-1}h_1^{-1}hx\in K$. Luego
+    $h_1^{-1}h\in xKx^{-1}\cap H=L$, es decir $h_1L=hL$. 
+\end{proof}
+
+Análogamente puede demostrarse que bajo las hipótesis del lema, también se tiene que 
+$\#\{Hz:Hz\subseteq HxK\}=(K:x^{-1}Hx\cap K)$.
+
+\begin{theorem}[Weiss]
+Sea $G$ un grupo finito y sean $H$ y $K$ subgrupos de $G$ del mismo índice. Entonces
+existe un sistema común de representantes de coclases a izquierda de $H$ en $G$ y 
+de coclases a derecha de $K$ en $G$. 
+\end{theorem}
+
+\begin{proof}
+    Primero observamos que las coclases $Hy$ y $zK$ tienen un representante en común si y sólo si 
+    $Hy\cap zK\ne\emptyset$ pues 
+    \[
+    Hx=Hy\text{ y }zK=xK
+    \Longleftrightarrow xy^{-1}\in H\text{ y }z^{-1}x\in K
+    \Longleftrightarrow x\in Hy\cap zK.
+    \]
+    Sabemos que $G$ es unión disjunta de $(H,K)$-coclases dobles. 
+    
+    \begin{claim} 
+    Si 
+    \[
+    HxK=\bigcup_{i=1}^kHy_i=\bigcup_{j=1}^lz_jK,
+    \]
+    donde las uniones son disjuntas, entonces $k=l$ (pues $H$ y $K$ tienen el mismo orden)  
+    y para cada $i\in\{1,\dots,k\}$ se tiene que $Hy_i\cap z_jK\ne\emptyset$ para todo $j\in\{1,\dots,l\}$. 
+    \end{claim}
+    
+    Fijemos $i_0\in\{1,\dots,k\}$. Sin perder generalidad (reordenando, si fuera necesario) podemos suponer que 
+    $Hy_{i_0}\cap z_jK\ne\emptyset$ para todo $j\in\{1,\dots,m\}$. Como 
+    \[
+    Hy_{i_0}\subseteq \bigcup_{i=1}^kHy_i=Hx K=\bigcup_{j=1}^lz_jK,
+    \]
+    entonces, en particular, $k=\#\{Hy_i:Hy_i\subseteq  HxK\}=(H:xHx^{-1}\cap K)$. 
+    Como además $Hy_{i_0}K\subseteq\cup_{j=1}^mz_jK$, 
+    entonces 
+    \[
+    \frac{|H||K|}{|H\cap xKx^{-1}|}=|Hy_{i_0}K|\leq m|K|.
+    \]
+    Luego se concluye que $k=m$, pues $k=(H:L)\leq m\leq k$. 
+\end{proof}

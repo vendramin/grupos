@@ -1,0 +1,118 @@
+\chapter{El teorema de It\^o}
+
+\begin{definition}
+	\index{Grupo!metabeliano}
+	Un grupo $G$ se dice \textbf{metabeliano} si $[G,G]$ es abeliano. 
+\end{definition}
+
+\begin{exercise}
+	Demuestre que un grupo $G$ es metabeliano si y sólo si existe un subgrupo
+	normal $K$ de $G$ tal que $K$ y $G/K$ son abelianos.
+\end{exercise}
+
+% \begin{svgraybox}
+% 	Si $G$ es metabeliano, entonces $[G,G]$ es un subgrupo normal de $G$
+% 	abeliano tal que $G/[G,G]$ es abeliano. Si existe un subgrupo normal $K$ de
+% 	$G$ tal que $K$ y $G/K$ son abelianos, entonces $[G,G]\subseteq K$ es
+% 	abeliano.
+% \end{svgraybox}
+
+% \begin{remark}
+% 	Los grupos metabelianos son resolubles pues 
+% 	si $G$ es metabeliano entonces 
+% 	$G\supseteq [G,G]\supseteq 1$ es una serie resoluble para $G$.
+% \end{remark}
+
+\begin{exercise}
+	Sea $G$ un grupo metabeliano. 
+	\begin{enumerate}
+		\item Si $H$ es un subgrupo de $G$ entonces $H$ es metabeliano.
+		\item Si $f\colon G\to H$ es un morfismo entonces $f(H)$ es
+			metabeliano.
+	\end{enumerate}
+\end{exercise}
+
+% \begin{svgraybox}
+% 	El primer ítem es fácil pues $[H,H]\subseteq [G,G]$ es abeliano. El segundo
+% 	también pues $[f(H),f(H)]=f([H,H])$ es abeliano.
+% \end{svgraybox}
+
+\begin{lemma}
+En un grupo valen las siguientes fórmulas:
+\begin{enumerate}
+	\item $[a,bc]=[a,b]b[a,c]b^{-1}$. 
+	\item $[ab,c]=a[b,c]a^{-1}[a,c]$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Es un cálculo directo:
+ 	\begin{align*}
+ 	&[a,b]b[a,c]b^{-1}=aba^{-1}b^{-1}baca^{-1}c^{-1}b^{-1}=abca^{-1}c^{-1}b^{-1}=[a,bc],\\
+ 	&a[b,c]a^{-1}[a,c]=abcb^{-1}c^{-1}a^{-1}aca^{-1}c^{-1}=abcb^{-1}a^{-1}c^{-1}=[ab,c].\qedhere
+ 	\end{align*}
+\end{proof}
+
+\begin{example}
+	El grupo $\Sym_3$ es metabeliano pues $\Alt_3\simeq C_3$ es un subgrupo normal de
+	$\Sym_3$ tal que $\Sym_3/\Alt_3\simeq C_2$ es abeliano.
+\end{example}
+
+\begin{example}
+	El grupo $\Alt_4$ es metabeliano pues el subgrupo 
+	\[
+	K=\{\id,(12)(34),(13)(24),(14)(23)\}
+	\]
+	es abeliano y
+	normal en $\Alt_4$ y el cociente $\Alt_4/K\simeq C_3$ es abeliano.
+\end{example}
+
+
+\begin{example}
+	El grupo $\SL_2(3)$ no es metabeliano pues $[\SL_2(3),\SL_2(3)]\simeq Q_8$ 
+	no es un grupo abeliano. En efecto:
+\begin{lstlisting}
+gap> IsAbelian(DerivedSubgroup(SL(2,3)));
+false
+gap> StructureDescription(DerivedSubgroup(SL(2,3)));
+"Q8"
+\end{lstlisting}
+\end{example}
+
+% todo: después
+\begin{theorem}[It\^o]
+	\label{theorem:Ito}
+	Sea $G=AB$ una factorización de $G$ con $A$ y $B$ subgrupos de $G$
+	abelianos. Entonces $G$ es metabeliano.
+\end{theorem}
+
+\begin{proof}
+	Como $G=AB$ entonces $AB=BA$. Veamos primero que $[A,B]$ es un subgrupo
+	normal de $G$. Sean $a,\alpha\in A$, $b,\beta\in B$. Sean $a_1,a_2\in A$,
+	$b_1,b_2\in B$ tales que $\alpha b\alpha^{-1}=b_1a_1$, $\beta
+	a\beta^{-1}=a_2b_2$. Entonces, como
+	\begin{align*}
+		&\alpha[a,b]\alpha^{-1}=a(\alpha b\alpha^{-1})a^{-1}(\alpha b^{-1}\alpha^{-1})=ab_1a_1a^{-1}a_1^{-1}b_1^{-1}=[a,b_1]\in [A,B]\\
+		&\beta[a,b]\beta^{-1}=(\beta a\beta^{-1})\beta b\beta^{-1}(\beta a^{-1}\beta^{-1})b^{-1}=a_2b_2bb_2^{-1}a_2^{-1}b^{-1}=[a_2,b]\in [A,B],
+	\end{align*}
+	se concluye que $[A,B]$ es normal en $G$. 
+
+	Veamos ahora que $[A,B]$ es abeliano. Como 
+	\begin{align*}
+		&\beta\alpha[a,b]\alpha^{-1}\beta^{-1} = \beta[a,b_1]\beta^{-1}=(\beta a\beta^{-1})b_1(\beta a^{-1}\beta^{-1})b_1^{-1}=[a_2,b_1],\\
+		&\alpha\beta[a,b]\beta^{-1}\alpha^{-1} = \alpha[a_2,b]\alpha^{-1}=a_2(\alpha b\alpha^{-1})a_2^{-1}(\alpha b\alpha^{-1})=[a_2,b_1],
+	\end{align*}
+	un cálculo directo muestra que 
+	\[
+		[\alpha^{-1},\beta^{-1}][a,b][\alpha^{-1},\beta^{-1}]^{-1}=[a,b].
+	\]
+	Como dos generadores arbitrarios de $[A,B]$ conmutan, el grupo $[A,B]$ es
+	abeliano. 
+	
+	Para completar la demostración observamos $[G,G]=[A,B]$ pues 
+	\[
+	[a_1b_1,a_2b_2]=a_1[a_2,b_1]^{-1}a_1^{-1}a_2[a_1,b_2]a_2^{-1}\subseteq [A,B],
+	\]
+	ya que $[A,B]$ es normal en $G$. 
+\end{proof}
+

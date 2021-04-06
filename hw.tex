@@ -1,0 +1,227 @@
+\chapter{Los teoremas de Hall y Wielandt}
+
+\begin{lemma}[Argumento de Frattini]
+	\label{lemma:Frattini_argument}
+	\index{Frattini!argumento de}
+	Sea $G$ un grupo finito y sea $K$ un subgrupo normal de $G$. Si
+	$P\in\Syl_p(K)$ para algún primo $p$, entonces $G=KN_G(P)$.
+\end{lemma}
+
+\begin{proof}
+	Sea $g\in G$. Como $gPg^{-1}\subseteq gKg^{-1}=K$ pues $K$ es normal en $G$
+	y además $gPg^{-1}\in\Syl_p(K)$, existe $k\in K$ tal que
+	$kPk^{-1}=gPg^{-1}$. Luego $k^{-1}g\in N_G(P)$ pues
+	$P=(k^{-1}g)P(k^{-1}g)^{-1}$. Tenemos entonces que $g=k(k^{-1}g)\in
+	KN_G(P)$.
+\end{proof}
+
+\begin{theorem}[Hall]
+	\label{theorem:Hall}
+	Sea $G$ un grupo finito tal que todo subgrupo maximal de $G$ tiene índice
+	primo o el cuadrado de un primo. Entonces $G$ es resoluble.
+\end{theorem}
+
+\begin{proof}
+	Procederemos por inducción en $|G|$. Sea $N$ un subgrupo minimal-normal de
+	$G$ y sea $p$ el mayor divisor primo de $|N|$. Sean $P\in\Syl_p(N)$ y
+	$L=N_G(P)$. Si $L=G$ entonces $P$ es normal en $G$ y luego, como $P$ y
+	$G/P$ son resoluble por hipótesis inductiva, $G$ es resoluble. Supongamos
+	entonces que $L\ne G$ y sea $M$ un subgrupo maximal que contiene a $L$. 
+	Por el argumento de Frattini (lemma~\ref{lemma:Frattini_argument}),  
+	$G=NL=NM$. Como $M$ es maximal, 
+	existe un primo $q$ tal que 
+	\[
+	(N:N\cap M)=(G:M)\in\{q,q^2\}
+	\]
+	pues $(G:M)=|G|/|M|=|NM|/|M|=|N|/|N\cap M|$.  
+	Luego $q$ divide a $|N|$ y entonces $q\leq p$; en particular $q\not\equiv
+	1\bmod p$. Si $g\in G$ entonces 
+	\[
+	gPg^{-1}\subseteq gNg^{-1}=N
+	\]
+	y luego $gPg^{-1}\in\Syl_p(N)$. Al hacer actuar a $G$ por conjugación en
+	$\Syl_p(P)$, vemos que la cantidad de $p$-subgrupos de $N$ es entonces
+	igual a 
+	\[
+		(G:N_G(P))=(G:L)\equiv 1\bmod p.	
+	\]
+	Como $L\subseteq M$ se tiene que $L=N_M(P)$. 
+	
+	Supongamos que $|P|=p^{\alpha}$.  Como $P\subseteq M$, podemos hacer actuar
+	a $P$ en el conjunto $X=\{mPm^{-1}:m\in M\}$. Veamos que $\{P\}$ es la
+	única órbita que contiene un único elemento. Si $\{P_1\}$ es una órbita con
+	un único elemento, $P_1$ es un subgrupo normal de $\langle P,P_1\rangle$ y
+	luego $P_1P$ es un subgrupo de $M$ de orden $p^{\beta}$ con
+	$\beta\leq\alpha$. Como $P\subseteq P_1P$, se concluye que $P_1P=P$ y luego
+	$P=P_1$. Podemos descomponer al conjunto $X$ como unión
+	disjunta de órbitas
+	\[
+	X=\{P\}\cup O(P_1)\cup\cdots\cup O(P_k),
+	\]
+	donde $\{P\}$ es la única órbita que contiene solamente un elemento y cada
+	$O(P_j)$ tiene cardinal divisible por $p$. 
+	Luego 
+	\[
+		(M:N_M(P))=(M:L)=|X|\equiv1\bmod p.
+	\]
+	De la igualdad $(G:L)=(G:M)(M:L)$ se concluye que $(G:M)\equiv1\bmod p$.
+	Luego $(G:M)=q^2\equiv 1\bmod p$. Como esto implica que $q\equiv -1\bmod
+	p$, se concluye que $q=2$ y $p=q+1=3$.
+
+	Como $(N:N\cap M)=4$, al hacer actuar a $N$ en $N/N\cap M$ por
+	multiplicación a izquierda tenemos un morfismo no trivial $\rho\colon
+	N\to\Sym_4$. Como $[N,N]$ es característico en $N$ y $N$ es normal en $G$,
+	por la minimalidad de $N$ hay dos posibilidades: $[N,N]=1$ o
+	$[N,N]=N$. Si $[N,N]=N$ entonces
+	\[
+	\rho(N)=\rho([N,N])=[\rho(N),\rho(N)].
+	\]
+	Como $\Sym_4$ es resoluble, $\rho(N)$ es resoluble y luego $\rho(N)=1$, una
+	contradicción. Luego $[N,N]=1$. Como $N$ es resoluble por ser abeliano
+	y $G/N$ es resoluble por hipótesis inductiva, $G$ es resoluble.
+%	El grupo $N$ tiene orden $2^a3^b$, y entonces $N$ es resoluble por el
+%	teorema de Burnside.  Como $N$ es resoluble y $G/N$ es resoluble por
+%	hipótesis inductiva, $G$ es resoluble por el
+%	teorema~\ref{theorem:resoluble}. 
+\end{proof}
+
+Para terminar esta sección veremos dos resultados que permiten detectar
+resolubilidad. Primero necesitamos un lema.
+
+\begin{lemma}
+	\label{lemma:4Wielandt}
+	Sea $G$ un grupo finito. Sean $H$ y $K$ subgrupos de $G$ tales que de
+	índices coprimos. Entonces $G=HK$ y $(H:H\cap K)=(G:K)$.
+\end{lemma}
+
+\begin{proof}
+	Sea $D=H\cap K$. Como
+	\[
+	(G:D)=\frac{|G|}{|H\cap K|}=(G:H)(H:H\cap K),
+	\]
+	$(G:H)$ divide a $(G:D)$. Similarmente obtenemos que $(G:K)$ divide a
+	$(G:D)$. Como $(G:H)$ y $(G:K)$ son coprimos, se concluye que $(G:H)(G:K)$
+	divide a $(G:D)$. En particular, 
+	\[
+	\frac{|G|}{|H|}\frac{|G|}{|K|}=(G:H)(G:K)\leq (G:D)=\frac{|G|}{|H\cap K|},
+	\]
+	que implica $|G|=|HK|$. Como entonces $|G|=|HK|=|H||K|/|H\cap K|$, se
+	concluye que $(G:K)=(H:H\cap K)$.
+\end{proof}
+
+\index{Clausura normal}
+Recordemos que si $H$ es un subgrupo de $G$, la
+\textbf{clausura normal} $H^G$ de $H$ en $G$ se define como el subgrupo
+\[
+	H^G=\langle xHx^{-1}:x\in G\rangle.
+\]
+
+\begin{exercise}
+	Sea $G$ un grupo y $H$ un subgrupo.  Demuestre que $H^G$ es normal en $G$ y
+	que $H^G$ es el (único) menor subgrupo normal de $G$ que contiene a $H$.
+\end{exercise}
+
+\begin{svgraybox}
+	Es trivial demostrar que $H^G$ es normal en $G$.  Sea $N$ un subgrupo
+	normal de $G$ tal que $H\subseteq N$. Como $xHx^{-1}\subseteq xNx^{-1}=N$
+	para todo $x\in G$, $H\subseteq H^G\subseteq N$. 
+\end{svgraybox}
+
+\begin{example}
+	Sea $G=\Alt_4$ y sea $H=\{\id,(12)(34)\}$. La clausura normal de $H$ en $G$
+	es el grupo $H^G=\{id,(12)(34),(13)(24),(14)(23)\}\simeq C_2\times C_2$. El
+	código:
+	\begin{lstlisting}
+gap> G := AlternatingGroup(4);;
+gap> NormalClosure(G, Subgroup(G, [(1,2)(3,4)]));
+Group([ (1,2)(3,4), (1,3)(2,4) ])
+gap> StructureDescription(last);
+"C2 x C2"
+	\end{lstlisting}
+\end{example}
+
+\begin{theorem}[Wielandt]
+	\label{theorem:Wielandt:solvable}
+	Sea $G$ un grupo finito y sean $H,K,L$ subgrupos de $G$ con índices
+	coprimos dos a dos. Si $H$, $K$, $L$ son resolubles, entonces $G$ es
+	resoluble.
+\end{theorem}
+
+%%% TODO: revisar la demostración para escribirla mejor!
+
+\begin{proof}
+	Podemos suponer que $G\ne1$. Procederemos por inducción en $|G|$. Sea $N$
+	un subgrupo de $G$ minimal-normal y sea $\pi\colon G\to G/N$ el morfismo
+	canónico.  Los subgrupos $\pi(H)$, $\pi(K)$, $\pi(L)$ de $\pi(G)=G/N$ son
+	resolubles. Los índices de $\pi(H)$, $\pi(K)$ y $\pi(L)$ en $\pi(G)$ son
+	coprimos dos a dos pues por ejemplo\footnote{El núcleo de la restricción
+	$\ker(\pi|_H)=\ker \pi\cap N$ y entonces $\pi(H)\simeq H/N\cap H$.}
+	\[
+	(\pi(G):\pi(H))=(G/N:H/N\cap H)=(G:NH)
+	\]
+	divide a $(G:N)$. Por hipótesis inductiva, $\pi(G)$ es resoluble. Si $H=1$
+	entonces $|G|=(G:H)$ es coprimo con $(G:K)$ y luego $G=K$ es resoluble. Si
+	$H\ne 1$ sea $M$ un subgrupo minimal-normal de $H$. Por el
+	lema~\ref{lemma:minimal_normal}, $M$ es un $p$-grupo para algún primo $p$.
+	Sin pérdida de generalidad podemos suponer que el primo $p$ no divide a
+	$(G:K)$. Existe entonces $P\in\Syl_p(G)$ tal que $P\subseteq K$. Como los
+	subgrupos de Sylow son conjugados, existe $g\in G$ tal que $M\subseteq
+	gKg^{-1}$. Como $(G:gKg^{-1})=(G:K)$ es coprimo con $(G:H)$, el
+	lema~\ref{lemma:4Wielandt} implica que $G=(gKg^{-1})H$. 
+	
+	Veamos que todos los conjugados de $M$ están en $gKg^{-1}$. 
+	Si $x\in G$ escribimos $x=uv$ con $u\in 
+	gKg^{-1}$, $v\in H$ y luego, como $M$ es normal en $H$, 
+	\[
+	xMx^{-1}=(uv)M(uv)^{-1}=uMu^{-1}\subseteq gKg^{-1}.
+	\]
+	En particular, $1\ne M^G\subseteq gKg^{-1}$ es resoluble pues $gKg^{-1}$ es
+	resoluble. Como por hipótesis inductiva $G/M^G$ es resoluble, se concluye
+	que $G$ es resoluble al aplicar el teorema~\ref{theorem:resoluble}.
+\end{proof}
+
+\begin{definition}
+	\index{$p$-complemento}
+	Sea $G$ un grupo finito de orden $p^{\alpha}m$ con $p$ coprimo con $m$. Un
+	subgrupo $H$ de $G$ se dice un \textbf{$p$-complemento} si $|H|=m$. 
+\end{definition}
+
+\begin{example}
+	Sea $G=\Sym_3$. El subgrupo $H=\langle (123)\rangle$ es un $2$-complemento
+	y el subgrupo $K=\langle (12)\rangle$ es un $3$-complemento.
+\end{example}
+
+Recordemos que un teorema de Burnside afirma que todo grupo finito $G$ de orden
+divisible por exactamente dos números primos es resoluble. Este resultado es
+necesario para demostrar el siguiente teorema de Hall:
+
+\begin{theorem}[Hall]
+	\label{theorem:Hall:solvable}
+	Sea $G$ un grupo finito tal que admite un $p$-complemento para todo primo
+	que divide al orden de $G$. Entonces $G$ es resoluble.
+\end{theorem}
+
+\begin{proof}
+	Sea $|G|=p_1^{\alpha_1}\cdots
+	p_k^{\alpha_k}$ con los $p_j$ primos distintos. Procederemos por inducción
+	en $k$. Si $k=1$ el resultado es cierto pues $G$ es un $p$-grupo. Si $k=2$
+	el resultado es válido gracias al teorema de Burnside. Supongamos entonces
+	que $k\geq3$. Para cada $j\in\{1,2,3\}$ sea $H_j$ un $p_j$-complemento en
+	$G$. Como $|H_j|=|G|/p_j^{\alpha_j}$, los $H_j$ tienen índices coprimos.
+
+	Veamos que $H_1$ es resoluble. Observemos que $|H_1|=p_2^{\alpha_2}\cdots
+	p_k^{\alpha_k}$. Sea $p$ un primo que divide a $|H_1|$ y sea $Q$ un
+	$p$-complemento en $G$. 
+	Como $(G:H_1)$ y $(G:Q)$ son
+	coprimos, el lema~\ref{lemma:4Wielandt} implica que 
+	\[
+	(H_1:H_1\cap Q)=(G:Q)
+	\]
+	y luego $H_1\cap Q$ es un $p$-complemento en $H_1$.  Luego $H_1$ es
+	resoluble por hipótesis inductiva. De la misma forma se demuestra que $H_2$
+	y $H_3$ son resolubles.
+
+	Como $H_1$, $H_2$ y $H_3$ son resolubles y tiene índices coprimos, el
+	resultado se obtiene al aplicar el teorema de
+	Wielandt~\ref{theorem:Wielandt:solvable}.
+\end{proof}

@@ -1,0 +1,1142 @@
+\chapter{Nilpotencia}
+
+Primero comenzaremos repasando algunas nociones básicas sobre conmutadores y subgrupos generados por conmutadores. 
+
+Si $G$ es un grupo y $x,y,z\in G$, denotaremos la conjugación (como acción
+a izquierda) de la siguiente forma: $\prescript{x}{}y=xyx^{-1}$. El
+conmutador entre $x$ e $y$ se escribirá entonces como
+\[
+[x,y]=xyx^{-1}y^{-1}=(\prescript{x}{}y)y^{-1}.
+\]
+
+Además escribiremos 
+$[x,y,z]=[x,[y,z]]$. Si $X,Y,Z$ son subgrupos de $G$ escribimos
+$[X,Y,Z]=\left[ X,[Y,Z] \right]$. Observemos que $[X,Y]=[Y,X]$. 
+
+%FIXME [x,y,z]=[x,[y,z]]
+%y lo mismo para subgrupos
+%hay que arreglar todas las pruebas!
+
+\begin{exercise}[La identidad de Hall--Witt]
+	\label{exercise:HallWitt}
+	\index{Identidad!de Hall--Witt}
+	\index{Hall, P.}
+	\index{Witt, E.}
+	Sean $G$ un grupo y $x,y,z\in G$. Demuestre que 
+	\begin{equation}
+		\label{eq:HallWitt}
+	\left(\prescript{y}{}[x,y^{-1},z]\right)\left(\prescript{z}{}[y,z^{-1},x]\right)\left(\prescript{x}{}[z,x^{-1},y]\right)=1.
+	\end{equation}
+\end{exercise}
+
+\index{Jaboci, G.}
+\index{Identidad!de Jacobi}
+Es interesante observar que si $G$ es un grupo tal que $[G,G]$ es central,
+entonces la identidad de Hall-Witt se transforma en la identidad de Jacobi.
+
+%\begin{proof}
+%	Como la demostración es simplemente un cálculo de rutina, la dejamos como ejercicio.
+%	Calculamos 
+%	\begin{align*}
+%	&\prescript{y}{}[x,y^{-1},z]=yxy^{-1}zyz^{-1}x^{-1}zy^{-1}z^{-1},\\
+%	&\prescript{z}{}[y,z^{-1},x]=zyz^{-1}xzx^{-1}y^{-1}xz^{-1}x^{-1},\\
+%	&\prescript{x}{}[z,x^{-1},y]=xzx^{-1}yxy^{-1}z^{-1}yx^{-1}y^{-1}.
+%	\end{align*}
+%\end{proof}
+\begin{lemma}[de los tres subgrupos de Hall]
+	\label{lemma:3subgrupos}
+	\index{Lema!de los tres subgrupos}
+	Sean $X,Y,Z$ subgrupos de un grupo $G$ tales que $[X,Y,Z]=[Y,Z,X]=1$.
+	Entonces $[Z,X,Y]=1$.
+\end{lemma}
+
+\begin{proof}
+	Alcanza con ver que $[z,x^{-1},y]=1$ para todo $x\in X$, $y\in Y$, $z\in Z$
+	(pues si $[x,y]\in C_G(z)$ entonces $[X,Y]\in C_G(z)$ y luego
+	$[X,Y]\subseteq C_G(Z)$). Como $[y^{-1},z]\in [Y,Z]$, entonces
+	$[x,y^{-1},z]\in [X,Y,Z]=1$; luego $\prescript{y}{}[x,y^{-1},z]=1$.
+	Similarmente, $\prescript{z}{}[y,z^{-1},x]=1$. Entonces, al usar la
+	identidad de Hall--Witt~\ref{exercise:HallWitt}, se concluye que 
+	$[z,x^{-1},y]=1$.
+\end{proof}
+
+\begin{lemma}
+	\label{lemma:3subgrupos_general}
+	Sea $N$ un subgrupo normal de un grupo $G$ y sean $X,Y,Z\subseteq N$
+	subgrupos. Si $[X,Y,Z]\subseteq N$ y $[Y,Z,X]\subseteq N$. Entonces
+	$[Z,X,Y]\subseteq N$.
+\end{lemma}
+
+\begin{proof}
+	Sea $\pi\colon G\to G/N$ el morfismo canónico. Como $[X,Y,Z]\subseteq N$, 
+	\begin{align*}
+		1&=\pi([X,Y,Z])=\pi([ X,[Y,Z]])\\
+		&=[\pi(X),\pi([Y,Z])]=[ \pi(X),[\pi(Y),\pi(Z)]]=[\pi(X),\pi(Y),\pi(Z)]. 
+	\end{align*}
+	Similarmente $[\pi(Y),\pi(Z),\pi(X)]=1$. Entonces, gracias al lema de los
+	tres subgrupos~\ref{lemma:3subgrupos}, $[\pi(Z),\pi(X),\pi(Y)]=1$, es decir
+	$[Z,X,Y]\subseteq N$.
+\end{proof}
+
+\index{Grupo!perfecto}
+Recordemos que un grupo $G$ se dice \textbf{perfecto} si $[G,G]=G$.
+
+\begin{theorem}[Gr\"un]
+	\label{theorem:Grun}
+	\index{Teorema!de Gr\"un}
+	Si $G$ es un grupo perfecto, entonces $Z(G/Z(G))=1$. 
+\end{theorem}
+
+\begin{proof}
+	Si usamos el lema de los tres subgrupos con $X=Y=G$ y $Z=\zeta_2(G)$, 
+	%, como 
+	%$[G,\zeta^2(G),G]=[G,G,\zeta_2(G)]=[G,(G)]=1$, se concluye que 
+	$1=[\zeta_2(G),G,G]=[\zeta_2(G),[G,G]]=[\zeta_2(G),G]$. Luego 	
+	$\zeta_2(G)\subseteq Z(G)$ y
+	entonces $\zeta_2(G)=Z(G/Z(G))=1$. 
+\end{proof}
+
+\begin{theorem}
+	\label{theorem:gamma}
+	Si $G$ es un grupo, $[\gamma_i(G),\gamma_j(G)]\subseteq
+	\gamma_{i+j}(G)$ para todo $i,j\geq1$.	
+\end{theorem}
+
+\begin{proof}
+	Procederemos por inducción en $j$. El caso $j=1$ es trivial pues
+	$[G,\gamma_j(G)]=\gamma_{j+1}(G)$ por definición. Supongamos entonces que
+	el resultado vale para algún $j\geq1$ y para todo $i\geq1$. 
+	
+	Primero observemos que 
+	\begin{equation*}
+		[G,\gamma_i(G),\gamma_j(G)]=[\gamma_i(G),G,\gamma_j(G)]=[\gamma_{i+1}(G),\gamma_j(G)]\subseteq \gamma_{i+j+1}(G)
+	\end{equation*}
+	por hipótesis inductiva. Además, también por hipótesis inductiva, 
+	\begin{equation*}
+	[\gamma_i(G),\gamma_j(G),G]\subseteq [\gamma_{i+j}(G),G]=\gamma_{i+j+1}(G).
+	\end{equation*}
+	El lema~\ref{lemma:3subgrupos_general} implica entonces que $[\gamma_j(G),G,\gamma_i(G)]\subseteq \gamma_{i+j+1}(G)$. Luego 
+	\[
+	[\gamma_i(G),\gamma_{j+1}(G)]=[\gamma_{j+1}(G),\gamma_i(G)]=[\gamma_j(G),G,\gamma_i(G)]\subseteq \gamma_{i+j+1}(G)
+	\]
+	y el teorema queda demostrado.
+\end{proof}
+
+Podríamos considerar conmutadores arbitrarios donde no necesariamente se asocia
+siempre hacia la izquierda. Por ejemplo $[G,G,G]=[ [G,G],G]$ y $[G,[G,G]]$ son
+ambos conmutadores de peso tres. 
+
+\begin{corollary}
+	Sea $G$ un grupo.  Entonces todo conmutador de peso $n$ está contenido en
+	$\gamma_n(G)$.
+\end{corollary}
+
+\begin{proof}
+	Procederemos por inducción en $n$. El caso $n=1$ es trivial. Supongamos
+	entonces que el resultado es válido para algún $n\geq1$.  Tenemos entonces
+	un conmutador de la forma $[A,B]$, donde $A$ es un conmutador de peso $k$,
+	$B$ es un conjuntador de peso $l$ y $n=k+l$. Como $k<n$ y $l<n$, la
+	hipótesis inductiva implica que $A\subseteq \gamma_k(G)$ y $B\subseteq
+	\gamma_l(G)$. Luego $[A,B]\subseteq [\gamma_k(G),\gamma_l(G)]\subseteq
+	\gamma_{k+l}(G)$ por el
+	teorema~\ref{theorem:gamma}.
+\end{proof}
+
+%\section{Grupos nilpotentes}
+%\label{nilpotentes}
+
+Si $H$ y $K$ son subgrupos de $G$ se define
+\[
+	[H,K]=\langle [h,k]:h\in H,\,k\in K\rangle.
+\]
+
+\begin{definition}
+	\index{Normalizador}
+	Sea $G$ un grupo. Se dice que un subgrupo $K$ de $G$ \textbf{normaliza} a
+	$H$ si $K\subseteq N_G(H)$. 
+\end{definition}
+
+\begin{definition}
+	\index{Centralizador}
+	Sea $G$ un grupo. Se dice que un subgrupo $K$ de $G$ \textbf{centraliza} a
+	$H$ si $K\subseteq C_G(H)$, es decir si y sólo si $[H,K]=1$.
+\end{definition}
+
+\begin{exercise}
+	Sean $K$ y $H$ subgrupos de $G$ con $K\subseteq H$ y $K$ normal en $G$.
+	Demuestre que $[H,G]\subseteq K$ si y sólo si $H/K\subseteq Z(G/K)$. 
+\end{exercise}
+
+\begin{svgraybox}
+	Sean $h\in H$ y $g\in G$. $hKgK=gKhK$ si y sólo si $[h,g]\in K$.
+\end{svgraybox}
+
+\begin{definition}
+	\index{Serie!central descendente}
+	Sea $G$ un grupo. La \textbf{serie central descendente} es la sucesión de
+	subgrupos $\gamma_k(G)$ definida inductivamente como
+	\[
+		\gamma_1(G)=G,\quad
+		\gamma_{i+1}(G)=[G,\gamma_i(G)]\quad i\geq 0.
+	\]
+\end{definition}
+
+\begin{definition}
+	\index{Grupo!nilpotente}
+	\index{Índice de nilpotencia}
+	Un grupo $G$ se dice \textbf{nilpotente} si existe $c$ tal que
+	$\gamma_{c+1}(G)=1$. El menor de los $c$ tales que $\gamma_{c+1}(G)=1$ será
+	el \textbf{índice de nilpotencia} de $G$.
+\end{definition}
+
+\begin{exercise}
+	Demuestre que todo grupo nilpotente es resoluble.
+\end{exercise}
+
+\begin{svgraybox}
+	Por inducción se demuestra que $G^{(i)}\subseteq\gamma_i(G)$ para todo
+	$i\geq1$. Luego si existe $c$ tal que $\gamma_{c+1}(G)$ entonces $G$ es
+	resoluble pues $G^{(c+1)}=1$.
+\end{svgraybox}
+
+\begin{example}
+	Un grupo es nilpotente de clase uno si y sólo si es abeliano.
+\end{example}
+
+\begin{example}
+	$\Sym_3$ es resoluble pues $\Sym_3\supseteq \Alt_3\supseteq 1$ es una serie
+	de composición con factores abelianos pero $\Sym_3$ no es nilpotente pues
+	\[
+		\gamma_1(\Sym_3)=\Alt_3,\quad
+		\gamma_2(\Sym_3)=[\Alt_3,\Sym_3]=\Alt_3.
+	\]
+	Luego $\gamma_i(\Sym_3)\ne1$ para todo $i\geq1$. 
+\end{example}
+
+\begin{example}
+	El grupo $G=\Alt_4$ no es nilpotente pues 
+	\[
+		\gamma_1(G)=G,\quad
+		\gamma_j(G)=\{\id,(12)(34),(13)(24),(14)(23)\}\simeq C_2\times C_2
+	\]
+	para todo $j\geq2$. Podemos usar la función \lstinline{LowerCentralSeries}
+	para calcular la sucesión $\gamma_j(G)$:
+	\begin{lstlisting}
+gap> List(LowerCentralSeries(AlternatingGroup(4)),\
+StructureDescription);
+[ "A4", "C2 x C2" ]
+	\end{lstlisting}
+	Alternativamente, podemos calcular a mano la sucesión $\gamma_j(G)$: 
+	\begin{lstlisting}
+gap> G := AlternatingGroup(4);;
+gap> gamma_1 := G;;
+gap> gamma_2 := DerivedSubgroup(G);;
+gap> gamma_3 := CommutatorSubgroup(gamma_2,G);;
+gap> StructureDescription(gamma_1);
+"A4"
+gap> StructureDescription(gamma_2);
+"C2 x C2"
+gap> StructureDescription(gamma_3);
+"C2 x C2"
+	\end{lstlisting}
+\end{example}
+
+\begin{example}
+	El grupo $G=\SL_2(3)$ no es nilpotente:
+	\begin{lstlisting}
+gap> IsNilpotent(SL(2,3));
+false
+	\end{lstlisting}
+\end{example}
+
+\begin{exercise}
+	\label{exercise:gamma}
+	Sea $G$ un grupo. Demuestre las siguientes afirmaciones:
+	\begin{enumerate}
+		\item Cada $\gamma_i(G)$ es un subgrupo característico de $G$.
+		\item $\gamma_i(G)\supseteq\gamma_{i+1}(G)$ para todo $i\geq1$.
+		\item Si $f\colon G\to H$ es un morfismo sobreyectivo,
+			$f(\gamma_i(G))=\gamma_i(H)$ para todo $i\geq1$.
+	\end{enumerate}
+\end{exercise}
+
+\begin{svgraybox}
+	Todas las afirmaciones se demuestran fácilmente por inducción. El paso
+	inductivo para la primera es el siguiente: si $f\in\Aut(G)$ entonces
+	\[
+		f(\gamma_{i+1}(G))
+		=f([G,\gamma_i(G)])
+		=[f(G),f(\gamma_i(G))]\subseteq [G,\gamma_i(G)]
+		=\gamma_{i+1}(G).
+	\]
+	Para la segunda:
+	\[
+		\gamma_{i+1}(G)=[G,\gamma_i(G)]\subseteq [G,\gamma_{i-1}(G)]=\gamma_{i}(G).
+	\]
+	Similarmente, el paso inductivo para demostrar la tercera afirmación:
+	\[
+		f(\gamma_{i+1}(G))=f([G,\gamma_i(G)])=[f(G),f(\gamma_i(G))]=[H,\gamma_i(H)]=\gamma_{i+1}(H).
+	\]
+\end{svgraybox}
+
+\begin{exercise}
+	\label{exercise:HxK_nilpotente}
+	Demuestre que si $H$ y $K$ son nilpotentes entonces $H\times K$ es
+	nilpotente.
+\end{exercise}
+
+\begin{svgraybox}
+	Por inducción se demuestra fácilmente que $\gamma_i(H\times
+	K)\subseteq\gamma_i(H)\times\gamma_i(K)$ para todo $i\geq1$. 
+\end{svgraybox}
+
+\begin{theorem}
+	\label{theorem:nilpotente}
+	Sea $G$ un grupo nilpotente.
+	\begin{enumerate}
+		\item Si $H$ es un subgrupo de $G$ entonces $H$ es nilpotente.
+		\item Si $f\colon G\to H$ es un morfismo sobreyectivo, entonces $H$ es
+			nilpotente. 
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	La primera afirmación es cierta pues $\gamma_i(H)\subseteq\gamma_i(G)$ para
+	todo $i\geq1$. La segunda afirmación se deduce del
+	ejercicio~\ref{exercise:gamma}: si existe $c$ tal que $\gamma_{c+1}(G)=1$
+	entonces $\gamma_{c+1}(H)=f(\gamma_{c+1}(G))=f(1)=1$. 
+\end{proof}
+
+\begin{example}
+	A diferencia de lo que pasa con grupos resolubles, podríamos tener un grupo
+	$G$ no nilpotente con un subgrupo normal $K$ tal que $K$ y $G/K$ son
+	nilpotentes. Por ejemplo: Sea $G=\Sym_3$ y sea $K=\Alt_3$. Entonces $G$ no
+	es nilpotente a pesar de que $K$ y $G/K\simeq C_2$ sean nilpotentes.
+\end{example}
+
+\begin{proposition}
+	\label{proposition:pgrupo_nilpotente}
+	Todo $p$-grupo finito es nilpotente.
+\end{proposition}
+
+\begin{proof}
+	Procederemos por inducción en $|G|$. El caso $G=1$ es trivial. Si suponemos
+	que el resultado es válido para $p$-grupos de orden $<|G|$, entonces, como
+	$G$ es un $p$-grupo, $Z(G)\ne1$. Esto implica que $G/Z(G)$ es un $p$-grupo
+	nilpotente (por hipótesis inductiva) y luego existe $c$ tal que
+	$\gamma_{c+1}(G/Z(G))=1$. Sea $\pi\colon G\to G/Z(G)$ el morfismo canónico.
+	Por el ejercicio~\ref{exercise:gamma},
+	$\pi(\gamma_{c+1}(G))=\gamma_{c+1}(G/Z(G))=1$ y entonces
+	$\gamma_{c+1}(G)\subseteq \ker\pi=Z(G)$. Luego $G$ es nilpotente pues 
+	\[
+		\gamma_{c+2}(G)=[\gamma_{c+1}(G),G]=[Z(G),G]=1.
+	\]
+\end{proof}
+
+
+En el siguiente lema veremos que los grupos nilpotentes satisfacen la
+\textbf{condición normalizadora}.
+
+\begin{lemma}
+	\label{lemma:normalizadora}
+	Sea $G$ un grupo nilpotente. Si $H$ es un subgrupo propio de $G$ entonces
+	$H\subsetneq N_G(H)$.
+\end{lemma}
+
+\begin{proof}
+	Sabemos que existe $c$ tal que $G=\gamma_1(G)\supseteq\cdots\supseteq\gamma_{c+1}(G)=1$. Como 
+	$1=\gamma_{c+1}(G)\subseteq H$ y $\gamma_1(G)\not\subseteq H$, podemos
+	tomar el mínimo $k$ tal que $\gamma_k(G)\subseteq H$. Como
+	\[
+		[\gamma_{k-1}(G),H]\subseteq [\gamma_{k-1}(G),G]=\gamma_k(G)\subseteq H,
+	\]
+	se tiene que 
+	%$xhx^{-1}h^{-1}\in H$ para todo $x\in\gamma_{k-1}(G)$ y $h\in
+	%H$. Esto implica que 
+	$xHx^{-1}\subseteq H$ para todo $x\in\gamma_{k-1}(G)$,
+	es decir: $\gamma_{k-1}(G)\subseteq N_G(H)$. Si $N_G(H)=H$ entonces
+	$\gamma_{k-1}(G)\subseteq H$, que contradice la minimalidad de $k$. 
+\end{proof}
+
+%\begin{example}
+%	Un grupo $G$ es nilpotente de clase dos si y sólo $\gamma_2(G)
+
+%\end{example}
+
+Si $G$ es un grupo se define sucesión $\zeta_0(G),\zeta_1(G),\dots$
+inductivamente de la siguiente forma:
+\[
+	\zeta_0(G)=1,\quad
+	\zeta_{i+1}(G)=\{g\in G:[g,x]\in\zeta_{i}(G)\text{ para todo $x\in G$}\},\quad i\geq 0.
+\]
+Por ejemplo: $\zeta_1(G)=Z(G)$.
+
+\begin{lemma}
+	\label{lemma:central_ascendente}
+	Sea $G$ un grupo. Para todo $i\geq0$ el conjunto $\zeta_i(G)$ es un
+	subgrupo normal de $\zeta_{i+1}(G)$. 
+\end{lemma}
+
+\begin{proof}
+	Procederemos por inducción en $i$. El caso $i=0$ es trivial pues
+	$\zeta_0(G)=1$.  Supongamos entonces que el resultado es válido para $i$.
+	Veamos primero que $\zeta_{i+1}(G)$ es un subgrupo de $G$. 
+	Sean $g,h\in \zeta_{i+1}(G)$ y sea $x\in G$. Por hipótesis inductiva,
+	\begin{align*}
+	&[g^{-1},x]=(xg^{-1})[g,x^{-1}](xg^{-1})^{-1}\in (xg^{-1})\zeta_i(G)(xg^{-1})^{-1}=\zeta_i(G),\\
+	&[gh,x]=[g,hxh^{-1}][h,x]\in \zeta_{i}(G).
+	\end{align*}
+	Como $1\in\zeta_{i+1}(G)$, se concluye que todos los $\zeta_i(G)$ son
+	subgrupos de $G$. La normalidad también se demuestra por inducción en $i$:
+	si $g\in\zeta_{i+1}(G)$, $x\in G$ entonces $xgx^{-1}\in\zeta_{i+1}(G)$ pues 
+	\[
+	[xgx^{-1},y]=x[g,xyx^{-1}]x^{-1}\in\zeta_{i}(G)
+	\]
+	para todo $y\in G$.
+\end{proof}
+
+
+\begin{definition}
+	\index{Serie!central ascendente}
+	Sea $G$ un grupo. Se define la \textbf{serie central ascendente} de $G$
+	como la sucesión
+	\[
+		1=\zeta_0(G)\subseteq\zeta_1(G)\subseteq\zeta_2(G)\subseteq\cdots
+	\]
+\end{definition}
+
+\begin{lemma}
+	\label{lemma:gamma_zeta}
+	Sea $G$ un grupo. Existe $c$ tal que $\zeta_c(G)=G$ si y sólo si 
+	$\gamma_{c+1}(G)=1$. Más aún, en ese caso 
+	\[
+	\gamma_{i+1}(G)\subseteq\zeta_{c-i}(G)
+	\]
+	para todo $i\in\{0,1,\dots,c\}$. 
+\end{lemma}
+
+\begin{proof}
+	Supongamos primero que $\zeta_c(G)=G$. Por inducción vamos a demostrar
+	que $\gamma_{i+1}(G)\subseteq\zeta_{c-i}(G)$.  Como el caso $i=0$ es
+	trivial, supongamos que el resultado es válido para un cierto $i\geq0$. Si
+	$g\in\gamma_{i+2}(G)=[\gamma_{i+1}(G),G]$, podemos escribir 
+	\[
+	g=\prod_{k=1}^N [g_k,x_k],
+	\]
+	donde $g_1,\dots,g_N\in\gamma_{i+1}(G)$ y $x_1,\dots,x_N\in G$. Por
+	hipótesis inductiva 
+	\[
+	g_j\in\gamma_j(G)\subseteq\zeta_{c-j}(G)
+	\]
+	y entonces $[g_j,x_j]\in\zeta_{c-i-1}(G)$ para todo $j$. Luego
+	$g\in\zeta_{c-(i+1)}(G)$. La implicación que queremos queda demostrada
+	al tomar $i=c$. 
+
+	Supongamos ahora que $\gamma_{c+1}(G)=1$. Demostremos por inducción en $c-i$ que
+	$\gamma_{c+1-i}(G)\subseteq\zeta_{c-i}(G)$. El caso $c-i=0$ es trivial. Si el
+	resultado es válido para algún $c-i\geq0$, sea
+	$g\in\gamma_{c+2-i}(G)=[\gamma_{c+1-i}(G),G]$. Escribimos
+	\[
+		g=\prod_{k=1}^N[g_k,x_k]
+	\]
+	con $g_1,\dots,g_N\in\gamma_{c+1-i}(G)\subseteq\zeta_{i}(G)$ por
+	hipótesis inductiva. Luego $g\in \zeta_{c-(i+1)}(G)$ pues cada
+	$[g_j,x_j]\in\zeta_{i-1}(G)$. Al tomar $i=0$ se obtiene la implicación
+	buscada.
+\end{proof}
+
+\begin{example}
+	Sea $G=\Sym_3$. Entonces $\zeta_j(G)=1$ para todo $j\geq 0$: 
+	\begin{lstlisting}
+gap> UpperCentralSeries(SymmetricGroup(3));
+[ Group(()) ]
+	\end{lstlisting}
+\end{example}
+
+\begin{definition}
+	\index{Serie!central}
+	Sea $G$ un grupo. Una \textbf{serie central} para $G$ es una sucesión 
+	\[
+		G=G_0\supseteq G_1\supseteq\cdots\supseteq G_n=1
+	\]
+	de subgrupos normales de $G$ tal que para cada $i\in\{1,\dots,n\}$, 
+	$\pi_i(G_{i-1})$ es un subgrupo de $Z(G/G_i)$, donde $\pi_i\colon G\to
+	G/G_i$ es el morfismo canónico.
+\end{definition}
+
+\begin{lemma}
+	\label{lemma:serie_central}
+	Sea $G$ un grupo y sea $G=G_0\supseteq G_1\supseteq\cdots\supseteq G_n=1$
+	una serie central para $G$. Entonces $\gamma_{i+1}(G)\subseteq G_i$ para
+	todo $i$.
+\end{lemma}
+
+\begin{proof}
+	Procederemos por inducción en $i$. El caso $i=0$ es trivial.  Supongamos
+	que el resultado es válido para algún $i\geq0$. Entonces 
+	\[
+	\gamma_{i+1}(G)=[G,\gamma_i(G)]\subseteq [G,G_{i-1}]\subseteq G_i
+	\]
+	pues, como $\pi_i(G_{i-1})\subseteq Z(G/G_{i})$, entonces
+	$\pi([G,G_{i-1}])=[\pi(G),\pi(G_{i-1})]=1$ y luego $[G,G_{i-1}]\subseteq
+	G_i$.
+\end{proof}
+
+% extender el lema para ver qué pasa con zeta_i
+
+\begin{theorem}
+	Un grupo es nilpotente si y sólo si admite una serie central.
+\end{theorem}
+
+\begin{proof}
+	Si el grupo $G$ es nilpotente, entonces los $\gamma_j(G)$ forman una serie
+	central para $G$. Recíprocamente, si $G=G_0\supseteq
+	G_1\supseteq\cdots\supseteq G_n=1$ es una serie central para $G$, entonces,
+	por el lema~\ref{lemma:serie_central} $G$ es nilpotente pues
+	$\gamma_{n+1}(G)\subseteq G_n=1$.
+\end{proof}
+
+\begin{exercise}
+	Sea $G$ un grupo. Demuestre que si $K$ es un subgrupo de $Z(G)$ tal que
+	$G/K$ es nilpotente, entonces $G$ es nilpotente.
+\end{exercise}
+
+%\begin{svgraybox}
+%	Sea $\pi\colon G\to G/K$. Usar $\pi^{-1}$ para levantar una serie central de $G/K$ y obtener una serie central para $G$.
+%\end{svgraybox}<++>
+
+\begin{theorem}[Hirsch]
+	\label{theorem:Z(nilpotent)}
+	Sea $G$ un grupo nilpotente. Si $H$ es un subgrupo normal no trivial de $G$
+	entonces $H\cap Z(G)\ne1$. En particular, $Z(G)\ne1$. 
+%	Si $G$ es un grupo nilpotente entonces $Z(G)\ne1$. 
+\end{theorem}
+
+\begin{proof}
+	Como $\zeta_0(G)=1$ y existe $c$ tal que $\zeta_c(G)=G$, existe 
+	\[
+	m=\min\{k:H\cap\zeta_k(G)\ne1\}.
+	\]
+	Como $H$ es normal, 
+	\[
+	[H\cap\zeta_m(G),G]\subseteq H\cap[\zeta_m(G),G]\subseteq H\cap\zeta_{m-1}(G)=1.
+	\]
+	Luego $1\ne H\cap\zeta_m(G)\subseteq H\cap Z(G)$. Si $H=G$ entonces $Z(G)\ne1$. 
+%	Sea $c$ tal que $\gamma_{c+1}(G)=1$ y $\gamma_{c}(G)\ne1$. 
+%	Por el lema~\ref{lemma:gamma_zeta}, 
+%	\[
+%	1\ne\gamma_{c}(G)\subseteq \zeta_{1}(G)=Z(G).
+%	\]
+\end{proof}
+
+\begin{exercise}
+	Sea $G$ un grupo nilpotente y sea $M$ un subgrupo minimal-normal de $G$.
+	Demuestre que $M\subseteq Z(G)$.
+\end{exercise}
+
+\begin{svgraybox}
+	Como $M\cap Z(G)$ es normal en $G$, la minimalidad de $M$ implica que hay
+	dos posibilidades: $M\cap Z(G)$ es trivial o bien $M=M\cap Z(G)\subseteq Z(G)$.
+	Por el teorema~\ref{theorem:Z(nilpotent)}, $M\cap Z(G)\ne 1$.
+\end{svgraybox}
+
+\begin{corollary}
+	Sea $G$ un grupo nilpotente no abeliano y sea $A$ un subgrupo
+	maximal-normal y abeliano de $G$. Entonces $A=C_G(A)$.
+\end{corollary}
+
+\begin{proof}
+	Como $A$ es abeliano, $A\subseteq C_G(A)$. Supongamos que $A\ne C_G(A)$.
+	El centralizador $C_G(A)$ es normal en $G$ pues, como $A$ es normal en $G$, 
+	\[
+		gC_G(A)g^{-1}=C_G(g^{-1}Ag)=C_G(A).
+	\]
+	para todo $g\in G$.  Sea $\pi\colon G\to G/A$ el morfismo canónico.
+	Entonces $\pi(C_G(A))$ es un subgrupo normal no trivial de $\pi(G)$. Como
+	$G$ es nilpotente, $\pi(G)$ es nilpotente y, por el
+	teorema~\ref{theorem:Z(nilpotent)}, $\pi(C_G(A))\cap Z(\pi(G))\ne1$. Sea
+	$x\in C_G(A)\setminus A$ tal que $\pi(x)$ es central en $\pi(G)$.  El grupo
+	$\langle A,x\rangle$ es abeliano pues $x\in C_G(A)$. Además $\langle
+	A,x\rangle$ es normal en $G$ pues $A$ es normal en $G$ y  si $g\in G$
+	entonces $gxg^{-1}x^{-1}\in A$ porque $\pi(x)$ es central y luego
+	$gxg^{-1}\in \langle A,x\rangle$.  $A\subsetneq \langle
+	A,x\rangle\subsetneq G$, una contradicción.
+\end{proof}
+
+\begin{theorem}
+	Sea $G$ un grupo nilpotente. Valen las siguientes afirmaciones:
+	\begin{enumerate}
+		\item Todo subgrupo minimal-normal tiene orden primo y es central.
+		\item Todo subgrupo maximal es normal de índice primo y contiene a
+			$[G,G]$. 
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	Demostremos la primera afirmación. Sea $N$ un subgrupo minimal-normal. Como
+	$N\cap Z(G)\ne1$ por el teorema~\ref{theorem:Z(nilpotent)}, $N\cap Z(G)$ es
+	un subgrupo normal de $G$ contenido en $N$. Luego $N=N\cap Z(G)\subseteq
+	Z(G)$ por la minimalidad de $N$. En particular, $N$ es abeliano. Además,
+	como todo subgrupo de $N$ es normal en $G$, $N$ es simple y luego $N\simeq
+	C_p$ para algún primo $p$.
+
+	Demostremos ahora la segunda afirmación. Si $M$ es un subgrupo maximal, $M$
+	es normal en $G$ por el ejercicio~\ref{exercise:normalizadora}. La
+	maximalidad de $M$ implica que $G/M$ no contiene subgrupos propios no
+	triviales. Luego $G/M\simeq C_p$ para algún primo $p$. Como en particular
+	$G/M$ es abeliano, $[G,G]\subseteq M$. 
+\end{proof}
+
+\begin{proposition}
+	\label{proposition:g^n}
+	Sea $G$ un grupo nilpotente y sea $H$ un subgrupo de $G$ de índice $n$. Si
+	$g\in G$ entonces $g^n\in H$.
+\end{proposition}
+
+%%% TODO: hacer inducción en el índice para escribirlo mejor
+
+\begin{proof}
+	El resultado es obvio en el caso en que $H$ sea un subgrupo normal.  Sea
+	$H_0=H$ y $H_{i+1}=N_G(H_i)$ para $i\geq0$. Por definición, $H_{i}$ es
+	normal en $H_{i+1}$ y además, como $G$ es nilpotente, si $H_i\ne G$
+	entonces $H_i\subsetneq H_{i+1}$ por el lema~\ref{lemma:normalizadora}.
+	Como $(G:H)$ es finito, existe $k$ tal que $H_k=G$. Veamos que 
+	\[
+		g^{(G:H)}=g^{(H_k:H_{k-1})(H_{k-1}:H_{k-2})\cdots (H_1:H_0)}\in H.
+	\]
+	Observemos que $g^{(H_k:H_{k-1})}\in H_{k-1}$ pues $H_{k-1}$ es normal en $H_k=G$, y que, como 
+	$g^{(H_k:H_{k-1})}\in H_k$, entonces 
+	\[
+	g^{(H_k:H_{k-2})}=g^{(H_k:H_{k-1})(H_{k-1}:H_{k-2})}=\left(g^{(H_k:H_{k-1})}\right)^{(H_{k-1}:H_{k-2})}\in H_{k-2}
+	\]
+	pues $H_{k-2}$ es normal en $H_{k-1}$. Al repetir este argumento se
+	concluye que $g^{(G:H)}\in H$. 
+\end{proof}
+
+\begin{example}
+	La proposición~\ref{proposition:g^n} no vale si el grupo $G$ no es
+	nilpotente. Sea $G=\Sym_3$ y sea $H=\{\id,(12)\}$ de índice tres.  Si
+	$g=(13)$ entonces $g^{3}=(13)\not\in H$.
+\end{example}
+
+\begin{lemma}
+	\label{lemma:a[GG]}
+	Sea $G$ un grupo nilpotente de clase $c\geq2$. Si $x\in G$ entonces el subgrupo 
+	$\langle x,[G,G]\rangle$ es nilpotente de clase $<c$.
+\end{lemma}
+
+\begin{proof}
+	Sea $H=\langle x,[G,G]\rangle$.  Si $x\in [G,G]$, el resultado es cierto.
+	Supongamos entonces que $x\not\in H$. Observemos que 
+	\[
+		H=\{x^nc:n\in\Z,c\in [G,G]\}.
+	\]
+	Basta demostrar que $[H,H]\subseteq\gamma_3(G)$. Sean $h=x^nc,k=x^md\in H$
+	con $c,d\in [G,G]$. 
+	Como 
+	\[
+	[h,x^m]=[x^n,[c,x^m]][c,x^m]\in\gamma_4(G)\gamma_3(G)\subseteq\gamma_3(G),
+	\]
+	entonces 
+	\begin{align*}
+		[h,k]&=[h,x^m][x^m,[h,d]][h,d]\\
+			&=[x^n,[c,x^m]][c,x^m][x^m,[h,d]][h,d]\in\gamma_3(G).\\
+	\end{align*}
+%	Como
+%	$[G,G]=\gamma_2(G)\subseteq\zeta_{c-1}(G)$, al usar la definición de $H$ se
+%	obtiene que $[G,G]\subseteq \zeta_{c-1}(G)\cap H\subseteq\zeta_{c-1}(H)$.
+%	Luego $H/\zeta_{c-1}(H)$ es cíclico generado por $a\zeta_{c-1}(H)$. Si
+%	$\zeta_{c-1}(H)=H$, no hay nada para demostrar. En caso contrario,
+%	$Z(H)\subseteq\zeta_{c-1}(H)$ implicaría que $H$ es abeliano y luego $H$ es
+%	nilpotente de clase uno.
+\end{proof}
+
+\begin{example}
+	Sea $G=\D_{16}=\langle r,s:r^{8}=s^2=1,srs=r^{-1}\rangle$ el grupo diedral
+	de orden 16. El grupo $G$ es nilpotente de clase tres
+	y $[G,G]=\{1,r^2,r^4,r^6\}\simeq C_4$. El subgrupo $\langle
+	s,[G,G]\rangle\simeq\D_8$ es nilpotente de clase dos.
+
+	\begin{lstlisting}
+gap> G := DihedralGroup(IsPermGroup,16);;
+gap> gens := GeneratorsOfGroup(G);;
+gap> r := gens[1];;
+gap> s := gens[2];;
+gap> D := DerivedSubgroup(G);;
+gap> S := Subgroup(G, Concatenation(Elements(D), [s]));;
+gap> StructureDescription(S);
+"D8"
+gap> NilpotencyClassOfGroup(G);
+3
+gap> NilpotencyClassOfGroup(S);
+2
+	\end{lstlisting}
+\end{example}
+
+\begin{theorem}
+	\label{theorem:T(nilpotent)}
+	Si $G$ es un grupo nilpotente, entonces
+	\[
+	T(G)=\{g\in G:g^n=1\text{ para algún $n\in\N$}\}
+	\]
+	es un subgrupo de $G$. 
+\end{theorem}
+
+\begin{proof}
+	Sean $a,b\in T(G)$ y sean
+	\[
+		A=\langle a,[G,G]\rangle,\quad
+		B=\langle b,[G,G]\rangle.
+	\]
+	Como $A$ y $B$ son nilpotentes por el lema~\ref{lemma:a[GG]}, por hipótesis
+	inductiva, $T(A)$ es un subgrupo de $A$ y $T(B)$ es un subgrupo de $B$.
+	Como $T(A)$ es característico en $A$ y $A$ es normal en $G$, $T(A)$ es
+	normal en $G$. Similarmente se demuestra que $T(B)$ es normal en $B$.  
+	Veamos ahora que todo elemento de $T(A)T(B)$ tiene orden finito: si
+	$x\in T(A)T(B)$, digamos $x=a_1b_1$ con
+	$a_1$ de orden $m$, entonces $x$ tiene orden finito pues 
+	\begin{align*}
+	x^m=(a_1b_1)^m&=(a_1b_1a_1^{-1})(a_1^2b_1a_1^{-2})\cdots (a^m b a^{-m})\\
+	&=(a_1b_1a_1^{-1})(a_1^2b_1a_1^{-2})\cdots (a^{m-1} b a^{-m+1})b\in T(B).
+	\end{align*}
+	En particular, $ab$ y $a^{-1}$ tienen orden finito. Luego $T(G)$ es un
+	subgrupo de $G$.
+\end{proof}
+
+\begin{theorem}
+	\label{theorem:a=b}
+	Sea $G$ un grupo nilpotente y sin torsión y sean $a,b\in G$. Si existe
+	$n\ne 0$ tal que $a^n=b^n$ entonces $a=b$.
+\end{theorem}
+
+\begin{proof}
+	Procederemos por inducción en el orden de nilpotencia $c$ de $G$. El
+	resultado es trivialmente cierto si $G$ es abeliano. Supongamos entonces
+	que $G$ es nilpotente de índice $c>1$. Como $\langle a,[G,G]\rangle$ es un
+	subgrupo de $G$ nilpotente de índice $<c$, y $bab^{-1}=[b,a]a\in \langle
+	a,[G,G]\rangle$, por hipótesis inductiva, $ba=ab$ pues 
+	\[
+		a^n=(bab^{-1})^n=b^n.
+	\]
+	Luego $(ab^{-1})^n=a^nb^{-n}=1$ y por lo tanto, como $G$ no tiene torsión,
+	se concluye que $a=b$.
+\end{proof}
+
+\begin{corollary}
+	Sea $G$ un grupo nilpotente sin torsión. Sean $x,y\in G$ tales que
+	$x^ny^m=y^mx^n$ para algún $n,m\ne 0$, entonces $xy=yx$.
+\end{corollary}
+
+\begin{proof}
+	Sean $a=x$ y $b=y^nxy^{-n}$. Como $a^m=b^m$, el teorema~\ref{theorem:a=b}
+	implica que $a=b$ y luego $xy^n=y^nx$. Al usar nuevamente el
+	teorema~\ref{theorem:a=b}, esta vez con con $a=y$ y $b=xyx^{-1}$, se
+	concluye que $xy=yx$. 
+\end{proof}
+
+\begin{lemma}
+	\label{lemma:fg}
+	Sea $G$ un grupo finitamente generado y sea $H$ un subgrupo de índice
+	finito. Entonces $H$ es finitamente generado.
+\end{lemma}
+
+\begin{proof}
+	Supongamos que $G$ está generado por $\{g_1,\dots,g_m\}$ y supongamos que
+	para cada $i$ existe $k$ tal que $g_i^{-1}=g_k$. Sea $t_1,\dots,t_n$ un
+	conjunto de representantes de $G/H$. Para $i\in\{1,\dots,n\}$,
+	$j\in\{1,\dots,m\}$, escribimos
+	\[
+		t_ig_j=h(i,j)t_{k(i,j)}.
+	\]
+	Vamos a demostrar que $H$ está generado por los $h(i,j)$. Sea $x\in H$.
+	Escribamos 
+	\begin{align*}
+	x &=g_{i_1}\cdots g_{i_s}\\
+	&= (t_1g_{i_1})g_{i_2}\cdots g_{i_s}\\
+	&= h(1,i_1)t_{k_1}g_{i_2}\cdots g_{i_s}\\
+	&= h(1,i_1)h(k_1,i_2)t_{k_2}g_{i_3}\cdots g_{i_s}\\
+	&= h(1,i_1)h(k_1,i_2)\cdots h(k_{s-1},g_{i_s})t_{k_s},
+	\end{align*}
+	donde $k_1,\dots,k_{s-1}\in\{1,\dots,n\}$. Como $t_{k_s}\in H$,
+	$t_{k_s}=t_1\in H$ y luego $x\in H$.
+\end{proof}
+
+\begin{theorem}
+	\label{theorem:T(G)finito}
+	Sea $G$ un grupo finitamente generado, de torsión y nilpotente. Entonces
+	$G$ es finito. 	
+\end{theorem}
+
+\begin{proof}
+	Procederemos por inducción en la clase de nilpotencia $c$. El caso $c=1$ es
+	verdadero pues $G$ es abeliano. Supongamos entonces que el resultado es
+	válido para $c\geq1$.  Como $[G,G]$ y $G/[G,G]$ son nilpotentes de clase
+	$<c$, finitamente generados (por el lema~\ref{lemma:fg}) y de torsión, por
+	hipótesis inductiva se tiene que $[G,G]$ y $G/[G,G]$ son finitos. Luego $G$
+	es también finito de orden $|[G,G]|(G:[G,G])$.
+\end{proof}
+
+%\begin{lemma}
+%	\label{lemma:kgenerators}
+%	Sea $G$ un grupo y sea $G=G_0\supseteq G_1\supseteq\cdots\supseteq G_k=1$
+%	una sucesión de subgrupos de $G$ tal que cada $G_{i+1}$ es normal en $G_i$
+%	y cada $G_{i}/G_{i+1}$ es cíclico. Todo subgrupo de $G$ es finitamente
+%	generado por $k$ elementos.
+%\end{lemma}
+%
+%\begin{proof}
+%	Procedemos por inducción en $k$. Supongamos primero que $k=1$. Entonces
+%	$G\simeq G_0/G_1$ es cíclico y luego todo subgrupo de $G$ está generado por
+%	un elemento. Supongamos ahora que el resultado es válido para $k\geq1$. Sea
+%	$H$ un subgrupo de $G$, sea $N=G_{1}$ y sea $\pi\colon G\to G/N$ el
+%	morfismo canónico. El grupo 
+%	\[
+%		\pi(H)\simeq H/H\cap N
+%	\]
+%	es cíclico pues un un subgrupo del grupo cíclico $G_k/G_{k-1}=G/N$. Como
+%	existe $h\in H$ tal que $\pi(H)$ está generado por $\pi(h)$, se concluye que 
+%	$H=\langle \pi(h),H\cap N\rangle$. Por hipótesis
+%	inductiva, $H\cap N$ está generado por $k-1$ elementos y luego $H$ está
+%	generado por $k$ elementos.
+%\end{proof}
+%
+%\begin{theorem}
+%	Sea $G$ un grupo nilpotente y finitamente generado. Entonces $T(G)$ es
+%	finito.
+%\end{theorem}
+%
+%%%% aca hay que hacer producto tensorial para construir una serie con factores cíclicos
+%%%% ver libro de Khukhro
+%%%% Nilpotent Groups and Their Automorphisms
+%\begin{proof}
+%	Sabemos por el teorema~\ref{theorem:} que existe una sucesión
+%	$G=G_0\supseteq G_1\supseteq\cdots\supseteq G_k=G$ de subgrupos normales de
+%	$G$ con factores cíclicos. 
+%\end{proof}
+
+
+
+
+%\section{Grupos finitos nilpotentes}
+
+\begin{lemma}
+	\label{lemma:normalizador}
+	Sean $G$ un grupo finito, $p$ un primo que divide a $|G|$ y
+	$P\in\Syl_p(G)$. Entonces
+	\[
+	N_G(N_G(P))=N_G(P). 
+	\]
+\end{lemma}
+
+\begin{proof}
+	Sea $H=N_G(P)$. Como $P$ es normal en $H$, $P$ es el único $p$-subgrupo de
+	Sylow de $H$. Para ver que $N_G(H)=H$ basta demostrar que $N_G(H)\subseteq
+	H$. Sea $g\in N_G(H)$. Como 
+	\[
+	gPg^{-1}\subseteq gHg^{-1}=H,
+	\]
+	$gPg^{-1}\in\Syl_p(H)$ y $H$ tiene un único $p$-subgrupo de Sylow, 
+	$P=gPg^{-1}$.  Luego $g\in N_G(P)=H$. 
+\end{proof}
+
+\begin{theorem}
+	\label{theorem:nilpotente:eq}
+	Sea $G$ un grupo finito. Son equivalentes:
+	\begin{enumerate}
+		\item $G$ es nilpotente.
+		\item Todo subgrupo de Sylow de $G$ es normal.
+		\item $G$ es producto directo de sus subgrupos de Sylow.
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	Veamos que $(1)\implies(2)$. Sea $P\in\Syl_p(G)$. Queremos ver que $P$ es
+	normal en $G$, es decir $N_G(P)=G$.  Por el lema~\ref{lemma:normalizador},
+	$N_G(N_G(P))=N_G(P)$. La condición normalizadora del lema~\ref{lemma:normalizadora} implica entonces que $N_G(P)=G$.
+
+	Veamos ahora que $(2)\implies(3)$. Sean $p_1,\cdots,p_k$ los factores
+	primos de $|G|$ y para cada $i\in\{1,\dots,k\}$ sea $P_i\in\Syl_{p_i}(G)$.
+	Por hipótesis, cada $P_j$ es normal en $G$.
+
+	Vamos a demostrar que $P_1\cdots P_j\simeq P_1\times\cdots\times P_j$ para todo $j$.
+	El caso $j=1$ es trivial. Supongamos entonces que el resultado vale para
+	algún $j\geq 1$. Como 
+	\[
+	N=P_1\cdots P_j\simeq P_1\times\cdots\times P_j
+	\]
+	es normal en $G$ y tiene orden coprimo con $|P_{j+1}|$, $N\cap
+	P_{j+1}=1$. Luego
+	\[
+		NP_{j+1}\simeq N\times P_{j+1}\simeq P_1\times\cdots\times P_j\times P_{j+1}
+	\]
+	pues $P_{j+1}$ es también normal en $G$. 
+
+	Ahora que sabemos que $P_1\cdots P_k\simeq P_1\times\cdots\times P_k$ es un
+	subgrupo de orden $|G|$, se concluye que $G=P_1\times\cdots\times P_k$.
+
+	Para ver que $(3)\implies(1)$ simplemente hace falta observar que todo
+	$p$-grupo es nilpotente (proposición~\ref{proposition:pgrupo_nilpotente}) y
+	que el producto directo de finitos nilpotentes es nilpotente
+	(ejercicio~\ref{exercise:HxK_nilpotente}).
+\end{proof}
+
+\begin{exercise}
+	\label{exercise:truco}
+	Sea $G$ un grupo finito. Demuestre que si $P\in\Syl_p(G)$ y $M$ es un subgrupo de $G$ tal que
+	$N_G(P)\subseteq M$ entonces $M=N_G(M)$. 
+\end{exercise}
+
+\begin{svgraybox}
+	Sea $x\in N_G(M)$. Como $P\subseteq M$ y $M$ es normal en $N_G(M)$,
+	$xPx^{-1}\subseteq M$.  Como $P$ y $xPx^{-1}$ son $p$-subgrupos de Sylow de
+	$M$, existe $m\in M$ tal que 
+	\[
+	mPm^{-1}=xPx^{-1}.
+	\]
+	Luego $x\in M$ pues
+	$m^{-1}x\in N_G(P)\subseteq M$. 
+\end{svgraybox}
+
+\begin{exercise}
+	\label{exercise:normalizadora}
+	Sea $G$ un grupo finito. Son equivalentes:
+	\begin{enumerate}
+		\item $G$ es nilpotente.
+		\item Si $H\subsetneq G$ es un subgrupo entonces $H\subsetneq N_G(H)$.
+		\item Todo subgrupo maximal de $G$ es normal en $G$.
+	\end{enumerate}
+\end{exercise}
+
+\begin{svgraybox}
+	Para demostrar que $(1)\implies(2)$ simplemente usamos el
+	lema~\ref{lemma:normalizadora}. Para demostrar que $(2)\implies(3)$ hacemos
+	lo siguiente: si $M$ es un subgrupo maximal, como $M\subsetneq N_G(M)$ por
+	hipótesis, $N_G(M)=G$ por maximalidad. Finalmente demostremos que
+	$(3)\implies(1)$.  Sea $P\in\Syl_p(G)$. Si $P$ no es normal en $G$,
+	$N_G(P)\ne G$ y entonces existe un subgrupo maximal $M$ tal que
+	$N_G(P)\subseteq M$. Como $M$ es normal en $G$, el
+	ejercicio~\ref{exercise:truco} implica que $M=N_G(M)=G$, una contradicción.
+	Luego $P$ es normal en $G$ y entonces $G$ es nilpotente por el
+	teorema~\ref{theorem:nilpotente:eq}.
+\end{svgraybox}
+
+% ejercicio: G finito. Es nilpotente si y solo si dos elementos de ordenes coprimos conmnutan
+% 5.41 rotman
+
+\begin{theorem}
+	Sea $G$ un grupo finito nilpotente. Si $p$ es un primo que divide al orden
+	de $G$, existe un subgrupo minimal-normal de orden $p$ y existe un subgrupo
+	maximal de índice $p$.
+\end{theorem}
+
+\begin{proof}
+	Supongamos que $|G|=p^{\alpha}m$, donde $p$ es un primo coprimo con $m$.
+	Escribamos $G=P\times H$, donde $P\in\Syl_p(G)$.  Como $Z(P)$ es un
+	subgrupo normal no trivial de $P$, cualquier subgrupo de $Z(G)$ de orden
+	$p$ es minimal-normal en $G$. Por otro lado, como $P$ contiene un subgrupo
+	de índice $p$, que resulta maximal. Luego $P\times H$ también contiene un
+	subgrupo maximal de índice $p$.
+\end{proof}
+
+\begin{exercise}
+	\label{exercise:pgrupos}
+	Sea $p$ un primo y sea $G$ un grupo no trivial de orden $p^n$.
+	Demuestre las siguientes afirmaciones:
+	\begin{enumerate}
+		\item $G$ tiene un subgrupo normal de orden $p$.
+		\item Para todo $j\in\{0,\dots,n\}$ existe un subgrupo normal de
+			$G$ de orden $p^j$. 
+	\end{enumerate}
+\end{exercise}
+
+\begin{svgraybox}
+	\begin{enumerate}
+		\item Sabemos que $Z(G)\ne1$. Sea $g\in Z(G)$ tal que $g\ne 1$.
+			Supongamos que el orden de $g$ es $p^k$ para algún $k\geq1$.
+			Entonces $g^{p^{k-1}}$ tiene orden $p$ y luego genera un subgrupo
+			central de orden $p$. 
+		\item Procederemos por inducción en $n$. Si $n=1$ el resultado es
+			trivial.  Supongamos entonces que el resultado vale para un cierto
+			$n\geq2$. Por el punto anterior, $G$ posee un subgrupo normal $N$
+			de orden $p$. Luego $G/N$ tiene orden $p^{n-1}$. Sea $\pi\colon G\to G/N$ el morfismo canónico. 
+			Por hipótesis
+			inductiva, para cada $j\in\{0,\dots,n-1\}$. Por el teorema de la
+			correspondecia, cada subgrupo normal $S_j$ de $G/N$ de orden $p^j$ se
+			corresponde con un subgrupo $\pi^{-1}(S_j)$ de $G$ de orden $p^{j+1}$ pues, como
+			$\pi$ es sobreyectiva, se tiene $\pi(\pi^{-1}(S_j))=S_j$, y luego
+			\[
+			p^j=|S_j|=|\pi(\pi^{-1}(S_j))|=\frac{|\pi^{-1}(S_j)|}{|\pi^{-1}(S_j)\cap N|}=\frac{|\pi^{-1}(S_j)|}{|N|}=\frac{|\pi^{-1}(S_j)|}{p}.
+			\]
+	\end{enumerate}
+\end{svgraybox}
+
+\begin{exercise}
+	Sea $G$ un grupo finito. Demuestre que las siguientes afirmaciones son
+	equivalentes: 
+	\begin{enumerate}
+		\item $G$ es nilpotente.
+		\item Cualesquiera dos elementos de órdenes coprimos conmutan. 
+		\item Todo cociente no trivial de $G$ tiene centro no trivial.
+		\item Si $d$ divide al orden de $G$, existe un subgrupo normal de $G$
+			de orden $d$.
+	\end{enumerate}
+\end{exercise}
+
+\begin{svgraybox}
+	Veamos que $(1)\implies(2)$. Sabemos que $G$ es producto directo de sus
+	subgrupos de Sylow, digamos $G=\prod_{i=1}^k S_i$, donde los $S_i$ son los
+	distintos subgrupos de Sylow de $G$.  Sean
+	$x=(x_1,\dots,x_k),y=(y_1,\dots,y_k)\in G$. Como $|x|$ y $|y|$ son
+	coprimos, para cada $i\in\{1,\dots,k\}$ se tiene $x_i=1$ o $y_i=1$. Luego
+	\[
+		[x,y]=([x_1,y_1],[x_2,y_2],\dots,[x_k,y_k])=1. 
+	\]
+	Demostremos ahora que $(2)\implies(1)$. Supongamos que
+	$|G|=p_1^{\alpha_1}\cdots p_k^{\alpha_k}$, donde los $p_j$ son primos
+	distintos y para cada $j$ sea $P_j\in\Syl_{p_j}(G)$. Como elementos de
+	órdenes coprimos conmutan, la función $P_1\times\cdots\times P_k\to G$,
+	$(x_1,\dots,x_k)\mapsto x_1\cdots x_k$, es un morfismo inyectivo de grupos.
+	Como entonces $G\simeq P_1\times\cdots P_k$, y cada $P_j$ es nilpotente,
+	$G$ es nilpotente. 
+
+	Para demostrar que $(1)\implies(3)$ simplemente hay que observar que todo
+	cociente de $G$ es nilpotente y luego utilizar el
+	teorema~\ref{theorem:Z(nilpotent)}. Demostremos que $(3)\implies(1)$. Como
+	todo cociente no trivial de $G$ tiene centro no trivial, en particular
+	$Z_1=Z(G)$ es no trivial. Si $Z_1=G$ entonces $G$ es abeliano y no hay nada
+	para demostrar. Si $Z_1\ne G$ entonces $G/Z_1\ne 1$; luego $Z(G/Z_1)\ne 1$.
+	Si $\pi_1\colon G\to G/Z_1$ es el morfismo canónico,
+	$Z_2=\pi_1^{-1}(Z(G/Z_1))$. Inductivamente, si tenemos construido el
+	subgrupo $Z_i$, $Z_i\ne G$ y  $\pi_i\colon G\to G/Z_{i}$ es el morfismo
+	canónico, se define el subgrupo $Z_{i+1}=\pi_i^{-1}(Z(G/Z_i))$. Por
+	construcción, $Z_i\subseteq Z_{i+1}$ para todo $i$. Como $G$ es finito,
+	existe $k$ tal que $Z_k=G$ y luego $G$ es nilpotente.
+
+	Demostremos que $(1)\implies(4)$. Esta implicación es consecuencia
+	inmediata del ejercicio~\ref{exercise:pgrupos}. 
+	Como $G$ es nilpotente, $G$ producto
+	directo de sus $p$-grupos de Sylow. Si $d=p_1^{\alpha_1}\cdots
+	p_k^{\alpha_k}$ es un divisor del orden de $G$, basta tomar
+	$H=H_1\times\cdots\times H_k$, 
+	donde cada $H_j$ es un subgrupo normal del $p_j$-subgrupo de Sylow de $G$
+	de orden $p_j^{\alpha_j}$. Para demostrar que $(4)\implies(1)$ simplemente
+	se aplica la hipótesis a cada $p$-subgrupo de $G$ de orden maximal.
+\end{svgraybox}
+
+El siguiente resultado, que puede demostrarse en forma
+completamente elemental, fue descubierto en 2014. 
+
+\begin{theorem}[Baumslag--Wiegold]
+	\index{Teorema de!Baumslag--Wiegold}
+	Sea $G$ un grupo finito tal que $|xy|=|x||y|$ si $x$ e $y$ son elementos de
+	órdenes coprimos. Entonces $G$ es nilpotente.
+\end{theorem}
+
+\begin{proof}
+	Sean $p_1,\dots,p_n$ los primos que dividen al orden de $G$ son Para cada
+	$i\in\{1,\dots,n\}$ sea $P_i\in\Syl_{p_i}(G)$.  Primero vamos a demostrar
+	que $G=P_1\cdots P_n$. Para demostrar la inclusión no trivial basta con
+	demostrar que la función 
+	\[
+		\psi\colon P_1\times\cdots\times P_n\to G,\quad
+		(x_1,\dots,x_n)\mapsto x_1\cdots x_n
+	\]
+	La función $\psi$ es inyectiva pues si
+	$\psi(x_1,\dots,x_n)=\psi(y_1,\dots,y_n)$, entonces 
+	\[
+		x_1\cdots
+	x_n=y_1\cdots y_n. 
+	\]
+	Si $y_n\ne x_n$, entonces $x_1\cdots x_{n-1}=(y_1\cdots
+	y_{n-1})y_nx_n^{-1}$. Pero $x_1\cdots x_{n-1}$ es un elemento de orden
+	coprimo con $p$ y $y_1\cdots y_{n-1}y_nx_n^{-1}$ es un elemento de orden
+	múltiplo de $p$, una contradicción. Entonces $x_n=y_n$ y luego, el mismo
+	argumento, prueba que $\psi$ es inyectiva. Como $|P_1\times\cdots\times
+	P_n|=|G|$, se concluye que $\psi$ es biyectiva. 
+
+	Veamos ahora que cada $P_j$ es normal en $G$.  Sea $j\in\{1,\dots,n\}$ y
+	sea $x_j\in P_j$. Sea $g\in G$ y sea $y_j=gx_jg^{-1}$.  Como $y_j\in G$,
+	podemos escribir $y_j=z_1\cdots z_n$ con $z_k\in P_k$ para todo $k$.  Como
+	el orden de $y_j$ es una potencia del primo $p_j$, el elemento $z_1\cdots
+	z_n$ tiene orden una potencia de $p_j$ y luego $z_k=1$ para todo $k\ne j$ y
+	además $y_j=z_j\in P_j$. Como cada subgrupo de Sylow es normal en $G$, se
+	concluye que $G$ es nilpotente.
+\end{proof}
+
+
+%\section{Grupos nilpotentes de clase dos}
+
+\begin{lemma}
+	\label{lemma:commutador}
+	Si $x,y\in G$ son tales que $[x,y]\in C_G(x)\cap C_G(y)$, entonces
+	\[
+	[x,y]^n=[x^n,y]=[x,y^n]
+	\]
+	para todo $n\in\Z$.
+\end{lemma}
+
+\begin{proof}
+	Procederemos por inducción en $n\geq0$. El caso $n=0$ es trivial. Supongamos entonces
+	que el resultado vale para algún $n\geq0$. Entonces, como $[x,y]\in C_G(x)$, 
+	\begin{align*}
+		[x,y]^{n+1}&=[x,y]^n[x,y]
+		=[x^n,y][x,y]=[x^n,y]xyx^{-1}y^{-1}=x[x^n,y]yx^{-1}y^{-1}=[x^{n+1},y].
+	\end{align*}
+	Para demostrar el lema en el caso $n<0$ basta observar que, como $[x,y]^{-1}=[x^{-1},y]$, 
+	$[x,y]^{-n}=[x^{-1},y]^n=[x^{-n},y]$.
+\end{proof}
+
+\begin{lemma}[Hall]
+	\label{lemma:Hall}
+	Sea $G$ un grupo nilpotente de clase dos y $x,y\in G$. Entonces
+	\[
+		(xy)^n=[y,x]^{n(n-1)/2}x^ny^n
+	\]
+	para todo $n\in\N$.
+\end{lemma}
+
+\begin{proof}
+	Procederemos por inducción en $n$. Como el caso $n=1$ es trivial,
+	supongamos que el resultado es válido para algún $n\geq1$. Entonces,
+	gracias al lema~\ref{lemma:commutador}, 
+	\begin{align*}
+		(xy)^{n+1} &= (xy)^n(xy)=[y,x]^{n(n-1)/2}x^ny^{n-1}(yx)y\\
+		&=[y,x]^{n(n-1)/2}x^{n}[y^n,x]xy^{n+1}=[y,x]^{n(n-1)/2}[y,x]^nx^{n+1}y^{n+1}.
+	\end{align*}
+\end{proof}
+
+\begin{lemma}
+	\label{lemma:class2}
+	Sea $p>2$ un número primo y sea 
+	$P$ un $p$-grupo de clase de nilpotencia $\leq2$. 
+	Si $[y,x]^p=1$ para todo $x,y\in P$ entonces $P\to [P,P]$,
+	$x\mapsto x^p$, es un morfismo de grupos.
+\end{lemma}
+
+\begin{proof}
+	Por lema~\ref{lemma:Hall},
+	$(xy)^p=[y,x]^{p(p-1)/2}x^py^p=x^py^p$. 	
+\end{proof}
+
+\begin{theorem}
+	\label{thm:class2}
+	Sea $p>2$ un número primo y sea 
+	$P$ un $p$-grupo de clase de nilpotencia $\leq2$. 
+	Entonces $\{x\in P:x^p=1\}$ es un subgrupo de $P$.
+\end{theorem}
+
+\begin{proof}
+	Como $P$ tiene clase de nilpotencia dos, los conmutadores son centrales.
+	Para cada $x\in G$, la función $g\mapsto [g,x]$ es un morfismo de grupos
+	pues
+	\[
+		[gh,x]=ghxh^{-1}g^{-1}x^{-1}=g[h,x]xg^{-1}x^{-1}=[g,x][h,x].
+	\]
+	En particular, si $x,y\in P$ con $x^p=y^p=1$, entonces
+	\[
+		[x,y]^p=[x^p,y]=[1,y]=1.
+	\]
+	Luego, al usar el lema~\ref{lemma:Hall}, se concluye qye
+	$(xy)^p=[y,x]^{p(p-1)/2}x^py^p=1$.
+\end{proof}
+
