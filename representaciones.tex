@@ -1,16 +1,19 @@
 \chapter{Representaciones de grupos}
 
-\index{Representación!de un grupo}
-\index{Grado!de una representación}
 Salvo que se mencione lo contrario, trabajaremos sobre el cuerpo $\C$ de los números complejos. 
 
-Si $G$ es un grupo finito, un morfismo de grupos $\rho\colon G\to\GL(V)$, $g\mapsto\rho_g$, donde $V$ es un espacio
-vectorial complejo de dimensión finita, se dice una 
+\begin{definition}
+\index{Representación!de un grupo}
+\index{Grado!de una representación}
+Si $G$ es un grupo y $V$ es un espacio vectorial, 
+un morfismo de grupos $\rho\colon G\to\GL(V)$, $g\mapsto\rho_g$, es una 
 \textbf{representación} de $G$. La dimensión de $V$ es el \textbf{grado} 
 de la representación, es decir $\deg\rho=\dim V$. 
-Si el espacio vectorial $V$ tiene dimensión $n$, al fijar una base 
-para $V$ podemos considerar $\rho\colon G\to\GL(V)\simeq\GL_n(\C)$. Observemos que 
-toda representación de un grupo finito será de dimensión finita. 
+\end{definition}
+
+Si el espacio vectorial $V$ tiene dimensión finita $n$, al fijar una base 
+para $V$ podemos considerar $\rho\colon G\to\GL(V)\simeq\GL_n(\C)$. Consideraremos 
+solamente representaciones de grado finita de grupo finitos.
  
 \begin{example}
 Como $\Sym_3=\langle (12),(123)\rangle$, la función $\rho\colon \Sym_3\to\GL_3(\C)$,
@@ -156,8 +159,9 @@ es inyectivo.
 
 Observemos que existe una correspondencia biyectiva 
 \[
-\{\text{representaciones de $G$}\}\leftrightarrow\{\text{$\C[G]$-módulos de dimensión finita}\}.
+\{\text{representaciones de $G$}\}\leftrightarrow\{\text{$\C[G]$-módulos}\}.
 \]
+Además representaciones de grado finito se corresponderán con $\C[G]$-módulos de dimensión finita. 
 Si $\rho\colon G\to\GL(V)$ es una representación, entonces 
 $V$ es un $\C[G]$-módulo con
 \[
@@ -227,6 +231,7 @@ construcciones son una la inversa de la otra.
   polinomio minimal de $\rho_g$. Luego $\rho_g$ es diagonalizable.
 \end{proof}
 
+\begin{definition}
 \index{Representaciones!equivalentes}
 Sea $G$ un grupo y sean $\phi\colon G\to\GL(V)$ y $\psi\colon G\to\GL(W)$ 
 representaciones. Se dice que $\phi$ y $\psi$ son \textbf{equivalentes} si
@@ -234,7 +239,10 @@ existe un isomorfismo $T\colon V\to W$ tal que
 \[
 	\psi_g\circ T=T\circ \phi_g
 \]
-para todo $g\in G$. Notación: $\phi\simeq\psi$. Observemos que $\phi\simeq\psi$ si y sólo si $V$
+para todo $g\in G$. Notación: $\phi\simeq\psi$. 
+\end{definition}
+
+Observemos que $\phi\simeq\psi$ si y sólo si $V$
 y $W$ son isomomorfos como $\C[G]$-módulos.
 
 \begin{example}
@@ -258,17 +266,25 @@ y $W$ son isomomorfos como $\C[G]$-módulos.
     1&1\end{pmatrix}$. En efecto, $\phi_m\circ =T\circ\psi_m$ para todo $m$.
 \end{example}
 
+Traducimos ahora la noción de submódulo al contexto de la teoría de representaciones. 
+
+\begin{definition}
 \index{Subespacio invariante}
 \index{Subrepresentación}
-Traducimos ahora la noción de submódulo al contexto de la teoría de representaciones. 
-Sea $\phi\colon V\to\GL(V)$ una representación. Un subespacio $W\subseteq V$ se dice
+Sea $\phi\colon V\to\GL(V)$ una representación. 
+Un subespacio $W\subseteq V$ se dice
 \textbf{$G$-invariante} si $\phi_g(W)\subseteq W$ para todo $g\in G$.  Si $W$
 es un subespacio $G$-invariante, entonces la restricción $\rho|_W$ de $\phi$
 a $W$ es una representación, que se llama \textbf{subrepresentación} de
 $\phi$.
+\end{definition}
 
+\begin{definition}
+\index{Representación!irreducible}
 Una representación $\phi\colon G\to\GL(V)$ no nula se dice \textbf{irreducible} si los $\{0\}$
 y $V$ son los únicos subespacios $G$-invariantes de $V$.
+\end{definition}
+
 Claramente una representación $\rho\colon G\to\GL(V)$ es irreducible si y sólo si $V$ es
 simple como $\C[G]$-módulo.
 
@@ -385,10 +401,12 @@ $S=N$.
 %   Observar $6=1^2+1^2+2^2$.
 \end{example}
 
+\begin{definition}
 \index{Representación!completamente reducible}
 Una representación $\rho\colon G\to\GL(V)$ se dice \textbf{completamente reducible} si
 $V$ puede descomponerse como $V=V_1\oplus\cdots\oplus V_n$, donde cada $V_i$
 es un subespacio $G$-invariantes y cada restricción $\phi|_{V_i}$ es irreducible.
+\end{definition}
 
 % \begin{definition}
 % 	\index{Representación!descomponible}
