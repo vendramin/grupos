@@ -240,9 +240,7 @@ La conjetura de Ore es verdadera para todo grupo simple esporádico.
 \begin{proof}
 Sea $G$ un grupo simple finito. 
 Sabemos que $g\in G$ es un conmutador si y sólo si 
-\[
-\sum_{\chi\in\Irr(G)}\frac{\chi(g)}{\chi(1)}\ne 0.
-\]
+$\sum_{\chi\in\Irr(G)}\frac{\chi(g)}{\chi(1)}\ne 0$. 
 La función que exponemos a continuación nos permite determinar 
 si todo elemento de un grupo es un conmutador. La función recibe como parámetro una tabla de caracteres y 
 devuelve \lstinline{true} si todo elemento del grupo es un conmutaador o \lstinline{false} en caso contrario. 
@@ -262,7 +260,7 @@ gap> Ore := function(char)
 > end;
 function( char ) ... end
 \end{lstlisting}
-Verificamos entonces la conjetura de Ore para los cinco grupos de Mathieu:
+Verificamos entonces la conjetura de Ore para los cinco grupos de Mathieu y para el monstruo $M$:
 \begin{lstlisting}
 gap> Ore(CharacterTable("M11"));
 true
@@ -274,8 +272,11 @@ gap> Ore(CharacterTable("M23"));
 true
 gap> Ore(CharacterTable("M24"));
 true
+gap> Ore(CharacterTable("M"));
+true
 \end{lstlisting}
-Dejamos como ejercicio demostrar la conjetura de Ore para el resto de los grupos esporádicos. 
+Dejamos como ejercicio demostrar la conjetura de Ore para el resto de los grupos esporádicos: $HS$, $J_1$, $J_2$, $J_3$, $J_4$, $Co_1$, $Co_2$, $Co_3$, 
+$McL$, $Ru$, $Ly$, $Suz$, $He$, $HN$, $Th$, $Fi_{22}$, $Fi_{23}$, $Fi_{24}'$, $B$, $M$ 
 \end{proof}
 
 Para otras aplicaciones de la teoría de caracteres a los grupos simples finitos referiremos a 
