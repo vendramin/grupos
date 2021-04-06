@@ -230,7 +230,53 @@ La demostración puede consultarse en~\cite{MR2654085}. Ocupa unas 70 páginas y
 utiliza la clasificación de grupos simples finitos y teoría de caracteres, 
 en particular los teoremas que presentamos en este capítulo. Para más información sobre 
 el teorema de Liebeck--O'Brien--Shalev--Tiep
-referimos a~\cite{MR3289286}.
+referimos a~\cite{MR3289286}. Sin embargo, podemos dar una demostración computacional
+para algunos casos particulares:
+
+\begin{proposition}
+La conjetura de Ore es verdadera para todo grupo simple esporádico. 
+\end{proposition}
+
+\begin{proof}
+Sea $G$ un grupo simple finito. 
+Sabemos que $g\in G$ es un conmutador si y sólo si 
+\[
+\sum_{\chi\in\Irr(G)}\frac{\chi(g)}{\chi(1)}\ne 0.
+\]
+La función que exponemos a continuación nos permite determinar 
+si todo elemento de un grupo es un conmutador. La función recibe como parámetro una tabla de caracteres y 
+devuelve \lstinline{true} si todo elemento del grupo es un conmutaador o \lstinline{false} en caso contrario. 
+\begin{lstlisting}
+gap> Ore := function(char) 
+> local s,f,k;
+> for k in [1..NrConjugacyClasses(char)] do
+> s := 0;
+> for f in Irr(char) do
+> s := s+f[k]/Degree(f);  
+> od;
+> if s<=0 then
+> return false;
+> fi;
+> od;
+> return true;
+> end;
+function( char ) ... end
+\end{lstlisting}
+Verificamos entonces la conjetura de Ore para los cinco grupos de Mathieu:
+\begin{lstlisting}
+gap> Ore(CharacterTable("M11"));
+true
+gap> Ore(CharacterTable("M12"));
+true
+gap> Ore(CharacterTable("M22"));
+true
+gap> Ore(CharacterTable("M23"));
+true
+gap> Ore(CharacterTable("M24"));
+true
+\end{lstlisting}
+Dejamos como ejercicio demostrar la conjetura de Ore para el resto de los grupos esporádicos. 
+\end{proof}
 
 Para otras aplicaciones de la teoría de caracteres a los grupos simples finitos referiremos a 
 \cite{MR3821142}. 
