@@ -85,9 +85,6 @@ Queda por verificar que esta definición extiende al radical que conocemos para 
 
 \begin{proposition}
     Si $A$ es un álgebra con unidad de dimensión finita, entonces $J(A)=J_0(A)$. 
-    % \[
-    % J(A)=\sum\{I:\text{$I$ ideal nilpotente de $A$}\}.
-    % \]
 \end{proposition}
 
 \begin{proof}
@@ -200,12 +197,14 @@ El grupo $\GL_n(\C)$ actúa en el conjunto de banderas completas de $V$ por
 g\cdot (V_1,\dots,V_n)=(T_g(V_1),\dots,T_g(V_n)),
 \]
 donde $T_g\colon V\to V$, $x\mapsto gx$, es una transformación lineal inversible. 
+
 La acción de $G$ en el conjunto de banderas completas es transitiva, pues
 si $(W_1,\dots,W_n)$ es una bandera completa en $V$, digamos
 $W_i=\langle w_1,\dots,w_i\rangle$, donde $\{w_1,\dots,w_n\}$ es una base de $V$, entonces 
 la matriz $g=(w_1|\cdots|w_n)$ cuyas columnas son los $w_j$ es inversible 
 y cumple que
 $gv_i=w_i$ para todo $i\in\{1,\dots,n\}$. Luego $g\cdot (V_1,\dots,V_n)=(W_1,\dots,W_n)$. 
+
 El estabilizador de la bandera estándar $(V_1,\dots,V_n)$ es
 \[
 G_{(V_1,\dots,V_n)}=\{g\in\GL_n(\C):T_g(V_i)=V_i\text{ para todo $i$}\},
@@ -320,9 +319,25 @@ Todo subgrupo de $\GL_n(\C)$ unipotente es conjugado de algún subgrupo de $U$.
 	\[
 	gw-gw'=g(w-w')=g(\lambda v)=\lambda gv=\lambda v\in\langle v\rangle,
 	\]
-	es decir $gw+\langle v\rangle=gw'+\langle v\rangle$. 
-	Por hipótesis inductiva, 
-	$G$ estabiliza una bandera completa $(Q_1,\dots,Q_{n-1})$, digamos
+	es decir $gw+\langle v\rangle=gw'+\langle v\rangle$. La acción induce un morfismo
+	$\rho\colon G\to\GL_{n-1}(\C)$. Como $G$ es unipotente, $\rho(G)$ es también unipotente. En efecto, sea $g\in G$. 
+	Si completamos $\{v\}$ a una base 
+	$\{v,w_1,\dots,w_{n-1}\}$ 
+	de $V$, entonces la matriz de $g$ en esa base es una matriz por bloques, digamos 
+	\[
+	\left(\begin{array}{c|c}
+	1 & *\\
+	\hline
+	0 & \rho(g)
+	\end{array}
+	\right),
+	\]
+	donde el bloque $\rho(g)$ corresponde 
+	a la matriz de $\rho(g)$ en la base $\{w_1,\dots,w_{n-1}\}$. Luego $\rho(g)$ es unipotente pues 
+    su polinomio caracteristico es de la forma $(X-1)^m$, un divisor de $(X-1)^n$. 
+	
+	Por hipótesis inductiva, el subgrupo 
+	$\rho(G)$ de $\GL_{n-1}(\C)$ estabiliza una bandera completa $(Q_1,\dots,Q_{n-1})$, digamos
 	\begin{align*}
 	&Q_1 =\langle \pi(v_1)\rangle,&&
 	Q_2=\langle\pi(v_1),\pi(v_2)\rangle,&&
@@ -346,12 +361,16 @@ Todo subgrupo de $\GL_n(\C)$ unipotente es conjugado de algún subgrupo de $U$.
 	\sum_{i=1}^{n-1}\lambda _i\pi(v_i)=0
 	\implies\lambda_1=\cdots=\lambda_{n-1}=0\implies \lambda=0.
 	\]	
-	En particular, $\dim W_i=i+1$ para todo $i\in\{0,\dots,n-1\}$. Falta ver que $G$ estabiliza a 
-	$(W_1,\dots,W_n)$. Sea $g\in G$. Trivialmente tenemos que 
-	$gW_0\subseteq W_0$ pues $gv=v$. Si $j\geq 1$, entonces existen $\lambda_1,\dots,\lambda_j\in\C$ tales que 
+	En particular, $\dim W_i=i+1$ para todo $i\in\{0,\dots,n-1\}$. 
+	
+	Para terminar, falta ver que $G$ estabiliza a la bandera completa 
+	$(W_1,\dots,W_n)$, es decir $G\subseteq G_{(W_1,\dots,W_n)}$. Sea $g\in G$. Trivialmente tenemos que 
+	$gW_0\subseteq W_0$ pues $gv=v$. Veamos que $gW_i\subseteq W_i$ para $j\geq 1$. Fijemos $j$. Sabemos que 
+	existen $\lambda_1,\dots,\lambda_j\in\C$ tales que 
 	\[
 	\pi(gv_j)=\sum_{i\leq j}\lambda_i\pi(v_i),
 	\]
+	pues $\pi(Q_j)\subseteq Q_j$, 
 	lo que implica que $gv_j-\sum_{i\leq j}\lambda_iv_i=\lambda v$ para algún $\lambda\in\C$. En particular, 
 	\[
 	gv_j=\sum_{i\leq j}\lambda_iv_i+\lambda v\in \langle v,v_1,\dots,v_j\rangle=W_j.	\qedhere
