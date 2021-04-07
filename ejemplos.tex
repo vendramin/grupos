@@ -52,6 +52,39 @@ la clase de conjugación del elemento $g_j$ en $G$ para todo $j\in\{1,\dots,r\}$
 			\hline
 		\end{tabular}
 	\end{center}
+	Para dar un ejemplo computacional concreto expondremos la tabla de caracteres del grupo cíclico de orden cuatro. 
+\begin{lstlisting}
+gap> C4 := CyclicGroup(4);;                       
+gap> T := CharacterTable(C4);;
+gap> Display(T);
+CT1
+
+     2  2  2  2  2
+
+       1a 4a 2a 4b
+
+X.1     1  1  1  1
+X.2     1 -1  1 -1
+X.3     1  A -1 -A
+X.4     1 -A -1  A
+
+A = E(4)
+  = Sqrt(-1) = i
+\end{lstlisting}
+Hay varias observaciones que debemos hacer:
+\begin{enumerate}
+    \item El símbolo \lstinline{E(4)} denota a una raíz cuarta primitiva de la unidad. 
+    \item Si bien la función \lstinline{CharacterTable} se usa para calcular la tabla de caracteres de un grupo, 
+    esta función calcula algunas otras cosas. Por ejemplo:
+\end{enumerate}
+\begin{lstlisting}
+gap> OrdersClassRepresentatives(T);
+[ 1, 4, 2, 4 ]
+gap> SizesCentralizers(T);
+[ 4, 4, 4, 4 ]
+gap> SizesConjugacyClasses(T);
+[ 1, 1, 1, 1 ]
+\end{lstlisting}
 \end{example}
 
 % \begin{proposition}
@@ -78,9 +111,12 @@ la clase de conjugación del elemento $g_j$ en $G$ para todo $j\in\{1,\dots,r\}$
 % las $\alpha_{ij}$ son todas las representaciones irreducibles de $G\times H$.
 % \end{proof}
 
+Como todo grupo abeliano finito es producto directo de grupos abelianos finitos 
+y vimos que todo caracter irreducible de un producto directo es producto de caraceres irreducibles, 
+es posible calcular tablas de caracteres de grupos abelianos finitos. 
+
 \begin{example}
-	La proposición anterior nos permite calcular por ejemplo
-	la tabla de caracteres de $C_2\times C_2=\{1,a,b,ab\}$:
+	Calculemos ahora la tabla de caracteres de $C_2\times C_2=\{1,a,b,ab\}$:
 	\begin{center}
 		\begin{tabular}{|c|rrrr|}
 			\hline 
@@ -94,6 +130,22 @@ la clase de conjugación del elemento $g_j$ en $G$ para todo $j\in\{1,\dots,r\}$
 			\hline
 		\end{tabular}
 	\end{center}
+	Computacionalmente:
+\begin{lstlisting}
+gap> Display(CharacterTable(AbelianGroup([2,2])));
+CT2
+
+     2  2  2  2  2
+
+       1a 2a 2b 2c
+
+X.1     1  1  1  1
+X.2     1 -1  1 -1
+X.3     1  1 -1 -1
+X.4     1 -1 -1  1
+\end{lstlisting}
+Obviamente la forma en la que~\GAP~ordena a los caracteres irreducibles de un grupo 
+no tiene por qué coincidir con la forma en la que nosotros los ordenamos. 
 \end{example}
 
 \begin{example}
@@ -147,6 +199,36 @@ la clase de conjugación del elemento $g_j$ en $G$ para todo $j\in\{1,\dots,r\}$
 		0&=\langle \chi_3,\chi_1\rangle=\frac16(2+3a+2b),\\
 		0&=\langle \chi_3,\chi_2\rangle=\frac16(2-3a+2b).
 	\end{align*}
+	
+	Para ver qué es lo que puede obtenerse con la función \lstinline{CharacterTable} hacemos lo siguiente:
+\begin{lstlisting}
+gap> S3 := SymmetricGroup(3);;
+gap> T := CharacterTable(S3);;
+gap> Display(T);
+CT3
+
+     2  1  1  .
+     3  1  .  1
+
+       1a 2a 3a
+    2P 1a 1a 3a
+    3P 1a 2a 1a
+
+X.1     1 -1  1
+X.2     2  . -1
+X.3     1  1  1
+\end{lstlisting}
+Tal como hicimos antes, podemos extraer otra información de la tabla de caracteres calculada:
+\begin{lstlisting}
+gap> SizesConjugacyClasses(T);
+[ 1, 3, 2 ]
+gap> SizesCentralizers(T);
+[ 6, 2, 3 ]
+gap> SizesConjugacyClasses(T);
+[ 1, 3, 2 ]
+gap> OrdersClassRepresentatives(T);
+[ 1, 2, 3 ]
+\end{lstlisting}
 \end{example}
 
 \begin{example}
@@ -270,7 +352,29 @@ la clase de conjugación del elemento $g_j$ en $G$ para todo $j\in\{1,\dots,r\}$
 			\hline
 		\end{tabular}
 	\end{center}
+% 	Dejamos como ejercicio comparar la tabla de caracteres que obtuvimos con la tabla 
+% 	caracteres que nos devuelve~\GAP:
+% \begin{lstlisting}
+% gap> Display(CharacterTable(SymmetricGroup(4)));
+% CT4
+
+%      2  3  2  3  .  2
+%      3  1  .  .  1  .
+
+%       1a 2a 2b 3a 4a
+%     2P 1a 1a 1a 3a 2b
+%     3P 1a 2a 2b 1a 4a
+
+% X.1     1 -1  1  1 -1
+% X.2     3 -1 -1  .  1
+% X.3     2  .  2 -1  .
+% X.4     3  1 -1  . -1
+% X.5     1  1  1  1  1
+% \end{lstlisting}
 \end{example}
+
+Dejamos como ejercicio calcular computacionalmente 
+la tabla de caracteres de $\Sym_4$ y compararla con el resultado obtenido en el ejemplo anterior. 
 
 \begin{example}
 	Calculemos ahora la tabla de caracteres de $\Alt_4$. Este grupo tiene orden $12$ y 
@@ -315,6 +419,32 @@ la clase de conjugación del elemento $g_j$ en $G$ para todo $j\in\{1,\dots,r\}$
 			\hline
 		\end{tabular}
 	\end{center}
+	Si bien ya sabemos cómo calcular computacionalmente una tabla de caracteres, el caso del grupo $\Alt_4$ 
+	involucra raíces cúbicas de la unidad. Por eso conviene ver qué obtendremos al utilizar la computadora:
+\begin{lstlisting}
+gap> A4 := AlternatingGroup(4);;
+gap> T := CharacterTable(A4);;
+gap> Display(T);
+CT5
+
+     2  2  2  .  .
+     3  1  .  1  1
+
+       1a 2a 3a 3b
+    2P 1a 1a 3b 3a
+    3P 1a 2a 1a 1a
+
+X.1     1  1  1  1
+X.2     1  1  A /A
+X.3     1  1 /A  A
+X.4     3 -1  .  .
+
+A = E(3)^2
+  = (-1-Sqrt(-3))/2 = -1-b3
+\end{lstlisting}
+Como imaginamos, el símbolo \lstinline{E(3)} denota una raíz cubica primitiva de la unidad $\omega$. 
+Para ahorrar espacio se utiliza la variable \lstinline{A} para denotar al complejo $\omega^2$ (que vemos escrito como el simbolo \lstinline{E(3)^2}) y
+el símbolo \lstinline{/A} para denotar al complejo $\omega$, el inverso multiplicativo de $\omega^2$. 
 \end{example}
 
 \begin{example}
@@ -377,6 +507,44 @@ la clase de conjugación del elemento $g_j$ en $G$ para todo $j\in\{1,\dots,r\}$
 			\hline
 		\end{tabular}
 	\end{center}
+	
+	Para terminar con los ejemplos, primero listamos
+	la tabla de caracteres del grupo de cuaterniones:
+\begin{lstlisting}
+gap> Q8 := QuaternionGroup(8);;
+gap> Display(CharacterTable(Q8));
+CT6
+
+     2  3  2  2  3  2
+
+       1a 4a 4b 2a 4c
+    2P 1a 2a 2a 1a 2a
+    3P 1a 4a 4b 2a 4c
+
+X.1     1  1  1  1  1
+X.2     1 -1 -1  1  1
+X.3     1 -1  1  1 -1
+X.4     1  1 -1  1 -1
+X.5     2  .  . -2  .
+\end{lstlisting}
+Ahora listamos la tabla de caracteres del grupo diedral de ocho elementos. Es importante 
+observar que la notación utilizada por~\GAP~no coincide con nuestra notación, ya que para nosotros $\D_n$ 
+es el diedral de $2n$ elementos. 
+\begin{lstlisting}
+gap> D4 := DihedralGroup(8);;
+gap> Display(CharacterTable(D8));
+CT7
+
+     2  3  2  2  3  2
+
+       1a 2a 4a 2b 2c
+
+X.1     1  1  1  1  1
+X.2     1 -1  1  1 -1
+X.3     1  1 -1  1 -1
+X.4     1 -1 -1  1  1
+X.5     2  .  . -2  .
+\end{lstlisting}
 \end{example}
 
 

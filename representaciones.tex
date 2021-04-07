@@ -263,10 +263,11 @@ y $W$ son isomomorfos como $\C[G]$-módulos.
   \end{pmatrix}.
   \end{gather*}
   La equivalencia sea realiza con la matriz $T=\begin{pmatrix} i & -i\\
-    1&1\end{pmatrix}$. En efecto, $\phi_m\circ =T\circ\psi_m$ para todo $m$.
+    1&1\end{pmatrix}$. En efecto, $\phi_m\circ T=T\circ\psi_m$ para todo $m$.
 \end{example}
 
-Traducimos ahora la noción de submódulo al contexto de la teoría de representaciones. 
+Traducimos ahora la noción de submódulo al lenguaje de la teoría de representaciones. 
+Utilizaremos ambos lenguajes tanto como nos resulte conveniente. 
 
 \begin{definition}
 \index{Subespacio invariante}
@@ -348,9 +349,8 @@ $S=N$.
 
 \begin{proposition}
   \label{pro:deg2}
-  Sea $\phi\colon G\to \GL(V)$ una representación de grado dos. Entonces $\phi$ es
-  irreducible si y sólo si no existe autovector común para todos los $\phi_g$,
-  $g\in G$.
+  Sea $\phi\colon G\to \GL(V)$, $g\mapsto\phi_g$, una representación de grado dos. Entonces $\phi$ es
+  irreducible si y sólo si no existe autovector común para todos los $\phi_g$.
 \end{proposition}
 
 \begin{proof}
