@@ -1,5 +1,8 @@
 \chapter{El teorema de Kolchin}
 
+%Antes de dar una aplicación a la teoría de grupos, veremos un resultado de
+%Wedderburn. 
+
 \index{Elemento!nil}
 \index{Elemento!nil}
 \index{Álgebra!nil}
@@ -31,15 +34,16 @@ nilpotentes no nulos, entonces $A$ es un álgebra con unidad.
 \end{proposition}
 
 \begin{proof}
-Consideramos el álgebra $B$ dada por el lema anterior. 
+Consideramos el álgebra con unidad $B$ del lema anterior, es decir que $I$ es un 
+ideal de $B$ tal que $I\simeq A$ y $B/I\simeq K$. 
 Sea $J$ un ideal nilpotente de $B$. Como $J\cap I\subseteq I$ es un ideal
-nilpotente de $A$, $J\cap I=\{0\}$. Por el segundo teorema de isomorfismos,
+nilpotente de $A$, entonces $J\cap I=\{0\}$. Por el segundo teorema de isomorfismos,
 \[
 J\simeq J/(J\cap I)\simeq (I+J)/I
 \]
 y luego $(I+J)/I$ es un ideal nilpotente de $B/I\simeq K$. Como $K$ es un cuerpo,
-no tiene ideales propios no nulos. Luego $J=\{0\}$ y entonces
-$B$ no tiene ideales nilpotentes. En particular, $B$ es semisimple. Por el 
+$K$ no tiene ideales propios no nulos. Luego $J=\{0\}$ y entonces
+$B$ no tiene ideales nilpotentes no nulos. En particular, $B$ es semisimple. Por el 
 teorema de Wedderburn, $B$ es producto directo de álgebras de matrices
 sobre álgebras de división,
 digamos
@@ -53,24 +57,68 @@ son álgebras con unidad. Luego $A$ es también un álgebra con unidad,
 pues $A\simeq I$.    
 \end{proof}
 
-Recordemos que una matriz $a$ se dice nilpotente si $a^n=0$ para algún $n\in\N$. 
+Solamente tenemos definido el radical de Jacobson para álgebras con unidad. Para extender la definición a álgebras sin unidad
+primero observamos que la suma de ideales nilpotentes es un ideal nilpotente:
+
+\begin{lemma}
+    Sea $A$ un álgebra. Si $I$ y $J$ son ideales nilpotentes, entonces $I+J$ también.
+\end{lemma}
+
+\begin{proof}
+    Sean $n,m\in\N$ tales que $I^n=\{0\}$ y $J^m=\{0\}$. 
+    Vamos a demostrar que $(I+J)^{n+m}=\{0\}$. Sean $x_1,\dots,x_{n+m}\in I+J$. Sin perder generalidad
+    podemos escribir $x_1x_2\cdots x_{n+m}$ como una suma de elementos de la forma 
+    $y_1\cdots y_{n+m}$, donde cada $y_j\in I\cup J$. Sea
+	$k=\#\{i:y_i\in I\}$. Si $k\geq n$ entonces $y_1\cdots y_{n+m}=0$ pues $I^n=0$; en caso
+	contrario, $\#\{j\in y_j\in J\}\geq m$ y luego $y_1\cdots y_{n+m}=0$ pues $J^m=0$.
+\end{proof}
+
+Definimos el \textbf{radical de Jacobson} de un álgebra $A$ sin unidad de dimensión finita
+como el mayor ideal nilpotente de $A$, es decir 
+\[
+J_0(A)=\sum\{I:\text{$I$ ideal nilpotente de $A$}\}.
+\]
+Como $\dim A<\infty$, la suma que define al radical $J(A)$ es una suma finita. El lema anterior implica 
+entonces que $J_0(A)$ es un ideal nilpotente y obviamente contiene a cualquier ideal nilpotente de $A$. 
+
+Queda por verificar que esta definición extiende al radical que conocemos para álgebras con unidad:
+
+\begin{proposition}
+    Si $A$ es un álgebra con unidad de dimensión finita, entonces $J(A)=J_0(A)$. 
+    % \[
+    % J(A)=\sum\{I:\text{$I$ ideal nilpotente de $A$}\}.
+    % \]
+\end{proposition}
+
+\begin{proof}
+    Como el radical $J(A)$ es un ideal nilpotente por la proposición~\ref{pro:J_nilpotente}, entonces $J(A)\subseteq J_0(A)$. 
+    Recíprocamente, como $J_0(A)$ es un ideal nilpotente, entonces
+    $J_0(A)\subseteq J(A)$ por la proposición~\ref{pro:J_propiedades}. 
+\end{proof}
+
+La proposición anterior nos permite definir el radical de Jacboson 
+de álgebras de dimensión finita posiblemente sin unidad. Como no hay peligro de confusión, el radical 
+de un álgebra $A$ de dimensión finita será denotado por $J(A)$. 
+
+Una matriz $a$ se dice nil si $a^n=0$ para algún $n\in\N$. 
+
 Necesitamos un lema:
 
 \begin{lemma}
 	\label{lem:base_de_nilpotentes}
 	El espacio vectorial $M_n(\C)$ no posee una base formada por matrices
-	nilpotentes.
+	nil.
 \end{lemma}
 
 \begin{proof}
-	Supongamos que existen matrices nilpotentes $A_1,\dots,A_{n^2}$ tales que
+	Supongamos que existen matrices nil $A_1,\dots,A_{n^2}$ tales que
 	generan $M_n(\C)$. Entonces existen escalares
 	$\lambda_1,\dots,\lambda_{n^2}\in \C$ tales que
 	\[
 		E_{11}=\lambda_1A_1+\cdots+\lambda_{n^2}A_{n^2}.
 	\]
 	Para cada $i\in\{1,\dots,n^2\}$ sabemos que $\trace(A_i)=0$ pues $A_i$ es
-	nilpotente. Como estamos en los complejos, $A_i$ es similar a una
+	nil. Como estamos en los complejos, $A_i$ es similar a una
 	matriz triangular superior. Pero por otro lado, $\trace(E_{11})=1$, una
 	contradicción.
 \end{proof}
@@ -85,6 +133,13 @@ necesitamos el siguiente resultado sobre álgebras.
 \end{theorem}
 
 \begin{proof}
+%	Sin pérdida de generalidad podemos suponer que $K$ es algebraicamente
+%	cerrado pues si $\overline{K}$ es la clausura algebraica de $K$, la
+%	extensión de escalares $A^{\overline{K}}=\overline{K}\otimes_KA$ es un
+%	$\overline{K}$-espacio vectorial de dimensión $\dim_KA$ que contiene una
+%	subálgebra isomorfa a $A$.  Por eso, basta demostrar entonces que todo
+%	elemento de $A^{\overline{K}}$ es nil. 
+%
 	Procederemos por inducción en $\dim A$. Si $\dim A=1$, sea $a\in A$ un
 	elemento nil tal que $\{a\}$ una base de $A$. Todo elemento de $A$ es de la
 	forma $\lambda a$ y luego es nil.  Supongamos entonces que $\dim A>1$. Como
@@ -92,27 +147,33 @@ necesitamos el siguiente resultado sobre álgebras.
 	$J(A)$ es nilpotente, digamos $J(A)^n=\{0\}$. 
 	
 	Si $J(A)=A$, no hay nada para
-	demostrar. 
+	demostrar. (Esto podría pasar, ya que no suponemos que $A$ tiene unidad.)
 	
 	Si $J(A)\ne\{0\}$, entonces, como $\dim A/J(A)<\dim A$, por
 	hipótesis inductiva, $A/J(A)$ es nil, digamos $(A/J(A))^m=\{0\}$. 
 	Sea $\pi\colon A\to A/J(A)$ el epimorfismo 
-	canónico y sea $N=nm$. Veamos que $A^N=\{0\}$. En efecto, 
-	si $a_1a_2\cdots a_N\in A$, entonces 
+	canónico y sea $N=nm$. Veamos que $A^N=\{0\}$. En efecto, primero observamos que 
+	cualquier producto de $m$ elementos de $A$ pertenece a $J(A)$, pues 
+	si $a_1,a_2,\cdots, a_m\in A$, entonces $a_1a_2\cdots a_m\in J(A)$, 
+	ya que 
 	\[
-	\pi(a_1a_2\cdots a_N)=\pi(a_1)\pi(a_2)\cdots \pi(a_N)=0,
+	\pi(a_1a_2\cdots a_m)=\pi(a_1)\pi(a_2)\cdots \pi(a_m)=0
 	\]
-	pues $(A/J(A))^N=\{0\}$. Luego
-	$a_1a_2\cdots a_N\in J(A)$, que implica $a_1a_2\cdots a_N=0$ pues
-	$J(A)^N=\{0\}$.  
+	pues $(A/J(A))^m=\{0\}$. Sean ahora $a_1,\dots,a_N\in A$. Entonces $a_1\cdots a_N=0$ 
+	pues $a_1\cdots a_N$ es un producto de $nm$ factores, y cada producto de 
+	de $n$ factores de la forma $b_1\cdots b_m$ es un elemento de $J(A)$. 
 	
-	Si $J(A)=\{0\}$, entonces, como $A$ es semisimple, 
-	el teorema de Mollien implica
-	que existen enteros positivos $n_1,\dots,n_k$ tales que $A\simeq
-	M_{n_1}(\C)\times\cdots\times M_{n_k}(\C)$. Como $A$ posee una base formada
+	Si $J(A)=\{0\}$, entonces, en particular $A$ no contiene ideales nilpotentes no nulos. 
+	Luego $A$ tiene unidad y en particular $A$ es semisimple. 
+	El teorema de Mollien implica entonces 
+	que existen enteros positivos $n_1,\dots,n_k$ tales que 
+	\[
+	A\simeq M_{n_1}(\C)\times\cdots\times M_{n_k}(\C).
+	\]
+	Como $A$ posee una base formada
 	por elementos nil, $M_{n_1}(\C)\times\cdots\times M_{n_k}(\C)$
 	también, 
-	es decir $M_{n_1}(\C)\times\cdots\times M_{n_k}(\C)$ posee una base formada por matrices nilpotentes, 
+	es decir $M_{n_1}(\C)\times\cdots\times M_{n_k}(\C)$ posee una base formada por matrices nil, 
 	una contradicción al lema anterior.
 %	
 %	Si $x\in M_{n_j}(K)$, entonces,
@@ -128,17 +189,21 @@ Sea $V=\C^{n\times 1}$. Una sucesión de subespacios
 \]
 es una \textbf{bandera completa} en $V$. La notación que usaremos es $(V_1,\dots,V_n)$. Observemos
 que si $(V_1,\dots,V_n)$ es una bandera completa, entonces $\dim V_i=i$ para todo $i\in\{1,\dots,n\}$. 
+
 La \textbf{bandera estándar} es la bandera $(V_1,\dots,V_n)$, donde
 $V_i=\langle v_1,\dots,v_i\rangle$ es el espacio vectorial complejo
 generado por los vectores $v_1,\dots,v_n$ de la base estándard de $V$. 
+Por convención, $V_0=\{0\}$. 
 
 El grupo $\GL_n(\C)$ actúa en el conjunto de banderas completas de $V$ por 
 \[
 g\cdot (V_1,\dots,V_n)=(T_g(V_1),\dots,T_g(V_n)),
 \]
-donde $T_g\colon V\to V$, $x\mapsto gx$, es una transformación lineal inversible. La acción es transitiva, pues
-si $(W_1,\dots,W_n)$ es una bandera completa en $V$, la matriz
-$g=(w_1|\cdots|w_n)$ cuyas columnas son los $w_j$ es inversible, pues $\{w_1,\dots,w_n\}$ es una base de $V$, 
+donde $T_g\colon V\to V$, $x\mapsto gx$, es una transformación lineal inversible. 
+La acción de $G$ en el conjunto de banderas completas es transitiva, pues
+si $(W_1,\dots,W_n)$ es una bandera completa en $V$, digamos
+$W_i=\langle w_1,\dots,w_i\rangle$, donde $\{w_1,\dots,w_n\}$ es una base de $V$, entonces 
+la matriz $g=(w_1|\cdots|w_n)$ cuyas columnas son los $w_j$ es inversible 
 y cumple que
 $gv_i=w_i$ para todo $i\in\{1,\dots,n\}$. Luego $g\cdot (V_1,\dots,V_n)=(W_1,\dots,W_n)$. 
 El estabilizador de la bandera estándar $(V_1,\dots,V_n)$ es
@@ -161,7 +226,7 @@ el subgrupo de matrices $u\in\GL_n(\C)$ tales que
 \[
 u_{ij}=\begin{cases}
 1 & \text{si $i=j$},\\
-0 & \text{si $i>j$}.	
+0 & \text{si $i>j$},
 \end{cases}
 \]
 y sea $T$ el subgrupo de $\GL_n(\C)$ formado por las matrices diagonales, es decir
@@ -189,7 +254,7 @@ $b\in UT$.
 \end{proof}
 
 Una matriz $a\in\GL_n(\C)$ se dice \textbf{unipotente} si su polinomio característico es de la forma $(X-1)^n$. Un subgrupo
-$G$ de $\GL_n(K)$ es un \textbf{grupo unipotente} si todo $g\in G$ es unipotente.  
+$G$ de $\GL_n(\C)$ es un \textbf{grupo unipotente} si todo $g\in G$ es unipotente.  
 
 \begin{proposition}
 	Si $G$ es un subgrupo unipotente de $\GL_n(\C)$, existe 
@@ -198,7 +263,7 @@ $G$ de $\GL_n(K)$ es un \textbf{grupo unipotente} si todo $g\in G$ es unipotente
 
 \begin{proof}
 	Sea $V$ el subespacio de $\GL_n(\C)$ generado por $\{g-I:g\in G\}$, 
-	donde $I$ es la matriz identidad. Si $g\in G$, entonces
+	donde $I$ es la matriz identidad. Si $g\in G$, entonces, por el teorema de Cayley--Hamilton, 
 	$(g-I)^n=0$, pues $g$ es unipotente. Luego todo elemento de $V$ es nil. 
 	Si $g,h\in G$, entonces
 	\[
@@ -239,6 +304,7 @@ Todo subgrupo de $\GL_n(\C)$ unipotente es conjugado de algún subgrupo de $U$.
 	G\subseteq G_{g\cdot (V_1,\dots,V_n)}=gG_{(V_1,\dots,V_n)}g^{-1}=gBg^{-1}.
 	\]
 	Como $G$ es unipotente, $G=G\cap (gBg^{-1})\subseteq gUg^{-1}$. 
+
 	Veamos que $G\subseteq G_{(W_1,\dots,W_n)}$ para alguna bandera completa $(W_1,\dots,W_n)$. 
 	Procederemos por inducción en $n=\dim V$. El caso $n=1$ es trivial. Supongamos entonces
 	que el resultado vale para $n-1$. 
