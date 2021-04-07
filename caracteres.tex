@@ -301,6 +301,20 @@ X_{ij}=\chi_i(g_j),\quad
 Veremos a continuación dos resultados muy importantes. El primero es
 sobre la ortogonalidad de las filas de la matriz de caracteres. 
 
+\begin{example}
+    En este ejemplo veremos cómo calcular computacionalmente 
+    la tabla de caracteres de un grupo. Sabemos que $\Sym_3$ tiene tres clases de conjugación, por lo que
+    $\Irr(\Sym_3)$ tendrá tres elementos:
+\begin{lstlisting}
+gap> S3 := SymmetricGroup(3);;
+gap> irr := Irr(S3);;
+gap> Size(irr);
+3
+gap> NrConjugacyClasses(S3);
+3
+\end{lstlisting}
+\end{example}
+
 \begin{theorem}[Schur]
 \index{Teorema!primera ortogonalidad Schur}
 Sea $G$ un grupo finito. 
@@ -325,6 +339,36 @@ Si $S_1,\dots,S_k$ los $\C[G]$-módulos simples, entonces
 ya que, como los $S_j$ son módulos simples, sabemos por el lema de Schur que 
 $\Hom_{\C[G]}(S_i,S_i)\simeq\C$ y $\Hom_{\C[G]}(S_i,S_j)=\{0\}$ si $i\ne j$. 
 \end{proof}
+
+\begin{example}
+Verifiquemos computacionalmente las relaciones de ortogonalidad 
+de Schur en el caso del grupo simétrico $\Sym_3$. 
+\begin{lstlisting}
+gap> S3 := SymmetricGroup(3);;        
+gap> irr := Irr(S3);              
+[ Character( CharacterTable( Sym( [ 1 .. 3 ] ) ), [ 1, -1, 1 ] ), 
+  Character( CharacterTable( Sym( [ 1 .. 3 ] ) ), [ 2, 0, -1 ] ), 
+  Character( CharacterTable( Sym( [ 1 .. 3 ] ) ), [ 1, 1, 1 ] ) ]
+gap> Display(irr);
+[ [   1,  -1,   1 ],
+  [   2,   0,  -1 ],
+  [   1,   1,   1 ] ]
+gap> ScalarProduct(irr[1],irr[1]);
+1
+gap> ScalarProduct(irr[1],irr[2]);
+0
+gap> ScalarProduct(irr[1],irr[3]);
+0
+gap> ScalarProduct(irr[2],irr[2]);
+1
+gap> ScalarProduct(irr[2],irr[3]);
+0
+gap> ScalarProduct(irr[3],irr[3]);
+1
+
+\end{lstlisting}
+\end{example}
+
   
 El teorema de Schur tiene muchas aplicaciones. Por ejemplo:
 \begin{enumerate}
