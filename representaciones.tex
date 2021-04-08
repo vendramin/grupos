@@ -116,19 +116,20 @@ es una representación del grupo $G$ cíclico de orden cuatro.
 % \end{example}
 
 \begin{example}
-  Sea $X$ un $G$-conjunto y sea $V=\C X$ el espacio vectorial con base $\{x:x\in
+  Sea $G$ un grupo finito que actúa en un conjunto finito $X$. 
+  Sea $V=\C X$ el espacio vectorial con base $\{x:x\in
   X\}$. Entonces
   \[
 	\rho\colon G\to\GL(V),\quad
 	\rho_g\left(\sum_{x\in X}\lambda_x x\right)
 	=\sum_{x\in X}\lambda_x\rho_g(x)
-	=\sum_{x\in X}\lambda_{g^{-1}x}x
+	=\sum_{x\in X}\lambda_{g^{-1}\cdot x}x
   \]
   es una representación de grado $|X|$.
 \end{example}
 
 \begin{example}
-El signo $\sgn\colon\Sym_n\to\GL_1(\C)=\C$ es una representación de $\Sym_n$.
+El signo $\sgn\colon\Sym_n\to\GL_1(\C)=\C^{\times}$ es una representación de $\Sym_n$.
 \end{example}
 
 \index{Representación!fiel}
@@ -272,13 +273,17 @@ Utilizaremos ambos lenguajes tanto como nos resulte conveniente.
 \begin{definition}
 \index{Subespacio invariante}
 \index{Subrepresentación}
-Sea $\phi\colon V\to\GL(V)$ una representación. 
+Sea $\phi\colon G\to\GL(V)$ una representación. 
 Un subespacio $W\subseteq V$ se dice
 \textbf{$G$-invariante} si $\phi_g(W)\subseteq W$ para todo $g\in G$.  Si $W$
 es un subespacio $G$-invariante, entonces la restricción $\rho|_W$ de $\phi$
 a $W$ es una representación, que se llama \textbf{subrepresentación} de
 $\phi$.
 \end{definition}
+
+Si $\rho\colon G\to\GL(V)$ es una representación y $W$ es un subespacio de $V$, entonces 
+$W$ es subespacio $G$-invariante de $V$ si y sólo si 
+$W$ es un $\C[G]$-submódulo de $V$. 
 
 \begin{definition}
 \index{Representación!irreducible}
@@ -305,12 +310,27 @@ g\mapsto\begin{pmatrix}
   1&0&0
 \end{pmatrix},
 \]
-es decir que $g$ actúa en $\R^{3\times1}$ por multiplicación de matrices. 
+es decir que $g$ actúa en $\R^{3}$ por multiplicación de matrices,
+\[
+g\cdot (x,y,z)=
+\begin{pmatrix}
+  0&1&0\\
+  0&0&1\\
+  1&0&0
+\end{pmatrix}\begin{pmatrix}
+x\\
+y\\
+z
+\end{pmatrix}.
+\]
 El conjunto
 \[
-N=\{(x,y,z)^T\in\R^{3\times1}:x+y+z=0\}
+N=\{(x,y,z)\in\R^{3}:x+y+z=0\}
 \]
-es un subespacio $G$-invariante de $\R^3$. Veamos que $N$ es irreducible. Si $N$ contiene un subespacio $G$-invariante, 
+es un subespacio $G$-invariante de $\R^3$. 
+
+Veamos que $N$ es irreducible. 
+Si $N$ contiene un subespacio no nulo $G$-invariante $S$, 
 sea $(x_0,y_0,z_0)\in S\setminus\{(0,0,0)\}$. Como $S$ es $G$-invariante, 
 \[
 \begin{pmatrix}
@@ -354,8 +374,8 @@ $S=N$.
 \end{proposition}
 
 \begin{proof}
-  Supongamos que $\phi$ no es irreducible. Existe $W\subseteq V$
-  subespacio no nulo $G$-invariante, $\dim W=1$. Sea $w\in W\setminus\{0\}$.
+  Supongamos que $\phi$ no es irreducible. Existe entonces $W\subseteq V$ 
+  subespacio propio no nulo $G$-invariante, $\dim W=1$. Sea $w\in W\setminus\{0\}$.
   Para cada $g\in G$, $\phi_g(w)\in W$ y entonces $\phi_g(w)=\lambda w$ para
   algún $\lambda$. Luego $w$ es un autovector común para todos los $\phi_g$.
   Recíprocamente, si $\phi$ admite un autovector en común $v\in V$, entonces el
@@ -408,6 +428,9 @@ $V$ puede descomponerse como $V=V_1\oplus\cdots\oplus V_n$, donde cada $V_i$
 es un subespacio $G$-invariantes y cada restricción $\phi|_{V_i}$ es irreducible.
 \end{definition}
 
+Es claro que una representación $\rho\colon G\to\GL(V)$ es completamente reducible
+si y sólo si $V$ es semisimple como $\C[G]$-módulo. 
+
 % \begin{definition}
 % 	\index{Representación!descomponible}
 % 	\index{Representación!indescomponible}
@@ -451,19 +474,26 @@ es un subespacio $G$-invariantes y cada restricción $\phi|_{V_i}$ es irreducibl
   Por construcción, $\rho\circ\pi=\phi$.
 \end{proof}
 
-\index{Caracter lineal}
-Diremos que un caracter $\chi$ es \textbf{lineal} si $\chi(1)=1$. Los caracteres lineales son representaciones de grado uno. 
+% \index{Caracter lineal}
+% Diremos que un caracter $\chi$ es \textbf{lineal} si $\chi(1)=1$. Los caracteres lineales son representaciones de grado uno. 
 
 \begin{example}
-Como $[\Sym_n,\Sym_n]=\Alt_n$ y $(\Sym_n:\Alt_n)=2$, el grupo 
-simétrico $\Sym_n$ tiene dos caracteres lineales. Uno de esos caracteres es el trivial, el otro es el signo. 
+  El grupo cíclico $G=\langle g\rangle$ de orden dos tiene dos representaciones de grado uno. En efecto, 
+  si $\rho\colon G\to\C^{\times}$ es una representación de grado uno, entonces, como $g^2=1$, se tiene que
+  $\rho_g\in\{-1,1\}$. 
+\end{example}
+
+\begin{example}
+    Como $[\Sym_n,\Sym_n]=\Alt_n$ y $(\Sym_n:\Alt_n)=2$, el grupo 
+    simétrico $\Sym_n$ tiene dos representaciones lineales. 
+    Una de esas representaciones está dada por el morfismo trivial y la otra por el signo. 
 \end{example}
 
 Veamos algunos ejemplos generales de representaciones:
 
 \begin{example}
     \index{Representación!trivial}
-    El morfismo trivial $\rho\colon G\to\C$, $g\mapsto 1$, es una representación, 
+    El morfismo trivial $\rho\colon G\to\GL_1(\C)=\C^{\times}$, $g\mapsto 1$, es una representación, 
     es la \textbf{representación trivial} de $G$. En el lenguaje de módulos, 
 	$\C$ es trivial como $\C[G]$-módulo con la acción
 	\[
@@ -487,9 +517,10 @@ Veamos algunos ejemplos generales de representaciones:
 \index{Producto tensorial!de espacios vectoriales}
 Para los ejemplos que sigen 
 necesitamos productos tensoriales. 
+
 El \textbf{producto tensorial} de los $K$-espacios vectoriales $U$ y $V$ es
 el espacio vectorial cociente $K[U\times V]/T$, donde $K[U\times V]$ es el
-espacio vectorial con base $\{(u,v):u\in U,v\in V\}$ y $T$ es el subespacio
+espacio vectorial sobre $K$ con base $\{(u,v):u\in U,v\in V\}$ y $T$ es el subespacio
 generado por los elementos de la forma
 	\[
 		(\lambda u+\mu u',v)-\lambda(u,v)-\mu(u',v),\quad
@@ -615,7 +646,7 @@ Veamos algunas propiedades del producto tensorial de espacios vectoriales.
 
 \begin{exercise}
 	\label{xca:UxK}
-	Demuestre que $U\otimes K\simeq K\simeq K\otimes U$.
+	Demuestre que $U\otimes K\simeq U\simeq K\otimes U$.
 \end{exercise}
 
 \begin{lemma}
