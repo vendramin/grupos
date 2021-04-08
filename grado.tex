@@ -444,9 +444,13 @@ En la versión original de McKay el grupo $G$ es simple y el primo es $p=2$. La 
 de la conjetura fue en realidad formulada por Alperin en~\cite{MR0404417} e independientemente
 por Isaacs en~\cite{MR332945}.
 
+La conjeetura de McKay permanece abierta y es uno de los problemas abiertos más importantes 
+en la teoría de representaciones de grupos finitos sobre los números complejos. 
+
 \index{Teorema!de Malle-Sp\"ath}
-Se sabe que la conjetura es verdadera para varias clases de grupos. 
-Isaacs la demostró para grupos resolubles, ver por ejemplo~\cite{MR332945,MR3791517}. Malle y Sp\"ath demostraron que 
+Se sabe que la conjetura de McKay es verdadera para varias clases de grupos. 
+Isaacs la demostró para grupos resolubles, ver por ejemplo~\cite{MR332945,MR3791517}. 
+Malle y Sp\"ath demostraron que 
 la conjetura de McKay es cierta para el primo $p=2$. 
 
 \begin{theorem}[Malle--Sp\"ath]
@@ -464,7 +468,7 @@ demostrar que todo grupo simple cumple con ciertas propiedades
 bastante más complicadas que la conjetura de McKay, 
 un resultado de Isaacs, Malle y Navarro~\cite{MR2336079}. 
 
-Podemos verificar computacionalmente algunos casos
+Podemos verificar computacionalmente algunos casos pequeños 
 de la conjetura de McKay con la siguiente función:
 
 \begin{lstlisting}
@@ -504,7 +508,7 @@ true
 % \end{exercise}
 La siguiente conjetura 
 es un refinamiento de la conjetura de McKay y 
-fue formulada por Isaacs y Navarro:
+fue formulada por Isaacs y Navarro a principios del siglo XXI:
 
 \begin{conjecture}[Isaacs--Navarro]
 \index{Conjetura!de Isaacs--Navarro}
@@ -516,12 +520,13 @@ Si $G$ es un grupo finito y $P\in\Syl_p(G)$, entonces
 \end{align*}
 \end{conjecture}
 
-Se sabe que la conjetura de Isaacs--Navarro es verdadera para varias clases de grupos, por ejemplo 
-para grupos resolubles, para los grupos simples esporádicos y para el grupo simétrico, 
-ver por ejemplo~\cite{MR1935849} y las referencias allí contenidas. 
+Aunque la conjetura de Isaacs--Navarro en general permanece abierta, 
+se sabe que es verdadera para varias clases de grupos, por ejemplo 
+para grupos resolubles, para los 26 grupos simples esporádicos y para el grupo simétrico, 
+ver por ejemplo~\cite{MR1935849}. 
 
-Para verificar la conjetura de Isaacs--Navarro en algunos
-ejemplos de orden pequeño utilizaremos el siguiente código:
+Para verificar la conjetura de Isaacs--Navarro en 
+ejemplos de orden pequeño podemos utilizar el siguiente código:
 
 \begin{lstlisting}
 gap> IsaacsNavarro := function(G, k, p)
