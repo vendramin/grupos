@@ -170,14 +170,14 @@ Observemos que si $s\in S$, entonces $p_0(s)=s$. En particular, $p_0^2=p_0$ pues
 $p_0(m)\in S$. 
 
 El problema 
-es que $p_0$ no es, en general, un morfismo de $\C[K]$-módulos. Promediamos
+es que $p_0$ no es, en general, un morfismo de $K[G]$-módulos. Promediamos
 sobre el grupo $G$ para conseguir un morfismo de grupos: Sea 
 \[
 p\colon M\to S,\quad
 p(m)=\frac{1}{|G|}\sum_{g\in G}g^{-1}\cdot p_0(g\cdot m).
 \]
 
-Primero demostramos que $p$ es un morfismo de $\C[K]$-módulos. Alcanza con ver que
+Primero demostramos que $p$ es un morfismo de $K[G]$-módulos. Alcanza con ver que
 $p(g\cdot m)=g\cdot p(m)$ para todo $g\in G$ y $m\in M$. En efecto,
 \[
 p(g\cdot m)=\frac{1}{|G|}\sum_{h\in G}h^{-1}\cdot p_0(h\cdot (g\cdot m))
@@ -191,11 +191,12 @@ $s=g^{-1}\cdot (g\cdot s)=g^{-1}\cdot p_0(g\cdot s)$ y en consecuencia
 \[
 s=\frac{1}{|G|}\sum_{g\in G}g^{-1}\cdot (g\cdot s)=\frac{1}{|G|}\sum_{g\in G}g^{-1}\cdot (p_0(g\cdot s))=p(s).
 \]
-Como $p(m)\in S$ para todo $m\in M$, entonces $p^2(m)=p(m)$, es decir que $p$ es un proyector en $S$. Luego $S$ se complementa en $M$, es decir $M=S\oplus\ker(p)$.
+Como $p(m)\in S$ para todo $m\in M$, entonces $p^2(m)=p(m)$, es decir que $p$ es un proyector en $S$. 
+Luego $S$ se complementa en $M$, es decir $M=S\oplus\ker(p)$.
 \end{proof} 
 
-La misma demostración del teorema de Maschke vale para el álgebra de grupo real o racional. 
-La descomposición de un módulo sobre el álgebra de grupo dependerá
+Podemos utilizar este resultado sobre el cuerpo de los números racionales, reales o complejos. Sin embargo, 
+la descomposición de un módulo sobre el álgebra de grupo dependerá
 fuertemente del cuerpo sobre el que se trabaje. 
 
 \begin{example}
