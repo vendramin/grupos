@@ -474,6 +474,17 @@ si y sólo si $V$ es semisimple como $\C[G]$-módulo.
   Por construcción, $\rho\circ\pi=\phi$.
 \end{proof}
 
+\begin{exercise}
+\label{xca:n+3mgeq4k}
+    Si $G$ es un grupo finito de orden $n$ con $k$ clases de conjugación y 
+    $m=(G:[G,G])$, entonces $n+3m\geq 4k$. 
+\end{exercise}
+
+% \begin{proof}
+%     Sabemos que $G$ tiene $k$ clases de isomorfismos de módulos simples y que exactamente 
+%     $m$ son de dimensión uno. Luego $n=\sum_{i=1}^kn_i^2\geq m+4(m-k)$. 
+% \end{proof}
+
 % \index{Caracter lineal}
 % Diremos que un caracter $\chi$ es \textbf{lineal} si $\chi(1)=1$. Los caracteres lineales son representaciones de grado uno. 
 
@@ -657,9 +668,10 @@ Veamos algunas propiedades del producto tensorial de espacios vectoriales.
 \end{lemma}
 
 \begin{proof}
-	Sea $i\in\{1,\dots,n\}$ y sea $f_i\colon U\to K$, $f_i(u_j)=\delta_{ij}$.
-	Como la función $U\times V\to V$, $(u,v)\mapsto f_i(u)v$, es bilineal, existe una función
-	$\alpha_i\colon U\otimes V\to V$ lineal tal que $\alpha_i(u\otimes
+    Sea $U_1$ el espacio vectorial con base $\{u_1,\dots,u_n\}$. 
+	Para $i\in\{1,\dots,n\}$ sea $f_i\colon U_1\to K$, $f_i(u_j)=\delta_{ij}$.
+	Como la función $U_1\times V\to V$, $(u,v)\mapsto f_i(u)v$, es bilineal, existe una función
+	$\alpha_i\colon U_1\otimes V\to V$ lineal tal que $\alpha_i(u\otimes
 	v)=f_i(u)v$. Luego
 	\[
 		v_i=\sum_{j=1}^n\alpha_i(u_j\otimes v_j)=\alpha_i\left(\sum_{j=1}^nu_j\otimes v_j\right)=0.\qedhere
@@ -686,7 +698,7 @@ Veamos algunas propiedades del producto tensorial de espacios vectoriales.
 	es linealmente independiente. Si $\sum_k\sum_l\lambda_{kl}u_{i_k}\otimes
 	v_{j_l}=0$, entonces
 	$0=\sum_{k}u_{i_k}\otimes\left(\sum_{l}\lambda_{kl}v_{j_l}\right)$ y luego,
-	como los $u_{i_k}$ son linealmente indepentientes, el lema~\ref{lem:U_LI}
+	como los $u_{i_k}$ son linealmente independientes, el lema~\ref{lem:U_LI}
 	implica que $\sum_{l}\lambda_{kl}v_{j_l}=0$. Luego $\lambda_{kl}=0$ para
 	todo $k,l$ pues los $v_{j_l}$ son linealmente independientes.
 \end{proof}
@@ -708,8 +720,9 @@ vectoriales de dimensión finita entonces
 	$x_i=\sum_j\lambda_{ij}u_j$, entonces
 	\[
 		\sum_i x_i\otimes y_i=\sum_i\left(\sum_j\lambda_{ij}u_j\right)\otimes y_i		
-		=\sum_j u_j\otimes\left(\sum_i\lambda_{ij}y_i\right).\qedhere
+		=\sum_j u_j\otimes\left(\sum_i\lambda_{ij}y_i\right).
 	\]
+	Dejamos la unicidad como ejercicio.
 \end{proof}
 
 Ahora sí, el ejemplo que estábamos esperando. 
@@ -731,10 +744,10 @@ Otro ejemplo importante:
 	Sea $G$ un grupo finito. Si $V$ y $W$ son $\C[G]$-módulos, entonces
 	$\Hom_{\C}(V,W)$ es un $\C[G]$-módulo con 
 	\[
-	(gf)(u)=gf(g^{-1}u),
+	(gf)(v)=gf(g^{-1}v),
 	\]
 	donde $g\in G$,
-	$f\in\Hom_{\C}(U,V)$ y $u\in U$.
+	$f\in\Hom_{\C}(V,W)$ y $v\in V$.
 \end{proposition}
 
 \begin{proof}
@@ -748,11 +761,11 @@ Otro ejemplo importante:
 \index{Representación!dual}
 \index{Dual!de una representación}
 La proposición anterior nos dice, en particular, que el dual
-$U^*=\Hom_{\C}(U,\C)$ es un $\C[G]$-módulo con $(gf)(u)=f(g^{-1}u)$. 
+$V^*=\Hom_{\C}(V,\C)$ es un $\C[G]$-módulo con $(gf)(v)=f(g^{-1}v)$. 
 
 \begin{exercise}
 	Sea $G$ un grupo finito. Si $V$ y $W$ son $\C[G]$-módulos de dimensión finita, entonces
-	$U^*\otimes V\simeq\Hom_{\C}(U,V)$ 
+	$V^*\otimes W\simeq\Hom_{\C}(V,W)$ 
 	como $\C[G]$-módulos.
 % 	Primero vemos que la función $\psi\colon U^*\otimes V\to $
 % 	Si $g\in G$, $f\in U^*$ y $u\in U$, entonces

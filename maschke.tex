@@ -289,7 +289,10 @@ entonces existe un subgrupo normal $K$-invariante $N$ de $V$ tal que $V=U\times 
 \begin{proof}
 Sea $\theta\colon U\times W\to U$, $(u,w)\mapsto u$. Entonces $\theta$ es un morfismo de grupos tal que 
 $\theta(u)=u$ para todo $u\in U$. Como $U$ es $K$-invariante, entonces
-$k^{-1}\cdot \theta(k\cdot v)\in U$ para todo $k\in K$ y $v\in V$. 
+\[
+k^{-1}\cdot \theta(k\cdot v)\in U
+\]
+para todo $k\in K$ y $v\in V$. 
 Como además $K$ es finito y $U$ es abeliano, 
 queda bien definida la función
 \[
@@ -305,16 +308,23 @@ Veamos que $\varphi$ es un morfismo de grupos. Si $x,y\in V$, entonces
 \end{align*}
 pues $U$ es abeliano y $K$ actúa por automorfismos en $V$. 
 
-Vamos a demostrar ahora que $N=\ker\varphi$ es $K$-invariante. Si $l\in K$, entonces
+Vamos a demostrar ahora que $N=\ker\varphi$ es $K$-invariante. 
+Alcanza con ver que $\varphi(l\cdot x)=l\cdot\varphi(x)$ para todo $l\in K$ y $x\in V$. 
+Si $l\in K$ y $x\in V$, entonces
 \begin{align*}
 l^{-1}\cdot\varphi(l\cdot x)&=l^{-1}\cdot\left(\prod_{k\in K}k^{-1}\cdot \theta(k\cdot (l\cdot x))\right)=\prod_{k\in K}(kl)^{-1}\cdot\theta( (kl)\cdot x)=\varphi(x),
 \end{align*}
 pues $kl$ recorre todos los elementos de $K$ si $k$ recorre todos los elementos de $K$.
+Se concluye entonces que $\ker\varphi$ es $K$-invariante. 
 
-Nos falta demostrar que $V$ es el producto directo de $U$ y $N$. 
+Nos falta demostrar que $V$ es el producto directo de $U$ y $N$. Por hipótesis, $U$ es normal en $V$. 
 Veamos primero que $U\cap N=\{1\}$. Si $u\in U$, entonces $k\cdot u\in U$ para todo $k\in K$, lo 
 que implica que $k^{-1}\cdot\theta(k\cdot u)=k^{-1}\cdot (k\cdot u)=u$. Luego $\varphi(u)=u^m$. Como por hipótesis 
-esta función es biyectiva, se concluye que $U\cap N=U\cap\ker\varphi=\{1\}$. Veamos ahora que $V\subseteq UN$, ya que
+esta función es biyectiva, se concluye que 
+\[
+U\cap N=U\cap\ker\varphi=\{1\}.
+\]
+Veamos ahora que $V\subseteq UN$, ya que
 la otra inclusión es trivial. Como $N=\ker\varphi$, entonces 
 \[
 \varphi(V)\subseteq U=\varphi(U)=\varphi(U)\varphi(N)=\varphi(UN) 
@@ -383,16 +393,6 @@ que $n_1=1$.
 	igual a la cantidad de clases de conjugación de $G$.
 \end{proof}
 
-\begin{corollary}
-    Si $G$ es un grupo finito de orden $n$ con $k$ clases de conjugación y 
-    $m=(G:[G,G])$, entonces $n+3m\geq 4k$. 
-\end{corollary}
-
-\begin{proof}
-    Sabemos que $G$ tiene $k$ clases de isomorfismos de módulos simples y que exactamente 
-    $m$ son de dimensión uno. Luego $n=\sum_{i=1}^kn_i^2\geq m+4(m-k)$. 
-\end{proof}
-
 \begin{example}
     Como el grupo $C_4$ cíclico de orden cuatro es abeliano, 
     se tiene que $\C[C_4]\simeq\C\times\C\times\C\times\C$ como álgebras. 
@@ -410,26 +410,29 @@ que $n_1=1$.
     como álgebras. 
 \end{example}
 
-\begin{proposition}
-	\label{pro:nunca_SS}
-	Sea $K$ un cuerpo. 
-	Si $G$ es un grupo infinito, entonces $K[G]$ no es semisimple.
-\end{proposition}
+% definición de semisimplicidad que uso acá?
+% problema de semisimplicidad?
 
-\begin{proof}
-	Sea $A=K[G]$ y supongamos que $A$ es semisimple.  Si $I$ es el ideal de
-	aumentación de $A$, existe un ideal no nulo $J$ de $A$ tal que $A=I\oplus
-	J$. Existen entonces $e\in I$, $f\in J$ tales que $1=e+f$. Si
-	$x\in I$, entonces $x=xe+xf$ y luego $xf=x-xe\in I\cap J=\{0\}$. Como
-	entonces $x=xe$ para todo $x\in I$, en particular $e=e^2$. Análogamente
-	vemos que $f^2=f$. Además $ef=0$ pues $ef\in I\cap J=\{0\}$.  Como $I$
-	es el ideal de aumentación y $If=(Ae)f=A(ef)=0$, se concluye que $(g-1)f=0$
-	para todo $g\in G$ pues $g-1\in I$. Si suponemos que $f=\sum_{h\in
-	G}\lambda_hh$, entonces 
-	\[
-	f=gf=\sum_{h\in G}\lambda_h(gh)=\sum_{h\in
-	G}\lambda_{g^{-1}h}h.
-	\]
-	Luego $\lambda_h=\lambda_{g^{-1}h}$ para todo $g,h\in G$, una contradicción
-	pues como $f\ne 0$ la suma que define a $f$ es infinita. 
-\end{proof}
+% \begin{proposition}
+% 	\label{pro:nunca_SS}
+% 	Sea $K$ un cuerpo. 
+% 	Si $G$ es un grupo infinito, entonces $K[G]$ no es semisimple.
+% \end{proposition}
+
+% \begin{proof}
+% 	Sea $A=K[G]$ y supongamos que $A$ es semisimple.  Si $I$ es el ideal de
+% 	aumentación de $A$, existe un ideal no nulo $J$ de $A$ tal que $A=I\oplus
+% 	J$. Existen entonces $e\in I$, $f\in J$ tales que $1=e+f$. Si
+% 	$x\in I$, entonces $x=xe+xf$ y luego $xf=x-xe\in I\cap J=\{0\}$. Como
+% 	entonces $x=xe$ para todo $x\in I$, en particular $e=e^2$. Análogamente
+% 	vemos que $f^2=f$. Además $ef=0$ pues $ef\in I\cap J=\{0\}$.  Como $I$
+% 	es el ideal de aumentación y $If=(Ae)f=A(ef)=0$, se concluye que $(g-1)f=0$
+% 	para todo $g\in G$ pues $g-1\in I$. Si suponemos que $f=\sum_{h\in
+% 	G}\lambda_hh$, entonces 
+% 	\[
+% 	f=gf=\sum_{h\in G}\lambda_h(gh)=\sum_{h\in
+% 	G}\lambda_{g^{-1}h}h.
+% 	\]
+% 	Luego $\lambda_h=\lambda_{g^{-1}h}$ para todo $g,h\in G$, una contradicción
+% 	pues como $f\ne 0$ la suma que define a $f$ es infinita. 
+% \end{proof}
