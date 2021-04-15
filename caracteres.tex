@@ -59,8 +59,12 @@ Sean $S_1,\dots,S_k$ las clases de isomorfismos de los $\C[G]$-módulo simples y
 sea $f\colon \C[G]\to M_{n_1}(\C)\times\cdots\times M_{n_k}(\C)$ el isomorfismo del teorema de Wedderburn. 
 Para cada $j$ tenemos $n_j=\dim S_j$, pues $M_{n_j}(\C)\simeq S_j\oplus\cdots\oplus S_j$ ($n_j$-veces). 
 Para cada $j\in\{1,\dots,k\}$ sea 
-$e_j=f^{-1}(I_j)$, donde $I_j$ la matriz identidad de $M_{n_j}(\C)$. 
-Supongamos que $\Irr(G)=\{\chi_1,\dots,\chi_k\}$. Vamos a demostrar que
+$e_j=f^{-1}(I_j)\in\C[G]$, donde $I_j$ la matriz identidad de $M_{n_j}(\C)$. 
+Supongamos que $\Irr(G)=\{\chi_1,\dots,\chi_k\}$. 
+Si $\alpha=\sum_{g\in G}\lambda_gg\in\C[G]$, 
+para cada $i\in\{1,\dots,k\}$ 
+definimos $\chi_i(\alpha)=\sum_{g\in G}\lambda_g\chi_i(g)$. 
+Vamos a demostrar que
 \[
 \chi_i(e_j)=\begin{cases}
 \dim S_i & \text{si $i=j$},\\
@@ -83,7 +87,9 @@ expresión en cada $e_j$ vemos que $\lambda_j=0$ para todo $j$.
 
 \begin{proof}
     Sea $\{u_1,\dots,u_r\}$ una base de $U$ y sea $\{v_1,\dots,v_s\}$ una base de $V$. Entonces 
-    $\{u_1,\dots,u_r,v_1,\dots,v_s\}$ es una base de $U\oplus V$. Si $g\in G$, en esta
+    $\{u_1,\dots,u_r,v_1,\dots,v_s\}$ es una base de $U\oplus V$. 
+    Sea $\rho\colon G\to \GL(U\otimes V)$ la representación que corresponde al módulo $U\oplus V$. 
+    Si $g\in G$, en esta
     base 
     \[
     \rho_g=\begin{pmatrix}
@@ -106,7 +112,7 @@ expresión en cada $e_j$ vemos que $\lambda_j=0$ para todo $j$.
 \end{theorem}
 
 \begin{proof}
-    La primera afirmación se obtiene del lema anterior. 
+    La primera afirmación se obtiene de la proposición anterior. 
     
     Supongamos que $U\simeq V$, es decir que existe un isomorfismo $f\colon U\to V$ de $\C[G]$-módulos. Si $\rho\colon G\to\GL(U)$ 
     es la representación que corresponde al módulo $U$ y $\psi\colon G\to\GL(V)$ es la que corresponde al módulo $V$, entonces
@@ -123,16 +129,17 @@ expresión en cada $e_j$ vemos que $\lambda_j=0$ para todo $j$.
     se concluye que $a_i=b_i$ para todo $i\in\{1,\dots,k\}$, es decir $U\simeq V$.
 \end{proof}
 
-\begin{lemma}
+\begin{proposition}
 	Si $G$ es un grupo finito y $V$ y $W$ son $\C[G]$-módulos, entonces 
 	\begin{enumerate}
 		\item $\chi_{V\otimes W}=\chi_V\chi_W$,
 		\item $\chi_{V^*}=\overline{\chi_V}$.
 	\end{enumerate}
-\end{lemma}
+\end{proposition}
 
 \begin{proof}
-	Demostremos la primera afirmación. 
+	Demostremos la primera afirmación. Sea $\phi\colon G\to\GL(V)$ la representación que corresponde a $U$ y sea 
+	$\psi\colon G\to\GL(W)$ la representación que corresponde a $W$.  
 	Sabemos que $\phi$ y $\psi$ son diagonalizables. Sea $g\in G$ y sea $\{v_1,\dots,v_n\}$
 	una base de autovectores de $\phi_g$ con autovalores
 	$\lambda_1,\dots,\lambda_n$ y sea $\{w_1,\dots,w_m\}$ una base de
@@ -150,10 +157,10 @@ expresión en cada $e_j$ vemos que $\lambda_j=0$ para todo $j$.
 	\]
 
 	Demostremos la segunda afirmación. Sea $g\in G$, sea $\{v_1,\dots,v_n\}$
-	una base de autovectores de $\psi$ con autovalores
+	una base de autovectores de $\phi$ con autovalores
 	$\lambda_1,\dots,\lambda_n$ y sea $\{f_1,\dots,f_n\}$ su base dual. Veamos que $\{f_1,\dots,f_n\}$ es base de autovectores
 	con autovalores $\overline{\lambda_1},\dots,\overline{\lambda_n}$. En efecto, si $gv_j=\lambda_jv_j$, entonces
-	$g^{-1}v_j=\lambda_j^{-1}v_j=\overline{\lambda_j}v_j$ (observemos que como $\psi_g$ es inversible, los $\lambda_j$ son no nulos). Luego
+	$g^{-1}v_j=\lambda_j^{-1}v_j=\overline{\lambda_j}v_j$ (observemos que como $\phi_g$ es inversible, los $\lambda_j$ son no nulos). Luego
 	\[
 		(gf_i)(v_j)=f_i(g^{-1}v_j)=\overline{\lambda_j}f_i(v_j)=\overline{\lambda_j}\delta_{ij}.
 	\]
@@ -163,7 +170,7 @@ expresión en cada $e_j$ vemos que $\lambda_j=0$ para todo $j$.
 	\]
 \end{proof}
 
-Como consecuencia del lema anterior tenemos que el producto de dos caracteres es un caracter. 
+Como consecuencia, el producto de dos caracteres es un carácter. 
 Esto nos permite demostrar que 
 el conjunto de combinaciones lineales enteras de caracteres 
 irreducibles es un anillo con las operaciones usuales. 
@@ -176,7 +183,8 @@ irreducibles es un anillo con las operaciones usuales.
 \begin{definition}
   \label{exercise:cf(G)}
   \index{Función!de clases}
-  Una $f\colon G\to\C$ se dice una \textbf{función de clases} si
+  \index{Función!central}
+  Una $f\colon G\to\C$ se dice una \textbf{función de clases} (o funciones centrales) si
   $f(g)=f(hgh^{-1})$ para todo $g,h\in G$.  
 \end{definition}
 
@@ -225,9 +233,9 @@ U^G=\{u\in U:g\cdot u=u\text{ para todo $g\in G$}\}.
   Como $\rho_g\circ \alpha=\frac{1}{|G|}\sum_{x\in G}\rho_{gx}=\alpha$, pues  
   $gx$ recorre todo $G$ si $x$ recorre todo $G$, entonces
   \[
-  \alpha(\alpha(v))=\frac{1}{|G|}\sum_{g\in G}\rho_g(\alpha(v))=\alpha(v) 
+  \alpha(\alpha(u))=\frac{1}{|G|}\sum_{g\in G}\rho_g(\alpha(u))=\alpha(u) 
   \]
-  para todo $v\in V$. En particular, $\alpha$ tiene autovalores 0 y 1. Sea $V$ 
+  para todo $u\in U$. En particular, $\alpha$ tiene autovalores 0 y 1. Sea $V$ 
   el autoespacio correspondiente al autovalor 1. 
   Afirmamos que $V=U^G$. Si $v\in V$, entonces
   \[
@@ -240,7 +248,7 @@ U^G=\{u\in U:g\cdot u=u\text{ para todo $g\in G$}\}.
   \alpha(u)=\frac{1}{|G|}\sum_{x\in G}\rho_x(u)=\frac{1}{|G|}\sum_{x\in G}u=u.
   \]
   En consecuencia, 
-  $\dim V=\trace(\alpha)=\frac{1}{|G|}\sum_{g\in G}\trace(\rho_g)=\frac{1}{|G|}\sum_{g}\chi(g)$.
+  $\dim V=\trace(\alpha)=\frac{1}{|G|}\sum_{g\in G}\trace(\rho_g)=\frac{1}{|G|}\sum_{g}\chi_U(g)$.
 \end{proof}
 
 Sea $G$ un grupo finito. En el espacio de funciones $G\to\C$ definimos la operación
@@ -271,8 +279,9 @@ Si $U$ y $V$ son $\C[G]$-módulos, entonces
 
     Luego
     \begin{align*}
-    \dim\Hom_{\C[G]}(U,V)&=\dim\Hom_{\C}(U,V)^G\\
-    &=\frac{1}{|G|}\sum_{g\in G}\chi_{\Hom(U,V)}(g)
+    \dim\Hom_{\C}(U,V)^G
+    &=\dim\Hom_{\C[G]}(U,V)\\
+    &=\frac{1}{|G|}\sum_{g\in G}\chi_{\Hom_{\C[G]}(U,V)}(g)
     =\frac{1}{|G|}\sum_{g\in G}\overline{\chi_U(g)}\chi_V(g)
     =\langle\chi_V,\chi_U\rangle.
     \end{align*}
