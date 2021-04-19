@@ -116,6 +116,19 @@ $A\in\Z^{n\times n}$ son enteros algebraicos.
   $x\in\A$.
 \end{proof}
 
+Necesitaremos la siguiente aplicación del lema de Schur.
+
+\begin{lemma}
+    Si $V$ es un $\C[G]$-módulo simple y $T\colon V\to V$ es un morfismo de $\C[G]$-módulos, entonces
+    $T=\lambda\id$ para algún $\lambda\in\C$. 
+\end{lemma}
+
+\begin{proof}
+    Como estamos sobre los números complejos, existe un autovalor 
+    $\lambda\in\C$ de $T$. Luego $T-\lambda\id$ no es inversible y entonces, 
+    como $V$ es simple, el lema de Schur implica que $T-\lambda\id=0$. 
+\end{proof}
+
 \begin{theorem}
   \label{theorem:algebraic}
   Sean $G$ un grupo finito, $g\in G$ y $\chi\in\Irr(G)$. Si $K$ es la clase de
