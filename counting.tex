@@ -7,7 +7,7 @@ puede consultarse en \cite{MR562002}.
 \begin{theorem}[Cauchy--Frobenius--Burnside]
     \index{Teorema!de Burnside}
     \index{Burnside!teorema de}
-    Supongamos que el grupo $G$ actúa en un conjunto finito $X$. 
+    Supongamos que el grupo finito $G$ actúa en un conjunto finito $X$. 
     Si $m$ es la cantidad de órbitas de la acción,
     entonces
     \[
@@ -273,7 +273,7 @@ Si $G$ es un grupo finito no abeliano, entonces $\cp(G)\leq5/8$.
     Sean $y_1,\dots,y_m$ representantes de las clases de conjugación de $G$ de tamaño $\geq2$. Por 
     la ecuación de clases, 
     \[
-    |G|=|Z(G)|+\sum_{i=1}^m|(G:C_G(y_i))\geq |Z(G)|+2m.
+    |G|=|Z(G)|+\sum_{i=1}^m(G:C_G(y_i))\geq |Z(G)|+2m.
     \]
     Luego $m\leq(1/2)(|G|-|Z(G)|)$ y entonces
     \[
@@ -282,7 +282,7 @@ Si $G$ es un grupo finito no abeliano, entonces $\cp(G)\leq5/8$.
     Como $G$ es no abeliano, el cociente $G/Z(G)$ no es 
     cíclico y entonces, en particular, $(G:Z(G))\geq4$. En consecuencia, 
     \[
-    k=\frac12(|Z(G)|+|G|)\leq\frac12\left(\frac14+1\right)|G|,
+    k\leq\frac12(|Z(G)|+|G|)\leq\frac12\left(\frac14+1\right)|G|,
     \]
     es decir $k/|G|\leq 5/8$. 
 \end{proof}
@@ -330,7 +330,7 @@ conmuten es exactamente $5/8$.
 \end{exercise}
 
 \begin{exercise}
-Si $G$ es un grupo abeliano y $p$ es el menor primo que divide al orden de $G$, entonces
+Si $G$ es un grupo no abeliano y $p$ es el menor primo que divide al orden de $G$, entonces
 $\cp(G)\leq (p^2+p-1)/p^3$. Vale además la igualdad si y sólo si $(G:Z(G))=p^2$. 
 \end{exercise}
 
@@ -456,8 +456,8 @@ existe $g\in G$ tal que $g\cdot x=y$ y $g\cdot x_1=y_1$, es decir $g\cdot (x,x_1
 \end{example}
 
 \begin{proposition}
-Si $G$ actúa 2-transitivamente en $X$ con caracter $\chi$, el caracter 
-$\chi-\chi_1$ es irreducible. 
+Si $G$ actúa 2-transitivamente en $X$ con caracter $\chi(g)=|\Fix(g)|$, entonces 
+el caracter $\chi-\chi_1$ es irreducible. 
 \end{proposition}
 
 \begin{proof}
@@ -550,13 +550,14 @@ similar al teorema de Jordan~\cite{MR636194}.
 \begin{theorem}[Fein--Kantor--Schacher]
 \index{Teorema!de Fein--Kantor--Schacher}
 Sea $G$ un grupo finito no trivial. Si $G$ actúa transitivamente en un conjunto finito $X$ y $|X|>1$, entonces
-existe $g\in G$ de orden una potencia de $p$ sin puntos fijos. 
+existe un primo $p$ y un elemento $g\in G$ sin puntos fijos cuyo orden es una potencia de $p$. 
+%existe $g\in G$ de orden una potencia de $p$ sin puntos fijos. 
 \end{theorem}
 
 No veremos la demostración en este curso. 
 
 \index{Desarreglos}
-Supongamos que $G$ es un grupo finito que actúa fielmente en un conjunto $X$,
+Supongamos que $G$ es un grupo finito que actúa fiel y transitivamente en un conjunto $X$,
 digamos $G\leq\Sym_n$, donde $X=\{1,2,\dots,n\}$. Sea 
 $G_0$ el conjunto de $g\in G$ sin puntos fijos, es decir $g(x)\ne x$ para todo $x\in X$. 
 Tales permutaciones se conocen como \textbf{desarreglos}. 
@@ -564,7 +565,7 @@ Sea $c_0=|G_0|/|G|$.
 
 \begin{theorem}[Cameron--Cohen]
 \index{Teorema!de Cameron--Cohen}
-Si $G\leq\Sym_n$, entonces $c_0\geq\frac{1}{n}$.
+Si $G$ es un subgrupo de $\Sym_n$ que actúa transitivamente en $\{1,\dots,n\}$, entonces $c_0\geq\frac{1}{n}$.
 \end{theorem}
 
 \begin{proof}
