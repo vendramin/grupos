@@ -21,7 +21,7 @@ $A\in\Z^{n\times n}$ son enteros algebraicos.
 \end{proposition}
 
 \begin{proof}
-  Sea $m/n\in\Q$ con $(m:n)=1$ y $n>0$. Supongamos que $m/n$ es raíz del
+  Sea $m/n\in\Q$ con $\gcd(m,n)=1$ y $n>0$. Supongamos que $m/n$ es raíz del
   polinomio $t^k+a_{k-1}t^{k-1}+\cdots+a_1t+a_0\in\Z[t]$. Entonces
   \[
 	0=(m/n)^k+a_{k-1}(m/n)^{k-1}+\cdots+a_1m/n+a_0.
@@ -72,7 +72,7 @@ $A\in\Z^{n\times n}$ son enteros algebraicos.
   $A\in\Z^{n\times n}$ y que $\beta$ es autovalor de $B\in\Z^{m\times m}$, digamos
   $Av=\alpha v$ y $Bw=\beta w$.  Como 
   \[
-	(A\otimes I_{m\times m}+I_{n\times n}\otimes B)(v+w)=(\alpha+\beta)(v+w),
+	(A\otimes I_{m\times m}+I_{n\times n}\otimes B)(v\otimes w)=(\alpha+\beta)(v\otimes w),
 	\quad
 	(A\otimes B)(v\otimes w)=\alpha\beta(v\otimes w),
   \]
@@ -105,7 +105,7 @@ $A\in\Z^{n\times n}$ son enteros algebraicos.
     t^k+a_{k-1}t^{k-1}+\cdots+a_1t+a_0\in\Z[t].
   \]
   Sean $z_i=x^{i-1}$, $i\in\{1,\dots,k\}$. Entonces $xz_i=x^i=z_{i+1}$ para
-  todo $i\in\{1,\dots,k-1\}$ y $xz_{k-1}=x^k=-a_{0}-\cdots-a_{k-1}x^{k-1}$.
+  todo $i\in\{1,\dots,k-1\}$ y $xz_{k}=x^k=-a_{0}-\cdots-a_{k-1}x^{k-1}$.
 
   Demostremos la otra implicación. Sean $A=(a_{ij})$ y $Z=(z_1,\dots,z_k)^T$. 
   Entonces $AZ=xZ$ pues para cada $i\in\{1,\dots,k\}$ se tiene
