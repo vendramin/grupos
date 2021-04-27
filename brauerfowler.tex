@@ -137,11 +137,11 @@ $t^2\leq (k-1)(|G|-1)$.
 
 \begin{proof}
 Supongamos que $\Irr(G)=\{\chi_1,\dots,\chi_k\}$, donde $\chi_1$ es el 
-caracter trivial de $G$. Primero vamos a demostrar que 
+carácter trivial de $G$. Primero vamos a demostrar que 
 $t\leq\sum_{i=2}^k\chi_i(1)$. En efecto, 
 como 
 \[
-|\langle\chi_A-\chi_S,\chi_1\rangle|
+|\langle\chi_S-\chi_A,\chi_1\rangle|
 =\frac{1}{|G|}\left|\sum_{g\in G}\chi(g^2)\right|
 \leq\frac{1}{|G|}\sum_{g\in G}|\chi(g^2)|\leq 1,
 \]
@@ -157,11 +157,11 @@ Si utilizamos ahora
 la desigualdad de Cauchy--Schwartz, 
 \[
 t^2\leq\left(\sum_{i=2}^k\chi_i(1)\right)^2
-\leq\sum_{i=2}^k\chi(1)^2=(k-1)(|G|-1).\qedhere
+\leq(k-1)\sum_{i=2}^k\chi(1)^2=(k-1)(|G|-1).\qedhere
 \]
 \end{proof}
 
-Estamos en condiciones de dar la primera demostración del teorema de
+Ahora sí estamos en condiciones de dar la primera demostración del teorema de
 Brauer--Fowler. 
 
 \begin{theorem}[Brauer--Fowler]
@@ -178,12 +178,17 @@ $g\in G$ e $y\in G$, lo que implica que $g\in H$, una contradicción. Luego $\rh
 y entonces $G$ es isomorfo a un subgrupo de $\Sym_{n^2}$. En particular, $|G|$ divide a $(n^2)!$
 
 Sea $m=(|G|-1)/t$. 
-Como $|C_G(x)|=n$, el grupo $G$ tiene al menos $|G|/n$ involuciones, es decir $t\geq |G|/n$. Luego
+Como $|C_G(x)|=n$, el grupo $G$ tiene al menos $|G|/n$ involuciones (pues la clase de conjugación
+de $x$ tiene tamaño $|G|/n$ y todos sus elementos son involuciones), es decir $t\geq |G|/n$. Luego
 $m=(|G|-1)/t<n$. Basta demostrar entonces que $G$ contiene un subgrupo de índice $\leq m^2$. 
 
 Sean $C_1,\dots,C_k$ las clases de conjugación de $G$, donde $C_1=\{1\}$. 
 Como $G$ es simple, $|C_i|>1$ 
-para todo $i\in\{2,\dots,k\}$.  
+para todo $i\in\{2,\dots,k\}$. Notar que 
+\[
+|G|-1\leq\frac{(k-1)(|G|-1)^2}{t^2}\Longleftrightarrow t^2\leq(k-1)(|G|-1),
+\]
+que vale gracias al lema anterior. 
 Si $|C_i|>m$ para todo $i\in\{2,\dots,k\}$, entonces, como
 \[
 |G|-1\leq\frac{(k-1)(|G|-1)^2}{t^2}=(k-1)m^2,
@@ -209,15 +214,15 @@ finitos con una involución con centralizador de orden $n$.
 Veamos un ejemplo sencillo que da una idea de cómo es que pueden clasificarse grupos simples
 una vez que se tiene fija la estructura del centralizador de una involución. 
 
-\begin{proposition}
-Si $G$ es un grupo simple finito y $x$ es una involución tal que $C_G(x)\simeq\Z/2$, entonces
+\begin{exercise}
+Si $G$ es un grupo simple finito y $x$ es una involución con centralizador de orden dos, entonces 
 $G\simeq\Z/2$. 
-\end{proposition}
+\end{exercise}
 
-\begin{proof}
-Supongamos que $\Irr(G)=\{\chi_1,\chi_2,\dots,\chi_k\}$. No conocemos la tabla de caracteres del grupo $G$ 
-pero sabemos que...
-\end{proof}
+% \begin{proof}
+% Supongamos que $\Irr(G)=\{\chi_1,\chi_2,\dots,\chi_k\}$. No conocemos la tabla de caracteres del grupo $G$ 
+% pero sabemos que...
+% \end{proof}
 
 \subsubsection*{Una demostración elemental del teorema de Brauer--Fowler}
 
