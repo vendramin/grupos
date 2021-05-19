@@ -137,14 +137,22 @@ $t^2\leq (k-1)(|G|-1)$.
 
 \begin{proof}
 Supongamos que $\Irr(G)=\{\chi_1,\dots,\chi_k\}$, donde $\chi_1$ es el 
-carácter trivial de $G$. Primero vamos a demostrar que 
-$t\leq\sum_{i=2}^k\chi_i(1)$. En efecto, 
-como 
+carácter trivial de $G$. 
+Si $\chi\in\Irr(G)$, entonces
 \[
-|\langle\chi_S-\chi_A,\chi_1\rangle|
-=\frac{1}{|G|}\left|\sum_{g\in G}\chi(g^2)\right|
-\leq\frac{1}{|G|}\sum_{g\in G}|\chi(g^2)|\leq 1,
+\langle\chi^2,\chi_1\rangle=\frac{1}{|G|}\sum_{g\in G}\chi(g)\chi(g)=\langle\chi,\overline{\chi}\rangle=\begin{cases}
+1 & \text{si $\chi=\overline{\chi}$},\\
+0 & \text{en otro caso}.
+\end{cases}
 \]
+Como $\chi^2=\chi_S+\chi_A$, si $\langle\chi^2,\chi_1\rangle=1$, entonces el caracter trivial 
+o bien es $\chi_1$ es parte de $\chi_S$ o bien es parte de $\chi_A$, pero no de ambos. Esto implica que
+\[
+\langle\chi_S-\chi_A,\chi_1\rangle\in\{-1,1,0\}.
+\]
+Vamos a demostrar ahora que 
+$t\leq\sum_{i=2}^k\chi_i(1)$. En efecto, 
+como $|\langle\chi_S-\chi_A,\chi_1\rangle|\leq 1$, 
 entonces 
 \begin{align*}
 1+t=\theta(1)
