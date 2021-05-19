@@ -380,7 +380,7 @@ Si $M$ es un $(R,S)$-bimódulo y $N$ es un $R$-módulo, entonces el conjunto
 $\Hom_R(M,N)$ de morfismos de $R$-módulos $M\to N$ es un 
 $S$-módulo con 
 \[
-(s\cdot \varphi)(m)=\varphi(m\cdot s),\quad s\in S,\,\varphi\in\Hom_R(M,S),\,m\in M.
+(s\cdot \varphi)(m)=\varphi(m\cdot s),\quad s\in S,\,\varphi\in\Hom_R(M,N),\,m\in M.
 \]
 \end{example}
 
@@ -569,8 +569,8 @@ para todo $g\in G$, $h\in H$ y $v\in V$. Por último,
 \begin{align*}
     &f_{\varphi}(gg_1,v)=(gg_1)\cdot\varphi(v)=g\cdot(g_1\cdot\varphi(v))=g\cdot f_{\varphi}(g_1,v)
 \end{align*}
-para todo $g,g_1\in G$ y $v\in V$. Para cada $\varphi\Hom_{K[H]}(V,\Res_H^GU)$ tenemos 
-entonces un $\Gamma(\varphi)\in\Hom_{K[G]}(\Ind_HV,U)$ tal que
+para todo $g,g_1\in G$ y $v\in V$. Para cada $\varphi\in\Hom_{K[H]}(V,\Res_H^GU)$ tenemos 
+entonces un $\Gamma(\varphi)\in\Hom_{K[G]}(\Ind_H^GV,U)$ tal que
 $\Gamma(\varphi)(g\otimes v)=g\cdot\varphi(v)$. 
 Tenemos así definida una función 
 \[
@@ -643,7 +643,7 @@ $\phi_{2}$ & $1$ & $-1$\tabularnewline
 \hline
 \end{tabular}
 \end{center}
-A simple vista vemos que $\chi_1|H=\phi_1$, $\chi_2|_H=\phi_2$ y que $\chi_3|_H=\phi_1+\phi_2$. 
+A simple vista vemos que $\chi_1|_H=\phi_1$, $\chi_2|_H=\phi_2$ y que $\chi_3|_H=\phi_1+\phi_2$. 
 La matriz de inducción--restricción es entonces
 \[
 \begin{pmatrix}

@@ -89,9 +89,9 @@ propiedades de un cierto grupo finito:
 	
 	La última afirmación es entonces consecuencia de la ecuación de clases. Como
 	\[
-		|G|=2^n=4+\frac12(2^n-4),
+		2^n=|G|=|Z(G)|+\sum_{i=1}^N2=4+2N,
 	\]
-	se concluye que $G$ tiene $2^{n-1}+2$ clases de conjugación.
+	se concluye que $G$ tiene $N+4=2^{n-1}+2$ clases de conjugación.
 \end{proof}
 
 \begin{example}
@@ -130,7 +130,7 @@ propiedades de un cierto grupo finito:
 			1
 		\end{pmatrix}.
 	\end{align*}
-	Para cada $i\in\{1,\dots,4\}$ sea $B_i=A_4^TA_1$. Entonces $B_i=-B_i^T$ y $B_i^2=-I$ 
+	Para cada $i\in\{1,\dots,4\}$ sea $B_i=A_4^TA_i$. Entonces $B_i=-B_i^T$ y $B_i^2=-I$ 
 	para todo $i$ y además $B_iB_j=-B_jB_i$ para todo $i\ne j$. 
 	El grupo generado por $B_1,B_2,B_3$ está formado por elementos de la forma
 	\[
@@ -159,7 +159,7 @@ propiedades de un cierto grupo finito:
 \end{theorem}
 
 \begin{proof}
-	Sin perder generalidad podemos suponer que $n>2$.  Para cada
+	Sin pérdida de generalidad podemos suponer que $n>2$.  Para cada
 	$i\in\{1,\dots,n\}$ escribimos 
 	\[
 		z_i=\sum_{k=1}^n a_{ik}(x_1,\dots,x_n)y_k,
@@ -189,7 +189,7 @@ propiedades de un cierto grupo finito:
 	\[
 		(AA^T)_{kl}=\sum_{i=1}^na_{ki}(x_1,\dots,x_n)a_{li}(x_1,\dots,x_n)=\delta_{kl}(x_1^2+\cdots+x_n^2)
 	\]
-	por la fórmula~\eqref{eq:delta}. Como cada $a_{ij}(x_1,\dots,x_n)$ es una función lineal, 
+	por la fórmula~\eqref{eq:delta}. Como cada $a_{ki}(x_1,\dots,x_n)$ es una función lineal, 
 	existen escalares $\alpha_{ij1},\dots,a_{ijn}\in\C$ tales que
 	\[
 		a_{ij}(x_1,\dots,x_n)=\alpha_{ij1}x_1+\cdots+\alpha_{ijn}x_n.
