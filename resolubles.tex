@@ -180,8 +180,16 @@ resultado auxiliar que resulta de interés. Necesitamos un resultado previo:
 		&=\sum_{p\mid\chi(1)}\chi(1)\chi(g)+\sum_{p\nmid\chi(1)}\chi(1)\chi(g)+1,
 	\end{aligned}
 	\end{equation}
-	donde el uno corresponde a la representación trivial de $G$. Al
-	mirar~\eqref{eq:Burnside} módulo $p$ vemos que existe una representación no
+	donde el uno corresponde a la representación trivial de $G$. 
+	
+	Vamos a mirar esta ecuación módulo $p$. Más precisamente, si $\chi(g)=0$ para todo $\chi\in\Irr(G)$
+	tal que $\chi\ne\chi_1$ y $p\nmid\chi(1)$, entonces
+	podemos escribir
+	\[
+	-\frac{1}{p}=\sum\frac{\chi(1)}{p}\chi(g)\in\A\cap\Q=\Z,
+	\]
+	donde la suma se toma sobre todos los irreducibles no triviales de $G$ de grado divisible por $p$, 
+	una contradicción. Luego existe una representación no
 	trivial irreducible $\phi$ con carácter $\chi$ tal que $p$ no divide a
 	$\chi(1)$ y además $\chi(g)\ne0$. Por el teorema anterior, $\phi_g$ es una
 	matriz escalar. Si $\phi$ es fiel, entonces $g$ es un elemento central no
