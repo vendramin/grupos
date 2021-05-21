@@ -121,20 +121,25 @@ conjugación de un grupo $G$, entonces $C^{-1}=\{xg^{-1}x^{-1}:x\in G\}$.
   Como $|G|$ es impar, todo $\chi\in\Irr(G)$ no trivial es no real por el
   corolario anterior. Los caracteres irreducibles de $G$ son entonces 
   \[
-    1,\chi_1,\overline{\chi_1},\dots,\chi_k,\overline{\chi_k},
+    \chi_1,\chi_2,\overline{\chi_2},\dots,\chi_k,\overline{\chi_k},
     \quad
-    r=1+2k.
+    r=1+2k,
   \]
-  Para cada $j\in\{1,\dots,k\}$ sea $d_j=\chi_j(1)$.   Como cada $d_j$ divide a
+  donde $\chi_1$ representa al carácter trivial. 
+  Para cada $j\in\{2,\dots,k\}$ sea $d_j=\chi_j(1)$.   Como cada $d_j$ divide a
   $|G|$ por el teorema~\ref{theorem:chi(1)||G|} de Frobenius y $|G|$ es impar, los $d_j$ son
   números impares, digamos $d_j=1+2m_j$. Entonces 
   \begin{align*}
-    |G|&=1+\sum_{j=1}^k 2d_j^2=1+\sum_{j=1}^k2(2m_j+1)^2\\
-    &=1+\sum_{j=1}^k2(4m_j^2+4m_j+1)
-    =1+2k+8\sum_{j=1}^km_j(m_j+1).
+    |G|&=1+\sum_{j=2}^k 2d_j^2=1+\sum_{j=2}^k2(2m_j+1)^2\\
+    &=1+\sum_{j=2}^k2(4m_j^2+4m_j+1)
+    =1+2k+8\sum_{j=2}^km_j(m_j+1).
   \end{align*}
   Luego $|G|\equiv r\bmod{16}$ pues $r=1+2k$ y cada $m_j(m_j+1)$ es un número par. 
 \end{proof}
+
+\begin{exercise}
+Demuestre que todo grupo de orden 15 es abeliano.
+\end{exercise}
 
 % \begin{theorem}
 %   Si $G$ es un grupo finito no abeliano tal que existe $\chi\in\Irr(G)$ con 
