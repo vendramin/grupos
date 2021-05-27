@@ -1,5 +1,177 @@
 \chapter{Los teoremas de Hall y Wielandt}
 
+\begin{definition}
+	\index{Subgrupo!elemental abeliano}
+	Sea $p$ un número primo. Un $p$-grupo $P$ se dice \textbf{elemental
+	abeliano} si $x^p=1$ para todo $x\in P$.
+\end{definition}
+
+\begin{definition}
+	\index{Subgrupo!minimal-normal}
+	Un subgrupo $M$ de $G$ se dice \textbf{minimal-normal} si $M\ne1$,
+	$M$ es normal en $G$ y el único subgrupo normal de $G$ contenido
+	propiamente en $M$ es el trivial. 
+\end{definition}
+
+\begin{example}
+	Si un subgrupo normal $M$ es minimal (con respecto a la inclusión),
+	entonces es minimal-normal. Sin embargo, la recíproca no es cierta.  El
+	subgrupo de $\Alt_4$ generado por $(12)(34)$, $(13)(24)$ y $(14)(23)$ es
+	normal-minimal en $\Alt_4$ pero no es minimal. 
+\end{example}
+
+\begin{exercise}
+	Demuestre que todo grupo finito contiene un subgrupo minimal-normal. 
+\end{exercise}
+
+\begin{example}
+	Sea $G=\D_{6}=\langle r,s:r^6=s^2=1,\,srs=r^{-1}\rangle$ el grupo diedral
+	de doce elementos. Los subgrupos $S=\langle r^2\rangle$ 
+	y $T=\langle r^3\rangle$ son minimal-normales en $G$.
+	% son los únicos!
+\end{example}
+
+\begin{example}
+	Sea $G=\SL_2(3)$. No es difícil demostrar que el único subgrupo
+	minimal-normal de $G$ es el centro $Z(\SL_2(3))\simeq C_2$:
+\begin{lstlisting}
+gap> List(MinimalNormalSubgroups(SL(2,3)), \
+StructureDescription);
+[ "C2" ]
+\end{lstlisting}
+\end{example}
+
+\index{Subgrupo!característico}
+Un subgrupo $H$ de $G$ se dice \textbf{característico} si 
+$f(H)\subseteq H$ para todo $f\in\Aut(G)$. 
+El centro y el conmutador de un grupo son ejemplos de subgrupos característicos. 
+Es fácil demostrar que
+un subgrupo característico es normal.  
+
+\begin{exercise}
+    Si $H$ es característico en $K$ y $K$ es normal en $G$, entonces 
+    $H$ es normal en $G$. 
+\end{exercise}
+
+El resultado que sigue es muy útil. 
+
+\begin{lemma}
+	\label{lemma:minimal_normal}
+	Sea $M$ un subgrupo minimal-normal de $G$. Si $M$ es resoluble y finito
+	entonces $M$ es un $p$-grupo elemental abeliano para algún primo $p$.
+\end{lemma}
+
+\begin{proof}
+	Como $M$ es resoluble, $[M,M]\subsetneq M$. Además $[M,M]$ es normal en $G$
+	pues $[M,M]$ es característico en $M$ y $M$ es normal en $G$. La 
+	minimal-normalidad del subgrupo $M$ implica que $[M,M]=\{1\}$ y luego $M$ es abeliano. 
+	
+	Si $M$ es finito, existe un primo $p$ tal que $1\ne P=\{x\in
+	M:x^p=1\}\subseteq M$.  Como $P$ es característico en $M$, $P$ es normal en
+	$G$. Por minimalidad $P=M$.
+\end{proof}
+
+\begin{theorem}
+	Sea $G$ un grupo finito no trivial resoluble. 
+	\begin{enumerate}
+		\item Todo subgrupo maximal tiene índice $p^\alpha$ para algún primo $p$. 
+		\item Existe un primo $p$ tal que $G$ contiene un $p$-subgrupo
+			minimal-normal.
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	Para demostrar la primera afirmación procederemos por inducción en $|G|$.
+	Si $|G|$ es una potencia de un primo no hay nada para demostrar. Supongamos
+	entonces que $|G|\geq6$ y sea $M$ un subgrupo maximal de $G$. Sea $N$ un
+	subgrupo minimal-normal de $G$ y sea $\pi\colon G\to G/N$ el morfismo
+	canónico.  Si $N=G$, entonces $N=G$ es un $p$-grupo y el resultado ya está demostrado. 
+	Supongamos entonces que $N\ne G$. 
+	Como $M\subseteq NM\subseteq G$,
+	se tiene que $M=NM$ o bien $NM=G$ (por maximalidad de $M$).  Si
+	$M=NM\supseteq N$, entonces $\pi(M)$ es un subgrupo maximal de $\pi(G)=G/N$
+	y luego 
+	\[
+	(G:M)=(\pi(G):\pi(M))
+	\]
+	es una potencia de un primo por hipótesis inductiva. 
+	Si en cambio $NM=G$ entonces 
+	\[
+	(G:M)=\frac{|G|}{|M|}=\frac{|NM|}{|N|}=\frac{|N|}{|N\cap M|}
+	\]
+	es una potencia de un primo pues $N$ es un $p$-grupo por el
+	lema anterior. 
+	
+	La demostración de la segunda afirmación queda como ejercicio
+\end{proof}
+
+\begin{example}
+	Sea $G=\Sym_4$. El $2$-subgrupo 
+	\[
+	K=\{\id,(12)(34),(13)(24),(14)(23)\}\simeq
+	C_2\times C_2
+	\]
+	es minimal-normal. Sin embargo, $G$ no posee $3$-subgrupos
+	minimal-normales. 
+\end{example}
+
+\begin{theorem}
+	Sea $G$ un grupo finito no trivial. Entonces $G$ es resoluble si y sólo si
+	todo cociente no trivial de $G$ contiene un subgrupo normal abeliano no
+	trivial.
+\end{theorem}
+
+\begin{proof}
+	Todo cociente de $G$ es resoluble y por lo tanto contiene un subgrupo
+	minimal-normal, que resulta abeliano. Para demostrar la recíproca
+	procederemos por inducción en $|G|$. Sea $N$ un subgrupo normal abeliano de
+	$G$. Si $N=G$ entonces $G$ es resoluble por ser abeliano. Si $N\ne G$,
+	entonces $|G/N|<|G|$. Como todo cociente de $G/N$ es un cociente de $G$, el
+	grupo $G/N$ satisface las hipótesis del teorema. Luego $G/N$ es resoluble
+	por hipótesis inductiva y entonces, como $N$ y $G/N$ son resolubles, $G$ es
+	resoluble.
+\end{proof}
+
+Como aplicación del teorema~\ref{theorem:SchurZassenhaus} de
+Schur--Zassenhaus, en el capítulo~\ref{extensiones},
+teorema~\ref{theorem:solvable_maximal}, demostraremos que si $G$ es un
+grupo finito resoluble no trivial y $p$ es un primo que divide al orden de
+$G$, existe un subgrupo maximal de índice una potencia de $p$. 
+Otra aplicación del teorema de Schur--Zassenhaus: la teoría de Hall, 
+una generalización de
+la teoría de Sylow para grupos resolubles. 
+
+\begin{exercise}
+	\label{exercise:resoluble}
+	Sea $G$ un grupo.  Demuestre que $G$ es resoluble si y sólo si existe una
+	sucesión de subgrupos normales
+	\[
+		1=N_0\subseteq N_1\subseteq\cdots\subseteq N_k=G
+	\]
+	tales que cada cociente $N_i/N_{i-1}$ es abeliano.
+\end{exercise}
+
+% \begin{svgraybox}
+% 	Si existe una sucesión de subgrupos normales $1=N_0\subseteq
+% 	N_1\subseteq\cdots\subseteq N_k=G$ tales que cada cociente $N_i/N_{i-1}$ es
+% 	abeliano, entonces $[N_i,N_i]\subseteq N_{i-1}$ para cada $i$. Demostremos
+% 	por inducción que $G^{(m)}\subseteq N_{n-m}$ para todo $m\leq n$. El caso
+% 	$m=0$ es trivial pues $G^{(0)}=G\subseteq N_{n}=G$; si suponemos que el
+% 	resultado vale para $m$ entonces, por hipótesis inductiva, 
+% 	\[
+% 	G^{(m+1)}=[G^{(m)},G^{(m)}]\subseteq [N_{n-m},N_{n-m}]\subseteq N_{n-m-1}.
+% 	\]
+% 	Luego $G^{(n)}\subseteq N_{0}=1$ y $G$ es resoluble.
+
+% 	Supongamos ahora que $G$ es resoluble. Entonces existe $n\in\N$ tal que
+% 	$G^{(n)}=1$. Como cada $G^{(i)}$ es característico en $G$, en particular
+% 	cada $G^{(i)}$ es normal en $G$. Además 
+% 	\[
+% 		1=G^{(n)}\subseteq G^{(n-1)}\subseteq\cdots\subseteq G^{(0)}=G.
+% 	\]
+% \end{svgraybox}
+
+
 \begin{lemma}[Argumento de Frattini]
 	\label{lemma:Frattini_argument}
 	\index{Frattini!argumento de}
@@ -25,7 +197,7 @@
 	Procederemos por inducción en $|G|$. Sea $N$ un subgrupo minimal-normal de
 	$G$ y sea $p$ el mayor divisor primo de $|N|$. Sean $P\in\Syl_p(N)$ y
 	$L=N_G(P)$. Si $L=G$ entonces $P$ es normal en $G$ y luego, como $P$ y
-	$G/P$ son resoluble por hipótesis inductiva, $G$ es resoluble. Supongamos
+	$G/P$ son resoluble por hipótesis inductiva, $G$ es resolubles. Supongamos
 	entonces que $L\ne G$ y sea $M$ un subgrupo maximal que contiene a $L$. 
 	Por el argumento de Frattini (lemma~\ref{lemma:Frattini_argument}),  
 	$G=NL=NM$. Como $M$ es maximal, 
@@ -35,7 +207,8 @@
 	\]
 	pues $(G:M)=|G|/|M|=|NM|/|M|=|N|/|N\cap M|$.  
 	Luego $q$ divide a $|N|$ y entonces $q\leq p$; en particular $q\not\equiv
-	1\bmod p$. Si $g\in G$ entonces 
+	1\bmod p$ (pues si $q\equiv1\mod p$, entonces $q\mid p-1$ y luego $p\leq q-1<q\leq p$, una contradicción). 
+	Si $g\in G$ entonces 
 	\[
 	gPg^{-1}\subseteq gNg^{-1}=N
 	\]
@@ -47,13 +220,18 @@
 	\]
 	Como $L\subseteq M$ se tiene que $L=N_M(P)$. 
 	
-	Supongamos que $|P|=p^{\alpha}$.  Como $P\subseteq M$, podemos hacer actuar
+	%Supongamos que $|P|=p^{\alpha}$.  
+	Como $P\subseteq M$, podemos hacer actuar
 	a $P$ en el conjunto $X=\{mPm^{-1}:m\in M\}$. Veamos que $\{P\}$ es la
 	única órbita que contiene un único elemento. Si $\{P_1\}$ es una órbita con
-	un único elemento, $P_1$ es un subgrupo normal de $\langle P,P_1\rangle$ y
-	luego $P_1P$ es un subgrupo de $M$ de orden $p^{\beta}$ con
-	$\beta\leq\alpha$. Como $P\subseteq P_1P$, se concluye que $P_1P=P$ y luego
-	$P=P_1$. Podemos descomponer al conjunto $X$ como unión
+	un único elemento, digamos $P_1=mPm^{-1}$ para algún $m\in M$, entonces
+ 	$P=m^{-1}P_1m=P_1$. 
+% 	es un subgrupo normal de $\langle P,P_1\rangle$ y
+% 	luego $P_1P$ es un subgrupo de $M$ de orden $p^{\beta}$ con
+% 	$\beta\leq\alpha$. Como $P\subseteq P_1P$, se concluye que $P_1P=P$ y luego
+% 	$P=P_1$. 
+
+    Descomponemos ahora al conjunto $X$ como unión
 	disjunta de órbitas
 	\[
 	X=\{P\}\cup O(P_1)\cup\cdots\cup O(P_k),
@@ -71,13 +249,13 @@
 	Como $(N:N\cap M)=4$, al hacer actuar a $N$ en $N/N\cap M$ por
 	multiplicación a izquierda tenemos un morfismo no trivial $\rho\colon
 	N\to\Sym_4$. Como $[N,N]$ es característico en $N$ y $N$ es normal en $G$,
-	por la minimalidad de $N$ hay dos posibilidades: $[N,N]=1$ o
+	por la minimal-normalidad del subgrupo $N$ hay dos posibilidades: $[N,N]=\{1\}$ o bien 
 	$[N,N]=N$. Si $[N,N]=N$ entonces
 	\[
 	\rho(N)=\rho([N,N])=[\rho(N),\rho(N)].
 	\]
-	Como $\Sym_4$ es resoluble, $\rho(N)$ es resoluble y luego $\rho(N)=1$, una
-	contradicción. Luego $[N,N]=1$. Como $N$ es resoluble por ser abeliano
+	Como $\Sym_4$ es resoluble, $\rho(N)$ es resoluble y luego $\rho(N)=\{1\}$, una
+	contradicción. Luego $[N,N]=\{1\}$. Como $N$ es resoluble por ser abeliano
 	y $G/N$ es resoluble por hipótesis inductiva, $G$ es resoluble.
 %	El grupo $N$ tiene orden $2^a3^b$, y entonces $N$ es resoluble por el
 %	teorema de Burnside.  Como $N$ es resoluble y $G/N$ es resoluble por
