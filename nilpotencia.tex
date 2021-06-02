@@ -46,130 +46,41 @@ entonces la identidad de Hall-Witt se transforma en la identidad de Jacobi.
 \begin{lemma}[de los tres subgrupos de Hall]
 	\label{lemma:3subgrupos}
 	\index{Lema!de los tres subgrupos}
-	Sean $X,Y,Z$ subgrupos de un grupo $G$ tales que $[X,Y,Z]=[Y,Z,X]=1$.
-	Entonces $[Z,X,Y]=1$.
+	Sean $X,Y,Z$ subgrupos de un grupo $G$ tales que $[X,Y,Z]=[Y,Z,X]=\{1\}$.
+	Entonces $[Z,X,Y]=\{1\}$.
 \end{lemma}
 
 \begin{proof}
 	Alcanza con ver que $[z,x^{-1},y]=1$ para todo $x\in X$, $y\in Y$, $z\in Z$
-	(pues si $[x,y]\in C_G(z)$ entonces $[X,Y]\in C_G(z)$ y luego
+	(pues si $[x,y]\in C_G(z)$ entonces %$[X,Y]\in C_G(z)$ y luego
 	$[X,Y]\subseteq C_G(Z)$). Como $[y^{-1},z]\in [Y,Z]$, entonces
-	$[x,y^{-1},z]\in [X,Y,Z]=1$; luego $\prescript{y}{}[x,y^{-1},z]=1$.
+	$[x,y^{-1},z]\in [X,Y,Z]=\{1\}$; luego $\prescript{y}{}[x,y^{-1},z]=1$.
 	Similarmente, $\prescript{z}{}[y,z^{-1},x]=1$. Entonces, al usar la
-	identidad de Hall--Witt~\ref{exercise:HallWitt}, se concluye que 
+	identidad de Hall--Witt, se concluye que 
 	$[z,x^{-1},y]=1$.
 \end{proof}
 
 \begin{lemma}
 	\label{lemma:3subgrupos_general}
-	Sea $N$ un subgrupo normal de un grupo $G$ y sean $X,Y,Z\subseteq N$
-	subgrupos. Si $[X,Y,Z]\subseteq N$ y $[Y,Z,X]\subseteq N$. Entonces
+	Sea $N$ un subgrupo normal de un grupo $G$ y sean $X,Y,Z$
+	subgrupos de $G$. Si $[X,Y,Z]\subseteq N$ y $[Y,Z,X]\subseteq N$. Entonces
 	$[Z,X,Y]\subseteq N$.
 \end{lemma}
 
 \begin{proof}
 	Sea $\pi\colon G\to G/N$ el morfismo canónico. Como $[X,Y,Z]\subseteq N$, 
 	\begin{align*}
-		1&=\pi([X,Y,Z])=\pi([ X,[Y,Z]])\\
+		\{1\}&=\pi([X,Y,Z])=\pi([ X,[Y,Z]])\\
 		&=[\pi(X),\pi([Y,Z])]=[ \pi(X),[\pi(Y),\pi(Z)]]=[\pi(X),\pi(Y),\pi(Z)]. 
 	\end{align*}
-	Similarmente $[\pi(Y),\pi(Z),\pi(X)]=1$. Entonces, gracias al lema de los
-	tres subgrupos~\ref{lemma:3subgrupos}, $[\pi(Z),\pi(X),\pi(Y)]=1$, es decir
+	Similarmente $[\pi(Y),\pi(Z),\pi(X)]=\{1\}$. Entonces, gracias al lema de los
+	tres subgrupos, $[\pi(Z),\pi(X),\pi(Y)]=\{1\}$, es decir
 	$[Z,X,Y]\subseteq N$.
 \end{proof}
 
-\index{Grupo!perfecto}
-Recordemos que un grupo $G$ se dice \textbf{perfecto} si $[G,G]=G$.
-
-\begin{theorem}[Gr\"un]
-	\label{theorem:Grun}
-	\index{Teorema!de Gr\"un}
-	Si $G$ es un grupo perfecto, entonces $Z(G/Z(G))=1$. 
-\end{theorem}
-
-\begin{proof}
-	Si usamos el lema de los tres subgrupos con $X=Y=G$ y $Z=\zeta_2(G)$, 
-	%, como 
-	%$[G,\zeta^2(G),G]=[G,G,\zeta_2(G)]=[G,(G)]=1$, se concluye que 
-	$1=[\zeta_2(G),G,G]=[\zeta_2(G),[G,G]]=[\zeta_2(G),G]$. Luego 	
-	$\zeta_2(G)\subseteq Z(G)$ y
-	entonces $\zeta_2(G)=Z(G/Z(G))=1$. 
-\end{proof}
-
-\begin{theorem}
-	\label{theorem:gamma}
-	Si $G$ es un grupo, $[\gamma_i(G),\gamma_j(G)]\subseteq
-	\gamma_{i+j}(G)$ para todo $i,j\geq1$.	
-\end{theorem}
-
-\begin{proof}
-	Procederemos por inducción en $j$. El caso $j=1$ es trivial pues
-	$[G,\gamma_j(G)]=\gamma_{j+1}(G)$ por definición. Supongamos entonces que
-	el resultado vale para algún $j\geq1$ y para todo $i\geq1$. 
-	
-	Primero observemos que 
-	\begin{equation*}
-		[G,\gamma_i(G),\gamma_j(G)]=[\gamma_i(G),G,\gamma_j(G)]=[\gamma_{i+1}(G),\gamma_j(G)]\subseteq \gamma_{i+j+1}(G)
-	\end{equation*}
-	por hipótesis inductiva. Además, también por hipótesis inductiva, 
-	\begin{equation*}
-	[\gamma_i(G),\gamma_j(G),G]\subseteq [\gamma_{i+j}(G),G]=\gamma_{i+j+1}(G).
-	\end{equation*}
-	El lema~\ref{lemma:3subgrupos_general} implica entonces que $[\gamma_j(G),G,\gamma_i(G)]\subseteq \gamma_{i+j+1}(G)$. Luego 
-	\[
-	[\gamma_i(G),\gamma_{j+1}(G)]=[\gamma_{j+1}(G),\gamma_i(G)]=[\gamma_j(G),G,\gamma_i(G)]\subseteq \gamma_{i+j+1}(G)
-	\]
-	y el teorema queda demostrado.
-\end{proof}
-
-Podríamos considerar conmutadores arbitrarios donde no necesariamente se asocia
-siempre hacia la izquierda. Por ejemplo $[G,G,G]=[ [G,G],G]$ y $[G,[G,G]]$ son
-ambos conmutadores de peso tres. 
-
-\begin{corollary}
-	Sea $G$ un grupo.  Entonces todo conmutador de peso $n$ está contenido en
-	$\gamma_n(G)$.
-\end{corollary}
-
-\begin{proof}
-	Procederemos por inducción en $n$. El caso $n=1$ es trivial. Supongamos
-	entonces que el resultado es válido para algún $n\geq1$.  Tenemos entonces
-	un conmutador de la forma $[A,B]$, donde $A$ es un conmutador de peso $k$,
-	$B$ es un conjuntador de peso $l$ y $n=k+l$. Como $k<n$ y $l<n$, la
-	hipótesis inductiva implica que $A\subseteq \gamma_k(G)$ y $B\subseteq
-	\gamma_l(G)$. Luego $[A,B]\subseteq [\gamma_k(G),\gamma_l(G)]\subseteq
-	\gamma_{k+l}(G)$ por el
-	teorema~\ref{theorem:gamma}.
-\end{proof}
-
-%\section{Grupos nilpotentes}
-%\label{nilpotentes}
-
-Si $H$ y $K$ son subgrupos de $G$ se define
-\[
-	[H,K]=\langle [h,k]:h\in H,\,k\in K\rangle.
-\]
-
-\begin{definition}
-	\index{Normalizador}
-	Sea $G$ un grupo. Se dice que un subgrupo $K$ de $G$ \textbf{normaliza} a
-	$H$ si $K\subseteq N_G(H)$. 
-\end{definition}
-
-\begin{definition}
-	\index{Centralizador}
-	Sea $G$ un grupo. Se dice que un subgrupo $K$ de $G$ \textbf{centraliza} a
-	$H$ si $K\subseteq C_G(H)$, es decir si y sólo si $[H,K]=1$.
-\end{definition}
-
-\begin{exercise}
-	Sean $K$ y $H$ subgrupos de $G$ con $K\subseteq H$ y $K$ normal en $G$.
-	Demuestre que $[H,G]\subseteq K$ si y sólo si $H/K\subseteq Z(G/K)$. 
-\end{exercise}
-
-\begin{svgraybox}
-	Sean $h\in H$ y $g\in G$. $hKgK=gKhK$ si y sólo si $[h,g]\in K$.
-\end{svgraybox}
+% \begin{svgraybox}
+% 	Sean $h\in H$ y $g\in G$. $hKgK=gKhK$ si y sólo si $[h,g]\in K$.
+% \end{svgraybox}
 
 \begin{definition}
 	\index{Serie!central descendente}
@@ -193,11 +104,11 @@ Si $H$ y $K$ son subgrupos de $G$ se define
 	Demuestre que todo grupo nilpotente es resoluble.
 \end{exercise}
 
-\begin{svgraybox}
-	Por inducción se demuestra que $G^{(i)}\subseteq\gamma_i(G)$ para todo
-	$i\geq1$. Luego si existe $c$ tal que $\gamma_{c+1}(G)$ entonces $G$ es
-	resoluble pues $G^{(c+1)}=1$.
-\end{svgraybox}
+% \begin{svgraybox}
+% 	Por inducción se demuestra que $G^{(i)}\subseteq\gamma_i(G)$ para todo
+% 	$i\geq1$. Luego si existe $c$ tal que $\gamma_{c+1}(G)$ entonces $G$ es
+% 	resoluble pues $G^{(c+1)}=1$.
+% \end{svgraybox}
 
 \begin{example}
 	Un grupo es nilpotente de clase uno si y sólo si es abeliano.
@@ -260,24 +171,24 @@ false
 	\end{enumerate}
 \end{exercise}
 
-\begin{svgraybox}
-	Todas las afirmaciones se demuestran fácilmente por inducción. El paso
-	inductivo para la primera es el siguiente: si $f\in\Aut(G)$ entonces
-	\[
-		f(\gamma_{i+1}(G))
-		=f([G,\gamma_i(G)])
-		=[f(G),f(\gamma_i(G))]\subseteq [G,\gamma_i(G)]
-		=\gamma_{i+1}(G).
-	\]
-	Para la segunda:
-	\[
-		\gamma_{i+1}(G)=[G,\gamma_i(G)]\subseteq [G,\gamma_{i-1}(G)]=\gamma_{i}(G).
-	\]
-	Similarmente, el paso inductivo para demostrar la tercera afirmación:
-	\[
-		f(\gamma_{i+1}(G))=f([G,\gamma_i(G)])=[f(G),f(\gamma_i(G))]=[H,\gamma_i(H)]=\gamma_{i+1}(H).
-	\]
-\end{svgraybox}
+% \begin{svgraybox}
+% 	Todas las afirmaciones se demuestran fácilmente por inducción. El paso
+% 	inductivo para la primera es el siguiente: si $f\in\Aut(G)$ entonces
+% 	\[
+% 		f(\gamma_{i+1}(G))
+% 		=f([G,\gamma_i(G)])
+% 		=[f(G),f(\gamma_i(G))]\subseteq [G,\gamma_i(G)]
+% 		=\gamma_{i+1}(G).
+% 	\]
+% 	Para la segunda:
+% 	\[
+% 		\gamma_{i+1}(G)=[G,\gamma_i(G)]\subseteq [G,\gamma_{i-1}(G)]=\gamma_{i}(G).
+% 	\]
+% 	Similarmente, el paso inductivo para demostrar la tercera afirmación:
+% 	\[
+% 		f(\gamma_{i+1}(G))=f([G,\gamma_i(G)])=[f(G),f(\gamma_i(G))]=[H,\gamma_i(H)]=\gamma_{i+1}(H).
+% 	\]
+% \end{svgraybox}
 
 \begin{exercise}
 	\label{exercise:HxK_nilpotente}
@@ -285,10 +196,10 @@ false
 	nilpotente.
 \end{exercise}
 
-\begin{svgraybox}
-	Por inducción se demuestra fácilmente que $\gamma_i(H\times
-	K)\subseteq\gamma_i(H)\times\gamma_i(K)$ para todo $i\geq1$. 
-\end{svgraybox}
+% \begin{svgraybox}
+% 	Por inducción se demuestra fácilmente que $\gamma_i(H\times
+% 	K)\subseteq\gamma_i(H)\times\gamma_i(K)$ para todo $i\geq1$. 
+% \end{svgraybox}
 
 \begin{theorem}
 	\label{theorem:nilpotente}
@@ -302,9 +213,10 @@ false
 
 \begin{proof}
 	La primera afirmación es cierta pues $\gamma_i(H)\subseteq\gamma_i(G)$ para
-	todo $i\geq1$. La segunda afirmación se deduce del
-	ejercicio~\ref{exercise:gamma}: si existe $c$ tal que $\gamma_{c+1}(G)=1$
-	entonces $\gamma_{c+1}(H)=f(\gamma_{c+1}(G))=f(1)=1$. 
+	todo $i\geq1$. La segunda afirmación: si existe $c$ tal que $\gamma_{c+1}(G)=\{1\}$
+	entonces \[
+	\gamma_{c+1}(H)=f(\gamma_{c+1}(G))=f(\{1\})=\{1\}.\qedhere
+	\]
 \end{proof}
 
 \begin{example}
@@ -320,17 +232,62 @@ false
 \end{proposition}
 
 \begin{proof}
-	Procederemos por inducción en $|G|$. El caso $G=1$ es trivial. Si suponemos
+	Procederemos por inducción en $|G|$. El caso $G=\{1\}$ es trivial. Si suponemos
 	que el resultado es válido para $p$-grupos de orden $<|G|$, entonces, como
-	$G$ es un $p$-grupo, $Z(G)\ne1$. Esto implica que $G/Z(G)$ es un $p$-grupo
+	$G$ es un $p$-grupo, $Z(G)\ne\{1\}$. Esto implica que $G/Z(G)$ es un $p$-grupo
 	nilpotente (por hipótesis inductiva) y luego existe $c$ tal que
-	$\gamma_{c+1}(G/Z(G))=1$. Sea $\pi\colon G\to G/Z(G)$ el morfismo canónico.
+	$\gamma_{c+1}(G/Z(G))=\{1\}$. Sea $\pi\colon G\to G/Z(G)$ el morfismo canónico.
 	Por el ejercicio~\ref{exercise:gamma},
-	$\pi(\gamma_{c+1}(G))=\gamma_{c+1}(G/Z(G))=1$ y entonces
+	$\pi(\gamma_{c+1}(G))=\gamma_{c+1}(G/Z(G))=\{1\}$ y entonces
 	$\gamma_{c+1}(G)\subseteq \ker\pi=Z(G)$. Luego $G$ es nilpotente pues 
 	\[
-		\gamma_{c+2}(G)=[\gamma_{c+1}(G),G]=[Z(G),G]=1.
+		\gamma_{c+2}(G)=[\gamma_{c+1}(G),G]=[Z(G),G]=\{1\}.\qedhere
 	\]
+\end{proof}
+
+\begin{theorem}
+	\label{theorem:gamma}
+	Si $G$ es un grupo, $[\gamma_i(G),\gamma_j(G)]\subseteq
+	\gamma_{i+j}(G)$ para todo $i,j\geq1$.	
+\end{theorem}
+
+\begin{proof}
+	Procederemos por inducción en $j$. El caso $j=1$ es trivial pues
+	$[G,\gamma_j(G)]=\gamma_{j+1}(G)$ por definición. Supongamos entonces que
+	el resultado vale para algún $j\geq1$ y para todo $i\geq1$. 
+	
+	Primero observemos que 
+	\begin{equation*}
+		[G,\gamma_i(G),\gamma_j(G)]=[\gamma_i(G),G,\gamma_j(G)]=[\gamma_{i+1}(G),\gamma_j(G)]\subseteq \gamma_{i+j+1}(G)
+	\end{equation*}
+	por hipótesis inductiva. Además, también por hipótesis inductiva, 
+	\begin{equation*}
+	[\gamma_i(G),\gamma_j(G),G]\subseteq [\gamma_{i+j}(G),G]=\gamma_{i+j+1}(G).
+	\end{equation*}
+	El lema~\ref{lemma:3subgrupos_general} implica entonces que $[\gamma_j(G),G,\gamma_i(G)]\subseteq \gamma_{i+j+1}(G)$. Luego 
+	\[
+	[\gamma_i(G),\gamma_{j+1}(G)]=[\gamma_{j+1}(G),\gamma_i(G)]=[\gamma_j(G),G,\gamma_i(G)]\subseteq \gamma_{i+j+1}(G).\qedhere
+	\]
+\end{proof}
+
+Podríamos considerar conmutadores arbitrarios donde no necesariamente se asocia
+siempre hacia la izquierda. Por ejemplo $[G,G,G]=[ [G,G],G]$ y $[G,[G,G]]$ son
+ambos conmutadores de peso tres. 
+
+\begin{corollary}
+	Sea $G$ un grupo.  Entonces todo conmutador de peso $n$ está contenido en
+	$\gamma_n(G)$.
+\end{corollary}
+
+\begin{proof}
+	Procederemos por inducción en $n$. El caso $n=1$ es trivial. Supongamos
+	entonces que el resultado es válido para algún $n\geq1$.  Tenemos entonces
+	un conmutador de la forma $[A,B]$, donde $A$ es un conmutador de peso $k$,
+	$B$ es un conjuntador de peso $l$ y $n=k+l$. Como $k<n$ y $l<n$, la
+	hipótesis inductiva implica que $A\subseteq \gamma_k(G)$ y $B\subseteq
+	\gamma_l(G)$. Luego $[A,B]\subseteq [\gamma_k(G),\gamma_l(G)]\subseteq
+	\gamma_{k+l}(G)$ por el
+	teorema~\ref{theorem:gamma}.
 \end{proof}
 
 
@@ -344,9 +301,9 @@ En el siguiente lema veremos que los grupos nilpotentes satisfacen la
 \end{lemma}
 
 \begin{proof}
-	Sabemos que existe $c$ tal que $G=\gamma_1(G)\supseteq\cdots\supseteq\gamma_{c+1}(G)=1$. Como 
-	$1=\gamma_{c+1}(G)\subseteq H$ y $\gamma_1(G)\not\subseteq H$, podemos
-	tomar el mínimo $k$ tal que $\gamma_k(G)\subseteq H$. Como
+	Sabemos que existe $c$ tal que $G=\gamma_1(G)\supseteq\cdots\supseteq\gamma_{c+1}(G)=\{1\}$. Como 
+	$\{1\}=\gamma_{c+1}(G)\subseteq H$ y $\gamma_1(G)\not\subseteq H$, 
+	sea el mínimo $k$ tal que $\gamma_k(G)\subseteq H$. Como
 	\[
 		[\gamma_{k-1}(G),H]\subseteq [\gamma_{k-1}(G),G]=\gamma_k(G)\subseteq H,
 	\]
@@ -354,7 +311,7 @@ En el siguiente lema veremos que los grupos nilpotentes satisfacen la
 	%$xhx^{-1}h^{-1}\in H$ para todo $x\in\gamma_{k-1}(G)$ y $h\in
 	%H$. Esto implica que 
 	$xHx^{-1}\subseteq H$ para todo $x\in\gamma_{k-1}(G)$,
-	es decir: $\gamma_{k-1}(G)\subseteq N_G(H)$. Si $N_G(H)=H$ entonces
+	es decir $\gamma_{k-1}(G)\subseteq N_G(H)$. Si $N_G(H)=H$ entonces
 	$\gamma_{k-1}(G)\subseteq H$, que contradice la minimalidad de $k$. 
 \end{proof}
 
@@ -366,7 +323,7 @@ En el siguiente lema veremos que los grupos nilpotentes satisfacen la
 Si $G$ es un grupo se define sucesión $\zeta_0(G),\zeta_1(G),\dots$
 inductivamente de la siguiente forma:
 \[
-	\zeta_0(G)=1,\quad
+	\zeta_0(G)=\{1\},\quad
 	\zeta_{i+1}(G)=\{g\in G:[g,x]\in\zeta_{i}(G)\text{ para todo $x\in G$}\},\quad i\geq 0.
 \]
 Por ejemplo: $\zeta_1(G)=Z(G)$.
@@ -405,6 +362,51 @@ Por ejemplo: $\zeta_1(G)=Z(G)$.
 	\]
 \end{definition}
 
+
+\index{Grupo!perfecto}
+Recordemos que un grupo $G$ se dice \textbf{perfecto} si $[G,G]=G$.
+
+\begin{theorem}[Gr\"un]
+	\label{theorem:Grun}
+	\index{Teorema!de Gr\"un}
+	Si $G$ es un grupo perfecto, entonces $Z(G/Z(G))=\{1\}$. 
+\end{theorem}
+
+\begin{proof}
+	Si usamos el lema de los tres subgrupos con $X=Y=G$ y $Z=\zeta_2(G)$, 
+	%, como 
+	%$[G,\zeta^2(G),G]=[G,G,\zeta_2(G)]=[G,(G)]=1$, se concluye que 
+	$1=[\zeta_2(G),G,G]=[\zeta_2(G),[G,G]]=[\zeta_2(G),G]$. Luego 	
+	$\zeta_2(G)\subseteq Z(G)$ y
+	entonces $\zeta_2(G)=Z(G/Z(G))=1$. 
+\end{proof}
+
+
+
+%\section{Grupos nilpotentes}
+%\label{nilpotentes}
+
+Si $H$ y $K$ son subgrupos de $G$ se define
+\[
+	[H,K]=\langle [h,k]:h\in H,\,k\in K\rangle.
+\]
+
+\begin{definition}
+	\index{Normalizador}
+	Sea $G$ un grupo. Se dice que un subgrupo $K$ de $G$ \textbf{normaliza} a
+	$H$ si $K\subseteq N_G(H)$. 
+\end{definition}
+
+\begin{definition}
+	\index{Centralizador}
+	Sea $G$ un grupo. Se dice que un subgrupo $K$ de $G$ \textbf{centraliza} a
+	$H$ si $K\subseteq C_G(H)$, es decir si y sólo si $[H,K]=1$.
+\end{definition}
+
+\begin{exercise}
+	Sean $K$ y $H$ subgrupos de $G$ con $K\subseteq H$ y $K$ normal en $G$.
+	Demuestre que $[H,G]\subseteq K$ si y sólo si $H/K\subseteq Z(G/K)$. 
+\end{exercise}
 \begin{lemma}
 	\label{lemma:gamma_zeta}
 	Sea $G$ un grupo. Existe $c$ tal que $\zeta_c(G)=G$ si y sólo si 
@@ -534,11 +536,11 @@ gap> UpperCentralSeries(SymmetricGroup(3));
 	Demuestre que $M\subseteq Z(G)$.
 \end{exercise}
 
-\begin{svgraybox}
-	Como $M\cap Z(G)$ es normal en $G$, la minimalidad de $M$ implica que hay
-	dos posibilidades: $M\cap Z(G)$ es trivial o bien $M=M\cap Z(G)\subseteq Z(G)$.
-	Por el teorema~\ref{theorem:Z(nilpotent)}, $M\cap Z(G)\ne 1$.
-\end{svgraybox}
+% \begin{svgraybox}
+% 	Como $M\cap Z(G)$ es normal en $G$, la minimalidad de $M$ implica que hay
+% 	dos posibilidades: $M\cap Z(G)$ es trivial o bien $M=M\cap Z(G)\subseteq Z(G)$.
+% 	Por el teorema~\ref{theorem:Z(nilpotent)}, $M\cap Z(G)\ne 1$.
+% \end{svgraybox}
 
 \begin{corollary}
 	Sea $G$ un grupo nilpotente no abeliano y sea $A$ un subgrupo
@@ -609,8 +611,7 @@ gap> UpperCentralSeries(SymmetricGroup(3));
 	\[
 	g^{(H_k:H_{k-2})}=g^{(H_k:H_{k-1})(H_{k-1}:H_{k-2})}=\left(g^{(H_k:H_{k-1})}\right)^{(H_{k-1}:H_{k-2})}\in H_{k-2}
 	\]
-	pues $H_{k-2}$ es normal en $H_{k-1}$. Al repetir este argumento se
-	concluye que $g^{(G:H)}\in H$. 
+	pues $H_{k-2}$ es normal en $H_{k-1}$. Al repetir este argumento, $g^{(G:H)}\in H$. 
 \end{proof}
 
 \begin{example}
@@ -640,7 +641,7 @@ gap> UpperCentralSeries(SymmetricGroup(3));
 	entonces 
 	\begin{align*}
 		[h,k]&=[h,x^m][x^m,[h,d]][h,d]\\
-			&=[x^n,[c,x^m]][c,x^m][x^m,[h,d]][h,d]\in\gamma_3(G).\\
+			&=[x^n,[c,x^m]][c,x^m][x^m,[h,d]][h,d]\in\gamma_3(G).\qedhere
 	\end{align*}
 %	Como
 %	$[G,G]=\gamma_2(G)\subseteq\zeta_{c-1}(G)$, al usar la definición de $H$ se
@@ -886,16 +887,16 @@ gap> NilpotencyClassOfGroup(S);
 	$N_G(P)\subseteq M$ entonces $M=N_G(M)$. 
 \end{exercise}
 
-\begin{svgraybox}
-	Sea $x\in N_G(M)$. Como $P\subseteq M$ y $M$ es normal en $N_G(M)$,
-	$xPx^{-1}\subseteq M$.  Como $P$ y $xPx^{-1}$ son $p$-subgrupos de Sylow de
-	$M$, existe $m\in M$ tal que 
-	\[
-	mPm^{-1}=xPx^{-1}.
-	\]
-	Luego $x\in M$ pues
-	$m^{-1}x\in N_G(P)\subseteq M$. 
-\end{svgraybox}
+% \begin{svgraybox}
+% 	Sea $x\in N_G(M)$. Como $P\subseteq M$ y $M$ es normal en $N_G(M)$,
+% 	$xPx^{-1}\subseteq M$.  Como $P$ y $xPx^{-1}$ son $p$-subgrupos de Sylow de
+% 	$M$, existe $m\in M$ tal que 
+% 	\[
+% 	mPm^{-1}=xPx^{-1}.
+% 	\]
+% 	Luego $x\in M$ pues
+% 	$m^{-1}x\in N_G(P)\subseteq M$. 
+% \end{svgraybox}
 
 \begin{exercise}
 	\label{exercise:normalizadora}
@@ -907,18 +908,18 @@ gap> NilpotencyClassOfGroup(S);
 	\end{enumerate}
 \end{exercise}
 
-\begin{svgraybox}
-	Para demostrar que $(1)\implies(2)$ simplemente usamos el
-	lema~\ref{lemma:normalizadora}. Para demostrar que $(2)\implies(3)$ hacemos
-	lo siguiente: si $M$ es un subgrupo maximal, como $M\subsetneq N_G(M)$ por
-	hipótesis, $N_G(M)=G$ por maximalidad. Finalmente demostremos que
-	$(3)\implies(1)$.  Sea $P\in\Syl_p(G)$. Si $P$ no es normal en $G$,
-	$N_G(P)\ne G$ y entonces existe un subgrupo maximal $M$ tal que
-	$N_G(P)\subseteq M$. Como $M$ es normal en $G$, el
-	ejercicio~\ref{exercise:truco} implica que $M=N_G(M)=G$, una contradicción.
-	Luego $P$ es normal en $G$ y entonces $G$ es nilpotente por el
-	teorema~\ref{theorem:nilpotente:eq}.
-\end{svgraybox}
+% \begin{svgraybox}
+% 	Para demostrar que $(1)\implies(2)$ simplemente usamos el
+% 	lema~\ref{lemma:normalizadora}. Para demostrar que $(2)\implies(3)$ hacemos
+% 	lo siguiente: si $M$ es un subgrupo maximal, como $M\subsetneq N_G(M)$ por
+% 	hipótesis, $N_G(M)=G$ por maximalidad. Finalmente demostremos que
+% 	$(3)\implies(1)$.  Sea $P\in\Syl_p(G)$. Si $P$ no es normal en $G$,
+% 	$N_G(P)\ne G$ y entonces existe un subgrupo maximal $M$ tal que
+% 	$N_G(P)\subseteq M$. Como $M$ es normal en $G$, el
+% 	ejercicio~\ref{exercise:truco} implica que $M=N_G(M)=G$, una contradicción.
+% 	Luego $P$ es normal en $G$ y entonces $G$ es nilpotente por el
+% 	teorema~\ref{theorem:nilpotente:eq}.
+% \end{svgraybox}
 
 % ejercicio: G finito. Es nilpotente si y solo si dos elementos de ordenes coprimos conmnutan
 % 5.41 rotman
@@ -949,26 +950,26 @@ gap> NilpotencyClassOfGroup(S);
 	\end{enumerate}
 \end{exercise}
 
-\begin{svgraybox}
-	\begin{enumerate}
-		\item Sabemos que $Z(G)\ne1$. Sea $g\in Z(G)$ tal que $g\ne 1$.
-			Supongamos que el orden de $g$ es $p^k$ para algún $k\geq1$.
-			Entonces $g^{p^{k-1}}$ tiene orden $p$ y luego genera un subgrupo
-			central de orden $p$. 
-		\item Procederemos por inducción en $n$. Si $n=1$ el resultado es
-			trivial.  Supongamos entonces que el resultado vale para un cierto
-			$n\geq2$. Por el punto anterior, $G$ posee un subgrupo normal $N$
-			de orden $p$. Luego $G/N$ tiene orden $p^{n-1}$. Sea $\pi\colon G\to G/N$ el morfismo canónico. 
-			Por hipótesis
-			inductiva, para cada $j\in\{0,\dots,n-1\}$. Por el teorema de la
-			correspondecia, cada subgrupo normal $S_j$ de $G/N$ de orden $p^j$ se
-			corresponde con un subgrupo $\pi^{-1}(S_j)$ de $G$ de orden $p^{j+1}$ pues, como
-			$\pi$ es sobreyectiva, se tiene $\pi(\pi^{-1}(S_j))=S_j$, y luego
-			\[
-			p^j=|S_j|=|\pi(\pi^{-1}(S_j))|=\frac{|\pi^{-1}(S_j)|}{|\pi^{-1}(S_j)\cap N|}=\frac{|\pi^{-1}(S_j)|}{|N|}=\frac{|\pi^{-1}(S_j)|}{p}.
-			\]
-	\end{enumerate}
-\end{svgraybox}
+% \begin{svgraybox}
+% 	\begin{enumerate}
+% 		\item Sabemos que $Z(G)\ne1$. Sea $g\in Z(G)$ tal que $g\ne 1$.
+% 			Supongamos que el orden de $g$ es $p^k$ para algún $k\geq1$.
+% 			Entonces $g^{p^{k-1}}$ tiene orden $p$ y luego genera un subgrupo
+% 			central de orden $p$. 
+% 		\item Procederemos por inducción en $n$. Si $n=1$ el resultado es
+% 			trivial.  Supongamos entonces que el resultado vale para un cierto
+% 			$n\geq2$. Por el punto anterior, $G$ posee un subgrupo normal $N$
+% 			de orden $p$. Luego $G/N$ tiene orden $p^{n-1}$. Sea $\pi\colon G\to G/N$ el morfismo canónico. 
+% 			Por hipótesis
+% 			inductiva, para cada $j\in\{0,\dots,n-1\}$. Por el teorema de la
+% 			correspondecia, cada subgrupo normal $S_j$ de $G/N$ de orden $p^j$ se
+% 			corresponde con un subgrupo $\pi^{-1}(S_j)$ de $G$ de orden $p^{j+1}$ pues, como
+% 			$\pi$ es sobreyectiva, se tiene $\pi(\pi^{-1}(S_j))=S_j$, y luego
+% 			\[
+% 			p^j=|S_j|=|\pi(\pi^{-1}(S_j))|=\frac{|\pi^{-1}(S_j)|}{|\pi^{-1}(S_j)\cap N|}=\frac{|\pi^{-1}(S_j)|}{|N|}=\frac{|\pi^{-1}(S_j)|}{p}.
+% 			\]
+% 	\end{enumerate}
+% \end{svgraybox}
 
 \begin{exercise}
 	Sea $G$ un grupo finito. Demuestre que las siguientes afirmaciones son
@@ -982,46 +983,46 @@ gap> NilpotencyClassOfGroup(S);
 	\end{enumerate}
 \end{exercise}
 
-\begin{svgraybox}
-	Veamos que $(1)\implies(2)$. Sabemos que $G$ es producto directo de sus
-	subgrupos de Sylow, digamos $G=\prod_{i=1}^k S_i$, donde los $S_i$ son los
-	distintos subgrupos de Sylow de $G$.  Sean
-	$x=(x_1,\dots,x_k),y=(y_1,\dots,y_k)\in G$. Como $|x|$ y $|y|$ son
-	coprimos, para cada $i\in\{1,\dots,k\}$ se tiene $x_i=1$ o $y_i=1$. Luego
-	\[
-		[x,y]=([x_1,y_1],[x_2,y_2],\dots,[x_k,y_k])=1. 
-	\]
-	Demostremos ahora que $(2)\implies(1)$. Supongamos que
-	$|G|=p_1^{\alpha_1}\cdots p_k^{\alpha_k}$, donde los $p_j$ son primos
-	distintos y para cada $j$ sea $P_j\in\Syl_{p_j}(G)$. Como elementos de
-	órdenes coprimos conmutan, la función $P_1\times\cdots\times P_k\to G$,
-	$(x_1,\dots,x_k)\mapsto x_1\cdots x_k$, es un morfismo inyectivo de grupos.
-	Como entonces $G\simeq P_1\times\cdots P_k$, y cada $P_j$ es nilpotente,
-	$G$ es nilpotente. 
+% \begin{svgraybox}
+% 	Veamos que $(1)\implies(2)$. Sabemos que $G$ es producto directo de sus
+% 	subgrupos de Sylow, digamos $G=\prod_{i=1}^k S_i$, donde los $S_i$ son los
+% 	distintos subgrupos de Sylow de $G$.  Sean
+% 	$x=(x_1,\dots,x_k),y=(y_1,\dots,y_k)\in G$. Como $|x|$ y $|y|$ son
+% 	coprimos, para cada $i\in\{1,\dots,k\}$ se tiene $x_i=1$ o $y_i=1$. Luego
+% 	\[
+% 		[x,y]=([x_1,y_1],[x_2,y_2],\dots,[x_k,y_k])=1. 
+% 	\]
+% 	Demostremos ahora que $(2)\implies(1)$. Supongamos que
+% 	$|G|=p_1^{\alpha_1}\cdots p_k^{\alpha_k}$, donde los $p_j$ son primos
+% 	distintos y para cada $j$ sea $P_j\in\Syl_{p_j}(G)$. Como elementos de
+% 	órdenes coprimos conmutan, la función $P_1\times\cdots\times P_k\to G$,
+% 	$(x_1,\dots,x_k)\mapsto x_1\cdots x_k$, es un morfismo inyectivo de grupos.
+% 	Como entonces $G\simeq P_1\times\cdots P_k$, y cada $P_j$ es nilpotente,
+% 	$G$ es nilpotente. 
 
-	Para demostrar que $(1)\implies(3)$ simplemente hay que observar que todo
-	cociente de $G$ es nilpotente y luego utilizar el
-	teorema~\ref{theorem:Z(nilpotent)}. Demostremos que $(3)\implies(1)$. Como
-	todo cociente no trivial de $G$ tiene centro no trivial, en particular
-	$Z_1=Z(G)$ es no trivial. Si $Z_1=G$ entonces $G$ es abeliano y no hay nada
-	para demostrar. Si $Z_1\ne G$ entonces $G/Z_1\ne 1$; luego $Z(G/Z_1)\ne 1$.
-	Si $\pi_1\colon G\to G/Z_1$ es el morfismo canónico,
-	$Z_2=\pi_1^{-1}(Z(G/Z_1))$. Inductivamente, si tenemos construido el
-	subgrupo $Z_i$, $Z_i\ne G$ y  $\pi_i\colon G\to G/Z_{i}$ es el morfismo
-	canónico, se define el subgrupo $Z_{i+1}=\pi_i^{-1}(Z(G/Z_i))$. Por
-	construcción, $Z_i\subseteq Z_{i+1}$ para todo $i$. Como $G$ es finito,
-	existe $k$ tal que $Z_k=G$ y luego $G$ es nilpotente.
+% 	Para demostrar que $(1)\implies(3)$ simplemente hay que observar que todo
+% 	cociente de $G$ es nilpotente y luego utilizar el
+% 	teorema~\ref{theorem:Z(nilpotent)}. Demostremos que $(3)\implies(1)$. Como
+% 	todo cociente no trivial de $G$ tiene centro no trivial, en particular
+% 	$Z_1=Z(G)$ es no trivial. Si $Z_1=G$ entonces $G$ es abeliano y no hay nada
+% 	para demostrar. Si $Z_1\ne G$ entonces $G/Z_1\ne 1$; luego $Z(G/Z_1)\ne 1$.
+% 	Si $\pi_1\colon G\to G/Z_1$ es el morfismo canónico,
+% 	$Z_2=\pi_1^{-1}(Z(G/Z_1))$. Inductivamente, si tenemos construido el
+% 	subgrupo $Z_i$, $Z_i\ne G$ y  $\pi_i\colon G\to G/Z_{i}$ es el morfismo
+% 	canónico, se define el subgrupo $Z_{i+1}=\pi_i^{-1}(Z(G/Z_i))$. Por
+% 	construcción, $Z_i\subseteq Z_{i+1}$ para todo $i$. Como $G$ es finito,
+% 	existe $k$ tal que $Z_k=G$ y luego $G$ es nilpotente.
 
-	Demostremos que $(1)\implies(4)$. Esta implicación es consecuencia
-	inmediata del ejercicio~\ref{exercise:pgrupos}. 
-	Como $G$ es nilpotente, $G$ producto
-	directo de sus $p$-grupos de Sylow. Si $d=p_1^{\alpha_1}\cdots
-	p_k^{\alpha_k}$ es un divisor del orden de $G$, basta tomar
-	$H=H_1\times\cdots\times H_k$, 
-	donde cada $H_j$ es un subgrupo normal del $p_j$-subgrupo de Sylow de $G$
-	de orden $p_j^{\alpha_j}$. Para demostrar que $(4)\implies(1)$ simplemente
-	se aplica la hipótesis a cada $p$-subgrupo de $G$ de orden maximal.
-\end{svgraybox}
+% 	Demostremos que $(1)\implies(4)$. Esta implicación es consecuencia
+% 	inmediata del ejercicio~\ref{exercise:pgrupos}. 
+% 	Como $G$ es nilpotente, $G$ producto
+% 	directo de sus $p$-grupos de Sylow. Si $d=p_1^{\alpha_1}\cdots
+% 	p_k^{\alpha_k}$ es un divisor del orden de $G$, basta tomar
+% 	$H=H_1\times\cdots\times H_k$, 
+% 	donde cada $H_j$ es un subgrupo normal del $p_j$-subgrupo de Sylow de $G$
+% 	de orden $p_j^{\alpha_j}$. Para demostrar que $(4)\implies(1)$ simplemente
+% 	se aplica la hipótesis a cada $p$-subgrupo de $G$ de orden maximal.
+% \end{svgraybox}
 
 El siguiente resultado, que puede demostrarse en forma
 completamente elemental, fue descubierto en 2014. 
@@ -1136,7 +1137,7 @@ completamente elemental, fue descubierto en 2014.
 	\[
 		[x,y]^p=[x^p,y]=[1,y]=1.
 	\]
-	Luego, al usar el lema~\ref{lemma:Hall}, se concluye qye
+	Luego, al usar el lema~\ref{lemma:Hall}, se concluye que
 	$(xy)^p=[y,x]^{p(p-1)/2}x^py^p=1$.
 \end{proof}
 
