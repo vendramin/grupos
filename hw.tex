@@ -268,7 +268,7 @@ resolubilidad. Primero necesitamos un lema.
 
 \begin{lemma}
 	\label{lemma:4Wielandt}
-	Sea $G$ un grupo finito. Sean $H$ y $K$ subgrupos de $G$ tales que de
+	Sea $G$ un grupo finito. Sean $H$ y $K$ subgrupos de $G$ de
 	índices coprimos. Entonces $G=HK$ y $(H:H\cap K)=(G:K)$.
 \end{lemma}
 
@@ -299,15 +299,15 @@ Recordemos que si $H$ es un subgrupo de $G$, la
 	que $H^G$ es el (único) menor subgrupo normal de $G$ que contiene a $H$.
 \end{exercise}
 
-\begin{svgraybox}
-	Es trivial demostrar que $H^G$ es normal en $G$.  Sea $N$ un subgrupo
-	normal de $G$ tal que $H\subseteq N$. Como $xHx^{-1}\subseteq xNx^{-1}=N$
-	para todo $x\in G$, $H\subseteq H^G\subseteq N$. 
-\end{svgraybox}
+% \begin{svgraybox}
+% 	Es trivial demostrar que $H^G$ es normal en $G$.  Sea $N$ un subgrupo
+% 	normal de $G$ tal que $H\subseteq N$. Como $xHx^{-1}\subseteq xNx^{-1}=N$
+% 	para todo $x\in G$, $H\subseteq H^G\subseteq N$. 
+% \end{svgraybox}
 
 \begin{example}
 	Sea $G=\Alt_4$ y sea $H=\{\id,(12)(34)\}$. La clausura normal de $H$ en $G$
-	es el grupo $H^G=\{id,(12)(34),(13)(24),(14)(23)\}\simeq C_2\times C_2$. El
+	es el grupo $H^G=\{\id,(12)(34),(13)(24),(14)(23)\}\simeq C_2\times C_2$. El
 	código:
 	\begin{lstlisting}
 gap> G := AlternatingGroup(4);;
@@ -328,21 +328,24 @@ gap> StructureDescription(last);
 %%% TODO: revisar la demostración para escribirla mejor!
 
 \begin{proof}
-	Podemos suponer que $G\ne1$. Procederemos por inducción en $|G|$. Sea $N$
+	Podemos suponer que $G\ne\{1\}$. Procederemos por inducción en $|G|$. Sea $N$
 	un subgrupo de $G$ minimal-normal y sea $\pi\colon G\to G/N$ el morfismo
-	canónico.  Los subgrupos $\pi(H)$, $\pi(K)$, $\pi(L)$ de $\pi(G)=G/N$ son
+	canónico.  Los subgrupos $\pi(H)=\pi(HN)$, $\pi(K)=\pi(KN)$, $\pi(L)=\pi(LN)$ de $\pi(G)=G/N$ son
 	resolubles. Los índices de $\pi(H)$, $\pi(K)$ y $\pi(L)$ en $\pi(G)$ son
-	coprimos dos a dos pues por ejemplo\footnote{El núcleo de la restricción
-	$\ker(\pi|_H)=\ker \pi\cap N$ y entonces $\pi(H)\simeq H/N\cap H$.}
-	\[
-	(\pi(G):\pi(H))=(G/N:H/N\cap H)=(G:NH)
-	\]
-	divide a $(G:N)$. Por hipótesis inductiva, $\pi(G)$ es resoluble. Si $H=1$
+	coprimos dos a dos gracias al teorema de la correspondencia. 
+% 	pues por ejemplo\footnote{El núcleo de la restricción
+% 	$\ker(\pi|_H)=\ker \pi\cap N$ y entonces $\pi(H)\simeq H/N\cap H$.}
+% 	\[
+% 	(\pi(G):\pi(H))=(G/N:H/N\cap H)=(G:NH)
+% 	\]
+% 	divide a $(G:N)$. 
+    Por hipótesis inductiva, $\pi(G)$ es resoluble. Si $H=\{1\}$
 	entonces $|G|=(G:H)$ es coprimo con $(G:K)$ y luego $G=K$ es resoluble. Si
-	$H\ne 1$ sea $M$ un subgrupo minimal-normal de $H$. Por el
+	$H\ne \{1\}$ sea $M$ un subgrupo minimal-normal de $H$. Por el
 	lema~\ref{lemma:minimal_normal}, $M$ es un $p$-grupo para algún primo $p$.
 	Sin pérdida de generalidad podemos suponer que el primo $p$ no divide a
-	$(G:K)$. Existe entonces $P\in\Syl_p(G)$ tal que $P\subseteq K$. Como los
+	$(G:K)$ [pues si $p$ divide a $(G:K)$ entonces $p$ no divide a $(G:L)$ y solamente hay que cambiar a $K$ por $L$]. 
+	Existe entonces $P\in\Syl_p(G)$ tal que $P\subseteq K$. Como los
 	subgrupos de Sylow son conjugados, existe $g\in G$ tal que $M\subseteq
 	gKg^{-1}$. Como $(G:gKg^{-1})=(G:K)$ es coprimo con $(G:H)$, el
 	lema~\ref{lemma:4Wielandt} implica que $G=(gKg^{-1})H$. 
@@ -353,8 +356,8 @@ gap> StructureDescription(last);
 	\[
 	xMx^{-1}=(uv)M(uv)^{-1}=uMu^{-1}\subseteq gKg^{-1}.
 	\]
-	En particular, $1\ne M^G\subseteq gKg^{-1}$ es resoluble pues $gKg^{-1}$ es
-	resoluble. Como por hipótesis inductiva $G/M^G$ es resoluble, se concluye
+	En particular, $\{1\}\ne M^G\subseteq gKg^{-1}$ es resoluble pues $gKg^{-1}$ es
+	resoluble. Como por hipótesis inductiva el cociente $G/M^G$ es resoluble, se concluye
 	que $G$ es resoluble al aplicar el teorema~\ref{theorem:resoluble}.
 \end{proof}
 
@@ -401,5 +404,5 @@ necesario para demostrar el siguiente teorema de Hall:
 
 	Como $H_1$, $H_2$ y $H_3$ son resolubles y tiene índices coprimos, el
 	resultado se obtiene al aplicar el teorema de
-	Wielandt~\ref{theorem:Wielandt:solvable}.
+	Wielandt.
 \end{proof}
