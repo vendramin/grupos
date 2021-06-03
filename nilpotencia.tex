@@ -88,7 +88,7 @@ entonces la identidad de Hall-Witt se transforma en la identidad de Jacobi.
 	subgrupos $\gamma_k(G)$ definida inductivamente como
 	\[
 		\gamma_1(G)=G,\quad
-		\gamma_{i+1}(G)=[G,\gamma_i(G)]\quad i\geq 0.
+		\gamma_{i+1}(G)=[G,\gamma_i(G)]\quad i\geq 1.
 	\]
 \end{definition}
 
@@ -96,26 +96,21 @@ entonces la identidad de Hall-Witt se transforma en la identidad de Jacobi.
 	\index{Grupo!nilpotente}
 	\index{Índice de nilpotencia}
 	Un grupo $G$ se dice \textbf{nilpotente} si existe $c$ tal que
-	$\gamma_{c+1}(G)=1$. El menor de los $c$ tales que $\gamma_{c+1}(G)=1$ será
-	el \textbf{índice de nilpotencia} de $G$.
+	$\gamma_{c+1}(G)=\{1\}$. El menor de los $c$ tales que $\gamma_{c+1}(G)=\{1\}$ será
+	el \textbf{índice (o clase) de nilpotencia} de $G$.
 \end{definition}
 
 \begin{exercise}
+\label{xca:nilpotente=>resoluble}
 	Demuestre que todo grupo nilpotente es resoluble.
 \end{exercise}
-
-% \begin{svgraybox}
-% 	Por inducción se demuestra que $G^{(i)}\subseteq\gamma_i(G)$ para todo
-% 	$i\geq1$. Luego si existe $c$ tal que $\gamma_{c+1}(G)$ entonces $G$ es
-% 	resoluble pues $G^{(c+1)}=1$.
-% \end{svgraybox}
 
 \begin{example}
 	Un grupo es nilpotente de clase uno si y sólo si es abeliano.
 \end{example}
 
 \begin{example}
-	$\Sym_3$ es resoluble pues $\Sym_3\supseteq \Alt_3\supseteq 1$ es una serie
+	$\Sym_3$ es resoluble pues $\Sym_3\supseteq \Alt_3\supseteq\{1\}$ es una serie
 	de composición con factores abelianos pero $\Sym_3$ no es nilpotente pues
 	\[
 		\gamma_1(\Sym_3)=\Alt_3,\quad
@@ -161,7 +156,7 @@ false
 \end{example}
 
 \begin{exercise}
-	\label{exercise:gamma}
+	\label{xca:gamma}
 	Sea $G$ un grupo. Demuestre las siguientes afirmaciones:
 	\begin{enumerate}
 		\item Cada $\gamma_i(G)$ es un subgrupo característico de $G$.
@@ -171,35 +166,13 @@ false
 	\end{enumerate}
 \end{exercise}
 
-% \begin{svgraybox}
-% 	Todas las afirmaciones se demuestran fácilmente por inducción. El paso
-% 	inductivo para la primera es el siguiente: si $f\in\Aut(G)$ entonces
-% 	\[
-% 		f(\gamma_{i+1}(G))
-% 		=f([G,\gamma_i(G)])
-% 		=[f(G),f(\gamma_i(G))]\subseteq [G,\gamma_i(G)]
-% 		=\gamma_{i+1}(G).
-% 	\]
-% 	Para la segunda:
-% 	\[
-% 		\gamma_{i+1}(G)=[G,\gamma_i(G)]\subseteq [G,\gamma_{i-1}(G)]=\gamma_{i}(G).
-% 	\]
-% 	Similarmente, el paso inductivo para demostrar la tercera afirmación:
-% 	\[
-% 		f(\gamma_{i+1}(G))=f([G,\gamma_i(G)])=[f(G),f(\gamma_i(G))]=[H,\gamma_i(H)]=\gamma_{i+1}(H).
-% 	\]
-% \end{svgraybox}
+
 
 \begin{exercise}
-	\label{exercise:HxK_nilpotente}
+	\label{xca:HxK_nilpotente}
 	Demuestre que si $H$ y $K$ son nilpotentes entonces $H\times K$ es
 	nilpotente.
 \end{exercise}
-
-% \begin{svgraybox}
-% 	Por inducción se demuestra fácilmente que $\gamma_i(H\times
-% 	K)\subseteq\gamma_i(H)\times\gamma_i(K)$ para todo $i\geq1$. 
-% \end{svgraybox}
 
 \begin{theorem}
 	\label{theorem:nilpotente}
@@ -236,9 +209,14 @@ false
 	que el resultado es válido para $p$-grupos de orden $<|G|$, entonces, como
 	$G$ es un $p$-grupo, $Z(G)\ne\{1\}$. Esto implica que $G/Z(G)$ es un $p$-grupo
 	nilpotente (por hipótesis inductiva) y luego existe $c$ tal que
-	$\gamma_{c+1}(G/Z(G))=\{1\}$. Sea $\pi\colon G\to G/Z(G)$ el morfismo canónico.
+	$\gamma_{c+1}(G/Z(G))=\{1\}$. 
+	
+	Sea $\pi\colon G\to G/Z(G)$ el morfismo canónico.
 	Por el ejercicio~\ref{exercise:gamma},
-	$\pi(\gamma_{c+1}(G))=\gamma_{c+1}(G/Z(G))=\{1\}$ y entonces
+	\[
+	\pi(\gamma_{c+1}(G))=\gamma_{c+1}(G/Z(G))=\{1\}
+	\]
+	y entonces
 	$\gamma_{c+1}(G)\subseteq \ker\pi=Z(G)$. Luego $G$ es nilpotente pues 
 	\[
 		\gamma_{c+2}(G)=[\gamma_{c+1}(G),G]=[Z(G),G]=\{1\}.\qedhere
@@ -283,11 +261,11 @@ ambos conmutadores de peso tres.
 	Procederemos por inducción en $n$. El caso $n=1$ es trivial. Supongamos
 	entonces que el resultado es válido para algún $n\geq1$.  Tenemos entonces
 	un conmutador de la forma $[A,B]$, donde $A$ es un conmutador de peso $k$,
-	$B$ es un conjuntador de peso $l$ y $n=k+l$. Como $k<n$ y $l<n$, la
+	$B$ es un conjuntador de peso $l$ y $n+1=k+l$. Como $k<n$ y $l<n$, la
 	hipótesis inductiva implica que $A\subseteq \gamma_k(G)$ y $B\subseteq
 	\gamma_l(G)$. Luego $[A,B]\subseteq [\gamma_k(G),\gamma_l(G)]\subseteq
 	\gamma_{k+l}(G)$ por el
-	teorema~\ref{theorem:gamma}.
+	teorema anterior. 
 \end{proof}
 
 
@@ -331,7 +309,7 @@ Por ejemplo: $\zeta_1(G)=Z(G)$.
 \begin{lemma}
 	\label{lemma:central_ascendente}
 	Sea $G$ un grupo. Para todo $i\geq0$ el conjunto $\zeta_i(G)$ es un
-	subgrupo normal de $\zeta_{i+1}(G)$. 
+	subgrupo normal de $G$. 
 \end{lemma}
 
 \begin{proof}
@@ -347,7 +325,7 @@ Por ejemplo: $\zeta_1(G)=Z(G)$.
 	subgrupos de $G$. La normalidad también se demuestra por inducción en $i$:
 	si $g\in\zeta_{i+1}(G)$, $x\in G$ entonces $xgx^{-1}\in\zeta_{i+1}(G)$ pues 
 	\[
-	[xgx^{-1},y]=x[g,xyx^{-1}]x^{-1}\in\zeta_{i}(G)
+	[xgx^{-1},y]=x[g,x^{-1}yx]x^{-1}\in\zeta_{i}(G)
 	\]
 	para todo $y\in G$.
 \end{proof}
@@ -376,9 +354,9 @@ Recordemos que un grupo $G$ se dice \textbf{perfecto} si $[G,G]=G$.
 	Si usamos el lema de los tres subgrupos con $X=Y=G$ y $Z=\zeta_2(G)$, 
 	%, como 
 	%$[G,\zeta^2(G),G]=[G,G,\zeta_2(G)]=[G,(G)]=1$, se concluye que 
-	$1=[\zeta_2(G),G,G]=[\zeta_2(G),[G,G]]=[\zeta_2(G),G]$. Luego 	
+	$\{1\}=[\zeta_2(G),G,G]=[\zeta_2(G),[G,G]]=[\zeta_2(G),G]$. Luego 	
 	$\zeta_2(G)\subseteq Z(G)$ y
-	entonces $\zeta_2(G)=Z(G/Z(G))=1$. 
+	entonces $\zeta_2(G)=Z(G/Z(G))=\{1\}$. 
 \end{proof}
 
 
@@ -405,7 +383,7 @@ Si $H$ y $K$ son subgrupos de $G$ se define
 \begin{lemma}
 	\label{lemma:gamma_zeta}
 	Sea $G$ un grupo. Existe $c$ tal que $\zeta_c(G)=G$ si y sólo si 
-	$\gamma_{c+1}(G)=1$. Más aún, en ese caso 
+	$\gamma_{c+1}(G)=\{1\}$. Más aún, en ese caso 
 	\[
 	\gamma_{i+1}(G)\subseteq\zeta_{c-i}(G)
 	\]
@@ -443,7 +421,7 @@ Si $H$ y $K$ son subgrupos de $G$ se define
 \end{proof}
 
 \begin{example}
-	Sea $G=\Sym_3$. Entonces $\zeta_j(G)=1$ para todo $j\geq 0$: 
+	Sea $G=\Sym_3$. Entonces $\zeta_j(G)=\{1\}$ para todo $j\geq 0$: 
 	\begin{lstlisting}
 gap> UpperCentralSeries(SymmetricGroup(3));
 [ Group(()) ]
@@ -454,7 +432,7 @@ gap> UpperCentralSeries(SymmetricGroup(3));
 	\index{Serie!central}
 	Sea $G$ un grupo. Una \textbf{serie central} para $G$ es una sucesión 
 	\[
-		G=G_0\supseteq G_1\supseteq\cdots\supseteq G_n=1
+		G=G_0\supseteq G_1\supseteq\cdots\supseteq G_n=\{1\}
 	\]
 	de subgrupos normales de $G$ tal que para cada $i\in\{1,\dots,n\}$, 
 	$\pi_i(G_{i-1})$ es un subgrupo de $Z(G/G_i)$, donde $\pi_i\colon G\to
@@ -463,7 +441,7 @@ gap> UpperCentralSeries(SymmetricGroup(3));
 
 \begin{lemma}
 	\label{lemma:serie_central}
-	Sea $G$ un grupo y sea $G=G_0\supseteq G_1\supseteq\cdots\supseteq G_n=1$
+	Sea $G$ un grupo y sea $G=G_0\supseteq G_1\supseteq\cdots\supseteq G_n=\{1\}$
 	una serie central para $G$. Entonces $\gamma_{i+1}(G)\subseteq G_i$ para
 	todo $i$.
 \end{lemma}
@@ -475,7 +453,7 @@ gap> UpperCentralSeries(SymmetricGroup(3));
 	\gamma_{i+1}(G)=[G,\gamma_i(G)]\subseteq [G,G_{i-1}]\subseteq G_i
 	\]
 	pues, como $\pi_i(G_{i-1})\subseteq Z(G/G_{i})$, entonces
-	$\pi([G,G_{i-1}])=[\pi(G),\pi(G_{i-1})]=1$ y luego $[G,G_{i-1}]\subseteq
+	$\pi([G,G_{i-1}])=[\pi(G),\pi(G_{i-1})]=\{1\}$ y luego $[G,G_{i-1}]\subseteq
 	G_i$.
 \end{proof}
 
@@ -488,37 +466,37 @@ gap> UpperCentralSeries(SymmetricGroup(3));
 \begin{proof}
 	Si el grupo $G$ es nilpotente, entonces los $\gamma_j(G)$ forman una serie
 	central para $G$. Recíprocamente, si $G=G_0\supseteq
-	G_1\supseteq\cdots\supseteq G_n=1$ es una serie central para $G$, entonces,
-	por el lema~\ref{lemma:serie_central} $G$ es nilpotente pues
-	$\gamma_{n+1}(G)\subseteq G_n=1$.
+	G_1\supseteq\cdots\supseteq G_n=\{1\}$ es una serie central para $G$, entonces,
+	por el lema anterior, $G$ es nilpotente pues
+	\[
+	\gamma_{n+1}(G)\subseteq G_n=\{1\}.\qedhere
+	\]
 \end{proof}
 
 \begin{exercise}
+\label{xca:nilpotente_central}
 	Sea $G$ un grupo. Demuestre que si $K$ es un subgrupo de $Z(G)$ tal que
 	$G/K$ es nilpotente, entonces $G$ es nilpotente.
 \end{exercise}
 
-%\begin{svgraybox}
-%	Sea $\pi\colon G\to G/K$. Usar $\pi^{-1}$ para levantar una serie central de $G/K$ y obtener una serie central para $G$.
-%\end{svgraybox}<++>
-
 \begin{theorem}[Hirsch]
 	\label{theorem:Z(nilpotent)}
+	\index{Teorema!de Hirsch}
 	Sea $G$ un grupo nilpotente. Si $H$ es un subgrupo normal no trivial de $G$
-	entonces $H\cap Z(G)\ne1$. En particular, $Z(G)\ne1$. 
+	entonces $H\cap Z(G)\ne\{1\}$. En particular, $Z(G)\ne\{1\}$. 
 %	Si $G$ es un grupo nilpotente entonces $Z(G)\ne1$. 
 \end{theorem}
 
 \begin{proof}
-	Como $\zeta_0(G)=1$ y existe $c$ tal que $\zeta_c(G)=G$, existe 
+	Como $\zeta_0(G)=\{1\}$ y existe $c$ tal que $\zeta_c(G)=G$, existe 
 	\[
-	m=\min\{k:H\cap\zeta_k(G)\ne1\}.
+	m=\min\{k:H\cap\zeta_k(G)\ne\{1\}\}.
 	\]
 	Como $H$ es normal, 
 	\[
-	[H\cap\zeta_m(G),G]\subseteq H\cap[\zeta_m(G),G]\subseteq H\cap\zeta_{m-1}(G)=1.
+	[H\cap\zeta_m(G),G]\subseteq H\cap[\zeta_m(G),G]\subseteq H\cap\zeta_{m-1}(G)=\{1\}.
 	\]
-	Luego $1\ne H\cap\zeta_m(G)\subseteq H\cap Z(G)$. Si $H=G$ entonces $Z(G)\ne1$. 
+	Luego $\{1\}\ne H\cap\zeta_m(G)\subseteq H\cap Z(G)$. Si $H=G$ entonces $Z(G)\ne\{1\}$. 
 %	Sea $c$ tal que $\gamma_{c+1}(G)=1$ y $\gamma_{c}(G)\ne1$. 
 %	Por el lema~\ref{lemma:gamma_zeta}, 
 %	\[
@@ -527,6 +505,7 @@ gap> UpperCentralSeries(SymmetricGroup(3));
 \end{proof}
 
 \begin{exercise}
+\label{xca:nilpotente_minimalnormal}
 	Sea $G$ un grupo nilpotente y sea $M$ un subgrupo minimal-normal de $G$.
 	Demuestre que $M\subseteq Z(G)$.
 \end{exercise}
@@ -546,17 +525,17 @@ gap> UpperCentralSeries(SymmetricGroup(3));
 	Como $A$ es abeliano, $A\subseteq C_G(A)$. Supongamos que $A\ne C_G(A)$.
 	El centralizador $C_G(A)$ es normal en $G$ pues, como $A$ es normal en $G$, 
 	\[
-		gC_G(A)g^{-1}=C_G(g^{-1}Ag)=C_G(A).
+		gC_G(A)g^{-1}=C_G(gAg^{-1})=C_G(A).
 	\]
 	para todo $g\in G$.  Sea $\pi\colon G\to G/A$ el morfismo canónico.
 	Entonces $\pi(C_G(A))$ es un subgrupo normal no trivial de $\pi(G)$. Como
 	$G$ es nilpotente, $\pi(G)$ es nilpotente y, por el
-	teorema~\ref{theorem:Z(nilpotent)}, $\pi(C_G(A))\cap Z(\pi(G))\ne1$. Sea
+	teorema de Hirsch, $\pi(C_G(A))\cap Z(\pi(G))\ne\{1\}$. Sea
 	$x\in C_G(A)\setminus A$ tal que $\pi(x)$ es central en $\pi(G)$.  El grupo
 	$\langle A,x\rangle$ es abeliano pues $x\in C_G(A)$. Además $\langle
 	A,x\rangle$ es normal en $G$ pues $A$ es normal en $G$ y  si $g\in G$
 	entonces $gxg^{-1}x^{-1}\in A$ porque $\pi(x)$ es central y luego
-	$gxg^{-1}\in \langle A,x\rangle$.  $A\subsetneq \langle
+	$gxg^{-1}\in \langle A,x\rangle$. Luego $A\subsetneq \langle
 	A,x\rangle\subsetneq G$, una contradicción.
 \end{proof}
 

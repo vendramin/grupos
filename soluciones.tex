@@ -4,3 +4,47 @@
      Sabemos que $G$ tiene $k$ clases de isomorfismos de módulos simples y que exactamente 
      $m$ son de dimensión uno. Luego $n=\sum_{i=1}^kn_i^2\geq m+4(m-k)$. 
 \end{sol}
+
+\section*{Grupos nilpotentes}
+
+\begin{sol}{xca:nilpotente=>resoluble}
+	Por inducción se demuestra que $G^{(i)}\subseteq\gamma_i(G)$ para todo
+	$i\geq1$. Luego si existe $c$ tal que $\gamma_{c+1}(G)$ entonces $G$ es
+	resoluble pues $G^{(c+1)}=1$.
+\end{sol}
+
+\begin{sol}{xca:gamma}
+	Todas las afirmaciones se demuestran fácilmente por inducción. El paso
+	inductivo para la primera es el siguiente: si $f\in\Aut(G)$ entonces
+	\[
+		f(\gamma_{i+1}(G))
+		=f([G,\gamma_i(G)])
+		=[f(G),f(\gamma_i(G))]\subseteq [G,\gamma_i(G)]
+		=\gamma_{i+1}(G).
+	\]
+	Para la segunda:
+	\[
+		\gamma_{i+1}(G)=[G,\gamma_i(G)]\subseteq [G,\gamma_{i-1}(G)]=\gamma_{i}(G).
+	\]
+	Similarmente, el paso inductivo para demostrar la tercera afirmación:
+	\[
+		f(\gamma_{i+1}(G))=f([G,\gamma_i(G)])=[f(G),f(\gamma_i(G))]=[H,\gamma_i(H)]=\gamma_{i+1}(H).
+	\]
+\end{sol}
+
+\begin{sol}{xca:HxK_nilpotente}
+	Por inducción se demuestra fácilmente que $\gamma_i(H\times
+	K)\subseteq\gamma_i(H)\times\gamma_i(K)$ para todo $i\geq1$. 
+\end{sol}
+
+\begin{sol}{xca:nilpotente_central}
+	Sea $\pi\colon G\to G/K$. Usar $\pi^{-1}$ para levantar una serie central de $G/K$ y obtener una serie central para $G$.
+\end{sol}
+
+\begin{sol}{xca:nilpotente_minimalnormal}
+ 	Como $M\cap Z(G)$ es normal en $G$, la minimalidad de $M$ implica que hay
+ 	dos posibilidades: $M\cap Z(G)$ es trivial o bien $M=M\cap Z(G)\subseteq Z(G)$.
+ 	Por el teorema~\ref{theorem:Z(nilpotent)}, $M\cap Z(G)\ne 1$.
+\end{sol}
+
+
