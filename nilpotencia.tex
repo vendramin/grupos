@@ -550,18 +550,21 @@ gap> UpperCentralSeries(SymmetricGroup(3));
 
 \begin{proof}
 	Demostremos la primera afirmación. Sea $N$ un subgrupo minimal-normal. Como
-	$N\cap Z(G)\ne1$ por el teorema~\ref{theorem:Z(nilpotent)}, $N\cap Z(G)$ es
+	$N\cap Z(G)\ne\{1\}$ por el teorema el Hirsch, $N\cap Z(G)$ es
 	un subgrupo normal de $G$ contenido en $N$. Luego $N=N\cap Z(G)\subseteq
 	Z(G)$ por la minimalidad de $N$. En particular, $N$ es abeliano. Además,
 	como todo subgrupo de $N$ es normal en $G$, $N$ es simple y luego $N\simeq
 	C_p$ para algún primo $p$.
 
 	Demostremos ahora la segunda afirmación. Si $M$ es un subgrupo maximal, $M$
-	es normal en $G$ por el ejercicio~\ref{exercise:normalizadora}. La
+	es normal en $G$ gracias a la condidición normalizadora. La
 	maximalidad de $M$ implica que $G/M$ no contiene subgrupos propios no
 	triviales. Luego $G/M\simeq C_p$ para algún primo $p$. Como en particular
 	$G/M$ es abeliano, $[G,G]\subseteq M$. 
 \end{proof}
+
+Es importante remarcar que el teorema anterior no garantiza, por ejemplo, la existencia de subgrupos maximales.
+Recordemos que $\Q$ es un grupo abeliano (por lo tanto, nilpotente) que no tiene subgrupos maximales. 
 
 \begin{proposition}
 	\label{proposition:g^n}
@@ -575,7 +578,7 @@ gap> UpperCentralSeries(SymmetricGroup(3));
 	El resultado es obvio en el caso en que $H$ sea un subgrupo normal.  Sea
 	$H_0=H$ y $H_{i+1}=N_G(H_i)$ para $i\geq0$. Por definición, $H_{i}$ es
 	normal en $H_{i+1}$ y además, como $G$ es nilpotente, si $H_i\ne G$
-	entonces $H_i\subsetneq H_{i+1}$ por el lema~\ref{lemma:normalizadora}.
+	entonces $H_i\subsetneq H_{i+1}$ por la condición normalizadora. 
 	Como $(G:H)$ es finito, existe $k$ tal que $H_k=G$. Veamos que 
 	\[
 		g^{(G:H)}=g^{(H_k:H_{k-1})(H_{k-1}:H_{k-2})\cdots (H_1:H_0)}\in H.
@@ -589,10 +592,13 @@ gap> UpperCentralSeries(SymmetricGroup(3));
 \end{proof}
 
 \begin{example}
-	La proposición~\ref{proposition:g^n} no vale si el grupo $G$ no es
+	La proposición anterior no vale si el grupo $G$ no es
 	nilpotente. Sea $G=\Sym_3$ y sea $H=\{\id,(12)\}$ de índice tres.  Si
 	$g=(13)$ entonces $g^{3}=(13)\not\in H$.
 \end{example}
+
+El lema que daremos a continuación es una herramienta útil para hacer demostraciones por inducción
+en grupos nilpotentes. 
 
 \begin{lemma}
 	\label{lemma:a[GG]}
@@ -602,11 +608,12 @@ gap> UpperCentralSeries(SymmetricGroup(3));
 
 \begin{proof}
 	Sea $H=\langle x,[G,G]\rangle$.  Si $x\in [G,G]$, el resultado es cierto.
-	Supongamos entonces que $x\not\in H$. Observemos que 
+	Supongamos entonces que $x\not\in [G,G]$. Observemos que 
 	\[
-		H=\{x^nc:n\in\Z,c\in [G,G]\}.
+		H=\{x^nc:n\in\Z,c\in [G,G]\},
 	\]
-	Basta demostrar que $[H,H]\subseteq\gamma_3(G)$. Sean $h=x^nc,k=x^md\in H$
+	pues $[G,G]$ es normal en $G$. Para demostrar el lema  
+	alcanza entonces con probar que $[H,H]\subseteq\gamma_3(G)$. Sean $h=x^nc,k=x^md\in H$
 	con $c,d\in [G,G]$. 
 	Como 
 	\[
@@ -626,11 +633,13 @@ gap> UpperCentralSeries(SymmetricGroup(3));
 %	nilpotente de clase uno.
 \end{proof}
 
+Veamos un ejemplo.
+
 \begin{example}
-	Sea $G=\D_{16}=\langle r,s:r^{8}=s^2=1,srs=r^{-1}\rangle$ el grupo diedral
+	Sea $G=\D_{8}=\langle r,s:r^{8}=s^2=1,srs=r^{-1}\rangle$ el grupo diedral
 	de orden 16. El grupo $G$ es nilpotente de clase tres
 	y $[G,G]=\{1,r^2,r^4,r^6\}\simeq C_4$. El subgrupo $\langle
-	s,[G,G]\rangle\simeq\D_8$ es nilpotente de clase dos.
+	s,[G,G]\rangle\simeq\D_4$ es nilpotente de clase dos.
 
 	\begin{lstlisting}
 gap> G := DihedralGroup(IsPermGroup,16);;
@@ -648,6 +657,8 @@ gap> NilpotencyClassOfGroup(S);
 	\end{lstlisting}
 \end{example}
 
+Ahora una aplicación del lema. 
+
 \begin{theorem}
 	\label{theorem:T(nilpotent)}
 	Si $G$ es un grupo nilpotente, entonces
@@ -663,7 +674,7 @@ gap> NilpotencyClassOfGroup(S);
 		A=\langle a,[G,G]\rangle,\quad
 		B=\langle b,[G,G]\rangle.
 	\]
-	Como $A$ y $B$ son nilpotentes por el lema~\ref{lemma:a[GG]}, por hipótesis
+	Como $A$ y $B$ son nilpotentes por el lema anterior, por hipótesis
 	inductiva, $T(A)$ es un subgrupo de $A$ y $T(B)$ es un subgrupo de $B$.
 	Como $T(A)$ es característico en $A$ y $A$ es normal en $G$, $T(A)$ es
 	normal en $G$. Similarmente se demuestra que $T(B)$ es normal en $B$.  
@@ -671,10 +682,20 @@ gap> NilpotencyClassOfGroup(S);
 	$x\in T(A)T(B)$, digamos $x=a_1b_1$ con
 	$a_1$ de orden $m$, entonces $x$ tiene orden finito pues 
 	\begin{align*}
-	x^m=(a_1b_1)^m&=(a_1b_1a_1^{-1})(a_1^2b_1a_1^{-2})\cdots (a^m b a^{-m})\\
-	&=(a_1b_1a_1^{-1})(a_1^2b_1a_1^{-2})\cdots (a^{m-1} b a^{-m+1})b\in T(B).
+	x^m=(a_1b_1)^m&=%(a_1b_1a_1^{-1})(a_1^2b_1a_1^{-2})\cdots (a_1^{m-1} b_1 a_1^{-m+1}b_1)\\
+	(a_1b_1a_1^{-1})(a_1^2b_1a_1^{-2})\cdots (a^{m-1} b_1 a^{-m+1})b_1\in T(B).
 	\end{align*}
-	En particular, $ab$ y $a^{-1}$ tienen orden finito. Luego $T(G)$ es un
+	
+	Para entender mejor el truco hagamos un caso concreto, digamos $m=3$. La fórmula en este caso queda así:
+	\begin{align*}
+	(a_1b_1)^3&=(a_1b_1)(a_1b_1)(a_1b_1)\\
+	&=(a_1b_1a_1^{-1})(a_1^2b_1a_1^{-2})a_1^3b_1
+	=(a_1b_1a_1^{-1})(a_1^2b_1a_1^{-2})b_1,
+	\end{align*}
+	pues $a_1^3=1$.
+	
+	El truco nos permite entonces demostrar que $ab$ y $a^{-1}$ tienen ambos 
+	orden finito. Luego $T(G)$ es un
 	subgrupo de $G$.
 \end{proof}
 
@@ -684,10 +705,12 @@ gap> NilpotencyClassOfGroup(S);
 	$n\ne 0$ tal que $a^n=b^n$ entonces $a=b$.
 \end{theorem}
 
+Otra aplicación.
+
 \begin{proof}
 	Procederemos por inducción en el orden de nilpotencia $c$ de $G$. El
 	resultado es trivialmente cierto si $G$ es abeliano. Supongamos entonces
-	que $G$ es nilpotente de índice $c>1$. Como $\langle a,[G,G]\rangle$ es un
+	que $G$ es nilpotente de índice $c\geq1$. Como $\langle a,[G,G]\rangle$ es un
 	subgrupo de $G$ nilpotente de índice $<c$, y $bab^{-1}=[b,a]a\in \langle
 	a,[G,G]\rangle$, por hipótesis inductiva, $ba=ab$ pues 
 	\[
@@ -703,9 +726,9 @@ gap> NilpotencyClassOfGroup(S);
 \end{corollary}
 
 \begin{proof}
-	Sean $a=x$ y $b=y^nxy^{-n}$. Como $a^m=b^m$, el teorema~\ref{theorem:a=b}
-	implica que $a=b$ y luego $xy^n=y^nx$. Al usar nuevamente el
-	teorema~\ref{theorem:a=b}, esta vez con con $a=y$ y $b=xyx^{-1}$, se
+	Sean $a=x$ y $b=y^nxy^{-n}$. Como $a^m=b^m$, el teorema anterior
+	implica que $a=b$ y luego $xy^n=y^nx$. Al usar nuevamente ese 
+	teorema, esta vez con con $a=y$ y $b=xyx^{-1}$, se
 	concluye que $xy=yx$. 
 \end{proof}
 
@@ -717,7 +740,7 @@ gap> NilpotencyClassOfGroup(S);
 
 \begin{proof}
 	Supongamos que $G$ está generado por $\{g_1,\dots,g_m\}$ y supongamos que
-	para cada $i$ existe $k$ tal que $g_i^{-1}=g_k$. Sea $t_1,\dots,t_n$ un
+	para cada $i$ existe $k$ tal que $g_i^{-1}=g_k$. Sea $1=t_1,\dots,t_n$ un
 	conjunto de representantes de $G/H$. Para $i\in\{1,\dots,n\}$,
 	$j\in\{1,\dots,m\}$, escribimos
 	\[
@@ -730,10 +753,10 @@ gap> NilpotencyClassOfGroup(S);
 	&= (t_1g_{i_1})g_{i_2}\cdots g_{i_s}\\
 	&= h(1,i_1)t_{k_1}g_{i_2}\cdots g_{i_s}\\
 	&= h(1,i_1)h(k_1,i_2)t_{k_2}g_{i_3}\cdots g_{i_s}\\
-	&= h(1,i_1)h(k_1,i_2)\cdots h(k_{s-1},g_{i_s})t_{k_s},
+	&= h(1,i_1)h(k_1,i_2)\cdots h(k_{s-1},i_s)t_{k_s},
 	\end{align*}
-	donde $k_1,\dots,k_{s-1}\in\{1,\dots,n\}$. Como $t_{k_s}\in H$,
-	$t_{k_s}=t_1\in H$ y luego $x\in H$.
+	donde $k_1,\dots,k_{s-1}\in\{1,\dots,n\}$. Como $t_{k_s}\in H$ pues $x\in H$, entonces
+	$t_{k_s}=1\in H$ y luego $x$ está generado por los $h(i,j)$.
 \end{proof}
 
 \begin{theorem}
@@ -746,7 +769,7 @@ gap> NilpotencyClassOfGroup(S);
 	Procederemos por inducción en la clase de nilpotencia $c$. El caso $c=1$ es
 	verdadero pues $G$ es abeliano. Supongamos entonces que el resultado es
 	válido para $c\geq1$.  Como $[G,G]$ y $G/[G,G]$ son nilpotentes de clase
-	$<c$, finitamente generados (por el lema~\ref{lemma:fg}) y de torsión, por
+	$<c$, finitamente generados por el lema anterior y de torsión, por
 	hipótesis inductiva se tiene que $[G,G]$ y $G/[G,G]$ son finitos. Luego $G$
 	es también finito de orden $|[G,G]|(G:[G,G])$.
 \end{proof}
@@ -794,6 +817,9 @@ gap> NilpotencyClassOfGroup(S);
 
 %\section{Grupos finitos nilpotentes}
 
+El siguiente lema también resultará muy útil, especialmente en caso de trabajar con 
+grupos finitos nilpotentes. 
+
 \begin{lemma}
 	\label{lemma:normalizador}
 	Sean $G$ un grupo finito, $p$ un primo que divide a $|G|$ y
@@ -840,7 +866,7 @@ gap> NilpotencyClassOfGroup(S);
 	N=P_1\cdots P_j\simeq P_1\times\cdots\times P_j
 	\]
 	es normal en $G$ y tiene orden coprimo con $|P_{j+1}|$, $N\cap
-	P_{j+1}=1$. Luego
+	P_{j+1}=\{1\}$. Luego
 	\[
 		NP_{j+1}\simeq N\times P_{j+1}\simeq P_1\times\cdots\times P_j\times P_{j+1}
 	\]
@@ -851,12 +877,12 @@ gap> NilpotencyClassOfGroup(S);
 
 	Para ver que $(3)\implies(1)$ simplemente hace falta observar que todo
 	$p$-grupo es nilpotente (proposición~\ref{proposition:pgrupo_nilpotente}) y
-	que el producto directo de finitos nilpotentes es nilpotente
-	(ejercicio~\ref{exercise:HxK_nilpotente}).
+	que el producto directo de finitos nilpotentes es nilpotente.
+	%(ejercicio~\ref{exercise:HxK_nilpotente}).
 \end{proof}
 
 \begin{exercise}
-	\label{exercise:truco}
+	\label{xca:truco}
 	Sea $G$ un grupo finito. Demuestre que si $P\in\Syl_p(G)$ y $M$ es un subgrupo de $G$ tal que
 	$N_G(P)\subseteq M$ entonces $M=N_G(M)$. 
 \end{exercise}
@@ -873,7 +899,7 @@ gap> NilpotencyClassOfGroup(S);
 % \end{svgraybox}
 
 \begin{exercise}
-	\label{exercise:normalizadora}
+	\label{xca:normalizadora}
 	Sea $G$ un grupo finito. Son equivalentes:
 	\begin{enumerate}
 		\item $G$ es nilpotente.
@@ -914,7 +940,7 @@ gap> NilpotencyClassOfGroup(S);
 \end{proof}
 
 \begin{exercise}
-	\label{exercise:pgrupos}
+	\label{xca:pgrupos}
 	Sea $p$ un primo y sea $G$ un grupo no trivial de orden $p^n$.
 	Demuestre las siguientes afirmaciones:
 	\begin{enumerate}
@@ -946,6 +972,7 @@ gap> NilpotencyClassOfGroup(S);
 % \end{svgraybox}
 
 \begin{exercise}
+\label{xca:nilpotente_equivalencia}
 	Sea $G$ un grupo finito. Demuestre que las siguientes afirmaciones son
 	equivalentes: 
 	\begin{enumerate}

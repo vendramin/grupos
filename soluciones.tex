@@ -10,7 +10,7 @@
 \begin{sol}{xca:nilpotente=>resoluble}
 	Por inducción se demuestra que $G^{(i)}\subseteq\gamma_i(G)$ para todo
 	$i\geq1$. Luego si existe $c$ tal que $\gamma_{c+1}(G)$ entonces $G$ es
-	resoluble pues $G^{(c+1)}=1$.
+	resoluble pues $G^{(c+1)}=\{1\}$.
 \end{sol}
 
 \begin{sol}{xca:gamma}
@@ -41,10 +41,99 @@
 	Sea $\pi\colon G\to G/K$. Usar $\pi^{-1}$ para levantar una serie central de $G/K$ y obtener una serie central para $G$.
 \end{sol}
 
-\begin{sol}{xca:nilpotente_minimalnormal}
+\begin{sol}{xca:nilpotente_minimalnormal1}
  	Como $M\cap Z(G)$ es normal en $G$, la minimalidad de $M$ implica que hay
  	dos posibilidades: $M\cap Z(G)$ es trivial o bien $M=M\cap Z(G)\subseteq Z(G)$.
- 	Por el teorema~\ref{theorem:Z(nilpotent)}, $M\cap Z(G)\ne 1$.
+ 	Por el teorema~\ref{theorem:Z(nilpotent)}, $M\cap Z(G)\ne \{1\}$.
+\end{sol}
+
+\begin{sol}{xca:nilpotente_minimalnormal2}
+	Sea $x\in N_G(M)$. Como $P\subseteq M$ y $M$ es normal en $N_G(M)$,
+	$xPx^{-1}\subseteq M$.  Como $P$ y $xPx^{-1}$ son $p$-subgrupos de Sylow de
+	$M$, existe $m\in M$ tal que 
+	\[
+	mPm^{-1}=xPx^{-1}.
+	\]
+	Luego $x\in M$ pues
+	$m^{-1}x\in N_G(P)\subseteq M$. 
 \end{sol}
 
 
+\begin{sol}{xca:normalizadora}
+	Para demostrar que $(1)\implies(2)$ simplemente usamos el
+	lema~\ref{lemma:normalizadora}. Para demostrar que $(2)\implies(3)$ hacemos
+	lo siguiente: si $M$ es un subgrupo maximal, como $M\subsetneq N_G(M)$ por
+	hipótesis, $N_G(M)=G$ por maximalidad. Finalmente demostremos que
+	$(3)\implies(1)$.  Sea $P\in\Syl_p(G)$. Si $P$ no es normal en $G$,
+	$N_G(P)\ne G$ y entonces existe un subgrupo maximal $M$ tal que
+	$N_G(P)\subseteq M$. Como $M$ es normal en $G$, el
+	ejercicio~\ref{exercise:truco} implica que $M=N_G(M)=G$, una contradicción.
+	Luego $P$ es normal en $G$ y entonces $G$ es nilpotente por el
+	teorema~\ref{theorem:nilpotente:eq}.
+\end{sol}
+
+% ejercicio: G finito. Es nilpotente si y solo si dos elementos de ordenes coprimos conmnutan
+% 5.41 rotman
+
+
+\begin{sol}{xca:pgrupos}
+	\begin{enumerate}
+		\item Sabemos que $Z(G)\ne1$. Sea $g\in Z(G)$ tal que $g\ne 1$.
+			Supongamos que el orden de $g$ es $p^k$ para algún $k\geq1$.
+			Entonces $g^{p^{k-1}}$ tiene orden $p$ y luego genera un subgrupo
+			central de orden $p$. 
+		\item Procederemos por inducción en $n$. Si $n=1$ el resultado es
+			trivial.  Supongamos entonces que el resultado vale para un cierto
+			$n\geq2$. Por el punto anterior, $G$ posee un subgrupo normal $N$
+			de orden $p$. Luego $G/N$ tiene orden $p^{n-1}$. Sea $\pi\colon G\to G/N$ el morfismo canónico. 
+			Por hipótesis
+			inductiva, para cada $j\in\{0,\dots,n-1\}$. Por el teorema de la
+			correspondecia, cada subgrupo normal $S_j$ de $G/N$ de orden $p^j$ se
+			corresponde con un subgrupo $\pi^{-1}(S_j)$ de $G$ de orden $p^{j+1}$ pues, como
+			$\pi$ es sobreyectiva, se tiene $\pi(\pi^{-1}(S_j))=S_j$, y luego
+			\[
+			p^j=|S_j|=|\pi(\pi^{-1}(S_j))|=\frac{|\pi^{-1}(S_j)|}{|\pi^{-1}(S_j)\cap N|}=\frac{|\pi^{-1}(S_j)|}{|N|}=\frac{|\pi^{-1}(S_j)|}{p}.
+			\]
+	\end{enumerate}
+\end{sol}
+
+\begin{sol}{xca:nilpotente_equivalencia}
+	Veamos que $(1)\implies(2)$. Sabemos que $G$ es producto directo de sus
+	subgrupos de Sylow, digamos $G=\prod_{i=1}^k S_i$, donde los $S_i$ son los
+	distintos subgrupos de Sylow de $G$.  Sean
+	$x=(x_1,\dots,x_k),y=(y_1,\dots,y_k)\in G$. Como $|x|$ y $|y|$ son
+	coprimos, para cada $i\in\{1,\dots,k\}$ se tiene $x_i=1$ o $y_i=1$. Luego
+	\[
+		[x,y]=([x_1,y_1],[x_2,y_2],\dots,[x_k,y_k])=1. 
+	\]
+	Demostremos ahora que $(2)\implies(1)$. Supongamos que
+	$|G|=p_1^{\alpha_1}\cdots p_k^{\alpha_k}$, donde los $p_j$ son primos
+	distintos y para cada $j$ sea $P_j\in\Syl_{p_j}(G)$. Como elementos de
+	órdenes coprimos conmutan, la función $P_1\times\cdots\times P_k\to G$,
+	$(x_1,\dots,x_k)\mapsto x_1\cdots x_k$, es un morfismo inyectivo de grupos.
+	Como entonces $G\simeq P_1\times\cdots P_k$, y cada $P_j$ es nilpotente,
+	$G$ es nilpotente. 
+
+	Para demostrar que $(1)\implies(3)$ simplemente hay que observar que todo
+	cociente de $G$ es nilpotente y luego utilizar el
+	teorema~\ref{theorem:Z(nilpotent)}. Demostremos que $(3)\implies(1)$. Como
+	todo cociente no trivial de $G$ tiene centro no trivial, en particular
+	$Z_1=Z(G)$ es no trivial. Si $Z_1=G$ entonces $G$ es abeliano y no hay nada
+	para demostrar. Si $Z_1\ne G$ entonces $G/Z_1\ne 1$; luego $Z(G/Z_1)\ne 1$.
+	Si $\pi_1\colon G\to G/Z_1$ es el morfismo canónico,
+	$Z_2=\pi_1^{-1}(Z(G/Z_1))$. Inductivamente, si tenemos construido el
+	subgrupo $Z_i$, $Z_i\ne G$ y  $\pi_i\colon G\to G/Z_{i}$ es el morfismo
+	canónico, se define el subgrupo $Z_{i+1}=\pi_i^{-1}(Z(G/Z_i))$. Por
+	construcción, $Z_i\subseteq Z_{i+1}$ para todo $i$. Como $G$ es finito,
+	existe $k$ tal que $Z_k=G$ y luego $G$ es nilpotente.
+
+	Demostremos que $(1)\implies(4)$. Esta implicación es consecuencia
+	inmediata del ejercicio~\ref{exercise:pgrupos}. 
+	Como $G$ es nilpotente, $G$ producto
+	directo de sus $p$-grupos de Sylow. Si $d=p_1^{\alpha_1}\cdots
+	p_k^{\alpha_k}$ es un divisor del orden de $G$, basta tomar
+	$H=H_1\times\cdots\times H_k$, 
+	donde cada $H_j$ es un subgrupo normal del $p_j$-subgrupo de Sylow de $G$
+	de orden $p_j^{\alpha_j}$. Para demostrar que $(4)\implies(1)$ simplemente
+	se aplica la hipótesis a cada $p$-subgrupo de $G$ de orden maximal.
+\end{sol}
