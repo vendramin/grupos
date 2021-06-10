@@ -272,8 +272,9 @@ ambos conmutadores de peso tres.
 En el siguiente lema veremos que los grupos nilpotentes satisfacen la
 \textbf{condición normalizadora}.
 
-\begin{lemma}
+\begin{lemma}[condición normalizadora]
 	\label{lemma:normalizadora}
+	\index{Condición normalizadora}
 	Sea $G$ un grupo nilpotente. Si $H$ es un subgrupo propio de $G$ entonces
 	$H\subsetneq N_G(H)$.
 \end{lemma}
@@ -633,7 +634,7 @@ en grupos nilpotentes.
 %	nilpotente de clase uno.
 \end{proof}
 
-Veamos un ejemplo.
+Veamos un ejemplo, está hecho con la computadora. 
 
 \begin{example}
 	Sea $G=\D_{8}=\langle r,s:r^{8}=s^2=1,srs=r^{-1}\rangle$ el grupo diedral
@@ -739,8 +740,10 @@ Otra aplicación.
 \end{lemma}
 
 \begin{proof}
-	Supongamos que $G$ está generado por $\{g_1,\dots,g_m\}$ y supongamos que
-	para cada $i$ existe $k$ tal que $g_i^{-1}=g_k$. Sea $1=t_1,\dots,t_n$ un
+	Supongamos que $G$ está generado por $\{g_1,\dots,g_m\}$. Podemos suponer, sin pérdida de generalidad, que
+	para cada $i$ existe $k$ tal que $g_i^{-1}=g_k$. 
+	
+	Sea $\{1=t_1,\dots,t_n\}$ un transversal de $H$ en $G$, es decir un 
 	conjunto de representantes de $G/H$. Para $i\in\{1,\dots,n\}$,
 	$j\in\{1,\dots,m\}$, escribimos
 	\[
@@ -771,7 +774,7 @@ Otra aplicación.
 	válido para $c\geq1$.  Como $[G,G]$ y $G/[G,G]$ son nilpotentes de clase
 	$<c$, finitamente generados por el lema anterior y de torsión, por
 	hipótesis inductiva se tiene que $[G,G]$ y $G/[G,G]$ son finitos. Luego $G$
-	es también finito de orden $|[G,G]|(G:[G,G])$.
+	es también finito, de hecho puede probarse que $G$ es de orden $|[G,G]|(G:[G,G])$.
 \end{proof}
 
 %\begin{lemma}
@@ -852,8 +855,8 @@ grupos finitos nilpotentes.
 
 \begin{proof}
 	Veamos que $(1)\implies(2)$. Sea $P\in\Syl_p(G)$. Queremos ver que $P$ es
-	normal en $G$, es decir $N_G(P)=G$.  Por el lema~\ref{lemma:normalizador},
-	$N_G(N_G(P))=N_G(P)$. La condición normalizadora del lema~\ref{lemma:normalizadora} implica entonces que $N_G(P)=G$.
+	normal en $G$, es decir $N_G(P)=G$.  Por el lema anterior, 
+	$N_G(N_G(P))=N_G(P)$. La condición normalizadora implica entonces que $N_G(P)=G$.
 
 	Veamos ahora que $(2)\implies(3)$. Sean $p_1,\cdots,p_k$ los factores
 	primos de $|G|$ y para cada $i\in\{1,\dots,k\}$ sea $P_i\in\Syl_{p_i}(G)$.
