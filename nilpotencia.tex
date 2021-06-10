@@ -936,8 +936,9 @@ grupos finitos nilpotentes.
 \begin{proof}
 	Supongamos que $|G|=p^{\alpha}m$, donde $p$ es un primo coprimo con $m$.
 	Escribamos $G=P\times H$, donde $P\in\Syl_p(G)$.  Como $Z(P)$ es un
-	subgrupo normal no trivial de $P$, cualquier subgrupo de $Z(G)$ de orden
-	$p$ es minimal-normal en $G$. Por otro lado, como $P$ contiene un subgrupo
+	subgrupo normal no trivial de $P$, todo subgrupo 
+	de $Z(P)$ minimal-normal en $G$ tiene orden $p$ (y esos subgrupos 
+	existen porque $G$ es un grupo finito). Por otro lado, como $P$ contiene un subgrupo
 	de índice $p$, que resulta maximal. Luego $P\times H$ también contiene un
 	subgrupo maximal de índice $p$.
 \end{proof}
@@ -1038,15 +1039,16 @@ completamente elemental, fue descubierto en 2014.
 \end{theorem}
 
 \begin{proof}
-	Sean $p_1,\dots,p_n$ los primos que dividen al orden de $G$ son Para cada
+	Sean $p_1,\dots,p_n$ los distintos primos que dividen al orden de $G$. Para cada
 	$i\in\{1,\dots,n\}$ sea $P_i\in\Syl_{p_i}(G)$.  Primero vamos a demostrar
-	que $G=P_1\cdots P_n$. Para demostrar la inclusión no trivial basta con
+	que $G=P_1\cdots P_n$. La inclusión no trivial equivale a 
 	demostrar que la función 
 	\[
 		\psi\colon P_1\times\cdots\times P_n\to G,\quad
 		(x_1,\dots,x_n)\mapsto x_1\cdots x_n
 	\]
-	La función $\psi$ es inyectiva pues si
+	es sobreyectiva. Procederemos de la siguiente forma. Primero vemos que  
+	la función $\psi$ es inyectiva. En efecrto, si
 	$\psi(x_1,\dots,x_n)=\psi(y_1,\dots,y_n)$, entonces 
 	\[
 		x_1\cdots
@@ -1054,10 +1056,11 @@ completamente elemental, fue descubierto en 2014.
 	\]
 	Si $y_n\ne x_n$, entonces $x_1\cdots x_{n-1}=(y_1\cdots
 	y_{n-1})y_nx_n^{-1}$. Pero $x_1\cdots x_{n-1}$ es un elemento de orden
-	coprimo con $p$ y $y_1\cdots y_{n-1}y_nx_n^{-1}$ es un elemento de orden
-	múltiplo de $p$, una contradicción. Entonces $x_n=y_n$ y luego, el mismo
+	coprimo con $p_n$ y $y_1\cdots y_{n-1}y_nx_n^{-1}$ es un elemento de orden
+	múltiplo de $p_n$, una contradicción. Entonces $x_n=y_n$ y luego, el mismo
 	argumento, prueba que $\psi$ es inyectiva. Como $|P_1\times\cdots\times
-	P_n|=|G|$, se concluye que $\psi$ es biyectiva. 
+	P_n|=|G|$, se concluye que $\psi$ es biyectiva. En particular, $\psi$ es sobreyectiva
+	y luego $G=P_1\cdots P_n$.
 
 	Veamos ahora que cada $P_j$ es normal en $G$.  Sea $j\in\{1,\dots,n\}$ y
 	sea $x_j\in P_j$. Sea $g\in G$ y sea $y_j=gx_jg^{-1}$.  Como $y_j\in G$,

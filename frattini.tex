@@ -92,27 +92,28 @@ gap> StructureDescription(FrattiniSubgroup(SL(2,3)));
 
 \begin{proof}
 	Como $\Phi(N)$ es característico en $N$ y $N$ es normal en $G$, $\Phi(N)$
-	es normal en $G$.  Sea $M$ un subgrupo maximal de $G$ tal que
-	$\Phi(N)\not\subseteq M$.  La maximalidad de $M$ implica que $\Phi(N)M=G$
+	es normal en $G$.  Supongamos entonces que existe un subgrupo maximal $M$ de $G$ tal que
+	$\Phi(N)\not\subseteq M$.  La maximalidad de $M$ implica entonces que $\Phi(N)M=G$
 	pues de lo contrario $M=\Phi(N)M\supseteq\Phi(N)$.  Por el lema de
-	Dedekind~\ref{lemma:Dedekind} (con $H=\Phi(N)$, $K=M$ y $L=N$), 
+	Dedekind (con $H=\Phi(N)$, $K=M$ y $L=N$), 
 	\[
 		N=G\cap N=(\Phi(N)M)\cap N=\Phi(N)(M\cap N).
 	\]
-	Por el lema~\ref{lemma:G=HPhi(G)} esto implica que $\Phi(N)\subseteq
+	Ahora el lema anterior con $G=N$ y $H=M\cap N$ implica que $\Phi(N)\subseteq
 	N\subseteq M$, una contradicción. Luego todo subgrupo maximal de $G$
 	contiene a $\Phi(N)$ y por lo tanto $\Phi(G)\supseteq\Phi(N)$. 
 \end{proof}
 
-\begin{lemma}
+El lema que sigue nos dice que los elementos del subgrupo de Fratiini son esencialmente
+los "no-generadores" del grupo. 
+
+\begin{lemma}[de los no-generadores]
 	\label{lemma:nongenerators}
+	\index{Lema!de los no-generadores}
 	Sea $G$ un grupo finito. Entonces 
 	\[
 	\Phi(G)=\{x\in G:\text{si $G=\langle x,Y\rangle$ para algún $Y\subseteq G$ entonces $G=\langle Y\rangle$}\}.
 	\]
-%	$\Phi(G)$ es el conjunto de $x\in G$ tales que 
-%	si $G=\langle x,Y\rangle$ para algún subconjunto $Y$ de $G$ entonces
-%	$G=\langle Y\rangle$. 
 \end{lemma}
 
 \begin{proof}
@@ -137,8 +138,8 @@ gap> StructureDescription(FrattiniSubgroup(SL(2,3)));
 	\{x_1,\dots,x_{j-1},x_j^{n_j},x_{j+1},\dots,x_m\}
 	\]
 	genera al grupo $G$ y $\{x_1,\dots,x_{j-1},x_{j+1},\dots,x_m\}$ no lo hace,
-	entonces $x_j^{n_j}\not\in\Phi(G)$ por el lema~\ref{lemma:nongenerators}.
-	Luego $\Phi(G)=1$.
+	entonces $x_j^{n_j}\not\in\Phi(G)$ por el lema de los no-generadores. 
+	Luego $\Phi(G)=\{1\}$.
 \end{example}
 
 \begin{theorem}[Frattini]
@@ -150,7 +151,7 @@ gap> StructureDescription(FrattiniSubgroup(SL(2,3)));
 
 \begin{proof}
 	Sea $P\in\Syl_p(\Phi(G))$ para algún primo $p$. Como $\Phi(G)$ es normal en
-	$G$, gracias al argumento de Frattini, lema~\ref{lemma:Frattini_argument},
+	$G$, gracias al argumento de Frattini (que vimos en el lema~\ref{lemma:Frattini_argument}) 
 	podemos escribir $G=\Phi(G)N_G(P)$. Por el lema~\ref{lemma:G=HPhi(G)},
 	$G=N_G(P)$. Como todo subgrupo de Sylow de $\Phi(G)$ es normal en $G$,
 	$\Phi(G)$ es nilpotente.
@@ -186,8 +187,8 @@ gap> StructureDescription(FrattiniSubgroup(SL(2,3)));
 	\[
 		gMg^{-1}=(md)Md^{-1}m^{-1}=mMm^{-1}=M.
 	\]
-	El ejercicio~\ref{exercise:G/M} implica que $G/M$ es cíclico de orden
-	primo. Como en particular $G/M$ es abeliano, $[G,G]\subseteq M$. Luego
+	Como $G/M$ es cíclico de orden
+	primo, en particular, $G/M$ es abeliano y luego $[G,G]\subseteq M$. En consecuencia, 
 	$D\subseteq [G,G]\subseteq M$, una contradicción.
 \end{proof}
 
@@ -212,7 +213,7 @@ gap> StructureDescription(FrattiniSubgroup(SL(2,3)));
 \end{theorem}
 
 \begin{proof}
-	Supngamos que $[G,G]\subseteq\Phi(G)$. Sea $P\in\Syl_p(G)$. Si $N_G(P)\ne
+	Supongamos que $[G,G]\subseteq\Phi(G)$. Sea $P\in\Syl_p(G)$. Si $N_G(P)\ne
 	G$ entonces $N_G(P)\subseteq M$ para algún subgrupo maximal $M$ de $G$. Si
 	$g\in G$ y $m\in M$ entonces, como 
 	\[
@@ -241,14 +242,13 @@ gap> StructureDescription(FrattiniSubgroup(SL(2,3)));
 \end{theorem}
 %%% TODO: la demostración no está bien explicada!
 \begin{proof}
-	Si $G$ es nilpotente, entonces $G/\Phi(G)$ es nilpotente por el
-	teorema~\ref{theorem:nilpotente}. Supongamos que $G/\Phi(G)$ es
+	Si $G$ es nilpotente, entonces $G/\Phi(G)$ es nilpotente. Supongamos que $G/\Phi(G)$ es
 	nilpotente. Sea $P\in\Syl_p(G)$. Como
 	$\Phi(G)P/\Phi(G)\in\Syl_p(G/\Phi(G))$ y $G/\Phi(G)$ es nilpotente,
 	$\Phi(G)P/\Phi(G)$ es un subgrupo normal de $G/\Phi(G)$. Luego, por el
 	teorema de la correspondencia, $\Phi(G)P$ es un subgrupo normal de $G$.
-	Como $P\in\Syl_p(\Phi(G)P)$, el argumento de Frattini del
-	lemma~\ref{lemma:Frattini_argument} implica que
+	Como $P\in\Syl_p(\Phi(G)P)$, el argumento de Frattini 
+	(que vimos en el lema~\ref{lemma:Frattini_argument}) implica que
 	\[
 		G=\Phi(G)PN_G(P)=\Phi(G)N_G(P)
 	\]
@@ -285,7 +285,7 @@ gap> StructureDescription(FrattiniSubgroup(SL(2,3)));
     \]
 	Como por hipótesis $G/[N,N]$ es nilpotente, $G/\Phi(G)$ es nilpotente por
 	el teorema~\ref{theorem:nilpotente}. Luego $G$ es nilpotente por el
-	teorema~\ref{theorem:G/phi(G)}.
+	teorema anterior. %~\ref{theorem:G/phi(G)}.
 \end{proof}
 
 \begin{definition}
@@ -294,12 +294,16 @@ gap> StructureDescription(FrattiniSubgroup(SL(2,3)));
 	$G$.
 \end{definition}
 
-\begin{remark}
-	Es importante observar que un conjunto minimal de generadores puede no
-	tener cardinal mínimo. Sea $G=\langle g\rangle\simeq C_6$.  Si $a=g^2$ y
+Es importante observar que un conjunto minimal de generadores puede no
+tener cardinal mínimo. 
+	
+\begin{example}
+	Sea $G=\langle g\rangle\simeq C_6$.  Si $a=g^2$ y
 	$b=g^3$ entonces $\{a,b\}$ es un conjunto minimal de generadores de $G$,
 	aunque no tiene cardinal mínimo pues por ejemplo $G=\langle ab\rangle$.
-\end{remark}
+\end{example}
+	
+Si $p$ es un número primo, $\F_p$ denota al cuerpo de $p$ elementos. 
 
 \begin{lemma}
 	\label{lemma:Burnside:minimal}
@@ -311,7 +315,7 @@ gap> StructureDescription(FrattiniSubgroup(SL(2,3)));
 \begin{proof}
 	Sea $K$ un subgrupo maximal de $G$. Como $G$ es nilpotente por la
 	proposición~\ref{proposition:pgrupo_nilpotente}, $K$ es normal en $G$
-	(ejercicio~\ref{exercise:normalizadora}). Luego $G/K\simeq C_p$ por ser un $p$-grupo
+	(ejercicio~\ref{xca:normalizadora}). Luego $G/K\simeq C_p$ por ser un $p$-grupo
 	simple. 
 	
 	Basta ver que $G/\Phi(G)$ es $p$-grupo elemental abeliano. En un $p$-grupo

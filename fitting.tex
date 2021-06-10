@@ -99,7 +99,7 @@
 \end{corollary}
 
 \begin{proof}
-	Por el teorema~\ref{theorem:Fitting} sabemos que $K\subseteq F(G)$ y
+	Por el teorema de Fitting sabemos que $K\subseteq F(G)$ y
 	$L\subseteq F(G)$. Esto implica que $KL\subseteq F(G)$ y luego $KL$ es
 	nilpotente pues $F(G)$ es nilpotente.
 \end{proof}
@@ -112,8 +112,9 @@
 
 \begin{proof}
 	Como $F(N)$ es característico en $N$, $F(N)$ es normal en $G$. Luego
-	$F(N)\subseteq N\cap F(G)$ pues $F(N)$ es nilpotente. Recíprocamente, como
-	$F(G)$ es normal en $G$, $F(G)\cap N$ es normal en $N$. Como $F(G)\cap N$
+	$F(N)\subseteq N\cap F(G)$ pues $F(N)$ es nilpotente. 
+	Para la otra inclusión, como
+	$F(G)$ es normal en $G$, el subgrupo $F(G)\cap N$ es normal en $N$. Como $F(G)\cap N$
 	es nilpotente, $F(G)\cap N\subseteq F(N)$. 
 \end{proof}
 
@@ -123,11 +124,11 @@
 \end{theorem}
 
 \begin{proof}
-	Sabemos que $N\cap G^{(0)}=N\ne 1$. Como $G$ es resoluble, existe $m\in\N$ tal que $N\cap
-	G^{(m)}=1$. Sea $n\in\N$ maximal tal que $N\cap G^{(n)}\ne
+	Sabemos que $N\cap G^{(0)}=N\ne\{1\}$. Como $G$ es resoluble, existe $m\in\N$ tal que $N\cap
+	G^{(m)}=\{1\}$. Sea $n\in\N$ maximal tal que $N\cap G^{(n)}\ne
 	1$. Como $[N,N]\subseteq N$ y $[G^{(n)},G^{(n)}]=G^{(n+1)}$, 
 	\[
-	[N\cap G^{(n)},N\cap G^{(n)}]\subseteq N\cap G^{(n+1)}=1.
+	[N\cap G^{(n)},N\cap G^{(n)}]\subseteq N\cap G^{(n+1)}=\{1\}.
 	\]
 	Luego $N\cap G^{(n)}$ es un subgrupo abeliano de $G$. Como además es normal
 	y nilpotente, $N\cap G^{(n)}\subseteq N\cap F(G)$.
@@ -140,16 +141,16 @@
 \end{theorem}
 
 \begin{proof}
-	Por el teorema~\ref{theorem:Fitting}, $F(G)$ es un subgrupo normal y nilpotente. 
+	Por el teorema de Fitting, $F(G)$ es un subgrupo normal y nilpotente. 
 	Sea $N$ un subgrupo minimal-normal de $G$. 
 	El subgrupo $N\cap F(G)$
-	es normal en $G$.  Además $[F(G),N]\subseteq N\cap F(G)$. Si $N\cap F(G)=1$ entonces
-	$[F(G),N]=1$. Si no, $N=N\cap F(G)\subseteq F(G)$ por la minimalidad de $N$. Como
-	$F(G)$ es nilpotente, $N\cap Z(F(G))\ne 1$ por el
+	es normal en $G$.  Además $[F(G),N]\subseteq N\cap F(G)$. Si $N\cap F(G)=\{1\}$ entonces
+	$[F(G),N]=\{1\}$. Si no, $N=N\cap F(G)\subseteq F(G)$ por la minimalidad de $N$. Como
+	$F(G)$ es nilpotente, $N\cap Z(F(G))\ne \{1\}$ por el
 	teorema~\ref{theorem:Z(nilpotent)}. Como $Z(F(G))$ es característico en $F(G)$ y
 	$F(G)$ es normal en $G$, $Z(F(G))$ es normal en $G$. Como $1\ne N\cap Z(F(G))$ es
 	normal en $G$, la minimalidad de $N$ implica que $N=N\cap Z(F(G))\subseteq
-	Z(F(G))$ y luego $[F(G),N]=1$. 
+	Z(F(G))$ y luego $[F(G),N]=\{1\}$. 
 \end{proof}
 
 \begin{corollary}
