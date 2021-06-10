@@ -1092,6 +1092,7 @@ completamente elemental, fue descubierto en 2014.
 \end{proof}
 
 \begin{lemma}[Hall]
+    \index{Lema!de Hall}
 	\label{lemma:Hall}
 	Sea $G$ un grupo nilpotente de clase dos y $x,y\in G$. Entonces
 	\[
@@ -1103,10 +1104,10 @@ completamente elemental, fue descubierto en 2014.
 \begin{proof}
 	Procederemos por inducción en $n$. Como el caso $n=1$ es trivial,
 	supongamos que el resultado es válido para algún $n\geq1$. Entonces,
-	gracias al lema~\ref{lemma:commutador}, 
+	gracias al lema anterior, 
 	\begin{align*}
 		(xy)^{n+1} &= (xy)^n(xy)=[y,x]^{n(n-1)/2}x^ny^{n-1}(yx)y\\
-		&=[y,x]^{n(n-1)/2}x^{n}[y^n,x]xy^{n+1}=[y,x]^{n(n-1)/2}[y,x]^nx^{n+1}y^{n+1}.
+		&=[y,x]^{n(n-1)/2}x^{n}[y^n,x]xy^{n+1}=[y,x]^{n(n-1)/2}[y,x]^nx^{n+1}y^{n+1}.\qedhere 
 	\end{align*}
 \end{proof}
 
@@ -1119,7 +1120,7 @@ completamente elemental, fue descubierto en 2014.
 \end{lemma}
 
 \begin{proof}
-	Por lema~\ref{lemma:Hall},
+	Por lema de Hall,
 	$(xy)^p=[y,x]^{p(p-1)/2}x^py^p=x^py^p$. 	
 \end{proof}
 
@@ -1141,7 +1142,7 @@ completamente elemental, fue descubierto en 2014.
 	\[
 		[x,y]^p=[x^p,y]=[1,y]=1.
 	\]
-	Luego, al usar el lema~\ref{lemma:Hall}, se concluye que
+	Luego, al usar el lema de Hall, se concluye que
 	$(xy)^p=[y,x]^{p(p-1)/2}x^py^p=1$.
 \end{proof}
 
