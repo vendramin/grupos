@@ -57,7 +57,7 @@
 
 
 \begin{example}
-	Sea $G=\Sym_3$. Es fácil ver que $O_2(G)=1$ y que $O_3(G)=\langle
+	Sea $G=\Sym_3$. Es fácil ver que $O_2(G)=\{1\}$ y que $O_3(G)=\langle
 	(123)\rangle$. Entonces $F(G)=\langle (123)\rangle$.
 \end{example}
 
@@ -69,7 +69,7 @@
 \end{theorem}
 
 \begin{proof}
-	Por definición $|F(G)|$ es el producto de los órdendes de los $O_p(G)$.
+	Por definición $|F(G)|$ es el producto de los órdenes de los $O_p(G)$.
 	Como entonces $O_p(G)\in\Syl_p(F(G))$,  se concluye que $F(G)$ es
 	nilpotente por tener un $p$-subgrupo de Sylow normal para cada primo $p$.
 	Luego $F(G)$ es nilpotente por el teorema~\ref{theorem:nilpotente:eq}.
@@ -89,7 +89,8 @@
 
 \begin{proof}
 	Como $Z(G)$ es nilpotente (por ser abeliano) y $Z(G)$ es normal en $G$,
-	$Z(G)\subseteq F(G)$ por el teorema~\ref{theorem:Fitting}.
+	$Z(G)\subseteq F(G)$ por el teorema de Fitting. 
+	%~\ref{theorem:Fitting}.
 \end{proof}
 
 \begin{corollary}[Fitting]
@@ -118,20 +119,25 @@
 	es nilpotente, $F(G)\cap N\subseteq F(N)$. 
 \end{proof}
 
+Veamos una aplicación a grupos finitos resolubles. 
+
 \begin{theorem}
-	Sea $G$ un grupo no trivial y resoluble. Todo subgrupo normal $N$ no
-	trivial contiene un subgrupo normal abeliano no trivial. 
+	Sea $G$ un grupo finito no trivial y resoluble. Todo subgrupo normal $N$ no
+	trivial contiene un subgrupo normal abeliano no trivial y este subgrupo está en realidad 
+	contenido en $F(N)$. 
 \end{theorem}
 
 \begin{proof}
-	Sabemos que $N\cap G^{(0)}=N\ne\{1\}$. Como $G$ es resoluble, existe $m\in\N$ tal que $N\cap
-	G^{(m)}=\{1\}$. Sea $n\in\N$ maximal tal que $N\cap G^{(n)}\ne
-	1$. Como $[N,N]\subseteq N$ y $[G^{(n)},G^{(n)}]=G^{(n+1)}$, 
+	Sabemos que $N\cap G^{(0)}=N\ne\{1\}$. Como $G$ es un grupo resoluble resoluble, 
+	existe $m\in\N$ tal que $N\cap
+	G^{(m)}=\{1\}$. Sea $n\in\N$ maximal tal que $N\cap G^{(n)}$ es no trivial. 
+	%\ne \{1\}$. 
+	Como $[N,N]\subseteq N$ y $[G^{(n)},G^{(n)}]=G^{(n+1)}$, 
 	\[
 	[N\cap G^{(n)},N\cap G^{(n)}]\subseteq N\cap G^{(n+1)}=\{1\}.
 	\]
 	Luego $N\cap G^{(n)}$ es un subgrupo abeliano de $G$. Como además es normal
-	y nilpotente, $N\cap G^{(n)}\subseteq N\cap F(G)$.
+	y nilpotente, $N\cap G^{(n)}\subseteq N\cap F(G)=F(N)$.
 \end{proof}
 
 \begin{theorem}
@@ -147,8 +153,10 @@
 	es normal en $G$.  Además $[F(G),N]\subseteq N\cap F(G)$. Si $N\cap F(G)=\{1\}$ entonces
 	$[F(G),N]=\{1\}$. Si no, $N=N\cap F(G)\subseteq F(G)$ por la minimalidad de $N$. Como
 	$F(G)$ es nilpotente, $N\cap Z(F(G))\ne \{1\}$ por el
-	teorema~\ref{theorem:Z(nilpotent)}. Como $Z(F(G))$ es característico en $F(G)$ y
-	$F(G)$ es normal en $G$, $Z(F(G))$ es normal en $G$. Como $1\ne N\cap Z(F(G))$ es
+	teorema de Hirsch. 
+	%~\ref{theorem:Z(nilpotent)}. 
+	Como $Z(F(G))$ es característico en $F(G)$ y
+	$F(G)$ es normal en $G$, $Z(F(G))$ es normal en $G$. Como $\{1\}\ne N\cap Z(F(G))$ es
 	normal en $G$, la minimalidad de $N$ implica que $N=N\cap Z(F(G))\subseteq
 	Z(F(G))$ y luego $[F(G),N]=\{1\}$. 
 \end{proof}
@@ -166,7 +174,7 @@
 	Demostremos la primera afirmación. Como $N$ es un $p$-grupo por el
 	lema~\ref{lemma:minimal_normal}, $N$ es nilpotente y luego $N\subseteq
 	F(G)$. 	Además $F(G)\subseteq C_G(N)$ por el
-	teorema~\ref{theorem:F(G)centraliza}.  Luego $N\subseteq Z(F(G))$. 
+	teorema anterior.  Luego $N\subseteq Z(F(G))$. 
 
 	Demostremos ahora la segunda afirmación. El subgrupo $H$ contiene un
 	subgrupo minimal-normal $N$ y $N\subseteq F(G)$. Luego $H\cap F(G)\ne1$. 

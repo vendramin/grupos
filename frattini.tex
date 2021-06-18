@@ -31,13 +31,13 @@
 	M_4=\langle (13)\rangle.
 	\]
 	Luego
-	$\Phi(G)=1$. 
+	$\Phi(G)=\{1\}$. 
 \end{example}
 
 \begin{example}
 	Sea $G=\langle g\rangle\simeq C_{12}$. Como $G$ es cíclico, los subgrupos de $G$ son 
 	\[
-	1,\quad
+	\{1\},\quad
 	\langle g^6\rangle\simeq C_2,\quad
 	\langle g^4\rangle\simeq C_3,\quad
 	\langle g^3\rangle\simeq C_4,\quad
@@ -46,7 +46,21 @@
 	\]
 	Como los únicos subgrupos maximales son $\langle g^3\rangle\simeq C_4$ y $\langle
 	g^2\rangle\simeq C_6$, obtenemos que $\Phi(G)=\langle g^3\rangle\cap \langle
-	g^2\rangle=\langle g^6\rangle\simeq C_2$.
+	g^2\rangle=\langle g^6\rangle\simeq C_2$. Veamos el diagrama:
+	% https://q.uiver.app/?q=WzAsNixbMiwzLCJcXHsxXFx9Il0sWzEsMiwiQ18yIl0sWzMsMiwiQ18zIl0sWzIsMSwiQ182Il0sWzEsMCwiQ197MTJ9Il0sWzAsMSwiQ180Il0sWzAsMSwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFswLDIsIiIsMix7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMiwzLCIiLDIseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzMsNCwiIiwyLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxLDUsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNSw0LCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzEsMywiIiwxLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ==
+\[\begin{tikzcd}
+	& {C_{12}} \\
+	{C_4} && {C_6} \\
+	& {C_2} && {C_3} \\
+	&& {\{1\}}
+	\arrow[no head, from=4-3, to=3-2]
+	\arrow[no head, from=4-3, to=3-4]
+	\arrow[no head, from=3-4, to=2-3]
+	\arrow[no head, from=2-3, to=1-2]
+	\arrow[no head, from=3-2, to=2-1]
+	\arrow[no head, from=2-1, to=1-2]
+	\arrow[no head, from=3-2, to=2-3]
+\end{tikzcd}\]
 \end{example}
 
 \begin{example}
@@ -104,7 +118,7 @@ gap> StructureDescription(FrattiniSubgroup(SL(2,3)));
 	contiene a $\Phi(N)$ y por lo tanto $\Phi(G)\supseteq\Phi(N)$. 
 \end{proof}
 
-El lema que sigue nos dice que los elementos del subgrupo de Fratiini son esencialmente
+El lema que sigue nos dice que los elementos del subgrupo de Frattini son esencialmente
 los "no-generadores" del grupo. 
 
 \begin{lemma}[de los no-generadores]
@@ -199,7 +213,8 @@ los "no-generadores" del grupo.
 \end{lemma}
 
 \begin{proof}
-	Sea $x\in N_G(H)$. Como $P\in\Syl_p(H)$ y $Q=xPx^{-1}\in\Syl_p(H)$, existe
+	Sea $x\in N_G(H)$. Como $P\in\Syl_p(H)$ y $Q=xPx^{-1}\in\Syl_p(H)$, gracias al segundo teorema de Sylow 
+	existe
 	$h\in H$ tal que $hQh^{-1}=(hx)P(hx)^{-1}=P$. Entonces $hx\in
 	N_G(P)\subseteq H$ y luego $x\in H$. 
 \end{proof}
@@ -229,7 +244,7 @@ los "no-generadores" del grupo.
 	$G$ es nilpotente.
 
 	Supongamos ahora que $G$ es nilpotente. Sea $M$ un subgrupo maximal de $G$.
-	Como $M$ es normal en $G$ y maximal, $G/M$ no tiene subgrupos propios.
+	Como $M$ es normal en $G$ y maximal, $G/M$ no tiene subgrupos propios no triviales.
 	Luego $G/M\simeq C_p$ para algún primo $p$. En particular $G/M$ es abeliano
 	y luego $[G,G]\subseteq M$. Como $[G,G]$ está contenido en
 	todo subgrupo maximal de $G$, $[G,G]\subseteq\Phi(G)$.
@@ -240,6 +255,7 @@ los "no-generadores" del grupo.
 	Sea $G$ un grupo finito. Entonces $G$ es nilpotente si y sólo si
 	$G/\Phi(G)$ es nilpotente.
 \end{theorem}
+
 %%% TODO: la demostración no está bien explicada!
 \begin{proof}
 	Si $G$ es nilpotente, entonces $G/\Phi(G)$ es nilpotente. Supongamos que $G/\Phi(G)$ es
@@ -253,7 +269,8 @@ los "no-generadores" del grupo.
 		G=\Phi(G)PN_G(P)=\Phi(G)N_G(P)
 	\]
 	pues $P\subseteq N_G(P)$. Luego $G=N_G(P)$ por el
-	lema~\ref{lemma:nongenerators} y entonces $P$ es normal en $G$. Esto
+	lema \ref{lemma:G=HPhi(G)}) 
+	y entonces $P$ es normal en $G$. Esto
 	implica que $G$ es nilpotente.
 \end{proof}
 
@@ -267,22 +284,31 @@ los "no-generadores" del grupo.
 
 \begin{proof}
 	Como $N$ es nilpotente, $[N,N]\subseteq\Phi(N)$ por el
-	teorema~\ref{theorem:Wielandt}.	
+	teorema de Wielandt (teorema~\ref{theorem:Wielandt}).	
 	Por la proposición~\ref{proposition:phi(N)phi(G)},
 	$[N,N]\subseteq\Phi(N)\subseteq\Phi(G)$. 
 	Por propiedad universal, existe un morfismo
 	$G/[N,N]\to G/\Phi(G)$ sobreyectivo que hace conmutar el diagrama
     \[
-	\xymatrix{
-	G
-	\ar[d]
-	\ar[r]
-	& G/\Phi(G)
-	\\
-	G/[N,N]\ar@{-->}[ur]
-	}
-%    \xymatrix{ & P\ar[d]^f\ar@{-->}[ld]_h\\ M\ar[r]^g & N\ar[r] & 0 }
+    \begin{tikzcd}
+	G & {G/\Phi(G)} \\
+	{G/[N,N]}
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=1-1, to=2-1]
+	\arrow[dashed, from=2-1, to=1-2]
+    \end{tikzcd}
     \]
+%     \[
+% 	\xymatrix{
+% 	G
+% 	\ar[d]
+% 	\ar[r]
+% 	& G/\Phi(G)
+% 	\\
+% 	G/[N,N]\ar@{-->}[ur]
+% 	}
+%    \xymatrix{ & P\ar[d]^f\ar@{-->}[ld]_h\\ M\ar[r]^g & N\ar[r] & 0 }
+%    \]
 	Como por hipótesis $G/[N,N]$ es nilpotente, $G/\Phi(G)$ es nilpotente por
 	el teorema~\ref{theorem:nilpotente}. Luego $G$ es nilpotente por el
 	teorema anterior. %~\ref{theorem:G/phi(G)}.
@@ -322,7 +348,7 @@ Si $p$ es un número primo, $\F_p$ denota al cuerpo de $p$ elementos.
 	pues $G$ es un $p$-grupo.  Sean $K_1,\dots,K_m$ son los subgrupos maximales
 	de $G$. Si $x\in G$ entonces $x^p\in K_j$ para todo $j\in\{1,\dots,m\}$ y
 	luego $x^p\in\Phi(G)=\cap_{j=1}^m K_j$. Además $G/\Phi(G)$ es abeliano pues
-	$[G,G]\subseteq \Phi(G)$ por ser $G$ nilpotente
+	$[G,G]\subseteq \Phi(G)$ por ser $G$ nilpotente por el teorema de Wielandt 
 	(teorema~\ref{theorem:Wielandt}). 
 \end{proof}
 
@@ -335,15 +361,15 @@ Si $p$ es un número primo, $\F_p$ denota al cuerpo de $p$ elementos.
 %%% TODO: explicar mejor la demostración
 
 \begin{proof}
-	Vimos en el lema~\ref{lemma:Burnside:minimal} que $G/\Phi(G)$ es un espacio
+	Vimos en el lema anterior que $G/\Phi(G)$ es un espacio
 	vectorial sobre $\F_p$. Sea $\pi\colon G\to G/\Phi(G)$ el morfismo canónico
 	y sea $\{x_1,\dots,x_n\}$ un conjunto minimal de generadores de $G$.
 	Veamos que $\{\pi(x_1),\dots,\pi(x_n)\}$ es un conjunto linealmente
 	independiente de $G/\Phi(G)$.  Supongamos sin perder generalidad que
 	$\pi(x_1)\in\langle \pi(x_2),\dots,\pi(x_n)\rangle$. Existe entonces $y\in
 	\langle x_2,\dots,x_n\rangle$ tal que $x_1y^{-1}\in\Phi(G)$. Como $G$ está
-	generado por $\{x_1y^{-1},x_2,\dots,x_n\}$ y $x_1y^{-1}\in\Phi(G)$, el
-	lema~\ref{lemma:nongenerators} implica que $G$ también está generado por
+	generado por $\{x_1y^{-1},x_2,\dots,x_n\}$ y $x_1y^{-1}\in\Phi(G)$, el 
+	lema de los no-generadores (lema~\ref{lemma:nongenerators}) implica que $G$ también está generado por
 	$\{x_2,\dots,x_n\}$, una contradicción a la minimalidad. Luego $n=\dim
 	G/\Phi(G)$.
 \end{proof}
