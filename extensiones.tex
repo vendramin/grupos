@@ -26,11 +26,11 @@
 	por $Q$. También es extensión de $Q$ por $K$.
 \end{example}
 
-\begin{remark}
-	\label{remark:extension}
+% \begin{remark}
+%	\label{remark:extension}
 	Sea $G$ una extensión de $K$ por $Q$. Si $L$ es un subgrupo de $G$ que
 	contiene a $K$ entonces $L$ es una extensión de $K$ por $L/K$. 
-\end{remark}
+%\end{remark}
 
 \begin{definition}
 	\index{Morfismo!de extensiones}
@@ -374,10 +374,10 @@
 	\]
 \end{definition}
 
-\begin{exercise}
+\begin{example}
 	Sea $Q$ un grupo que actúa por automorfismos en $K$. Para cada $k\in K$, la
 	función $Q\to K$, $x\mapsto [k,x]=kxk^{-1}x^{-1}$, es una derivación.
-\end{exercise}
+\end{example}
 
 % \begin{svgraybox}
 % 	Para $k\in K$ y $x\in Q$ escribimos $\delta_k(x)=[k,x]$. Entonces 
@@ -423,6 +423,12 @@
 % 	$\varphi(xy)=\varphi(x)(x\cdot \varphi(y))=1(x\cdot 1)=1$. 
 % \end{svgraybox}
 
+Recordemos que un subgrupo $K$ de un grupo $G$ admite un complemento $Q$ si 
+$G$ se factoriza como 
+$G=KQ$ y $K\cap Q=\{1\}$. 
+El ejemplo típico es el siguiente, el producto semidirecto $G=K\rtimes Q$, donde $K$ es un subgrupo
+normal de $G$ y $Q$ es un subgrupo de $G$. 
+
 \begin{theorem}
 	\label{theorem:complementos}
 	Sea $Q$ un grupo que actúa por automorfismos en el grupo $K$.  Existe una
@@ -433,11 +439,11 @@
 \begin{proof}
 	El grupo $Q$ actúa en $K$ por conjugación, entonces $\delta\in\Der(Q,K)$ si
 	y sólo si $\delta(xy)=\delta(x)x\delta(y)x^{-1}$, $x,y\in Q$. En este caso,
-	las fórmulas del ejercicio~\ref{exercise:1cocycle} quedan así:
+	las fórmulas del ejercicio anterior quedan así:
 	$\delta(1)=1$, $\delta(x^{-1})=x^{-1}\delta(x)^{-1}x$.
 	
 	Sea $\mathcal{C}$ el conjunto de complementos de $K$ en $K\rtimes Q$.  Sea
-	$C\in\mathcal{C}$. Si $x\in Q$, por el lemma~\ref{lemma:semidirecto}
+	$C\in\mathcal{C}$. Si $x\in Q$, sabemos que 
 	existen únicos $k\in K$ y $c\in C$ tales que $x=k^{-1}c$. Queda bien
 	definida entonces la función $\delta_C\colon Q\to K$, $x\mapsto k$. Vale
 	que $\delta(x)x=c\in C$. 
@@ -460,11 +466,13 @@
 	\]
 
 	Veamos que $\Delta$ es un subgrupo de $K\rtimes Q$. Como $\delta(1)=1$,
-	$1\in X$. Si $x,y\in \Delta$ entonces
+	$1\in X$. Si $x,y\in Q$ entonces
 	$\delta(x)x\delta(y)y=\delta(x)x\delta(y)x^{-1}xy=\delta(xy)xy\in \Delta$.
-	Por último si $x\in \Delta$ entonces
+	Por último si $x\in Q$ entonces
 	$(\delta(x)x)^{-1}=x^{-1}\delta(x)^{-1}xx^{-1}=\delta(x^{-1})x^{-1}$.
-	Veamos que $\Delta\cap K=1$. Si $x\in Q$ es tal que $\delta(x)x\in K$
+	
+	
+	Veamos que $\Delta\cap K=\{1\}$. Si $x\in Q$ es tal que $\delta(x)x\in K$
 	entonces, como $\delta(x)\in K$, $x\in K\cap Q=1$. Si $g\in G$ entonces
 	existen únicos $k\in K$, $x\in Q$ tales que $g=kx$. Escribimos
 	$g=k\delta(x)^{-1}\delta(x)x$. Como $k\delta(x)^{-1}\in K$ y $\delta(x)x\in
@@ -505,7 +513,7 @@
 	Una derivación interior también se llama \textbf{$1$-coborde}.
 \end{definition}
 
-\begin{theorem}
+\begin{theorem}[Sysak]
 	\index{Teorema!de Sysak}
 	\index{Sysak, Y.}
 	\label{theorem:Sysak}
@@ -533,7 +541,7 @@
 	se concluye que $x=y$ y luego $\delta(x)=[k,x]$. 
 
 	Demostremos la tercera afirmación. Si $x\in Q$ es tal que $\delta(x)x=y\in
-	Q$ entonces $\delta(x)=yx^{-1}\in K\cap Q=1$. Recíprocamente, si $x\in Q$
+	Q$ entonces $\delta(x)=yx^{-1}\in K\cap Q=\{1\}$. Recíprocamente, si $x\in Q$
 	es tal que $\delta(x)=1$ entonces $x=\delta(x)x\in Q\cap\Delta$. 
 
 	Demostremos la cuarta afirmación. Si $\delta$ es sobreyectiva, para cada
@@ -548,7 +556,7 @@
 
 \begin{definition}
 	Un grupo $G$ admite una \textbf{factorización triple} si tiene subgrupos
-	$A$, $B$ y $M$ tales que $G=MA=MB=AB$ y $A\cap M=B\cap M=1$.
+	$A$, $B$ y $M$ tales que $G=MA=MB=AB$ y $A\cap M=B\cap M=\{1\}$.
 \end{definition}
 
 %%% TODO:
@@ -573,14 +581,14 @@
 	$\ker\delta=1$.
 \end{exercise}
 
-\begin{proof}
-	Sean $x,y\in Q$ tales que $\delta(x)=\delta(y)$. Como $\delta(x^{-1}y)=1$
-	pues 
-	\[
-	\delta(x^{-1}y)=\delta(x^{-1})(x^{-1}\delta(y)x)=\delta(x^{-1})x^{-1}\delta(x)x=\delta(x^{-1}x)=\delta(1)=1
-	\]
-	y $\delta$ es inyectiva, $x^{-1}y=1$. La afirmación recíproca es trivial.
-\end{proof}
+% \begin{proof}
+% 	Sean $x,y\in Q$ tales que $\delta(x)=\delta(y)$. Como $\delta(x^{-1}y)=1$
+% 	pues 
+% 	\[
+% 	\delta(x^{-1}y)=\delta(x^{-1})(x^{-1}\delta(y)x)=\delta(x^{-1})x^{-1}\delta(x)x=\delta(x^{-1}x)=\delta(1)=1
+% 	\]
+% 	y $\delta$ es inyectiva, $x^{-1}y=1$. La afirmación recíproca es trivial.
+% \end{proof}
 
 \begin{corollary}
 	Si $\delta\in\Der(Q,K)$ es biyectivo entonces $K$ admite un complemento
@@ -660,10 +668,8 @@ escrito aditivamente.
 	f(s_1,\dots,s_n)$. 
 \end{definition}
 
-\begin{remark}
 	El conjunto $C^n(G,A)$ de $n$-cocadenas de $G$ con valores en
 	$A$ es un grupo abeliano. 
-\end{remark}
 
 \begin{definition}
 	\index{Coborde}
@@ -707,6 +713,8 @@ escrito aditivamente.
 	La composición $C^n(G,A)\xrightarrow{d} C^{n+1}(G,A)\xrightarrow{d}
 	C^{n+2}(G,A)$ es cero.
 \end{lemma}
+
+La demostración del lema anterior es fácil pero tediosa, por eso queda como ejercicio. 
 
 \begin{definition}
 	\index{Cociclo}

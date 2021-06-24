@@ -1,30 +1,35 @@
 \chapter{Super resolubilidad}
 
-%\section{Grupos superresolubles}
+%\section{Grupos súper-resolubles}
 \label{super}
 
 \begin{definition}
-	\index{Grupo!superresoluble}
-	Un grupo $G$ se dice \textbf{superresoluble} si existe una sucesión de
+	\index{Grupo!súper-resoluble}
+	Un grupo $G$ se dice \textbf{súper-resoluble} si existe una sucesión de
 	subgrupos normales
 	\[
-		G=G_0\supseteq G_1\supseteq\cdots\supseteq G_n=1
+		G=G_0\supseteq G_1\supseteq\cdots\supseteq G_n=\{1\}
 	\]
-	tales que cada cociente $G_{i-1}/G_i$ es cíclico.
+	tal que cada cociente $G_{i-1}/G_i$ es cíclico.
 \end{definition}
 
+Observemos que en la definición anterior no se pide que $G$ sea un grupo finito. Los cocientes
+pueden ser entonces grupos cíclicos de orden $n$ o grupos isomorfos a $\Z$. 
+
 \begin{example}
-	El grupo $\D_{2n}$ es superresoluble pues $\D_{2n}\supseteq \langle
-	r\rangle\supseteq 1$ es una sucesión de subgrupos normales con factores
+	El grupo diedral $\D_{n}$ de orden $2n$ es súper-resoluble pues 
+    \[	
+    \D_{n}\supseteq \langle
+	r\rangle\supseteq \{1\}
+	\]
+	es una sucesión de subgrupos normales con factores
 	cíclicos.
 \end{example}
 
-\begin{remark}
-	Todo grupo superresoluble es resoluble, ver ejercicio~\ref{exercise:resoluble}.
-\end{remark}
+Todo grupo súper-resoluble es resoluble, ver ejercicio~\ref{exercise:resoluble}.
 
 \begin{example}
-	El grupo $\Alt_4$ es resoluble pero no es superresoluble. El único 
+	El grupo $\Alt_4$ es resoluble pero no es súper-resoluble. El único 
 	subgrupo propio no trivial normal de $\Alt_4$ es
 	\[
 	\{\id,(12)(34),(13)(24),(14)(23)\}\simeq C_2\times C_2.
@@ -33,10 +38,13 @@
 	cíclicos.	
 \end{example}
 
-% aff(Z) es superresoluble
+\begin{exercise}
+    Demuestre que el grupo $\Aff(\Z)$ es super resoluble. 
+\end{exercise}
+% aff(Z) es súper-resoluble
 
 \begin{example}
-	El grupo $\SL_2(3)$ es resoluble pero no es superresoluble:
+	El grupo $\SL_2(3)$ es resoluble pero no es súper-resoluble:
 \begin{lstlisting}
 gap> IsSolvable(SL(2,3));
 true
@@ -46,129 +54,135 @@ false
 \end{example}
 
 \begin{exercise}
-	\label{exercise:super}
+	\label{xca:super}
 	Demuestre las siguientes afirmaciones:
 	\begin{enumerate}
-		\item Todo subgrupo de un grupo superresoluble es superresoluble.
-		\item Todo cociente de un grupo superresoluble es superresoluble.
+		\item Todo subgrupo de un grupo súper-resoluble es súper-resoluble.
+		\item Todo cociente de un grupo súper-resoluble es súper-resoluble.
 	\end{enumerate}
 \end{exercise}
 
-\begin{svgraybox}
-	Sea $G$ un grupo superresoluble y sea 			
-	\[ 
-	G=G_0\supseteq G_1\supseteq \cdots\supseteq G_n=1 
-	\] 
-	una sucesión de subgrupos normales
-	donde cada cociente $G_{i-1}/G_{i}$ es cíclico. 
-	\begin{enumerate}
-		\item Sea $H$ un subgrupo de $G$. Como $G$ es
-			superresoluble, Sea 
-			\[
-			H=H\cap G_0\supseteq H\cap G_1\supseteq\cdots\supseteq H\cap G_n=1
-			\]
-			una sucesión de subgrupos de $H$. Cada $H\cap G_i$ es normal en $H$
-			pues $G_i$ es normal en $G$. Fijemos $i\in\{1,\dots,n\}$ y sea
-			$\pi_{i-1}\colon G_{i-1}\to G_{i-1}/G_{i}$ el morfismo canónico. La
-			restricción de $\pi_{i-1}$ al subgrupo $H\cap G_{i-1}$ es un morfismo con
-			núcleo $G_{i}\cap H$.  Al usar el teorema de isomorfismos vemos que 
-			\[
-			\frac{H\cap G_{i-1}}{H\cap G_{i}}\simeq \pi_{i-1}(H\cap G_i)\subseteq G_{i-1}/G_i
-			\]
-			es un grupo cíclico por ser subgrupo de un grupo cíclico. 
-		\item Sea $K$ un subgrupo normal de $G$ y sea $\pi\colon G\to G/K$ el
-			morfismo canónico. Para cada $i$ sea $Q_i=\pi(G_i)$. Cada $Q_i$ es
-			normal en $Q_n=\pi(G_n)=G/K$ pues $G_i$ es normal en $G$. Como
-			$G_{i-1}K=G_{i-1}(G_iK)$ para todo $i$, 
-			el grupo
-			\begin{align*}
-			Q_{i-1}/Q_i
-			&\simeq\frac{G_{i-1}/G_{i-1}\cap K}{G_i/G_i\cap K}
-			\simeq \frac{G_{i-1}K/K}{G_{i}K/K}\\
-			&\simeq\frac{ G_{i-1}K}{G_iK}
-			\simeq\frac{ G_{i-1}(G_iK)}{G_iK}
-			\simeq\frac{ G_{i-1}}{G_iK\cap G_{i-1}}
-			\simeq\frac{ G_{i-1}/G_i}{G_iK\cap G_{i-1}/G_i}
-			\end{align*}
-			es cíclico por ser un cociente de un grupo cíclico.
-	\end{enumerate}
-\end{svgraybox}
+% \begin{svgraybox}
+% 	Sea $G$ un grupo súper-resoluble y sea 			
+% 	\[ 
+% 	G=G_0\supseteq G_1\supseteq \cdots\supseteq G_n=1 
+% 	\] 
+% 	una sucesión de subgrupos normales
+% 	donde cada cociente $G_{i-1}/G_{i}$ es cíclico. 
+% 	\begin{enumerate}
+% 		\item Sea $H$ un subgrupo de $G$. Como $G$ es
+% 			súper-resoluble, Sea 
+% 			\[
+% 			H=H\cap G_0\supseteq H\cap G_1\supseteq\cdots\supseteq H\cap G_n=1
+% 			\]
+% 			una sucesión de subgrupos de $H$. Cada $H\cap G_i$ es normal en $H$
+% 			pues $G_i$ es normal en $G$. Fijemos $i\in\{1,\dots,n\}$ y sea
+% 			$\pi_{i-1}\colon G_{i-1}\to G_{i-1}/G_{i}$ el morfismo canónico. La
+% 			restricción de $\pi_{i-1}$ al subgrupo $H\cap G_{i-1}$ es un morfismo con
+% 			núcleo $G_{i}\cap H$.  Al usar el teorema de isomorfismos vemos que 
+% 			\[
+% 			\frac{H\cap G_{i-1}}{H\cap G_{i}}\simeq \pi_{i-1}(H\cap G_i)\subseteq G_{i-1}/G_i
+% 			\]
+% 			es un grupo cíclico por ser subgrupo de un grupo cíclico. 
+% 		\item Sea $K$ un subgrupo normal de $G$ y sea $\pi\colon G\to G/K$ el
+% 			morfismo canónico. Para cada $i$ sea $Q_i=\pi(G_i)$. Cada $Q_i$ es
+% 			normal en $Q_n=\pi(G_n)=G/K$ pues $G_i$ es normal en $G$. Como
+% 			$G_{i-1}K=G_{i-1}(G_iK)$ para todo $i$, 
+% 			el grupo
+% 			\begin{align*}
+% 			Q_{i-1}/Q_i
+% 			&\simeq\frac{G_{i-1}/G_{i-1}\cap K}{G_i/G_i\cap K}
+% 			\simeq \frac{G_{i-1}K/K}{G_{i}K/K}\\
+% 			&\simeq\frac{ G_{i-1}K}{G_iK}
+% 			\simeq\frac{ G_{i-1}(G_iK)}{G_iK}
+% 			\simeq\frac{ G_{i-1}}{G_iK\cap G_{i-1}}
+% 			\simeq\frac{ G_{i-1}/G_i}{G_iK\cap G_{i-1}/G_i}
+% 			\end{align*}
+% 			es cíclico por ser un cociente de un grupo cíclico.
+% 	\end{enumerate}
+% \end{svgraybox}
 
 \begin{exercise}
 	\label{exercise:directosuper}
-	Demuestre que el producto directo de grupos superresolubles es
-	superresoluble.
+	Demuestre que el producto directo de grupos súper-resolubles es
+	súper-resoluble.
 \end{exercise}
 
-\begin{svgraybox}
-	Supongamos que $G$ admite una sucesión $G=G_0\supseteq G_1\supseteq
-	\cdots\supseteq G_n=1$ de de subgrupos normales tales que cada cociente
-	$G_{i-1}/G_i$ es cíclico, y que $H$ admite una sucesión $H=H_0\supseteq
-	H_1\supseteq \cdots\supseteq H_m=1$ de subgrupos normales donde cada
-	$H_{i-1}/H_i$ es cíclico. Consideramos la sucesión 
-	\[
-		1=G_0\times H_0\supseteq G_1\times H_0\supseteq\cdots\supseteq G_n\times H_0\supseteq G_n\times H_1\supseteq \cdots\supseteq G_n\times H_m=G\times H
-	\]
-	tiene factores cíclicos pues 
-	cada $G_{i-1}\times H_0/G_i\times H_0\simeq G_{i-1}/G_i$ es cíclico y cada 
-	$G_n\times H_{j-1}/G_n\times H_j$ también pues
-	\[
-	G_n\times H_{j-1}/G_n\times H_j
-	\simeq \frac{GH_{j-1}/G}{GH_j/G}
-	\simeq \frac{H_{j-1}/H_{j-1}\cap G}{H_j/H_j\cap G}\simeq H_{j-1}/H_j.
-	\]
-\end{svgraybox}
+% \begin{svgraybox}
+% 	Supongamos que $G$ admite una sucesión $G=G_0\supseteq G_1\supseteq
+% 	\cdots\supseteq G_n=1$ de de subgrupos normales tales que cada cociente
+% 	$G_{i-1}/G_i$ es cíclico, y que $H$ admite una sucesión $H=H_0\supseteq
+% 	H_1\supseteq \cdots\supseteq H_m=1$ de subgrupos normales donde cada
+% 	$H_{i-1}/H_i$ es cíclico. Consideramos la sucesión 
+% 	\[
+% 		1=G_0\times H_0\supseteq G_1\times H_0\supseteq\cdots\supseteq G_n\times H_0\supseteq G_n\times H_1\supseteq \cdots\supseteq G_n\times H_m=G\times H
+% 	\]
+% 	tiene factores cíclicos pues 
+% 	cada $G_{i-1}\times H_0/G_i\times H_0\simeq G_{i-1}/G_i$ es cíclico y cada 
+% 	$G_n\times H_{j-1}/G_n\times H_j$ también pues
+% 	\[
+% 	G_n\times H_{j-1}/G_n\times H_j
+% 	\simeq \frac{GH_{j-1}/G}{GH_j/G}
+% 	\simeq \frac{H_{j-1}/H_{j-1}\cap G}{H_j/H_j\cap G}\simeq H_{j-1}/H_j.
+% 	\]
+% \end{svgraybox}
 
 \begin{exercise}
 	Sean $H$ y $K$ subgrupos normales de un grupo $G$ tales que $G/K$ y $G/H$
-	son superresolubles. Demuestre que $G/H\cap K$ es superresoluble.
+	son súper-resolubles. Demuestre que $G/H\cap K$ es súper-resoluble.
 \end{exercise}
 
-\begin{svgraybox}
-	El producto directo $G/H\times G/K$ es superresoluble. Sea $\partial\colon
-	G\to G/H\times G/K$, $g\mapsto (gH,gK)$.  Como $\ker\partial=H\cap K$, se
-	tiene que $G/H\cap K\simeq\partial(G)$, que es superresoluble por ser un
-	subgrupo de un grupo superresoluble.
-\end{svgraybox}
+% \begin{svgraybox}
+% 	El producto directo $G/H\times G/K$ es súper-resoluble. Sea $\partial\colon
+% 	G\to G/H\times G/K$, $g\mapsto (gH,gK)$.  Como $\ker\partial=H\cap K$, se
+% 	tiene que $G/H\cap K\simeq\partial(G)$, que es súper-resoluble por ser un
+% 	subgrupo de un grupo súper-resoluble.
+% \end{svgraybox}
 
 \begin{proposition}
 	\label{proposition:Nciclico}
 	Sea $N$ un subgrupo normal cíclico de un grupo $G$. Si $G/N$ es
-	superresoluble entonces $G$ es superresoluble.
+	súper-resoluble entonces $G$ es súper-resoluble.
 \end{proposition}
+
+% todo: arreglar 
 
 \begin{proof}
 	Sea $\pi\colon G\to G/N$ el morfismo canónico y sea $Q=G/N$. Como $Q$ es
-	superresoluble, tenemos una sucesión
+	súper-resoluble, tenemos una sucesión
 	\[
-		Q=Q_0\supseteq Q_1\supseteq \cdots\supseteq Q_n=1
+		Q=Q_0\supseteq Q_1\supseteq \cdots\supseteq Q_n=\{1\}
 	\]
 	de subgrupos normales de $Q$ tales que cada cociente $Q_{i-1}/Q_i$ es
 	cíclico. Cada elemento de la sucesión
 	\[
-	G=\pi^{-1}(Q)\supseteq\pi^{-1}(Q_1)\supseteq\cdots\supseteq \pi^{-1}(Q_n)=N\supseteq 1
+	G=\pi^{-1}(Q)\supseteq\pi^{-1}(Q_1)\supseteq\cdots\supseteq \pi^{-1}(Q_n)=N\supseteq \{1\}
 	\]
-	es normal en $G$ (por la correspondencia) cada cociente es cíclico $N$ es cíclico y cada 
-	\[
-	\frac{\pi^{-1}(Q_j)}{\pi^{-1}(Q_{j+1})}
-		=\frac{Q_jN}{Q_{j+1}N}
-		\simeq\frac{Q_jN/N}{Q_{j+1}N/N}
-		\simeq\frac{Q_j(Q_{j+1}N)}{Q_{j+1}N}
-		\simeq\frac{Q_j/Q_{j+1}}{Q_{j+1}N\cap Q_j}
-	\]
-	es cíclico por ser cociente de un grupo cíclico.
+	es normal en $G$ (por la correspondencia) y dejamos como 
+	ejercicio demostrar que cada cociente es cíclico. 
+% 	cada cociente es cíclico $N$ es cíclico. 
+% 	Queda como ejercicio demostrar 
+% 	y cada 
+% 	\[
+% 	\frac{\pi^{-1}(Q_j)}{\pi^{-1}(Q_{j+1})}
+% 		=\frac{Q_jN}{Q_{j+1}N}
+% 		\simeq\frac{Q_jN/N}{Q_{j+1}N/N}
+% 		\simeq\frac{Q_j(Q_{j+1}N)}{Q_{j+1}N}
+% 		\simeq\frac{Q_j/Q_{j+1}}{Q_{j+1}N\cap Q_j}
+% 	\]
+% 	es cíclico por ser cociente de un grupo cíclico.
 \end{proof}
 
 \begin{theorem}
 	\label{theorem:ZorCp}
-	Sea $G$ un grupo superresoluble no trivial. Entonces $G$ posee una sucesión
-	de subgrupos $G=G_0\supseteq G_1\supseteq\cdots\supseteq G_n=1$ de
+	Sea $G$ un grupo súper-resoluble no trivial. Entonces $G$ posee una sucesión
+	de subgrupos $G=G_0\supseteq G_1\supseteq\cdots\supseteq G_n=\{1\}$ de
 	subgrupos normales tales que cada cociente $G_{i-1}/G_i$ es cíclico de
 	orden primo o isomorfo a $\Z$.
 \end{theorem}
 
 \begin{proof}
-	Sea $G=G_0\supseteq G_1\supseteq\cdots\supseteq G_n=1$ una sucesión de
+	Sea $G=G_0\supseteq G_1\supseteq\cdots\supseteq G_n=\{1\}$ una sucesión de
 	subgrupos normales tal que cada cociente $G_{i-1}/G_i$ es cíclico. Sea
 	$i\in\{1,\dots,n\}$ tal que el cociente $G_{i-1}/G_i\simeq C_n$ para algún
 	$n$ que no es primo y sea $\pi\colon G_{i-1}\to G_{i-1}/G_i$ el morfismo
@@ -178,11 +192,13 @@ false
 	
 	Veamos que $H$ es normal en $G$. Sea $g\in G$. Como $\pi(gHg^{-1})$ es un
 	subgrupo de orden $p$ del cíclico $G_{i-1}/G_i$, $\pi(gHg^{-1})=\pi(H)$. Luego
-	$gHg^{-1}=G_{i}H$,
-	\[
-	\frac{gHg^{-1}}{G_i}=\frac{G_{i}H}{G_{i}}\simeq \frac{H}{G_i\cap H}=\frac{H}{G_i}
-	\]
-	y entonces $gHg^{-1}\subseteq H$.  Observemos que $H/G_i$ es cíclico de orden
+	$gHg^{-1}=G_{i}H\subseteq H$ y en conclusión $gHg^{-1}=H$. 
+% 	\[
+% 	\frac{gHg^{-1}}{G_i}=\frac{G_{i}H}{G_{i}}\simeq \frac{H}{G_i\cap H}=\frac{H}{G_i}
+% 	\]
+% 	y entonces $gHg^{-1}\subseteq H$.  
+
+    Observemos que $H/G_i$ es cíclico de orden
 	primo pues 
 	\[
 		H/G_i=H/H\cap G_i\simeq \pi(H)\simeq C_p
@@ -191,25 +207,31 @@ false
 	\[
 	G_{i-1}/H\simeq\frac{G_{i-1}/G_i}{H/G_i}
 	\]
-	es cociente de un grupo cíclico. Demostramos que al insertar $H$ en la
+	es cociente de un grupo cíclico.
+	
+	Demostramos que al insertar $H$ en la
 	sucesión obtenemos una nueva sucesión con factores cíclicos y donde
 	$H/G_{i}$ es cíclico de orden primo. Al repetir este proceso se obtiene el
 	resultado deseado.
 \end{proof}
 
+Una aplicación inmediata:
+
 \begin{corollary}
-	Un grupo finito superresoluble admite una sucesión de subgrupos 
-	$G=G_0\supseteq G_1\supseteq\cdots\supseteq G_n=1$ 
+	Un grupo finito súper-resoluble admite una sucesión de subgrupos 
+	$G=G_0\supseteq G_1\supseteq\cdots\supseteq G_n=\{1\}$ 
 	normales donde cada cociente $G_{i-1}/G_i$ es cíclico de orden primo.
 \end{corollary}
 
-\begin{proof}
-	Es consecuencia inmediata del teorema~\ref{theorem:ZorCp}.
-\end{proof}
+% \begin{proof}
+% 	Es consecuencia inmediata del teorema~\ref{theorem:ZorCp}.
+% \end{proof}
+
+Veamos otras propiedades importantes de grupos súper-resolubles. 
 
 \begin{theorem}
 	\label{theorem:super_structure}
-	Sea $G$ un grupo superresoluble. 
+	Sea $G$ un grupo súper-resoluble. 
 	\begin{enumerate}
 		\item Si $N$ es minimal-normal en $G$ entonces $N\simeq C_p$ para algún primo $p$.
 		\item Si $M$ es maximal en $G$ entonces $(G:M)=p$ para algún primo $p$.
@@ -221,29 +243,29 @@ false
 
 \begin{proof}
 	Demostremos la primera afirmación. 
-	%Como $G$ es superresoluble, $N$ es
+	%Como $G$ es súper-resoluble, $N$ es
 	%resoluble. El conmutador $[N,N]$ es característico en $N$ y luego $[N,N]$
 	%es normal en $G$. Por la minimalidad, $N$ entonces un grupo abeliano. 
-	Como $G$ es superresouble, existe una sucesión $G=G_0\supseteq G_1\supseteq
-	G_2\supseteq\cdots\supseteq G_n=1$ de subgrupos normales con factores
-	$G_{i-1}/G_i$ cíclicos. Como cada $G_i\cap N\subseteq N$ es normal en $G$,
-	cada $G_i\cap N$ es trivial o igual a $N$. Además $N\cap G_0=1$ y $N\cap
-	G_n=N$. Sea $j$ el máximo entero tal que $N\cap G_j=1$. Como $N\subseteq
-	G_{j+1}$ (pues $N\cap G_{j+1}=N$), la composición
+	Como $G$ es súper-resoluble, existe una sucesión $G=G_0\supseteq G_1\supseteq
+	G_2\supseteq\cdots\supseteq G_n=\{1\}$ de subgrupos normales con factores
+	$G_{i-1}/G_i$ cíclicos. Como cada $G_i\cap N$ es un subgrupo normal de $G$ contenido en $N$, la
+	minimalidad de $N$ implica que 
+	cada $G_i\cap N$ es trivial o igual a $N$. Además $N\cap G_0=N$ y $N\cap
+	G_n=\{1\}$. Sea $j$ el mínimo entero tal que $N\cap G_j=\{1\}$. Como $N\subseteq
+	G_{j-1}$ (pues $N\cap G_{j-1}=N$), la composición
 	\[
-	N\hookrightarrow G_{j+1}\to G_{j+1}/G_j
+	N\hookrightarrow G_{j-1}\to G_{j-1}/G_j
 	\]
-	es un monomorfismo pues tiene núcleo igual a $N\cap G_{j}=1$. Luego $N$ es
-	cíclico por ser isomorfo a un subgrupo del cíclico $G_{i+1}/G_i$. Si
-	$G_{i+1}/G_i\simeq\Z$ entonces $N\simeq\Z$ pero no sería minimal-normal ya
+	es un morfismo inyectivo, pues tiene núcleo igual a $N\cap G_{j}=\{1\}$. Luego $N$ es
+	cíclico por ser isomorfo a un subgrupo del cíclico $G_{i-1}/G_i$. Si
+	$G_{i-1}/G_i\simeq\Z$ entonces $N\simeq\Z$ pero no sería minimal-normal ya
 	que por ejemplo $2\Z$ es un subgrupo característico de $\Z$ y por lo tanto
-	es normal en $G$. Luego $N$ es cíclico y finito y entonces $N\simeq C_p$
-	por el lema~\ref{lemma:minimal_normal}.
+	es normal en $G$. Luego $N$ es cíclico y finito y entonces $N\simeq C_p$. 
 
 	Demostremos la segunda afirmación. Sea $M$ un subgrupo maximal de $G$. 
 	Si $M$ es normal en $G$ entonces $G/M$ no contiene subgrupos propios no
 	triviales. 
-	%Como $G/M$ es superresoluble, la sucesión $1\supseteq
+	%Como $G/M$ es súper-resoluble, la sucesión $1\supseteq
 	%G/M$ tiene factores isomorfos cíclicos de orden primo (por el
 	%teorema~\ref{theorem:ZorCp}) y 
 	Luego $G/M\simeq C_p$ para algún
@@ -253,24 +275,26 @@ false
 	\[
 		(G:M)=(G/H:M/H)=(G/H:M/H\cap M)=(\pi(G):\pi(M)),
 	\]
-	podemos suponer que $M$ es simple. Como $G$ es superresoluble
-	existe una sucesión $G=G_0\supseteq G_1\supseteq\cdots\supseteq G_n=1$ de
-	subgrupos normales con factores isomorfos a $\Z$ o cíclicos de orden primo.
-	Sea $N=G_1$. Como $N$ es cíclico, todo subgrupo de $N$ es característico en
+	podemos suponer que $M$ no contiene subgrupos normales no triviales de $G$, ya 
+	que en vez de trabajar con $G$ lo hacemos con el cociente $G/H$. 
+	Como $G$ es súper-resoluble
+	existe una sucesión $G=G_0\supseteq G_1\supseteq\cdots\supseteq G_n=\{1\}$ de
+	subgrupos normales de $G$ con factores isomorfos a $\Z$ o cíclicos de orden primo.
+	Sea $N=G_{n-1}$. Como $N$ es cíclico, todo subgrupo de $N$ es característico en
 	$N$ y por lo tanto es normal en $G$. En particular, $M\cap N$ es normal en
-	$G$ y luego $M\cap N=1$. Como $M\subseteq
+	$G$ y luego $M\cap N=\{1\}$. Como $M\subseteq
 	NM\subseteq G$, entonces, por la maximalidad de $M$, $M=NM$ o bien $G=NM$.
 	Pero como $N\subseteq NM=M$ es una contradicción, se concluye que $G=NM$.
 	Si $N\simeq C_p$ para algún primo $p$, entonces $(G:M)=p$ y la afirmación
 	queda demostrada.  Si $N\simeq\Z$ sea $H$ un subgrupo propio de $N$. Como
 	$H$ es característico en $N$, $H$ es normal en $G$ y luego, como
 	$M\subseteq HM\subseteq NM=G$, la maximalidad de $M$ implica que $HM=M$ o
-	bien $HM=G$. Como el caso $HM=M$ implica que $H\subseteq M\cap N=1$,
+	bien $HM=G$. Como el caso $HM=M$ implica que $H\subseteq M\cap N=\{1\}$,
 	podemos suponer que $HM=G$. Si $n\in N\setminus H$ entonces $n=hm$ para
-	algún $h\in H$, $m\in M$. Luego $h=n$ pues $h^{-1}n\in N\cap M=1$, una
+	algún $h\in H$, $m\in M$. Luego $h=n$ pues $h^{-1}n\in N\cap M=\{1\}$, una
 	contradicción.
 
-	Demostremos ahora la tercera afirmación. Como $G$ es superresoluble, existe
+	Demostremos ahora la tercera afirmación. Como $G$ es súper-resoluble, existe
 	una sucesión
 	\[
 	G=G_0\supseteq G_1\supseteq\cdots\supseteq G_n=1
@@ -293,7 +317,7 @@ false
 
 	Por último demostremos la cuarta afirmación. Como $G$ es no abeliano,
 	$Z(G)\ne G$. Sea $\pi\colon G\to G/Z(G)$ el morfismo canónico.  El cociente
-	$G/Z(G)$ es superresoluble y la sucesión
+	$G/Z(G)$ es súper-resoluble y la sucesión
 	\[
 	G/Z(G)=\pi(G)\supseteq \pi(G_1)\supseteq\cdots\supseteq \pi(1)=1
 	\]
@@ -310,32 +334,32 @@ false
 
 \begin{proposition}
 	\label{proposition:psuper}
-	Sea $p$ un número primo.  Todo $p$-grupo finito es superresoluble.
+	Sea $p$ un número primo.  Todo $p$-grupo finito es súper-resoluble.
 \end{proposition}
 
 \begin{proof}
 	Sea $G$ un contraejemplo de orden minimal. Podemos suponer que $|G|=p^n$
-	con $n>1$ (pues si $n=1$ el grupo $G$ es trivialmente superresoluble).
+	con $n>1$ (pues si $n=1$ el grupo $G$ es trivialmente súper-resoluble).
 	Como $G$ es un $p$-grupo, es nilpotente  y existe un subgrupo normal $N$ de
 	orden $p$. El cociente $G/N$ tiene orden $p^{n-1}$ entonces es
-	superresoluble pues $|G/N|<|G|$. Como $N$ es cíclico y $G/N$ es
-	superresoluble, $G$ es superresoluble por la
+	súper-resoluble pues $|G/N|<|G|$. Como $N$ es cíclico y $G/N$ es
+	súper-resoluble, $G$ es súper-resoluble por la
 	proposición~\ref{proposition:Nciclico}.
 \end{proof}
 
 \begin{corollary}
-	Todo grupo finito nilpotente es superresoluble.
+	Todo grupo finito nilpotente es súper-resoluble.
 \end{corollary}
 
 \begin{proof}
 	Todo grupo finito nilpotente es producto directo (finito) de subgrupos de
-	Sylow. Como cada $p$-grupo es superresoluble por la
+	Sylow. Como cada $p$-grupo es súper-resoluble por la
 	proposición~\ref{proposition:psuper}, el resultado se obtiene
 	inmediatamente del ejercicio~\ref{exercise:directosuper}.
 \end{proof}
 
 \begin{theorem}
-	Todo grupo superresoluble tiene subgrupos maximales.	
+	Todo grupo súper-resoluble tiene subgrupos maximales.	
 \end{theorem}
 
 \begin{proof}
@@ -346,7 +370,7 @@ false
 	\[
 		G=G_0\supseteq\cdots\supseteq G_k=1
 	\]
-	y que la afirmación es cierta para grupos superresolubles con sucesiones 
+	y que la afirmación es cierta para grupos súper-resolubles con sucesiones 
 	de longitud $<k$. Como $G_{k-1}$ es normal en $G$, sea $\pi\colon G\to
 	G/G_{k-1}$ el morfismo canónico. Entonces la sucesión
 	\[
@@ -494,21 +518,21 @@ false
 
 \begin{proposition}
 	\label{proposition:superfg}
-	Todo grupo superresoluble satisface la condición maximal para subgrupos. En
-	particular, todo grupo superresoluble es finitamente generado.
+	Todo grupo súper-resoluble satisface la condición maximal para subgrupos. En
+	particular, todo grupo súper-resoluble es finitamente generado.
 \end{proposition}
 
 \begin{proof}
 	Procederemos por inducción en la longitud $n$ de la sucesión de
 	superresolubilidad.  El caso $n=1$ es trivial pues entonces $G$ es cíclico.
-	Supongamos entonces que el resultado vale para grupos superresolubles con
-	serie de longitud $\leq n-1$.  Sea $G$ un grupo superresoluble no trivial y sea 
+	Supongamos entonces que el resultado vale para grupos súper-resolubles con
+	serie de longitud $\leq n-1$.  Sea $G$ un grupo súper-resoluble no trivial y sea 
 	\[
 	G=G_0\supsetneq
 	G_1\supsetneq\cdots\supsetneq G_n=1
 	\]
 	una sucesión de subgrupos normales de $G$ con factores cíclicos. Como
-	$G_{n-1}$ es superresoluble por el ejercicio~\ref{exercise:super},
+	$G_{n-1}$ es súper-resoluble por el ejercicio~\ref{exercise:super},
 	$G_{n-1}$ satisface la condición maximal para subgrupos por hipótesis
 	inductiva.  Luego, por la proposición~\ref{proposition:max:G/N}, $G$ satisface la condición maximal para subgrupos porque
 	$G/G_{n-1}$ es un grupo cíclico.
@@ -516,26 +540,26 @@ false
 
 %\begin{proposition}\
 %	\begin{enumerate}
-%		\item Si un grupo superresoluble admite una serie de composición,
+%		\item Si un grupo súper-resoluble admite una serie de composición,
 %			entonces es finito. 
-%		\item Si un grupo superresoluble satisface la condición de minimal en
+%		\item Si un grupo súper-resoluble satisface la condición de minimal en
 %			subgrupos entonces es finito.
 %	\end{enumerate}
 %\end{proposition}
 %
 %\begin{proof}
-%	%Para probar la segunda afirmación obsevemos que todo cociente de $G$ es superresoluble 
+%	%Para probar la segunda afirmación obsevemos que todo cociente de $G$ es súper-resoluble 
 %	%y que por el teorema~\ref{theorem:ZorCp} todo factor de la serie debe ser finito pues
 %	%$\Z$ no satisface la condición minimal para subgrupos.
 %\end{proof}
 
 \begin{example}
-	El grupo abeliano $\Q$ es nilpotente pero no es superresoluble
+	El grupo abeliano $\Q$ es nilpotente pero no es súper-resoluble
 	porque no es finitamente generado.
 \end{example}
 
 %\begin{example}
-%	El grupo $\Sym_3$ es superresoluble pero no es nilpotente. 
+%	El grupo $\Sym_3$ es súper-resoluble pero no es nilpotente. 
 %\end{example}
 
 Si $G$ es un grupo y $x_1,\dots,x_{n+1}\in G$ se define 
@@ -604,12 +628,12 @@ n\geq1.
 
 \begin{theorem}
 	\label{theorem:super=fg}
-	Sea $G$ un grupo nilpotente. Entonces $G$ es superresoluble si y sólo si
+	Sea $G$ un grupo nilpotente. Entonces $G$ es súper-resoluble si y sólo si
 	$G$ es finitamente generado.
 \end{theorem}
 
 \begin{proof}
-	Si $G$ es superresoluble, es finitamente generado por la
+	Si $G$ es súper-resoluble, es finitamente generado por la
 	proposición~\ref{proposition:superfg}.  Supongamos que $G$ es finitamente
 	generado y nilpotente. Como por el lema~\ref{lemma:gamma_n/gamma_n+1} cada
 	$\gamma_{n}(G)/\gamma_{n+1}(G)$ es finitamente generado, digamos por
@@ -625,7 +649,7 @@ n\geq1.
 	es cíclico generado por $y_jK_{j-1}$, entre $\gamma_n(G)$ y
 	$\gamma_{n+1}(G)$ pudimos construir una sucesión de subgrupos normales de
 	$G$ con factores cíclicos. Como $G$ es nilpotente, existe $c$ tal que
-	$\gamma_{c+1}(G)=1$ y luego $G$ es superresoluble.
+	$\gamma_{c+1}(G)=1$ y luego $G$ es súper-resoluble.
 \end{proof}
 
 \begin{corollary}
