@@ -5,12 +5,18 @@
 	\index{Extensión}
 	Sean $K$ y $Q$ grupos. Una \textbf{extension} de $K$ por $Q$ es un grupo
 	$G$ que tiene un subgrupo normal $N$ isomorfo a $K$ tal que $G/N\simeq Q$.
-	Equivalentemente: una \textbf{extensión} de $K$ por $Q$ es una sucesión
+	Equivalentemente, una \textbf{extensión} de $K$ por $Q$ es una sucesión
 	exacta corta\footnote{$\iota$ es inyectiva, $p$ es sobreyectiva y $\ker
 	p=\iota(N)$.}
-	\[
-	1\to K\xrightarrow{\iota}G\xrightarrow{p} Q\to1.
-	\]
+\[
+\begin{tikzcd}
+	1 & K & G & Q & 1
+	\arrow[from=1-1, to=1-2]
+	\arrow["\iota", from=1-2, to=1-3]
+	\arrow["p", from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+\end{tikzcd}
+\]
 \end{definition}
 
 \begin{example}
@@ -26,11 +32,8 @@
 	por $Q$. También es extensión de $Q$ por $K$.
 \end{example}
 
-% \begin{remark}
-%	\label{remark:extension}
-	Sea $G$ una extensión de $K$ por $Q$. Si $L$ es un subgrupo de $G$ que
-	contiene a $K$ entonces $L$ es una extensión de $K$ por $L/K$. 
-%\end{remark}
+Sea $G$ una extensión de $K$ por $Q$. Si $L$ es un subgrupo de $G$ que
+contiene a $K$ entonces $L$ es una extensión de $K$ por $L/K$. 
 
 \begin{definition}
 	\index{Morfismo!de extensiones}
@@ -42,28 +45,21 @@
 	\]
 	es una terna $(\alpha,\beta,\gamma)$ de morfismos tal que el siguiente
 	diagrama conmuta:
-	\[
-	\xymatrix{
-	1\ar[r] 
-	& K
-	\ar[d]^\alpha
-	\ar[r]^-{\iota}
-	& G
-	\ar[r]^-{p}
-	\ar[d]^\beta
-	& Q\ar[r]
-	\ar[d]^\gamma
-	& 1
-	\\
-	1\ar[r] 
-	& K_1
-	\ar[r]^-{\iota_{1}}
-	& G_1
-	\ar[r]^-{p_{1}}
-	& Q_1\ar[r]
-	& 1
-	}
-	\]
+\[\begin{tikzcd}
+	1 & K & G & Q & 1 \\
+	1 & {K_1} & {G_1} & {Q_1} & 1
+	\arrow["\iota", from=1-2, to=1-3]
+	\arrow["p", from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=2-1, to=2-2]
+	\arrow["{\iota_1}", from=2-2, to=2-3]
+	\arrow["{p_1}", from=2-3, to=2-4]
+	\arrow[from=2-4, to=2-5]
+	\arrow["\alpha", from=1-2, to=2-2]
+	\arrow["\beta", from=1-3, to=2-3]
+	\arrow["\gamma", from=1-4, to=2-4]
+\end{tikzcd}\]
 \end{definition}
 
 \begin{definition}
@@ -278,6 +274,9 @@
 	es morfismo de grupos.
 \end{definition}
 
+El primer paso que daremos en este contexto es para entender las extensiones que se parten 
+mediante "derivaciones". 
+
 %\begin{lemma}
 %	\label{lemma:split}
 %	Si una extensión $E\colon 1\to K\xrightarrow{\iota}G\xrightarrow{p} Q\to1$
@@ -427,7 +426,7 @@ Recordemos que un subgrupo $K$ de un grupo $G$ admite un complemento $Q$ si
 $G$ se factoriza como 
 $G=KQ$ y $K\cap Q=\{1\}$. 
 El ejemplo típico es el siguiente, el producto semidirecto $G=K\rtimes Q$, donde $K$ es un subgrupo
-normal de $G$ y $Q$ es un subgrupo de $G$. 
+normal de $G$ y $Q$ es un subgrupo de $G$ tales que $K\cap Q=\{1\}$. 
 
 \begin{theorem}
 	\label{theorem:complementos}
@@ -554,6 +553,9 @@ normal de $G$ y $Q$ es un subgrupo de $G$.
 	$k=\delta(y)$. 
 \end{proof}
 
+Un caso importante de grupos que admiten factorización
+es el siguiente: 
+
 \begin{definition}
 	Un grupo $G$ admite una \textbf{factorización triple} si tiene subgrupos
 	$A$, $B$ y $M$ tales que $G=MA=MB=AB$ y $A\cap M=B\cap M=\{1\}$.
@@ -565,20 +567,30 @@ normal de $G$ y $Q$ es un subgrupo de $G$.
 %%% ejemplo con anillo radical
 %%% braces?
 
+Una consecuencia inmediata del teorema de Sysak:
+
 \begin{corollary}
 	Supongamos que el grupo $Q$ actúa por automorfismos en $K$. Sea
 	$\delta\in\Der(Q,K)$ sobreyectivo. Entonces $G=K\rtimes Q$ admite una
 	factorización triple.
 \end{corollary}
 
-\begin{proof}
-	Es consecuencia inmediata del teorema~\ref{theorem:Sysak}. 
-\end{proof}
+% \begin{proof}
+% 	Es consecuencia inmediata del teorema~\ref{theorem:Sysak}. 
+% \end{proof}
+Otra consecuencia: 
 
 \begin{exercise}
-	\label{exercise:ker1cocycle}
-	Sea $\delta\in\Der(Q,K)$. Entonces $\delta$ es inyectiva si y sólo si
-	$\ker\delta=1$.
+	\label{xca:ker1cocycle}
+	Sea $\delta\in\Der(Q,K)$. 
+	\begin{enumerate}
+	\item Demuestre que $\delta$ es inyectiva si y sólo si
+	$\ker\delta=\{1\}$.
+	\item Si $\delta$ es biyectivo, demuestre que 
+	$K$ admite un complemento
+	$\Delta$ en $K\rtimes Q$ tal que $K\rtimes Q=K\rtimes\Delta=\Delta Q$ y
+	$Q\cap\Delta=\{1\}$.
+	\end{enumerate}
 \end{exercise}
 
 % \begin{proof}
@@ -590,16 +602,16 @@ normal de $G$ y $Q$ es un subgrupo de $G$.
 % 	y $\delta$ es inyectiva, $x^{-1}y=1$. La afirmación recíproca es trivial.
 % \end{proof}
 
-\begin{corollary}
-	Si $\delta\in\Der(Q,K)$ es biyectivo entonces $K$ admite un complemento
-	$\Delta$ en $K\rtimes Q$ tal que $K\rtimes Q=K\rtimes\Delta=\Delta Q$ y
-	$Q\cap\Delta=1$.
-\end{corollary}
+% \begin{corollary}
+% 	Si $\delta\in\Der(Q,K)$ es biyectivo entonces $K$ admite un complemento
+% 	$\Delta$ en $K\rtimes Q$ tal que $K\rtimes Q=K\rtimes\Delta=\Delta Q$ y
+% 	$Q\cap\Delta=1$.
+% \end{corollary}
 
-\begin{proof}
-	Vimos en el teorema~\ref{theorem:Sysak} que $\delta$ es sobreyectiva si y
-	sólo si $K\rtimes Q=\Delta Q$ y que $\ker\delta=Q\cap\Delta$.
-\end{proof}
+% \begin{proof}
+% 	Vimos en el teorema de Sysak que $\delta$ es sobreyectiva si y
+% 	sólo si $K\rtimes Q=\Delta Q$ y que $\ker\delta=Q\cap\Delta$.
+% \end{proof}
 
 %\section{Aplicación: subespacios invariantes}
 %
@@ -745,10 +757,10 @@ Obviamente $Z^n(G,A)$ es un grupo abeliano y $B^n(G,A)\subseteq Z^n(G,A)$.
 	\]
 \end{exercise}
 
-\begin{svgraybox}
-	Pues para todo $a\in A=C^0(G,A)$ se tiene que $da=0$ si y sólo si $a\in
-	A^G$.
-\end{svgraybox}
+% \begin{svgraybox}
+% 	Pues para todo $a\in A=C^0(G,A)$ se tiene que $da=0$ si y sólo si $a\in
+% 	A^G$.
+% \end{svgraybox}
 
 \begin{example}
 	$f\in Z^1(G,A)$ si y sólo si $f(st)=s\cdot f(t)+f(s)$ para todo $s,t\in G$.
@@ -1040,7 +1052,7 @@ Un factor $f\in Z^2(G,A)$ se dice \textbf{normalizado} si $f(1,1)=0$.
 	Por último, para ver que existe un levantamiento con factor $f$ basta
 	considerar $\ell\colon Q\to G$, $\ell(x)=(1,x)$ pues 
 	\[
-		\ell(x)\ell(y)(\ell(xy)^{-1}=(1,x)(1,y)(1,xy)^{-1}=(f(x,y),1).
+		\ell(x)\ell(y)(\ell(xy)^{-1}=(1,x)(1,y)(1,xy)^{-1}=(f(x,y),1).\qedhere
 	\]
 \end{proof}
 
@@ -1071,7 +1083,7 @@ lema~\ref{lemma:G(K,Q,f)} será denotado por $G(K,Q,f)$.
 		&=\phi(a\ell(x)b\ell(x)^{-1}f(x,y)\ell(xy))\\
 		&=\phi(a(x\cdot b)f(x,y)\ell(xy))\\
 		&=(a(x\cdot b)f(x,y),xy)\\
-		&=\phi(a\ell(x))\phi(b\ell(y)).
+		&=\phi(a\ell(x))\phi(b\ell(y)).\qedhere
 	\end{align*}
 \end{proof}
 
@@ -1131,26 +1143,41 @@ lema~\ref{lemma:G(K,Q,f)} será denotado por $G(K,Q,f)$.
 	a\gamma(x)\ell_2(x)$. Es evidente que $\phi$ hace conmutar al diagrama
 	\begin{equation}
 		\label{eq:diagrama}
-	\xymatrix{
-	0\ar[r] 
-	& K
-	\ar@{=}[d]
-	\ar[r]%@{^{(}->}[r]
-	& G_1
-	\ar[r]^{p_1}
-	\ar[d]^\phi
-	& Q\ar[r]
-	\ar@{=}[d]
-	& 0
-	\\
-	0\ar[r] 
-	& K
-	\ar[r]
-	& G_2
-	\ar[r]^{p_2}
-	& Q\ar[r]
-	& 0
-	}
+% 	\xymatrix{
+% 	0\ar[r] 
+% 	& K
+% 	\ar@{=}[d]
+% 	\ar[r]%@{^{(}->}[r]
+% 	& G_1
+% 	\ar[r]^{p_1}
+% 	\ar[d]^\phi
+% 	& Q\ar[r]
+% 	\ar@{=}[d]
+% 	& 0
+% 	\\
+% 	0\ar[r] 
+% 	& K
+% 	\ar[r]
+% 	& G_2
+% 	\ar[r]^{p_2}
+% 	& Q\ar[r]
+% 	& 0
+% 	}
+\begin{tikzcd}
+	1 & K & {G_1} & Q & 1 \\
+	1 & K & {G_1} & {Q_1} & 1
+	\arrow[from=1-2, to=1-3]
+	\arrow["{p_1}", from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=2-1, to=2-2]
+	\arrow[from=2-2, to=2-3]
+	\arrow["{p_2}", from=2-3, to=2-4]
+	\arrow[from=2-4, to=2-5]
+	\arrow[equal, no head, from=1-2, to=2-2]
+	\arrow["\phi", from=1-3, to=2-3]
+	\arrow[equal, from=1-4, to=2-4]
+    \end{tikzcd}
 	\end{equation}
 	Veamos que $\phi$ es morfismo. Por un lado tenemos
 	\[
@@ -1188,28 +1215,23 @@ lema~\ref{lemma:G(K,Q,f)} será denotado por $G(K,Q,f)$.
 	g\rangle\simeq C_{p^2}$ y $Q=\langle gK\rangle=G/K\simeq C_p$.  Veamos que
 	las extensiones
 	\[
-	\xymatrix{
-	0\ar[r] 
-	& K
-	\ar@{=}[d]
-	\ar[r]^{\iota_1}
-	& G_1
-	\ar[r]^{p_1}
-	\ar@{-->}[d]^\phi
-	& Q\ar[r]
-	\ar@{=}[d]
-	& 0
-	\\
-	0\ar[r] 
-	& K
-	\ar[r]^{\iota_2}
-	& G_2
-	\ar[r]^{p_2}
-	& Q\ar[r]
-	& 0
-	}
-	\]
-	donde $\iota_1(a)=g^p$, $\iota_2(a)=g^{2p}$ y $p_1(g)=p_2(g)=gK$, no son
+	\begin{tikzcd}
+	1 & K & {G_1} & Q & 1 \\
+	1 & K & {G_1} & {Q_1} & 1
+	\arrow["\iota_1", from=1-2, to=1-3]
+	\arrow["{p_1}", from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=2-1, to=2-2]
+	\arrow["\iota_2", from=2-2, to=2-3]
+	\arrow["{p_2}", from=2-3, to=2-4]
+	\arrow[from=2-4, to=2-5]
+	\arrow[equal, no head, from=1-2, to=2-2]
+	\arrow[dashed, "\phi", from=1-3, to=2-3]
+	\arrow[equal, from=1-4, to=2-4]
+    \end{tikzcd}
+    \]	
+    donde $\iota_1(a)=g^p$, $\iota_2(a)=g^{2p}$ y $p_1(g)=p_2(g)=gK$, no son
 	equivalentes. Si existe $\phi$ entonces
 	$\phi(g^p)=\phi\iota_1(a)=\iota_2(a)=g^{2p}$. Esto implica que
 	$\phi(g)=g^2$ y luego $g\in K$ pues $gK=p_1(g)=p_2\phi(g)=g^2K$, una
