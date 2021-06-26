@@ -16,12 +16,18 @@ Con los teoremas de Sylow se puede ir un poco más lejos. Es fácil demostrar, p
 que existe un único grupo de orden 15 y es cíclico. El mismo resultado puede
 demostrarse para otros órdenes, por ejemplo 455 y 615. 
 
-\index{Número!cíclico}
 Una pregunta surge naturalmente. ¿Para qué valores de $n$ 
 existe un único grupo (que obviamente resultará isomorfo a $C_n$) de orden $n$? 
-La respuesta fue dada por Burnside. Un número $n\in\N$ 
+La respuesta fue dada por Burnside. 
+
+\begin{definition}
+\index{Número!cíclico}
+Un número $n\in\N$ 
 se dice \textbf{cíclico} si $C_n$ es el único grupo (salvo isomorfismo) de
-orden $n$. Algunos ejemplos de números cíclicos: $2$, $3$, $15$,
+orden $n$.
+\end{definition}
+
+Algunos ejemplos de números cíclicos: $2$, $3$, $15$ y 
 $615=3\cdot 5\cdot 41$. 
 
 \begin{theorem}[Burnside]
@@ -60,7 +66,7 @@ $615=3\cdot 5\cdot 41$.
 	  Todo subgrupo de $G$ y todo cociente de $G$ es cíclico.
 	\end{claim}
 
-	Si $m$ divide a $n$ entonces $(m:\phi(m))=1$ pues $n$ y
+	Si $m$ divide a $n$ entonces $\gcd(m,\phi(m))=1$ pues $n$ y
 	$\phi(n)=(p_1-1)\cdots(p_k-1)$ son coprimos.  Luego todo subgrupo y
 	todo cociente propio es cíclico por la minimalidad de $n$.
 
@@ -93,7 +99,7 @@ $615=3\cdot 5\cdot 41$.
 	$y\mapsto xyx^{-1}$. Como $M$ es cíclico, si $m=|M|$ entonces
 	$|\Aut(M)|$ tiene orden $\phi(m)$. Por otro lado, como $|x|$ divide a
 	$n$, $|\alpha|$ divide a $n$. Luego $|\alpha|$ divide a
-	$(n:\phi(m))=1$. Esto significa que $x\in C_G(M)$, es decir:
+	$\gcd(n,\phi(m))=1$. Esto significa que $x\in C_G(M)$, es decir:
 	$N_G(M)\subseteq C_G(M)$. Como
 	\[
 	M\subseteq N_G(M)\subseteq C_G(M)
@@ -171,7 +177,7 @@ El teorema de Burnside puede reformularse así:
 \gnu(n)=1\Longleftrightarrow\text{$n$ es cíclico}\Longleftrightarrow\gcd(n,\phi(n))=1.
 \]
 
-En \cite{MR2410121} Conway, Dietrich y O'Brien caracterizan los $n$ tales que
+En \cite{MR2410121} Conway, Dietrich y O'Brien caracterizaron los $n\in\N$ tales que
 $\gnu(n)=2$, $\gnu(n)=3$, $\gnu(n)=4$. 
 
 En la enciclopedia de sucesiones, 
@@ -224,7 +230,7 @@ gap> Sum([1..1023], gnu)+Sum(List([1025..2015], gnu));
 423164131
 \end{lstlisting}
 
-Estos números nos dan 99,15\%. 
+Estos números nos dan aproximadamente 99,15\%. 
 
 Estas observaciones sugieren naturalmente la siguiente conjetura,
 que parece ser parte del folclore matemático:
@@ -235,7 +241,7 @@ Casi todo grupo finito es un $2$-grupo.
 
 La numerología que hicimos nos permite evitar tener que hacer precisiones sobre 
 qué significa \guillemotleft casi todo grupo finito\guillemotright. Problemas
-similares aparecen en el capítulo 22 del libro \cite[]{MR2382539}.
+similares aparecen en el capítulo 22 del libro \cite{MR2382539}.
 
 \begin{problem}
 Calcular $\gnu(2048)$. 
@@ -256,7 +262,7 @@ No es difícil verificar que la conjetura es verdadera para $n<2000$.
 
 La siguiente conjetura apareció en forma independiente en varios lugares. 
 Aparentemente la primera aparición más o menos explícita 
-fue en la década del treinta y se debe Miller. 
+fue alrededor de 1930 y se debe Miller. 
 Independientemente MacHale la formuló cuarenta años más tarde. 
 
 \begin{conjecture}
@@ -324,5 +330,5 @@ que aparece en la factorización en primos de $n$.
 \end{theorem}
 
 La demostración aparece en \cite{MR1200081} y en el caso de grupos no resolubles utiliza la clasificación de grupos simples. Una presentación detallada puede consultarse en el libro 
-\cite{MR2382539} de Blackburn, Neumann, Venkataraman.
+\cite{MR2382539} de Blackburn, Neumann y Venkataraman.
 
