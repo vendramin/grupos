@@ -273,14 +273,58 @@ Para más información sobre esta conjetura referimos a \cite[\S21.6]{MR2382539}
 
 Si bien hay muchas conjeturas sobre el comportamiento de la función que cuenta la cantidad de 
 clases de isomorfismos de grupos finitos, existen varios 
-resultados. 
+resultados. El siguiente es completamente elemental:
 
 \begin{theorem}
-Si $n\in\N$, entonces $\gnu(n)\leq n^{n\log n}$.
+Si $n\in\N$, entonces $\gnu(n)\leq n^{n\log_2 n}$.
 \end{theorem}
 
-La demostración es sencilla y elemental y puede consultarse en el segundo 
-capítulo del libro \cite{MR2382539}. 
+\begin{proof}
+Si $G$ es un grupo, sea 
+\[
+d(G)=\min\{k:\text{existen $g_1,\dots,g_k\in G$ tales que $G=\langle g_1,\dots,g_k\rangle$}\}.
+\]
+Vamos a demostrar que si $|G|=n$, entonces $d(G)\leq\log n$. Sea
+\[
+\{1\}=G_0\subsetneq G_1\subsetneq\cdots\subsetneq G_r=G
+\]
+una sucesión maximal de subgrupos. Para cada $i\in\{1,\dots,r\}$ sea
+$g_i\in G_i\setminus G_{i-1}$. Se demuestra fácilmente
+que 
+\[
+G_i=\langle g_1,\dots,g_i\rangle
+\]
+para todo $i$. 
+En efecto, si existe algún $i$ tal que $G_i\ne\langle g_1,\dots,g_i\rangle$, entonces
+existe $g\in G_i\setminus\langle g_1,\dots,g_i\rangle$ y luego
+\[
+\langle g_1,\dots,g_i\rangle\subsetneq \langle G_i,g\rangle\subsetneq G_{i+1}
+\]
+lo que contradice la maximalidad de la sucesión de subgrupos. En particular, $G$ está generado 
+por $r$ elementos.
+
+Por el teorema de Lagrange, 
+\[
+n=|G|=\prod_{i=1}^r(G_i:G_{i-1})\geq 2^r
+\]
+y entonces $r\leq\lfloor \log_2 n\rfloor$. 
+Como $G$ es isomorfo a un 
+subgrupo de $\Sym_n$ por el teorema de Cayley, entonces 
+\begin{align*}
+\gnu(n)
+&\leq\text{cantidad de subgrupos de orden $n$ de $\Sym_n$}\\
+&\leq\text{cantidad de subgrupos de $\Sym_n$ generados por $\lfloor\log_2n\rfloor$ elementos}\\
+&\leq\text{cantidad de subconjuntos de $\Sym_n$ de $\lfloor\log_2n\rfloor$ elementos}.
+\end{align*}
+Como la cantidad de subconjuntos de $\Sym_n$ de $\lfloor\log_2n\rfloor$ elementos
+es
+\[
+\binom{n!}{\lfloor\log_2n\rfloor}\leq(n!)^{\log_2n}
+\]
+pues $\binom{n}{k}\leq n^k$, se concluye que $\gnu(n)\leq n^{n\log_2n}$. 
+\end{proof}
+% La demostración es sencilla y elemental y puede consultarse en el segundo 
+% capítulo del libro \cite{MR2382539}. 
 
 En el caso de $p$-grupos puede probarse elementalmente que 
 \[
