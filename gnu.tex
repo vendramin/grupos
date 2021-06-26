@@ -1,0 +1,328 @@
+\chapter{La cantidad de grupos finitos}
+
+En este capítulo mencionaremos algunos problemas y algunos resultados relacionados con la
+cantidad de clases de isomorfismo de grupos finitos de un orden dado. 
+Este problema de clasificación 
+es obviamente casi tan antiguo como la teoría de grupos. Al dar los primeros pasos en teoría de grupos
+nos encontramos con algunos resultados fáciles de demostrar:
+\begin{itemize}
+    \item Existe un único grupo finito de orden primo y es cíclico. 
+    \item Existen dos grupos de orden cuatro, ambos abelianos. 
+    \item Existen dos grupos de orden seis, uno de ellos es no abeliano. 
+    \item Los grupos de orden $p^2$ son abelianos. 
+\end{itemize}
+
+Con los teoremas de Sylow se puede ir un poco más lejos. Es fácil demostrar, por ejemplo,
+que existe un único grupo de orden 15 y es cíclico. El mismo resultado puede
+demostrarse para otros órdenes, por ejemplo 455 y 615. 
+
+\index{Número!cíclico}
+Una pregunta surge naturalmente. ¿Para qué valores de $n$ 
+existe un único grupo (que obviamente resultará isomorfo a $C_n$) de orden $n$? 
+La respuesta fue dada por Burnside. Un número $n\in\N$ 
+se dice \textbf{cíclico} si $C_n$ es el único grupo (salvo isomorfismo) de
+orden $n$. Algunos ejemplos de números cíclicos: $2$, $3$, $15$,
+$615=3\cdot 5\cdot 41$. 
+
+\begin{theorem}[Burnside]
+\index{Teorema!de Burnside}
+	Sea $n\in\N$. Entonces $n$ es cíclico si y sólo si 
+	$n$ y $\phi(n)$ son coprimos.
+\end{theorem}
+
+\begin{proof}
+	Supongamos que $n$ es cíclico.  Sin perder generalidad podemos suponer que
+	$n$ es libre de cuadrados (pues de lo contrario, si $n=p^am$ con $m\in\N$,
+	$p$ primo tal que $\gcd(p,m)=1$ y $a\geq2$, el grupo $C_m\times C_p^a$ tiene
+	orden $n$ y no es cíclico).  Escribimos entonces 
+	\[
+	n=p_1\cdots p_k
+	\]
+	con los
+	$p_j$ primos distintos y $\phi(n)=(p_1-1)\cdots(p_k-1)$. Si
+	$\gcd(n,\phi(n))\ne1$, existen primos distintos $p$ y $q$ tales que $p$ divide
+	a $q-1$. El grupo $G= C_m\times (C_p\rtimes C_q)$ tiene orden $n=pqm$ y no
+	es cíclico.  
+
+	Supongamos que $\gcd(n,\phi(n))=1$ y que $n$ no es cíclico. Sea $G$ un grupo de
+	mínimo orden $n$ no cíclico. 
+
+	Sin perder generalidad podemos suponer que $n$ es libre de cuadrados:
+	si $n=p^\alpha m$, $p$ primo, $m\in\N$ coprimo con $p$ y $\alpha\geq2$,
+	entonces, como $\phi(n)=p^{\alpha-1}(p-1)\phi(m)$, tendríamos que $p$
+	divide a $\gcd(n,\phi(n))$. Luego
+	\[
+		n=p_1\cdots p_k,
+	\]
+	con los $p_j$ primos distintos.
+
+	\begin{claim}
+	  Todo subgrupo de $G$ y todo cociente de $G$ es cíclico.
+	\end{claim}
+
+	Si $m$ divide a $n$ entonces $(m:\phi(m))=1$ pues $n$ y
+	$\phi(n)=(p_1-1)\cdots(p_k-1)$ son coprimos.  Luego todo subgrupo y
+	todo cociente propio es cíclico por la minimalidad de $n$.
+
+	\begin{claim}
+	  $Z(G)=\{1\}$.
+	\end{claim}
+
+	Para cada $i\in\{1,\dots,k\}$ sea $x_i\in G$ un elemento de orden
+	$p_i$. Si $G$ fuera abeliano, $G$ sería cíclico: $x_1\cdots x_k$ sería
+	un elemento de orden $n$. Luego $Z(G)\ne G$.  Ahora bien, si
+	$1<|Z(G)|<n$, entonces $G/Z(G)$ sería cíclico (pues todo cociente de $G$
+	lo es) y luego $G$ sería abeliano. 
+
+	\begin{claim}
+	  Si $M$ es un subgrupo maximal de $G$ y $x\in M\setminus\{1\}$, entonces 
+	  $M=C_G(x)$. En particular, si $M$ y $N$ son subgrupos
+	  maximales distintos, entonces $M\cap N=\{1\}$. 
+	\end{claim}
+
+	Como $Z(G)\ne\{1\}$, $C_G(x)\ne G$. Y como $M$ es cíclico,
+	$M\subseteq C_G(x)$. Luego, por maximalidad, $M=C_G(x)$. 
+	Si $M$ y $N$ son dos subgrupos maximales y $x\in M\cap
+	N\setminus\{1\}$, entonces $M=N=C_G(x)$. 
+
+	\begin{claim}
+	  Si $M$ es un subgrupo maximal, $M=N_G(M)$.   
+	\end{claim}
+
+	Sea $x\in N_G(M)\setminus\{1\}$ y sea $\alpha\in\Aut(M)$ dado por
+	$y\mapsto xyx^{-1}$. Como $M$ es cíclico, si $m=|M|$ entonces
+	$|\Aut(M)|$ tiene orden $\phi(m)$. Por otro lado, como $|x|$ divide a
+	$n$, $|\alpha|$ divide a $n$. Luego $|\alpha|$ divide a
+	$(n:\phi(m))=1$. Esto significa que $x\in C_G(M)$, es decir:
+	$N_G(M)\subseteq C_G(M)$. Como
+	\[
+	M\subseteq N_G(M)\subseteq C_G(M)
+	\]
+	$M$ es maximal y $Z(G)\ne\{1\}$, obtenemos que $M=N_G(M)=C_G(M)$. 
+
+	\medskip
+	Sean $M_1,\dots,M_l$ los representantes de las clases de conjugación de
+	subgrupos maximales de $G$. Para cada $j\in\{1,\dots,l\}$ sea
+	$m_j=|M_j|$.  Como $M_{j}=N_G(M_j)$ para cada $j$, la órbita de $M_j$
+	tiene $n/m_j$ elementos. 
+	
+	Como para cada $g\in G\setminus\{1\}$ existe un único subgrupo maximal
+	$M$ tal que $g\in M$, 
+	\begin{equation}
+	  \label{eq:particion}
+	  n=1+\sum_{j=1}^l \frac{n}{m_j}(m_j-1).
+	\end{equation}
+	Si $l=1$ entonces $n=m_1$, una contradicción. Si $l>1$ entonces, como
+	para cada $j$ se tiene que $m_j\geq2$, al reescribir~\eqref{eq:particion}, tenemos
+	\begin{align*}
+	  \frac{1}{n}+l-1=\sum_{j=1}^l\frac{1}{m_j}\leq\frac{l}{2}.
+	\end{align*}
+	De esta desigualdad obtenemos $nl\leq 2n-2<2n$ y entonces $l<2$, absurdo. 
+%	\begin{claim*}
+%	  $G$ es simple.
+%	\end{claim*}
+%
+%	Sea $H$ un subgrupo propio normal de $G$ y sea $m=|H|$. Por la minimalidad de $n$,
+%	$H$ es cíclico.  Como $G$ actúa por conjugación en $H$, tenemos un
+%	morfismo de grupos $\rho\colon G\to\Aut(H)$, 
+%	\begin{align*}
+%	  g\mapsto\rho_g\colon H&\to H,\\
+%	  h&\mapsto ghg^{-1}.
+%	\end{align*}
+%	Por el primer teorema de isomorphismos, $G/\ker\rho$ es isomorfo a un
+%	subgrupo de $\Aut(H)$. Luego $|G|/|\ker\rho|$ divide a $\phi(m)$. Como
+%	además $|G|/|\ker\rho|$ divide a $n$, entonces $|G|/|\ker\rho|$ divide
+%	a $(n:\phi(m))=1$. Luego $\rho$ es trivial y entonces $H\subseteq Z(G)=1$. 
+%
+%	\begin{claim*}
+%	  Sean $K$ y $L$ dos subgrupos propios de $G$ maximales y distintos. Entonces 
+%	  $K\cap L=1$.
+%	\end{claim*}
+%
+%	Como $K$ y $L$ son cíclicos, son abelianos. Entonces $K,L\subseteq
+%	C_G(K\cap L)$. Por maximalidad, $C_G(K\cap L)=G$. Luego $K\cap
+%	L\subseteq Z(G)=1$. 
+%
+%	\begin{claim*}
+%		Si $g\in G\setminus\{1\}$ entonces existe un único subgrupo
+%		maximal $M$ de $G$ tal que $g\in M$. 
+%	\end{claim*}
+%
+%	Sean $M_1,\dots,M_l$ los subgrupos maximales de $G$. El grupo $G$ actúa por conjugación
+%	en $\{M_1,\dots,M_l\}$. Sean $N_1,\dots,N_r$ representantes de las órbitas de la acción. 
+%
+\end{proof}
+
+Análogamente pueden definirse números abelianos y nilpotentes. Estos números 
+están clasificados y una demostración elemental puede consultarse en \cite{MR1786236}. 
+También existe la noción de número resoluble. Gracias al teorema de Feit--Thompson 
+todo número impar es un número resoluble. 
+Estos números también están clasificados, aunque
+la demostración es bastante más difícil ya que depende de un teorema muy profundo de Thompson y del 
+famoso teorema de Feit--Thompson. 
+
+\medskip
+En \cite{MR2410121} se define la función $\gnu(n)$, que devuelve la cantidad de clases de isomorfismo 
+de grupos de orden $n$. Por ejemplo, $\gnu(1)=\gnu(2)=\gnu(3)=\gnu(5)=1$ y $\gnu(4)=\gnu(6)=2$. 
+El nombre viene de \emph{\textbf{g}roups \textbf{nu}mber}. 
+
+El teorema de Burnside puede reformularse así: 
+\[
+\gnu(n)=1\Longleftrightarrow\text{$n$ es cíclico}\Longleftrightarrow\gcd(n,\phi(n))=1.
+\]
+
+En \cite{MR2410121} Conway, Dietrich y O'Brien caracterizan los $n$ tales que
+$\gnu(n)=2$, $\gnu(n)=3$, $\gnu(n)=4$. 
+
+En la enciclopedia de sucesiones, 
+la sucesión 
+\[
+\gnu(1),\gnu(2),\gnu(3),\gnu(4)\dots
+\]
+es \lstinline{A000001}, ver \url{http://oeis.org/A000001} para más información. 
+
+\GAP~contiene una base de datos con todos los grupos de orden $\leq2000$, excepto los 
+grupos de orden 1024. La base de datos contiene además otros grupos, por ejemplo
+aquellos de orden $p^n$ para todo número primo $p$ y todo $n\leq 6$. La base de datos
+fue escrita por Besche, Eick y O'Brien y hoy en día es una herramienta fundamental 
+en teoría de grupos \cite{MR1935567}. En particular, esta base de datos nos permite
+calcular fácilmente algunos valores de la función $\gnu$. 
+
+La función \lstinline{NrSmallGroups} devuelve la cantidad de clases de isomorfismo de grupos
+de un cierto orden. Definimos entonces la función $\gnu$ y calculamos algunos ejemplos:
+
+\begin{lstlisting}
+gap> gnu := NrSmallGroups;;
+gap> gnu(16);
+14
+gap> gnu(32);
+51
+gap> gnu(64);
+267
+gap> gnu(27);
+5
+gap> gnu(81);
+15
+gap> gnu(128);
+2328
+gap> gnu(512);
+10494213
+\end{lstlisting}
+
+Se sabe que $\gnu(1024)=49487365422$, aunque este valor no puede obtenerse  
+con \GAP~ya que, para ahorrar memoria, 
+la base de datos no incluye la inmensa lista de grupos de orden 1024. Los grupos
+de orden 1024 fueron clasificados por
+Besche, Eick y O'Brien, el anuncio fue hecho en \cite{MR1826989}. 
+
+Más del 99\% de los grupos de orden $<2000$ es de orden $1024$. 
+De hecho, como vimos, hay 49487365422 grupos de orden 1024 y la cantidad de clases de isomorfismo 
+de grupos de orden $n\ne1024$ con $n<2016$ es 423164131. 
+
+\begin{lstlisting}
+gap> Sum([1..1023], gnu)+Sum(List([1025..2015], gnu));
+423164131
+\end{lstlisting}
+
+Estos números nos dan 99,15\%. 
+
+Estas observaciones sugieren naturalmente la siguiente conjetura,
+que parece ser parte del folclore matemático:
+
+\begin{conjecture}
+Casi todo grupo finito es un $2$-grupo. 
+\end{conjecture}
+
+La numerología que hicimos nos permite evitar tener que hacer precisiones sobre 
+qué significa \guillemotleft casi todo grupo finito\guillemotright. Problemas
+similares aparecen en el capítulo 22 del libro \cite[]{MR2382539}.
+
+\begin{problem}
+Calcular $\gnu(2048)$. 
+\end{problem}
+
+Se sabe que $\gnu(2048)>1774274116992170$, que es la cantidad de subgrupos de orden 2048 
+de una cierta clase. 
+
+\begin{conjecture}
+Sea $n\in\N$. La sucesión
+\[
+\gnu(n),\gnu^2(n)=\gnu(\gnu(n)),\gnu^3(n)\dots
+\]
+se estabiliza en 1. 
+\end{conjecture}
+
+No es difícil verificar que la conjetura es verdadera para $n<2000$.
+
+La siguiente conjetura apareció en forma independiente en varios lugares. 
+Aparentemente la primera aparición más o menos explícita 
+fue en la década del treinta y se debe Miller. 
+Independientemente MacHale la formuló cuarenta años más tarde. 
+
+\begin{conjecture}
+La función $\N\to\N$, $n\mapsto\gnu(n)$ es sobreyectiva. 
+\end{conjecture}
+
+Para más información sobre esta conjetura referimos a \cite[\S21.6]{MR2382539}.
+
+Si bien hay muchas conjeturas sobre el comportamiento de la función que cuenta la cantidad de 
+clases de isomorfismos de grupos finitos, existen varios 
+resultados. 
+
+\begin{theorem}
+Si $n\in\N$, entonces $\gnu(n)\leq n^{n\log n}$.
+\end{theorem}
+
+La demostración es sencilla y elemental y puede consultarse en el segundo 
+capítulo del libro \cite{MR2382539}. 
+
+En el caso de $p$-grupos puede probarse elementalmente que 
+\[
+\gnu(p^n)\leq p^{\frac16(n^3-n)},
+\]
+ver \cite[Theorem 5.1]{MR2382539}. Se conocen 
+cotas mucho más sofisticada: 
+
+\begin{theorem}[Higman--Sims]
+\index{Teorema!de Higman--Sims}
+Si $p$ es un número primo y $n\in\N$, entonces 
+\[
+p^{\frac{2}{27}n^3-O(n^2)}\leq\gnu(p^n)\leq p^{\frac{2}{27}n^3+O(n^{\frac{8}{3}})}.
+\]
+\end{theorem}
+
+La demostración del teorema anterior resulta de combinar los trabajos de Higman \cite{MR113948} 
+y Sims \cite{MR169921}. Una presentación moderna puede encontrarse en el libro
+\cite{MR2382539}. 
+
+En \cite{MR123605} Higman conjeturó 
+que $\gnu(p^n)$ es una función polinomial de $p$ y $p$ módulo $N$ para una cierta
+cantidad finita de enteros $N$. Se conoce como la conjetura PORC.
+
+\begin{conjecture}[Higman]
+Sea $n\in\N$. Existen entonces $N$ polinomios 
+\[
+P_{0}(X),P_{1}(X),\dots,P_{N-1}(X)
+\]
+tales que
+si $p\equiv i\bmod N$, entonces $\gnu(p^n)=P_{i}(p)$. 
+\end{conjecture}
+
+PORC viene de \emph{\textbf{P}olynomial \textbf{O}n \textbf{R}esidue \textbf{C}lasses}. 
+
+Se sabe que la conjetura es cierta para $n\leq7$, aunque el problema permanece abierto para $n\geq8$. 
+En \cite{MR2921623}, un trabajo de más de setenta páginas, 
+du Sautoy y Vaughan--Lee construyeron una familia de grupos
+de orden $p^{10}$ que sugiere que la conjetura PORC podría no ser verdadera. De todas formas, la conjetura
+PORC de Higman sigue abierta. 
+
+\begin{theorem}[Pyber]
+\index{Teorema!de Pyber}
+Si $n\in\N$, entonces 
+$\gnu(n)\leq n^{\frac{2}{27}\mu(n)^2+O(\mu(n)^{\frac{5}{3}})}$, donde $\mu(n)$ es el mayor exponente
+que aparece en la factorización en primos de $n$. 
+\end{theorem}
+
+La demostración aparece en \cite{MR1200081} y en el caso de grupos no resolubles utiliza la clasificación de grupos simples. Una presentación detallada puede consultarse en el libro 
+\cite{MR2382539} de Blackburn, Neumann, Venkataraman.
+

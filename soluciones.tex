@@ -137,3 +137,80 @@
 	de orden $p_j^{\alpha_j}$. Para demostrar que $(4)\implies(1)$ simplemente
 	se aplica la hipótesis a cada $p$-subgrupo de $G$ de orden maximal.
 \end{sol}
+
+\section*{Derivaciones}
+
+\begin{sol}{xca:lifting}
+	Sea $N=\iota(K)=\ker p$. 
+	\begin{enumerate}
+		\item Veamos que las $\ell(x)N$ son disjuntas. 
+			Si $\ell(x)N=\ell(y)N$, existe $n\in N$ tal que
+			$\ell(x)=\ell(y)n$. Luego 
+			\[
+			x=p(\ell(x))=p(\ell(y)n)=p(\ell(y))p(n)=y.
+			\]
+			Sea $g\in G$ y sea $x=p(g)\in Q$. Como $x=p(\ell(x))$ y $p$ es
+			morfismo de grupos, $x^{-1}=p(\ell(x)^{-1})$. Luego
+			$g=\ell(x)\left(\ell(x)^{-1}g\right)$ y $\ell(x)^{-1}g\in N$ pues
+			\[
+			p(\ell(x)^{-1}g)=p(\ell(x)^{-1})p(g)=x^{-1}x=1.
+			\]
+		\item Sea $L$ un transversal a $N$ en $G$. Si $x\in Q$ entonces existe
+			$g\in G$ tal que $x=p(g)$.  Sea $\ell(x)\in L\subseteq G$ tal que
+			$gN=\ell(x)N$. Como $g^{-1}\ell(x)\in N=\ker p$, se concluye que
+			$p(\ell(x))=x$ pues 
+			\[
+			x^{-1}p(\ell(x))=p(g)^{-1}p(\ell(x))=p(g^{-1}\ell(x))=1.
+			\]
+		\item Sean $x,y\in Q$ y sean $g,h\in G$ tales que $x=p(g)$, $y=p(h)$. 
+			Como por definición $gN=\ell(x)N$, $hN=\ell(y)N$ y $p$ es morfismo de grupos, 
+			\[
+				\ell(xy)N=(gh)N=(gN)(hN)=\ell(x)\ell(y)N.
+			\]
+	\end{enumerate}
+\end{sol}
+
+
+\begin{sol}{xca:1cocycle}
+	La primera afirmación es fácil pues, como 
+	\[
+		\varphi(1)=\varphi(11)=\varphi(1)(1\cdot \varphi(1))=\varphi(1)^2,
+	\]
+	se concluye que $\varphi(1)=1$. 
+	
+	Veamos que $\ker\varphi$ es un subgrupo. 
+	Como $\varphi(1)=1$, $K$ es no vacío. Sean
+	$x,y\in \ker\varphi$. Como $1=\varphi(y^{-1}y)=\varphi(y^{-1})(y^{-1}\cdot
+	\varphi(y))$, se tiene que
+	\[
+	\varphi(y^{-1})=(y^{-1}\cdot\phi(y))^{-1}.
+	\]
+	Similarmente se demuestra que 
+	\[
+		\varphi(y^{-1})=y^{-1}\cdot\phi(y)^{-1}.
+	\]
+	De estas fórmulas se deduce que si $x\in \ker\varphi$ entonces
+	$x^{-1}\in \ker\varphi$. Luego $\ker\varphi$ es un subgrupo pues si $x,y\in \ker\varphi$, 
+	$\varphi(xy)=\varphi(x)(x\cdot \varphi(y))=1(x\cdot 1)=1$. 
+\end{sol}
+
+\section*{Extensiones y cohomología}
+
+\begin{sol}{xca:H0}
+	Pues para todo $a\in A=C^0(G,A)$ se tiene que $da=0$ si y sólo si $a\in
+	A^G$.
+\end{sol}
+
+\begin{sol}{xca:extensiones}
+	Veamos que $\ker\beta=1$. Sea $g\in G$ tal que $\beta(g)=1$. Como $g\in\ker
+	p=\iota(K)$ pues $p(g)=p_1\beta(g)=p_1(1)=1$, existe $k\in K$ tal que
+	$g=\iota(k)$. Entonces $1=\beta(g)=\beta\iota(k)=\iota_1\alpha(k)$. Como
+	$\iota_1$ y $\alpha$ son morfismos inyectivos, $k=1$ y luego $g=1$.
+	
+	Veamos ahora que $\beta(G)=G_1$. Sea $g_1\in G_1$. Como $p$ es
+	sobreyectiva, $p_1(g_1)=p(g)$ para algún $g\in G$. Como
+	$\beta(g)g_1^{-1}\in \ker p_1=\iota_1(K_1)$ y $\alpha$ es epimorfismo,
+	existe $k\in K$ tal que
+	$\beta(g)g_1^{-1}=\iota_1(\alpha(k))=\beta(\iota(k))$. Luego
+	$\beta(g\iota(k)^{-1})=g_1$.
+\end{sol}
