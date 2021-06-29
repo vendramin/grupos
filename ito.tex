@@ -6,16 +6,11 @@
 \end{definition}
 
 \begin{exercise}
+\label{xca:metabelian1}
 	Demuestre que un grupo $G$ es metabeliano si y sólo si existe un subgrupo
 	normal $K$ de $G$ tal que $K$ y $G/K$ son abelianos.
 \end{exercise}
 
-% \begin{svgraybox}
-% 	Si $G$ es metabeliano, entonces $[G,G]$ es un subgrupo normal de $G$
-% 	abeliano tal que $G/[G,G]$ es abeliano. Si existe un subgrupo normal $K$ de
-% 	$G$ tal que $K$ y $G/K$ son abelianos, entonces $[G,G]\subseteq K$ es
-% 	abeliano.
-% \end{svgraybox}
 
 % \begin{remark}
 % 	Los grupos metabelianos son resolubles pues 
@@ -24,6 +19,7 @@
 % \end{remark}
 
 \begin{exercise}
+\label{xca:metabelian2}
 	Sea $G$ un grupo metabeliano. 
 	\begin{enumerate}
 		\item Si $H$ es un subgrupo de $G$ entonces $H$ es metabeliano.
@@ -31,11 +27,6 @@
 			metabeliano.
 	\end{enumerate}
 \end{exercise}
-
-% \begin{svgraybox}
-% 	El primer ítem es fácil pues $[H,H]\subseteq [G,G]$ es abeliano. El segundo
-% 	también pues $[f(H),f(H)]=f([H,H])$ es abeliano.
-% \end{svgraybox}
 
 \begin{lemma}
 En un grupo valen las siguientes fórmulas:
@@ -79,6 +70,10 @@ gap> StructureDescription(DerivedSubgroup(SL(2,3)));
 \end{lstlisting}
 \end{example}
 
+El siguiente resultado considerado uno de los 
+resultados más importantes de la teoría de factoriación 
+de grupos. La demostración es sorprendentemente simple. 
+
 % todo: después
 \begin{theorem}[It\^o]
 	\label{theorem:Ito}
@@ -116,3 +111,14 @@ gap> StructureDescription(DerivedSubgroup(SL(2,3)));
 	ya que $[A,B]$ es normal en $G$. 
 \end{proof}
 
+En 1988 apareció la siguiente generalización 
+del teorema de It\^o. 
+
+\begin{theorem}[Sysak]
+\index{Teorema!de Sysak}
+    Sean $A$ y $B$ subgrupos abelianos de $G$. Si $H$ es un
+    subgrupo de $G$ tal que $H$ está contenido en el 
+    conjunto $AB$, entonces $H$ es meta-abeliano. 
+\end{theorem}
+
+Para la demostración referimos a \cite{MR988177}.
