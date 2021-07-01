@@ -9,7 +9,8 @@ del teorema de Schur--Zassenhaus a grupos súper-resolubles, estudiados en el ca
 
 \begin{lemma}
 	\label{lemma:1cocycle}
-	Si $\varphi\colon G\to N$ es un $1$-cociclo con núcleo $K$ entonces
+	Sea $G$ un grupo y $N$ un subgrupo normal de $G$. 
+	Si $\varphi\colon G\to N$ es un $1$-cociclo (donde $G$ actúa en $N$ por conjugación) con núcleo $K$ entonces
 	$\varphi(x)=\varphi(y)$ si y sólo si $xK=yK$. En particular,
 	$(G:K)=|\varphi(G)|$. 
 \end{lemma}
@@ -99,25 +100,25 @@ del teorema de Schur--Zassenhaus a grupos súper-resolubles, estudiados en el ca
 	\]
 
 	Sea $H=\ker\theta$. Vamos a demostrar que $H$ es un complemento para $N$. 
-	Por el ejercicio~\ref{exercise:1cocycle}, $H$ es un
+	Sabemos que $H$ es un
 	subgrupo de $G$. Como
 	\[
-		|N|=|\theta(G)|=(G:H)
+		|N|=|\theta(G)|=(G:H)=\frac{|G|}{|H|}
 	\]
-	por el lema~\ref{lemma:1cocycle}, se concluye que $|H|$ divide a $(G:N)$.
-	Como $N\cap H$ es un subgrupo de $N$ y de $H$, entonces $N\cap H=1$ pues
+	por el lema~\ref{lemma:1cocycle}.
+	Como $N\cap H$ es un subgrupo de $N$ y de $H$, entonces $N\cap H=\{1\}$ pues
 	$|N|$ y $(G:N)=|H|$ son coprimos.  Como $|NH|=|N||H|=|G|$, se concluye que
 	$G=NH$ y entonces $H$ es un complemento para $N$.
 
 	Veamos ahora que dos complementos para $N$ son conjugados. 
-	Sea $K$ un complemento de $N$ en $G$. Como $NK=G$ y $N\cap K=1$, $K$ es un
+	Sea $K$ un complemento de $N$ en $G$. Como $NK=G$ y $N\cap K=\{1\}$, $K$ es un
 	transversal para $N$. Sea $m=d(T,K)\in N$. Como $\theta|_N$ es
 	sobreyectiva, existe $n\in N$ tal que $\theta(n)=m$. Por el
 	lema~\ref{lemma:d}, para todo $k\in K$ se tiene
 	\[
-	kmk^{-1}=kd(T,K)k^{-1}=d(kT,kK)=d(kT,K)=d(kT,T)d(T,K)=\theta(k)m,
+	kmk^{-1}=kd(T,K)k^{-1}=d(kT,kK)=d(kT,K)=d(kT,T)d(T,K)=\theta(k)m.
 	\]
-	y luego $\theta(k)\in N$. Entonces, como $N$ es abeliano,
+	Entonces, como $N$ es abeliano,
 	$\theta(n^{-1})=m^{-1}$ y luego 
 	\begin{align*}
 		\theta(nkn^{-1})&=\theta(n)n\theta(kn^{-1})n^{-1}
@@ -153,7 +154,7 @@ normal $N$ es abeliano.
 	maximal de $G$ (pues si existe un maximal $M\subsetneq G$ tal que
 	$N\not\subseteq M$ entonces $NM=G$), se tiene que $N\subseteq\Phi(G)$. Por
 	el teorema de Frattini ~\ref{theorem:Frattini}, $\Phi(G)$ es nilpotente y
-	luego $N$ es nilpotente; en particular, $Z(N)\ne1$. Sea $\pi\colon G\to
+	luego $N$ es nilpotente; en particular, $Z(N)\ne\{1\}$. Sea $\pi\colon G\to
 	G/Z(N)$ el morfismo canónico. Como $N$ es normal en $G$ y $Z(N)$ es
 	característico en $N$, $Z(N)$ es normal en $G$.  Además 
 	\[
@@ -243,7 +244,7 @@ normal $N$ es abeliano.
 		$N$ es minimal-normal en $G$.
 	\end{claim}
 
-	Sea $M\ne1$ normal tal que $M\subseteq N$. Sea $\pi\colon G\to G/M$ el
+	Sea $M\ne\{1\}$ normal en $G$ tal que $M\subseteq N$. Sea $\pi\colon G\to G/M$ el
 	morfismo canónico. Vimos que $\pi(G)$ satisface las hipótesis del teorema
 	con respecto al subgrupo normal $\pi(N)$. Por la minimalidad de $G$, existe
 	$x\in G$ tal que $\pi(xK_1x^{-1})=\pi(K_2)$. Sabemos que el subgrupo
@@ -253,7 +254,7 @@ normal $N$ es abeliano.
 	Luego $MK_2=G$ pues $xK_1x^{-1}$ y $K_2$ no son conjugados y $G$ es
 	minimal. Esto implica que $M=N$ pues 
 	\[
-		\frac{|K_2|}{|M\cap K_2|}=|MK_2|=|G|=|NK_2|=|N||K_2|.
+		\frac{|K_2|}{|M\cap K_2|}=(MK_2:M)=(G:M)=\frac{|NK_2|}{|M|}=(N:M)|K_2|.
 	\]
 
 	\begin{claim}
@@ -269,17 +270,20 @@ normal $N$ es abeliano.
 	Sea $p\colon G\to G/N$ el morfismo canónico y sea $S$ tal que $p(S)$
 	minimal-normal en $p(G)=G/N$.  Por el lema~\ref{lemma:minimal_normal},
 	$p(S)$ un $p$-grupo para algún primo $p$.  Como $G=NK_1=NK_2$ y $N\subseteq
-	S$, el lema de Dedekind~\ref{lemma:Dedekind} implica que
+	S$, el lema de Dedekind (lema~\ref{lemma:Dedekind}) implica que
 	\[
 	S=N(S\cap K_1)=N(S\cap K_2).
 	\]
 	Luego $S\cap K_1$ y $S\cap K_2$
-	complementan a $N$ en $S$. En particular $S\cap K_1$ y $S\cap K_2$ son
+	complementan a $N$ en $S$. Como $p(S)=p(S\cap K_1)=p(S\cap K_2)$ es un $p$-grupo,
+	entonces $p$ divide a $|S|$. Como las hipótesis valen para el subgrupo $S$ con respecto al normal $N$,
+	entonces $|N|$ y $(S:N)$ son coprimos. Si $p\mid |N|$, entonces 
+	$p\nmid (S:N)=|S\cap K_1|=|S\cap K_2|$, una contradicción. Luego $p\nmid |N|$ y 
+	en particular $p\nmid |S|$. Esto implica que $S\cap K_1$ y $S\cap K_2$ son
 	$p$-subgrupos de Sylow de $S$ pues 
 	\[
-		|S\cap K_1|=|S:N|=|S\cap K_2|,
+		|S\cap K_1|=(S:N)=|S\cap K_2|.
 	\]
-	y $p$ no divide a $|N|$. 	
 	Por el teorema de Sylow, existe $s\in
 	S$ tal que \[
 	S\cap sK_1s^{-1}=S\cap K_2.
@@ -325,7 +329,7 @@ normal $N$ es abeliano.
 	todo grupo de orden impar es resoluble y $|N|$ es coprimo con $(G:N)$,
 	alguno de estos grupos tiene orden impar.
 
-
+\medskip
 Veamos una aplicación a grupos resolubles finitos.
 
 \begin{theorem}

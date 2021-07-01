@@ -297,13 +297,13 @@ Veamos otras propiedades importantes de grupos súper-resolubles.
 	Demostremos ahora la tercera afirmación. Como $G$ es súper-resoluble, existe
 	una sucesión
 	\[
-	G=G_0\supseteq G_1\supseteq\cdots\supseteq G_n=1
+	G=G_0\supseteq G_1\supseteq\cdots\supseteq G_n=\{1\}
 	\]
 	de subgrupos normales tal que cada $G_i/G_{i+1}$ es cíclico. Para cada
 	$i\in\{0,\dots,n\}$ sea $H_i=[G,G]\cap G_i$. Como $[G,G]$ y los $G_i$ son
 	normales en $G$, se tiene una sucesión
 	\[
-	[G,G]=H_0\supseteq H_1\supseteq\cdots\supseteq H_n=1
+	[G,G]=H_0\supseteq H_1\supseteq\cdots\supseteq H_n=\{1\}
 	\]
 	de subgrupos normales de $G$. Como $H_i$ y $H_{i+1}$ es normal en $G$, el
 	grupo $G$ actúa por conjugación en $H_i/H_{i+1}$. Esto induce un morfismo
@@ -347,16 +347,20 @@ Veamos otras propiedades importantes de grupos súper-resolubles.
 	proposición~\ref{proposition:Nciclico}.
 \end{proof}
 
-\begin{corollary}
-	Todo grupo finito nilpotente es súper-resoluble.
-\end{corollary}
+Como todo grupo finito nilpotente es producto directo de (finitos) subgrupos de
+Sylow, cada $p$-grupo es súper-resoluble y el producto directo de súper-resolubles es súper-resoluble, 
+se obtiene el siguiente resultado:
 
-\begin{proof}
-	Todo grupo finito nilpotente es producto directo (finito) de subgrupos de
-	Sylow. Como cada $p$-grupo es súper-resoluble por la
-	proposición~\ref{proposition:psuper}, el resultado se obtiene
-	inmediatamente del ejercicio~\ref{exercise:directosuper}.
-\end{proof}
+\begin{proposition}
+	Todo grupo finito nilpotente es súper-resoluble.
+\end{proposition}
+
+% \begin{proof}
+% 	Todo grupo finito nilpotente es producto directo (finito) de subgrupos de
+% 	Sylow. Como cada $p$-grupo es súper-resoluble por la
+% 	proposición~\ref{proposition:psuper}, el resultado se obtiene
+% 	inmediatamente del ejercicio~\ref{exercise:directosuper}.
+% \end{proof}
 
 \begin{theorem}
 	Todo grupo súper-resoluble tiene subgrupos maximales.	
@@ -368,13 +372,13 @@ Veamos otras propiedades importantes de grupos súper-resolubles.
 	este caso el grupo es cíclico. Supongamos entonces que $G$ admite una
 	sucesión
 	\[
-		G=G_0\supseteq\cdots\supseteq G_k=1
+		G=G_0\supseteq\cdots\supseteq G_k=\{1\}
 	\]
 	y que la afirmación es cierta para grupos súper-resolubles con sucesiones 
 	de longitud $<k$. Como $G_{k-1}$ es normal en $G$, sea $\pi\colon G\to
 	G/G_{k-1}$ el morfismo canónico. Entonces la sucesión
 	\[
-		G/G_{k-1}=\pi(G)\supseteq \pi(G_1)\supseteq\cdots\supseteq\pi(G_{k-1})=1
+		G/G_{k-1}=\pi(G)\supseteq \pi(G_1)\supseteq\cdots\supseteq\pi(G_{k-1})=\{1\}
 	\]
 	prueba la resolubilidad de $\pi(G)$ y tiene longitud $<k$. Por hipótesis
 	inductiva, $G/G_{k-1}$ admite subgrupos maximales y luego, por el teorema
@@ -404,11 +408,11 @@ subgrupos maximales, ver por ejemplo $\Q$.
 %	maximal (es decir, no contenido en ningún otro subgrupo de $\mathcal{S}$). 
 %\end{lemma}
 
-\begin{lemma}
-	\label{lemma:MAX=fg}
+\begin{proposition}
+	\label{pro:MAX=fg}
 	Sea $G$ un grupo. Entonces $G$ satisface la condición maximal para
 	subgrupos si y sólo si todo subgrupo de $G$ es finitamente generado.
-\end{lemma}
+\end{proposition}
 
 \begin{proof}
 	Supongamos que $G$ satisface la condición maximal para subgrupos y sea $H$
@@ -433,15 +437,12 @@ subgrupos maximales, ver por ejemplo $\Q$.
 	para algún $k$ suficientemente grande, una contradicción.
 \end{proof}
 
+Una consecuencia inmediata. 
+
 \begin{proposition}
-	\label{proposition:max:N}
-	Sea $G$ un grupo y sea $H$ un subgrupo de $G$.  Si $G$ satisface la
+    Sean $G$ un grupo y $H$ un subgrupo de $G$.  Si $G$ satisface la
 	condición maximal para subgrupos entonces $H$ también. 
 \end{proposition}
-
-\begin{proof}
-	Es consecuencia inmediata del lemma~\ref{lemma:MAX=fg}.
-\end{proof}
 
 \begin{proposition}
 	\label{proposition:max:G/N}
@@ -522,7 +523,7 @@ subgrupos maximales, ver por ejemplo $\Q$.
 
 \begin{proof}
 	Procederemos por inducción en la longitud $n$ de la sucesión de
-	superresolubilidad.  El caso $n=1$ es trivial pues entonces $G$ es cíclico.
+	súper-resolubilidad.  El caso $n=1$ es trivial pues entonces $G$ es cíclico.
 	Supongamos entonces que el resultado vale para grupos súper-resolubles con
 	serie de longitud $\leq n-1$.  Sea $G$ un grupo súper-resoluble no trivial y sea 
 	\[
@@ -530,10 +531,10 @@ subgrupos maximales, ver por ejemplo $\Q$.
 	G_1\supsetneq\cdots\supsetneq G_n=\{1\}
 	\]
 	una sucesión de subgrupos normales de $G$ con factores cíclicos. Como
-	$G_{n-1}$ es súper-resoluble por el ejercicio~\ref{xca:super},
-	$G_{n-1}$ satisface la condición maximal para subgrupos por hipótesis
+	$G_{1}$ es súper-resoluble por el ejercicio~\ref{xca:super},
+	$G_{1}$ satisface la condición maximal para subgrupos por hipótesis
 	inductiva.  Luego, por la proposición~\ref{proposition:max:G/N}, $G$ satisface la condición maximal para subgrupos porque
-	$G/G_{n-1}$ es un grupo cíclico.
+	$G/G_{1}$ es un grupo cíclico.
 \end{proof}
 
 %\begin{proposition}\
