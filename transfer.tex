@@ -123,7 +123,6 @@ donde $T$ es algún transversal de $H$ en $G$.
 El teorema~\ref{theorem:transfer} afirma que $\nu$ es un morfismo de grupos.
 Queda entonces justificada la siguiente definición:
 
-
 \begin{definition}
 	Sea $G$ un grupo y sea $H$ un subgrupo de índice finito. El
 	\textbf{morfismo de transferencia} es el morfismo $\nu\colon G\to H/[H,H]$,
@@ -230,8 +229,8 @@ Queda entonces justificada la siguiente definición:
 
 \begin{proposition}
 	\label{proposition:v(g)=g^n}
-	Sea $G$ un grupo y sea $H$ un subgrupo abeliano de índice $n$ tal que
-	$H\subseteq Z(G)$. Entonces $\nu(g)=g^n$ para todo $g\in G$.
+	Sea $G$ un grupo y sea $H$ un subgrupo central de índice $n$. 
+	Entonces $\nu(g)=g^n$ para todo $g\in G$.
 \end{proposition}
 
 \begin{proof}
@@ -247,7 +246,7 @@ Queda entonces justificada la siguiente definición:
 		=\prod_{i=1}^m s_i^{-1}g^{n_i}s_i
 		=\prod_{i=1}^m g^{n_i}
 		=g^{\sum_{i=1}^m n_i}
-		=g^n.
+		=g^n.\qedhere 
 	\]
 \end{proof}
 
@@ -297,7 +296,7 @@ Queda entonces justificada la siguiente definición:
 	H$ y $\nu(h^m)=h^{nm}=h$. 
 
 	Tenemos entonces que $G\simeq N\rtimes H$ pues $N$ es normal en $G$, $N\cap
-	H=1$ y $G=NH$ (pues $|NH|=|N||H|$ y $G/N\simeq H$).
+	H=\{1\}$ y $G=NH$ (pues $|NH|=|N||H|$ y $G/N\simeq H$).
 \end{proof}
 
 \begin{corollary}[Frobenius]
