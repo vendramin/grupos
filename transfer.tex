@@ -158,7 +158,7 @@ Queda entonces justificada la siguiente definición:
 
 \begin{theorem}
 	\label{theorem:P_noabeliano}
-	Sea $G$ un grupo finito. Sea $p$ un primo que divide al orden de $[G,G]\cap
+	Sea $G$ un grupo finito. Sea $p$ un primo que divide al orden del subgruo $[G,G]\cap
 	Z(G)$. Si $P\in\Syl_p(G)$ entonces $P$ es no abeliano.
 \end{theorem}
 
@@ -188,9 +188,10 @@ Queda entonces justificada la siguiente definición:
 \begin{lemma}
 	\label{lemma:evaluation}
 	Sea $G$ un grupo y sea $H$ un subgrupo de índice $n$. Sea
-	$T=\{t_1,\dots,t_n\}$ un transversal de $H$ en $G$.  Para cada $g\in G$
+	$T=\{t_1,\dots,t_n\}$ un transversal de $H$ en $G$.  Para cada $g\in G$ existe
+	$m\in\N$ y 
 	existen $s_{1},\dots,s_{m}\in T$ y enteros positivos $n_1,\dots,n_m$
-	(que dependen de $g$) tales que 
+	tales que 
 	$s_i^{-1}g^{n_i}s_i\in H$,
 	$n_1+\cdots+n_m=n$ y 
 	\[
@@ -276,6 +277,8 @@ Queda entonces justificada la siguiente definición:
 	índice $n$, donde $n$ es coprimo con $|H|$.  Sea
 	$N=\ker(\nu\colon G\to H)$. Entonces $G\simeq N\rtimes H$.
 \end{corollary}
+
+% todo: no entiendo un paso de la demostración, por qué quito los s_i
 
 \begin{proof}
 	Como $H$ es abeliano, $H=H/[H,H]$ y el morfismo de transferencia es

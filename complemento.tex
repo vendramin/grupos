@@ -39,7 +39,7 @@
 	$\pi\colon G\to G/N$ el morfismo canónico.  Por hipótesis, $N$ tiene orden
 	$n$. Vamos a demostrar que $N$ es el único subgrupo de $G$ de orden $n$. Si
 	$K$ es un subgrupo de $G$ de orden $n$, entonces  $\pi(K)\simeq K/K\cap N$
-	y luego el orden de $\pi(K)$ divide a $m$. Pero además el orden de $\pi(K)$
+	y luego el orden de $\pi(K)$ divide a $n$. Pero además el orden de $\pi(K)$
 	divide al primo $p$ pues $\pi(K)\leq G/N$. Luego $\pi(K)$ es trivial y
 	entonces $K=N$ y luego $G$ tiene un único subgrupo de orden $n$. En
 	particular, $N$ es un subgrupo característico de $G$.
@@ -65,14 +65,15 @@
 		v(g)=\prod_{i=1}^m s_i^{-1}g^{n_i}s_i.
 	\]
 	Como $P$ es abeliano, $P\subseteq C_G(P)$. Por 
-	el lema~\ref{lemma:normal_complement}, existe $c_i\in N_G(P)$ tal
+	el lema~\ref{lemma:normal_complement}, existen elements $c_i\in N_G(P)$ tales 
 	que 
 	\[
 	s_i^{-1}g^{n_i}s_i=c_i^{-1}g^{n_i}c_i,
 	\]
 	y luego $s_i^{-1}g^{n_i}s_i=g_i^{n_i}$ pues $P\subseteq Z(N_G(P))$. Tenemos
 	entonces que $\nu(g)=g^n$, donde $n=(G:P)$. Como $n$ y $|P|$ son coprimos,
-	existen $r,s\in\Z$ tales que $rn+s|P|=1$. Esto implica que $\nu|_P$ es
+	existen $r,s\in\Z$ tales que $rn+s|P|=1$. Esto implica que la restricción
+	$\nu|_P$ es
 	sobreyectiva pues
 	\[
 	g=(g^r)^n=\nu(g^r).

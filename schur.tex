@@ -60,6 +60,27 @@
 	una contradicción a la minimalidad de $m$. 
 \end{proof}
 
+\begin{example}
+Sea $G$ el grupo con generadores $x_1,x_2,x_3$ y relaciones $x_1x_2=x_3x_1$, $x_1x_3=x_2x_1$, $x_2x_3=x_1x_2$. 
+El grupo $G$ es infinito, ya que la función 
+$G\to\Z$, $x_i\mapsto 1$, se extiende a un morfismo sobreyectivo de grupos. Además $G$ es no abeliano
+pues la función $G\to\Sym_3$, $x_1\mapsto (12)$, $x_2\mapsto (13)$, $x_3\mapsto (23)$, se extiende a un morfismo
+de grupos. 
+El conjunto
+$X=\{a,b,c\}$ es una clase de conjugación de $G$. Además $G$ está generado por $X$. 
+Dejamos como ejercicio demostrar que 
+\[
+x_1^3=x_2^3=x_3^3 
+\]
+es un elemento central. El consecuencia, el teorema de Dietzmann implica que
+el grupo cociente $G/\langle x_1^3\rangle$ es finito. 
+\end{example}
+
+\begin{exercise}
+Calcule el centro del grupo $G$ definido en el ejemplo anterior y demuestre que
+$G/Z(G)$ es finito. 
+\end{exercise}
+
 \begin{theorem}[Schur]
 	\label{theorem:Schur_commutador}
 	Si $Z(G)$ tiene índice finito en $G$ entonces $[G,G]$ es finito.
@@ -117,9 +138,8 @@ alternativa del teorema que demostraremos elementalmente a continuación.
 		y\mapsto ([x_1,y],\dots,[x_n,y]).
 	\]
 	Primero observamos que $f$ está bien definida: si $y\in G$ y $z\in Z(G)$ entonces
-	\[
-		f(yz)=[x_i,yz]=[x_i,y]=f(y). 
-	\]
+	$[x_i,yz]=[x_i,y]$ para todo $i$ y luego $f(y)=f(yz)$. 
+	
 	Ahora veamos que $f$ es inyectiva: Supongamos que $f(xZ(G))=f(yZ(G))$. Entonces
 	$[x_i,x]=[x_i,y]$ para todo $i\in\{1,\dots,n\}$. Para cada $i$ calculamos
 	\begin{align*}
