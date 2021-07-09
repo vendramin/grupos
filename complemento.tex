@@ -12,7 +12,7 @@
 	y $xPx^{-1}$ son subgrupos de Sylow de $C_G(g)$. Por el teorema de Sylow,
 	existe $c\in C_G(g)$ tal que $P=cxP(cx)^{-1}$. Tenemos $cx\in N_G(P)$ y 
 	\[
-	(cx)h(cx)^{-1}=c(xhx^{-1})c^{-1}=cgc^{-1}=g.
+	(cx)h(cx)^{-1}=c(xhx^{-1})c^{-1}=cgc^{-1}=g.\qedhere
 	\]
 \end{proof}
 
@@ -79,7 +79,7 @@
 	g=(g^r)^n=\nu(g^r).
 	\]
 	Por el teorema de isomorfismos, $P/\ker\nu\cap P\simeq\nu(P)=P$. 
-	Luego $\ker\nu\cap P=1$. Además $\nu(G)=\nu(P)$ pues 
+	Luego $\ker\nu\cap P=\{1\}$. Además $\nu(G)=\nu(P)$ pues 
 	$P\supseteq \nu(G)\supseteq \nu(P)=P$.
 	
 	Veamos que $\ker\nu$ es un $p$-complemento normal en $G$. Es claro que $\ker\nu$ es normal en $G$. 
@@ -140,7 +140,7 @@ Vamos a demostrar algo más fuerte:
 \begin{corollary}
 	\label{corollary:Sylow_ciclicos:resoluble}
 	Sea $G$ un grupo finito tal que todos sus subgrupos de Sylow son cíclicos.
-	Entonces $G$ es superresoluble.
+	Entonces $G$ es super-resoluble.
 \end{corollary}
 
 %\begin{proof}
@@ -210,7 +210,7 @@ Vamos a demostrar algo más fuerte:
 \begin{theorem}
 	\label{theorem:[GG]PZNG(P)=1}
 	Sea $G$ un grupo finito y sea $P$ un subgrupo de Sylow abeliano. Entonces 
-	$[G,G]\cap P\cap Z(N_G(P))=1$.
+	$[G,G]\cap P\cap Z(N_G(P))=\{1\}$.
 \end{theorem}
 
 \begin{proof}
