@@ -97,16 +97,23 @@ $G/Z(G)$ es finito.
 	al aplicar el teorema~\ref{theorem:Dietzmann}.
 \end{proof}
 
-\begin{corollary}[Sury]
+La demostración que veremos a continuación se debe a Sury. 
+
+\begin{theorem}[Niroomand]
 	Si el conjunto de conmutadores de un grupo $G$ es finito, entonces
 	$[G,G]$ es también finito.
-\end{corollary}
+\end{theorem}
 
 \begin{proof}
-	Sea $C$ el conjunto de conmutadores de $G$ y sea $H$ el subgrupo de $G$
-	generado por $C$. Sabemos que $H$ es finitamente generado, digamos por los elementos 
-	$h_1,\dots,h_n$. Como $h\in Z(H)$ si y sólo si $h\in C_H(H_i)$ para todo
-	$i\in\{1,\dots,n\}$, se tiene que $Z(H)=\cap_{i=1}^n C_H(h_i)$. Además, si
+	Sea $C$ el conjunto de conmutadores de $G$, digamos 
+	\[
+	C=\{[x_1,y_1],\dots,[x_k,y_k]\}
+	\]
+	y sea $H=\langle x_1,x_2,\dots,x_k,y_1,y_2,\dots,y_k\rangle$. Observemos que
+	$[G,G]=\langle C\rangle\subseteq [H,H]$, pues $C$ es un subconjunto de commutadores de $H$. 
+	Para simplificar la notación escribiremos $H=\langle h_1,\dots,h_{2k}\rangle$. 
+	Como $h\in Z(H)$ si y sólo si $h\in C_H(h_i)$ para todo
+	$i\in\{1,\dots,2k\}$, se tiene que $Z(H)=\cap_{i=1}^{2k} C_H(h_i)$. Además, si
 	$h\in H$, entonces $hh_ih^{-1}=ch_i$ para algún $c\in C$. Luego la clase de
 	conjugación de cada $h_i$ tiene a lo sumo tantos elementos como $C$. Esto
 	implica que
