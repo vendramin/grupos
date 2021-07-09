@@ -209,23 +209,27 @@ Queda entonces justificada la siguiente definición:
 		\sigma=\alpha_1\cdots\alpha_m.
 	\]
 
-	Para cada $i\in\{1,\dots,n\}$, escribamos 
-	$\alpha_i=(j_{1}\cdots j_{n_i})$. Como 
+	Fijamos $i\in\{1,\dots,n\}$ y escribimos    
+	$\alpha_i=(j_{1}\cdots j_{n_i})$. Como  
 	\[
 		g t_{j_k}=t_{\sigma(j_k)}h_{j_k}=\begin{cases}
-			t_{j_1}h_{n_i} & \text{si $i=n_i$},\\
+			t_{j_1}h_{n_k} & \text{si $k=n_i$},\\
 			t_{j_{k+1}}h_{k} & \text{en otro caso},
 		\end{cases}
 	\]
-	entonces
-	\[
-	t_{j_1}^{-1}g^{n_i}t_{j_1}
-	=t_{j_1}^{-1}gg^{n_i-1}t_{j_1}
-	=t_{j_1}^{-1}gt_{j_r}h_{j_{r-1}}\cdots h_{j_1}
-	=h_{j_r}\cdots h_{j_1}\in H,
-	\]
-	y definimos $s_i=t_{j_1}$. Como $\nu(g)=h_1\cdots h_{n}$, 
-	de aquí se deduce inmediatamente el lema.
+	entonces 
+	\begin{align*}
+	t_{j_1}^{-1}g^{n_i}gt_{j_1}
+	&=t_{j_1}^{-1}g^{n_i-1}gt_{j_1}\\
+	&=t_{j_1}^{-1}g^{n_i-1}t_{j_2}h_1\\
+	&=t_{j_1}^{-1}g^{n_i-2}gt_{j_2}h_1\\
+	&=t_{j_1}^{-1}g^{n_i-2}t_{j_3}h_2h_1\\
+	&\phantom{=}\vdots\\
+	&=t_{j_1}^{-1}gt_{j_{n_i}}h_{n_{i-1}}\cdots h_2h_1\\
+	&=h_{j_1}^{-1}t_{j_1}h_{n_i}\cdots h_2h_1\in H. 	
+	\end{align*}
+	Luego tomamos $s_i=t_{j_1}\in T$. El resultado
+	entonces queda demostrado al observar que $\nu(g)=h_1\cdots h_n$. 
 \end{proof}
 
 \begin{proposition}
