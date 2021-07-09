@@ -273,26 +273,31 @@ Queda entonces justificada la siguiente definición:
 
 \begin{corollary}
 	\label{corollary:semidirecto}
-	Sea $G$ un grupo finito y sea $H$ un subgrupo abeliano de
-	índice $n$, donde $n$ es coprimo con $|H|$.  Sea
-	$N=\ker(\nu\colon G\to H)$. Entonces $G\simeq N\rtimes H$.
+	Sea $G$ un grupo finito y sea $H$ un subgrupo central de
+ 	índice $n$, donde $n$ es coprimo con $|H|$. 
+%   Supongamos
+% 	que si dos elementos de $H$ son conjugados en $G$ entonces son iguales. 
+    Si $N=\ker(\nu\colon G\to H)$, entonces $G\simeq N\rtimes H$.
 \end{corollary}
-
-% todo: no entiendo un paso de la demostración, por qué quito los s_i
 
 \begin{proof}
 	Como $H$ es abeliano, $H=H/[H,H]$ y el morfismo de transferencia es
 	$\nu\colon G\to H$. Por el lema~\ref{lemma:evaluation}, podemos escribir
 	\[
 		\nu(h)
-		=\prod_{i=1}^m s_i^{-1}h^{n_i}s_i
-		=\prod_{i=1}^m h^{n_i}
-		=h^{\sum_{i=1}^m n_i}=h^n.
+		=\prod_{i=1}^m s_i^{-1}h^{n_i}s_i.
 	\]
-	La composición $H\hookrightarrow G\xrightarrow{\nu} H$ es morfismo de
-	grupos. 
+	Como $h^{n_i}\in H\subseteq Z(G)$, entonces $s_i^{-1}h^{n_i}s_i=h^{n_i}$. 
+	Luego  
+	\[
+	\nu(h)
+	=\prod_{i=1}^m s_i^{-1}h^{n_i}s_i.
+    =\prod_{i=1}^m h^{n_i}
+	=h^{\sum_{i=1}^m n_i}=h^n
+	\]
 	
-	Vamos a demostrar que es un isomorfismo. Es inyectiva pues si $h^n=1$
+	La composición $H\hookrightarrow G\xrightarrow{\nu} H$ es morfismo de
+	grupos. Vamos a demostrar que es un isomorfismo. Es inyectiva pues si $h^n=1$
 	entonces $|h|$ divide a $|H|$ y divide a $n$; y como $n$ y $|H|$ son
 	coprimos, $h=1$. Veamos que es sobreyectiva. Como $n$ y $|H|$ son coprimos,
 	existe $m\in\Z$ tal que $nm\equiv 1\bmod |H|$. Si $h\in H$ entonces $h^m\in
