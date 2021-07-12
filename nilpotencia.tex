@@ -450,12 +450,15 @@ gap> UpperCentralSeries(SymmetricGroup(3));
 
 \begin{proof}
 	Procederemos por inducción en $i$. El caso $i=0$ es trivial.  Supongamos
-	que el resultado es válido para algún $i\geq0$. Entonces 
+	que el resultado es válido para algún $i\geq0$. Sea 
+	$\pi_i\colon G\to
+	G/G_i$ es el morfismo canónico.
+	Entonces 
 	\[
 	\gamma_{i+1}(G)=[G,\gamma_i(G)]\subseteq [G,G_{i-1}]\subseteq G_i
 	\]
 	pues, como $\pi_i(G_{i-1})\subseteq Z(G/G_{i})$, entonces
-	$\pi([G,G_{i-1}])=[\pi(G),\pi(G_{i-1})]=\{1\}$ y luego $[G,G_{i-1}]\subseteq
+	$\pi_i([G,G_{i-1}])=[\pi_i(G),\pi_i(G_{i-1})]=\{1\}$ y luego $[G,G_{i-1}]\subseteq
 	G_i$.
 \end{proof}
 
@@ -577,20 +580,33 @@ Recordemos que $\Q$ es un grupo abeliano (por lo tanto, nilpotente) que no tiene
 %%% TODO: hacer inducción en el índice para escribirlo mejor
 
 \begin{proof}
-	El resultado es obvio en el caso en que $H$ sea un subgrupo normal.  Sea
+	Procederemos por inducción en $n$. El caso $n=1$ es trivial y el caso 
+	$n=2$ se obtiene de la normalidad de $H$. Supongamos entonces que el resultado es válido para
+	todo subgrupo de índice $<n$. Si $H$ es tal que $(G:H)=n$, entonces
+	sean 
 	$H_0=H$ y $H_{i+1}=N_G(H_i)$ para $i\geq0$. Por definición, $H_{i}$ es
 	normal en $H_{i+1}$ y además, como $G$ es nilpotente, si $H_i\ne G$
 	entonces $H_i\subsetneq H_{i+1}$ por la condición normalizadora. 
-	Como $(G:H)$ es finito, existe $k$ tal que $H_k=G$. Veamos que 
+	Como $(G:H)$ es finito, existe $k$ tal que $H_k=G$. Por hipótesis 
+	inductiva, como $(H_j:H_{j-1})<n$ para todo $j$, se tiene que
+	$x^{(H_j:H_{j-1})}\in H_{j-1}$ para todo $x\in H_j$ y todo $j$. Luego  
 	\[
-		g^{(G:H)}=g^{(H_k:H_{k-1})(H_{k-1}:H_{k-2})\cdots (H_1:H_0)}\in H.
+		g^{(G:H)}=g^{(H_k:H_{k-1})(H_{k-1}:H_{k-2})\cdots (H_1:H_0)}\in H.\qedhere 
 	\]
-	Observemos que $g^{(H_k:H_{k-1})}\in H_{k-1}$ pues $H_{k-1}$ es normal en $H_k=G$, y que, como 
-	$g^{(H_k:H_{k-1})}\in H_k$, entonces 
-	\[
-	g^{(H_k:H_{k-2})}=g^{(H_k:H_{k-1})(H_{k-1}:H_{k-2})}=\left(g^{(H_k:H_{k-1})}\right)^{(H_{k-1}:H_{k-2})}\in H_{k-2}
-	\]
-	pues $H_{k-2}$ es normal en $H_{k-1}$. Al repetir este argumento, $g^{(G:H)}\in H$. 
+% 	El resultado es obvio en el caso en que $H$ sea un subgrupo normal.  Sea
+% 	$H_0=H$ y $H_{i+1}=N_G(H_i)$ para $i\geq0$. Por definición, $H_{i}$ es
+% 	normal en $H_{i+1}$ y además, como $G$ es nilpotente, si $H_i\ne G$
+% 	entonces $H_i\subsetneq H_{i+1}$ por la condición normalizadora. 
+% 	Como $(G:H)$ es finito, existe $k$ tal que $H_k=G$. Veamos que 
+% 	\[
+% 		g^{(G:H)}=g^{(H_k:H_{k-1})(H_{k-1}:H_{k-2})\cdots (H_1:H_0)}\in H.
+% 	\]
+% 	Observemos que $g^{(H_k:H_{k-1})}\in H_{k-1}$ pues $H_{k-1}$ es normal en $H_k=G$, y que, como 
+% 	$g^{(H_k:H_{k-1})}\in H_k$, entonces 
+% 	\[
+% 	g^{(H_k:H_{k-2})}=g^{(H_k:H_{k-1})(H_{k-1}:H_{k-2})}=\left(g^{(H_k:H_{k-1})}\right)^{(H_{k-1}:H_{k-2})}\in H_{k-2}
+% 	\]
+% 	pues $H_{k-2}$ es normal en $H_{k-1}$. Al repetir este argumento, $g^{(G:H)}\in H$. 
 \end{proof}
 
 \begin{example}
@@ -723,7 +739,7 @@ Otra aplicación.
 \end{proof}
 
 \begin{corollary}
-	Sea $G$ un grupo nilpotente sin torsión. Sean $x,y\in G$ tales que
+	Sea $G$ un grupo nilpotente sin torsión. Si $x,y\in G$ son tales que
 	$x^ny^m=y^mx^n$ para algún $n,m\ne 0$, entonces $xy=yx$.
 \end{corollary}
 
