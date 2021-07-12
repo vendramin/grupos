@@ -357,7 +357,10 @@ Recordemos que un grupo $G$ se dice \textbf{perfecto} si $[G,G]=G$.
 	%$[G,\zeta^2(G),G]=[G,G,\zeta_2(G)]=[G,(G)]=1$, se concluye que 
 	$\{1\}=[\zeta_2(G),G,G]=[\zeta_2(G),[G,G]]=[\zeta_2(G),G]$. Luego 	
 	$\zeta_2(G)\subseteq Z(G)$ y
-	entonces $\zeta_2(G)=Z(G/Z(G))=\{1\}$. 
+	Veamos ahora que  $Z(G/Z(G))$ es trivial. Sean $\pi\colon G\to G/Z(G)$ el morfismo canómnico
+	y $x\in G$ tal que 
+	$\pi(x)$ es central. Como $1=[\pi(x),\pi(y)]=\pi([x,y])$ para todo $y\in G$, en particular, 
+	$[x,y]\in Z(G)=\zeta_1(G)$ para todo $y\in G$. Luego $x\in\zeta_2(G)\subseteq Z(G)$. 
 \end{proof}
 
 
@@ -381,6 +384,7 @@ Si $H$ y $K$ son subgrupos de $G$ se define
 	Sean $K$ y $H$ subgrupos de $G$ con $K\subseteq H$ y $K$ normal en $G$.
 	Demuestre que $[H,G]\subseteq K$ si y sólo si $H/K\subseteq Z(G/K)$. 
 \end{exercise}
+
 \begin{lemma}
 	\label{lemma:gamma_zeta}
 	Sea $G$ un grupo. Existe $c$ tal que $\zeta_c(G)=G$ si y sólo si 
