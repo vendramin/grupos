@@ -396,33 +396,30 @@ Si $H$ y $K$ son subgrupos de $G$ se define
 \end{lemma}
 
 \begin{proof}
-	Supongamos primero que $\zeta_c(G)=G$. Por inducción vamos a demostrar
-	que $\gamma_{i+1}(G)\subseteq\zeta_{c-i}(G)$.  Como el caso $i=0$ es
-	trivial, supongamos que el resultado es válido para un cierto $i\geq0$. Si
-	$g\in\gamma_{i+2}(G)=[\gamma_{i+1}(G),G]$, podemos escribir 
+    Supongamos primero que $\zeta_c(G)=G$. Para demostrar que la contención  
+    $\gamma_{i+1}(G)\subseteq\zeta_{c-i}(G)$ vale para todo $i$
+    procederemos por inducción. El caso $i=0$ es trivial. Supongamos 
+    entonces que el resultado vale para algún $i\geq0$. Si
+	$g\in\gamma_{i+2}(G)=[G,\gamma_{i+1}(G)]$, entonces    
 	\[
-	g=\prod_{k=1}^N [g_k,x_k],
+	g=\prod_{k=1}^N [x_k,g_k],
 	\]
-	donde $g_1,\dots,g_N\in\gamma_{i+1}(G)$ y $x_1,\dots,x_N\in G$. Por
-	hipótesis inductiva 
+    para ciertos $g_1,\dots,g_N\in\gamma_{i+1}(G)$ y $x_1,\dots,x_N\in G$. Por hipótesis inductiva, 
 	\[
-	g_j\in\gamma_j(G)\subseteq\zeta_{c-j}(G)
+	g_k\in\gamma_i(G)\subseteq\zeta_{c-i}(G)
 	\]
-	y entonces $[g_j,x_j]\in\zeta_{c-i-1}(G)$ para todo $j$. Luego
-	$g\in\zeta_{c-(i+1)}(G)$. La implicación que queremos queda demostrada
-	al tomar $i=c$. 
-
-	Supongamos ahora que $\gamma_{c+1}(G)=1$. Demostremos por inducción en $c-i$ que
-	$\gamma_{c+1-i}(G)\subseteq\zeta_{c-i}(G)$. El caso $c-i=0$ es trivial. Si el
-	resultado es válido para algún $c-i\geq0$, sea
-	$g\in\gamma_{c+2-i}(G)=[\gamma_{c+1-i}(G),G]$. Escribimos
+	para todo $k$ y luego $[x_k,g_k]\in\zeta_{c-i-1}(G)$ para todo $k$. En conclusión,  
+	$g\in\zeta_{c-(i+1)}(G)$. 
+	
+	Supongamos ahora que $\gamma_{c+1}(G)=\{1\}$. Vamos a demostrar que la contención 
+	$\gamma_{i+1}(G)\subseteq\zeta_{c-i}(G)$ para todo $i$. Procederemos por inducción hacia atrás 
+	en $i$. 
+	El caso $i=c$ es trivial. Supongamos entonces que el resultado
+	vale para un cierto $i+1\leq c$. Sea $g\in\gamma_{i}(G)$. Por hipótesis inductiva, 
 	\[
-		g=\prod_{k=1}^N[g_k,x_k]
+	[x,g]\in [G,\gamma_i(G)]=\gamma_{i+1}(G)\subseteq\zeta_{c-i}(G).
 	\]
-	con $g_1,\dots,g_N\in\gamma_{c+1-i}(G)\subseteq\zeta_{i}(G)$ por
-	hipótesis inductiva. Luego $g\in \zeta_{c-(i+1)}(G)$ pues cada
-	$[g_j,x_j]\in\zeta_{i-1}(G)$. Al tomar $i=0$ se obtiene la implicación
-	buscada.
+	Luego $g\in\zeta_{c-i+1}(G)$ por definición. 
 \end{proof}
 
 \begin{example}
