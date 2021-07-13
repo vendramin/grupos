@@ -1,0 +1,105 @@
+\chapter{El teorema de Deaconescu--Walls}
+
+Sea $A$ un grupo que actúa por automorfismos en un grupo finito $G$. El grupo
+$C_{G}(A)=\{g\in G:a\cdot g=g\,\,\forall a\in A\}$ actúa en el conjunto de las
+$A$-órbitas por multiplicación a izquierda 
+pues $g\in G$ y $c\in C_G(A)$ entonces
+\[
+  c(A\cdot g)
+  =\{c(a\cdot g):a\in A\}
+  =\{(a\cdot c)(a\cdot g):a\in A\}
+  =\{a\cdot (cg):a\in A\}
+  =A\cdot (cg).
+\]
+
+El siguiente teorema fue descubierto por Deaconescu y Walls~\cite{MR2164558}. 
+La prueba que presentamos se debe a Isaacs~\cite{MR2922681}. 
+
+\begin{theorem}[Deaconescu--Walls]
+	\index{Deaconescu--Walls!teorema de}
+	\index{Teorema!de Deaconescu--Walls}
+	\label{theorem:DeaconescuWalls}
+	Sea $A$ un grupo que actúa por automorfismos en un grupo finito $G$. Sea
+	$C=C_{G}(A)$ y sea $N=C\cap [A,G]$,
+	donde $[A,G]$ es el subgrupo de $G$ generado por $[a,g]=(a\cdot g)g^{-1}$,
+	$a\in A$, $g\in G$.  Entonces $(C:N)$ divide a la cantidad de $A$-órbitas de
+	$G$. 
+\end{theorem}
+
+\begin{proof}
+  El grupo $C$ actúa por multiplicación a izquierda en el conjunto $\Omega$ de
+  $A$-órbitas de $G$. Sea $X=A\cdot g\in\Omega$ y sea $C_X$ el estabilizador en
+  $C$ de $X$. Si $c\in C_X$ entonces $cX=X$; en particular, si $c\in C_X$
+  entonces $cg=a\cdot g$ para algún $a\in A$, es decir: $c=(a\cdot
+  g)g^{-1}=[a,g]\in [A,G]$. Esto implica que $C_X\subseteq N$.
+
+  Para demostrar que $(C:N)$ divide al cardinal de $\Omega$, basta ver que
+  $(C:N)$ divide al tamaño de cada $C$-órbita. Si $X\in\Omega$ entonces $C\cdot
+  X$ tiene cardinal
+  \[
+	(C:C_X)=(C:N)(N:C_X)
+  \]
+  y luego $(C:N)$ divide al cardinal de la órbita $C\cdot X$.
+\end{proof}
+
+\begin{corollary}
+	\label{corollary:Z(G)subset[G,G]}
+  Sea $G$ un grupo finito no trivial con $k(G)$ clases 
+  de conjugación. Si el orden de $Z(G)$ es coprimo con $k(G)$ 
+  entonces $Z(G)\subseteq[G,G]$.
+\end{corollary}
+
+\begin{proof}
+	El grupo $A=G$ actúa en $G$ por conjugación. Como $C_G(A)=Z(G)$ y
+	$[A,G]=[G,G]$, el teorema de
+	Deaconescu--Walls~\ref{theorem:DeaconescuWalls} implica que  el índice
+	$(Z(G):Z(G)\cap [G,G])$ divide a $k(G)$. Pero como $k(G)$ y $|Z(G)|$ son
+	coprimos, $Z(G)=Z(G)\cap [G,G]\subseteq [G,G]$. 
+\end{proof}
+
+\begin{definition}
+	\index{Automorfismo!central}
+	Sean $G$ un grupo y $f\in\Aut(G)$. Se dice que $f$ es \textbf{central} si
+	$f(x)x^{-1}\in Z(G)$ para todo $x\in G$.
+\end{definition}
+
+\begin{remark}
+	Un automorfismo $f$ es central si y sólo si 
+	$f\in C_{\Aut(G)}(\Inn(G))$.
+\end{remark}
+
+\begin{corollary}
+	Sea $G$ un grupo finito con $k(G)$ clases de conjugación y $c(G)$
+	automorfismos centrales. Si el orden de $G$ es coprimo con $k(G)c(G)$
+	entonces $[G,G]=Z(G)$.
+\end{corollary}
+
+\begin{proof}
+	El corolario~\ref{corollary:Z(G)subset[G,G]} prueba que $Z(G)\subseteq [G,G]$. Para demostrar la otra contención 
+	sea $A=C_{\Aut(G)}(\Inn(G))$. Como $|G|$ y $k(G)c(G)$ son coprimos, 
+	y $(C_G(A):C_G(A)\cap [A,G])$ divide a $c(G)$ por 
+	el teorema
+	de Deaconescu--Walls~\ref{theorem:DeaconescuWalls}, entonces $C_G(A)=C_G(A)\cap [A,G]$. 
+	Como $[G,G]\subseteq C_G(A)$ pues
+	\[
+		a\cdot [x,y]=[(a\cdot x)x^{-1}x,(a\cdot y)y^{-1}y]=[x,y]
+	\]
+	para todo $a\in A$, $x,y\in G$ y además $[A,G]\subseteq Z(G)$, se concluye
+	que 
+	\[
+	[G,G]\subseteq C_G(A)=C_G(A)\cap [A,G]\subseteq [A,G]\subseteq Z(G).
+	\]
+\end{proof}
+
+\begin{corollary}
+  Sea $p$ un número primo.  Si $G$ un grupo con $p$ clases de conjugación,
+  entonces $Z(G)\subseteq[G,G]$ o bien $|G|=p$. 
+\end{corollary}
+
+\begin{proof}
+  Hacemos actuar a $G$ en $G$ por conjugación.  Como cada elemento de $C=Z(G)$
+  es una clase de conjugación, $|C|\leq p$. Si $|C|=p$ entonces $G=C=Z(G)$
+  tiene orden $p$. Si no, $|C|$ es coprimo con $p$ y luego $C\subseteq
+  N=[G,G]$.
+\end{proof}
+
