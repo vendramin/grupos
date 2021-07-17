@@ -1,0 +1,150 @@
+\chapter{El teorema de Landau}
+
+En 1903 Landau demostró que existe una cantidad finita de grupos
+con finitas clases de conjugación. La demostración es completamente 
+elemental y se basa en el siguiente lema: 
+
+\begin{lemma}[Landau]
+  \label{lemma:Landau}
+  Para cada $k\in\N$, la ecuación 
+  \[
+	\frac{1}{n_1}+\cdots+\frac{1}{n_k}=1
+  \]
+  tiene finitas soluciones.
+\end{lemma}
+
+\begin{proof}
+  Supongamos que $0<n_1\leq n_2\leq\cdots\leq n_k$.  Entonces $n_1\leq k$.
+  Demostremos por inducción que 
+  \[
+    n_j\leq \frac{k+1-j}{1-\left(\frac{1}{n_1}+\cdots+\frac{1}{n_{j-1}}\right)}
+  \]
+  para todo $j\in\{2,\dots,k\}$. Como para cada $j\in\{2,\dots,k\}$ se tiene
+  que $n_j\leq n_2$, entonces $1\leq \frac{1}{n_1}+\frac{k-1}{n_2}$ y luego
+  $n_2\leq \frac{k-1}{1-\frac{1}{n_1}}$. Si suponemos que el resultado es
+  válido para $j\geq2$, digamos $n_p\geq n_j$ para todo $p\geq j$, entonces
+  \[
+	1\leq \sum_{i=1}^{j-1}\frac{1}{n_i}+\frac{k-j+1}{n_j},
+  \]
+  que implica la desigualdad que queríamos demostrar.
+\end{proof}
+
+\begin{theorem}[Landau]
+  Sea $k\in\N$. Existen finitos grupos finitos que poseen exactamente $k$
+  clases de conjugación.
+\end{theorem}
+
+\begin{proof}
+  Sea $G$ un grupo un grupo con $k$ clases de conjugación, digamos
+  $C_1,\dots,C_k$, y sean $1=g_1,\dots,g_k$ los representantes de esas clases.
+  Al descomponer a $G$ como $G=C_1\cup\cdots\cup C_k$, 
+  \[
+    |G|=|C_1|+\cdots+|C_k|=(G:C_G(g_1))+\cdots(G:C_G(g_k)).
+  \]
+  Para cada $j\in\{1,\dots,k\}$ sea $n_j=|C_G(g_j)|$. Entonces 
+  \[
+	1=\frac{1}{n_1}+\cdots+\frac{1}{n_k}.
+  \]
+  Vimos en el lema~\ref{lemma:Landau} que esta ecuación tiene finitas
+  soluciones.  En particular, $n_k=|G|$ está acotado por una función de $k$.
+\end{proof}
+
+El método de Landau permite atacar ciertos resultados de clasificación. 
+Veamos algunos ejemplos. 
+
+\begin{example}
+  Sea $G$ un grupo finito que tiene dos clases de conjugación. Como 
+  $G\setminus\{1\}$ es una clase de conjugación, $|G|-1$ divide a
+  $|G|$ y entonces $|G|=2$.
+\end{example}
+
+\begin{example}
+  Sea $G$ un grupo no abeliano finito con tres clases de conjugación. Las
+  soluciones de la ecuación $1/n_1+1/n_2+1/n_3=1$ con $n_1\leq n_2\leq n_3$ son
+  $(3,3,3)$, $(2,3,6)$ y $(2,4,4)$. La única posibilidad es $(2,3,6)$. Luego
+  $G\simeq\Sym_3$.
+\end{example}
+
+Veamos una cota que fácilmente 
+puede obtenerse del método de Landau.
+
+\begin{theorem}[Neumann]
+Si $G$ es un grupo finito de orden $n$ con $k$ 
+clases de conjugación, entonces
+\[
+k\geq\frac{\log\log n}{\log 4}.
+\]
+\end{theorem}
+
+\begin{proof}
+Procedemos tal como hicimos en la demostración del teorema de Landau. 
+Sean $C_1,\dots,C_k$ y sean $1=g_1,\dots,g_k$ los representantes de esas clases.
+Al descomponer a $G$ como unión disjunta de clases de conjugación, 
+\[
+n=|G|=|C_1|+\cdots+|C_k|=(G:C_G(g_1))+\cdots(G:C_G(g_k)).
+\]
+Para cada $j\in\{1,\dots,k\}$ sea $n_j=|C_G(g_j)|$. Entonces 
+\[
+	1=\frac{1}{n_1}+\cdots+\frac{1}{n_k}.
+\]
+
+Afirmamos que 
+\[
+\max_{1\leq i\leq k}n_i\leq k^{2^{k-1}}.
+\]
+Sin perder generalidad podemos suponer que $n_1\leq n_2\leq\cdots\leq n_k$. Entonces
+$n_1\leq k$, pues, de lo contrario, 
+\[
+\sum_{i=1}^k\frac{1}{n_i}<\sum_{i=1}^k\frac{1}{k}=1,
+\]
+una contradicción. Sea $r\in\{1,\dots,k-1\}$. Escribimos
+\[
+\sum_{i=r+1}^k\frac{1}{n_i}=1-\sum_{i=1}^r\frac{1}{n_i}=\frac{x}{n_1\cdots n_r}
+\]
+para un cierto entero positivo $x$. Entonces
+\[
+\frac{k-r}{n_{r+1}}\geq\frac{1}{n_1\cdots n_r}
+\]
+y luego $n_{r+1}\leq (k-r)n_1\cdots n_r<kn_1\cdots n_r$.
+
+Para completar la demostración necesitamos probar que 
+\begin{equation}
+    \label{eq:Neumann}
+    n_r\leq k^{2^{r-1}}
+\end{equation}
+para todo $r$. 
+Procederemos por inducción en $r$. El caso $r=1$ es trivial. Supongamos entonces que 
+el resultado es válido
+para todo $j\leq r$. Por hipótesis inductiva, 
+\[
+n_{r+1}\leq kn_1\cdots n_r\leq k\prod_{j=1}^k2^{2^{j-1}}=k^{2^k}.\qedhere
+\]
+
+Ahora que hemos demostrado la desigualdad~\eqref{eq:Neumann}, quedará 
+demostrado el teorema de Neumann. Como sin perder generalidad habíamos supuesto 
+que $g_1=1$, entonces 
+$C_G(g_1)=G$ tiene tamaño $n$. Luego, en particular, 
+\[
+n\leq k^{2^{k-1}}\leq k^{2^k}.
+\]
+Al tomar logaritmo y utilizar que $\log k\leq 2^k$, obtenemos 
+$\log n\leq 2^k\log k\leq 2^{2k}$.  
+Entonces, al tomar logaritmo nuevamente, 
+$\log\log n\leq 2k\log 2$, de donde inmediatamente se obtiene 
+la desigualdad que queríamos demostrar.
+\end{proof}
+
+El siguiente problema que surge naturalmente 
+del resultado de Neumann:
+
+\begin{problem}[Brauer]
+Encontrar buenas cotas para el orden $n$ de un grupo
+con una cantidad fija $k$ de clases de conjugación. Se espera
+que las cotas sean considerablemente mejores que aquellas que se obtienen
+del método de Landau. 
+\end{problem}
+
+% todo
+% dar ejemplos de cotas feas, hay varios en el paper de Poland. Agregar ejemplos y ejercicios
+% donde se puedan clasificar grupos con 3,4,5... clases. 
+
