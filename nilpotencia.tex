@@ -316,15 +316,15 @@ Por ejemplo: $\zeta_1(G)=Z(G)$.
 \begin{proof}
 	Procederemos por inducción en $i$. El caso $i=0$ es trivial pues
 	$\zeta_0(G)=1$.  Supongamos entonces que el resultado es válido para $i$.
-	Veamos primero que $\zeta_{i+1}(G)$ es un subgrupo de $G$. 
+	Veamos primero que $\zeta_{i+1}(G)$ es un subgrupo normal de $G$. 
 	Sean $g,h\in \zeta_{i+1}(G)$ y sea $x\in G$. Por hipótesis inductiva,
 	\begin{align*}
 	&[g^{-1},x]=(xg^{-1})[g,x^{-1}](xg^{-1})^{-1}\in (xg^{-1})\zeta_i(G)(xg^{-1})^{-1}=\zeta_i(G),\\
 	&[gh,x]=[g,hxh^{-1}][h,x]\in \zeta_{i}(G).
 	\end{align*}
 	Como $1\in\zeta_{i+1}(G)$, se concluye que todos los $\zeta_i(G)$ son
-	subgrupos de $G$. La normalidad también se demuestra por inducción en $i$:
-	si $g\in\zeta_{i+1}(G)$, $x\in G$ entonces $xgx^{-1}\in\zeta_{i+1}(G)$ pues 
+	subgrupos de $G$. 
+	Además $xgx^{-1}\in\zeta_{i+1}(G)$ pues 
 	\[
 	[xgx^{-1},y]=x[g,x^{-1}yx]x^{-1}\in\zeta_{i}(G)
 	\]
